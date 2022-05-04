@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 app.use(studentRouter);
 
-const CONNECTION_URL = 'mongodb+srv://Devsrini:Dev@cluster0.9lttu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const CONNECTION_URL = '';
 const PORT = 4000;
 
 mongoose.connect(CONNECTION_URL,{
