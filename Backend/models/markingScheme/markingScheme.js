@@ -3,30 +3,21 @@ const Schema = mongoose.Schema;
 
 const markingSchema = new Schema({
 
-    name:{
+     module:{
         type:String,
         required:true,
         trim:true
     },
-    description:{
+    projectName:{
         type:String,
         required:true,
         trim:true
     },
-     showTime:{
-        type:[String],
+     date:{
+        type:String, 
         required:true,
   
-    },
-    theaters:{
-        type:[String],
-        required:true 
-    },
-    photo:{
-        type:String,
-        
     }
-
    
 },{timestamps:true})
 

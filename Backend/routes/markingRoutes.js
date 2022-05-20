@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import {addMarkingScheme} from '../controllers/markingControllers.js'
+import {addMarkingScheme} from '../controllers/markingControllers/markingController.js'
 
 
 
