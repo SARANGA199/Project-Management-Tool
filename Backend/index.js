@@ -1,10 +1,9 @@
 import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
 import colors from 'colors'
 import dotenv from 'dotenv'
 import  './db/db.js'
-import studentRouter from './routers/studentRouter.js'
+import studentRouter from './routers/studentRouter/studentRouter.js'
 
 const app = express();
 dotenv.config();
