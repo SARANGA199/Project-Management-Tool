@@ -1,5 +1,5 @@
 import express from "express";
-import{getMembers,saveMembers} from '../controllers/studentController.js'
+import{getMembers,saveMembers} from '../../controllers/studentController/studentController.js'
 const router = express.Router();
 
 router.get('/members',getMembers);
