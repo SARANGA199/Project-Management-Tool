@@ -1,10 +1,10 @@
 import React ,{ useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 const CreateGroup = ()=>{
 
-    const history = useHistory();
+    //const history = useHistory();
 
     const[leaderName,setLeaderName] = useState("");
      const[leaderID,setLeaderID] = useState("");
@@ -40,41 +40,16 @@ const CreateGroup = ()=>{
                 Member4Email
         }
         const promise = await axios.post("http://localhost:4000/members",data).then((res)=>{
-            if(res.status = 201){
+            if(res.status === 201){
                 alert("Post Added successfully");
-                history.push('/display');
+                // history.push('/display');
 
             }}).catch((err)=>{
 
                 alert(err);
             });
         }
-     
-     //
-    // const saveUser =async(e) => {
-    //     e.preventDefault();
-    //     try {
-    //         await axios.post('http://localhost:4000/members',{
-    //             leaderName,
-    //             leaderID,
-    //             leaderEmail,
-    //             Member2Name,
-    //             Member2ID,
-    //             Member2Email,
-    //             Member3Name,
-    //             Member3ID,
-    //             Member3Email,
-    //             Member4Name,
-    //             Member4ID,
-    //             Member4Email
-    //         });
-    //         navigate("/")
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
 
-   
     return(
         <><div>ADD USER</div>
 
