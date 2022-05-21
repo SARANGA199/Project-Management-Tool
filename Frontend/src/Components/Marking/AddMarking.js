@@ -31,13 +31,14 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { v4 as uuidv4 } from 'uuid';
 
 
+
 export default function AddMarking() {
 
-const [criteria, setCriteria] = useState([ { id: uuidv4(), criteriaName: '', marksAllocation: '' },  ]);
+const [criteria, setCriteria] = useState([ { id: uuidv4(), criteriaName: '', marksAllocation: 0},  ]);
 const [specialization, setSpecialization] = useState('');
 const [projectName, setProjectName] = useState('');
 const [date, setDate] = useState(new Date());
-const [totalMarks, setTotalMarks] = useState('');
+var [totalMarks, setTotalMarks] = useState('');
 
   //handle specialization
   const handleChange = (event) => {
@@ -98,7 +99,7 @@ const [totalMarks, setTotalMarks] = useState('');
   }
 
   const handleAddFields = () => {
-    setCriteria([...criteria, { id: uuidv4(),  criteriaName: '', marksAllocation: '' }])
+    setCriteria([...criteria, { id: uuidv4(),  criteriaName: '', marksAllocation: 0}])
   }
 
   const handleRemoveFields = id => {
@@ -159,22 +160,6 @@ const [totalMarks, setTotalMarks] = useState('');
             />
             </div>
 
-            {/* <div className="ms-3 md-3 mb-4 mx-3">
-               
-                  <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <Stack spacing={3}>
-                      <DesktopDatePicker
-                        shouldDisableDate={disablePrevDates(startDate)}
-                        inputFormat="dd/MM/yyyy"
-                        value={date}
-                         variant="outlined"
-                        required
-                        onChange={handleSelectDateChange}
-                        renderInput={(params) => <TextField {...params} />}
-                      />
-                    </Stack>
-                  </LocalizationProvider>
-                </div> */}
                 
                 <div className='ms-3 mb-3 mt-3' >
                 <LocalizationProvider   dateAdapter={AdapterDateFns}>
@@ -250,13 +235,22 @@ const [totalMarks, setTotalMarks] = useState('');
                 
                  {criteria.map((display,index) =>(
 
+
                      <tr key={index}>
                      
                       <th scope='row'>{index+1}</th>
                       <td>{display.criteriaName}</td>   
                       <td> {display.marksAllocation} </td>
 
+                        
+                           
+                          
+                      
+                      {/* {totalMarks =( totalMarks -display.marksAllocation)} */}
+                         
+
                      </tr>
+                    
                 
              ))}
        
