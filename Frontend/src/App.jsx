@@ -1,11 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
+import CreateGroup from './Components/CreateGroup/CreateGroup';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-    }
+function App(){
+    return(
 
-    render() {
-        return <div>Hello React</div>
-    }
+        <Router>
+            <Switch>
+                <Route exact path="/" > <CreateGroup/></Route>
+            </Switch>
+        </Router>
+
+    );
 }
+
+export default App;
