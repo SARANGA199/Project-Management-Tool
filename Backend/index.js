@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use(studentRouter);
 
-const CONNECTION_URL = '';
+
 const PORT = process.env.PORT || 4000
 
 app.listen(PORT,()=>{
