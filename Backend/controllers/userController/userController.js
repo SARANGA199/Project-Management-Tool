@@ -1,6 +1,6 @@
-const Users = require('../models/User');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken')
+import Users from '../../models/user/User.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const userController = {
     register: async (req, res) =>{
@@ -104,4 +104,4 @@ const createRefreshToken = (user) =>{
     return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
 }
 
-module.exports = userController
+export default userController;
