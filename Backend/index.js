@@ -8,6 +8,7 @@ import  './db/db.js'
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/userRoutes/userRoutes.js"
 import markingRoutes from './routes/markingRoutes.js'
+import upload from './routes/userRoutes/upload.js'
 
 const app = new express();
 
@@ -18,6 +19,8 @@ app.use(cookieParser())
 
 //routes
 app.use('/user',userRouter);
+
+app.use('/api',upload);
 
 //marking controller
 app.use('/markings',markingRoutes);
