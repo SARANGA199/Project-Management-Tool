@@ -4,6 +4,9 @@ import cors from "cors";
 import colors from 'colors'
 import dotenv from 'dotenv'
 import  './db/db.js' 
+
+import cookieParser from "cookie-parser";
+import userRouter from "./routes/userRoutes/userRoutes.js"
 import markingRoutes from './routes/markingRoutes.js'
 
 const app = new express();
@@ -11,6 +14,10 @@ const app = new express();
 dotenv.config();
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser())
+
+//routes
+app.use('/user',userRouter);
 
 //marking controller
 app.use('/markings',markingRoutes);
