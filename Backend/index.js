@@ -11,6 +11,10 @@ import markingRoutes from './routes/markingRoutes.js'
 
 const app = new express();
 
+<<<<<<< Updated upstream
+=======
+const app = new express();
+>>>>>>> Stashed changes
 dotenv.config();
 app.use(cors());
 app.use(express.json());

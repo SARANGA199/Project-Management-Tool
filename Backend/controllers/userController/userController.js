@@ -1,6 +1,13 @@
 import Users from '../../models/user/User.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import sendMail from './sendMail.js'
+import { google } from "googleapis";
+const { OAuth2 } = google.auth;
+
+const client = new OAuth2(process.env.MAILING_SERVICE_CLIENT_ID)
+
+const {CLIENT_URL} = process.env
 
 const userController = {
     register: async (req, res) =>{
@@ -84,12 +91,51 @@ const userController = {
         }
         
     },
+    forgotPassword: async (req, res) => {
+        try {
+            const {email} = req.body
+            const user = await Users.findOne({email})
+            if(!user) return res.status(400).json({msg: "This email does not exist."})
+
+            const access_token = createAccessToken({id: user._id})
+            const url = `${CLIENT_URL}/user/reset/${access_token}`
+
+            sendMail(email, url, "Reset your password")
+            res.json({msg: "Re-send the password, please check your email."})
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    resetPassword: async (req, res) => {
+        try {
+            const {password} = req.body
+            console.log(password)
+            const passwordHash = await bcrypt.hash(password, 12)
+
+            await Users.findOneAndUpdate({_id: req.user.id}, {
+                password: passwordHash
+            })
+
+            res.json({msg: "Password successfully changed!"})
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
     getUser: async (req, res) =>{
         try {
             const user = await Users.findById(req.user.id).select('-password')
             if(!user) return res.status(400).json({msg: "User does not exist."})
 
             res.json(user)
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    getUsersAllInfor: async (req, res) => {
+        try {
+            const users = await Users.find().select('-password')
+
+            res.json(users)
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
