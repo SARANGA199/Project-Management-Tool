@@ -4,7 +4,7 @@ import cors from "cors";
 import colors from 'colors'
 import dotenv from 'dotenv'
 import  './db/db.js' 
-import markingRoutes from './routes/markingRoutes.js'
+import markingRoutes from './routes/markingRoutes/markingRoutes.js'
 
 const app = new express();
 

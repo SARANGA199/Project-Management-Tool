@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import AddMarking from './Components/Marking/AddMarking';
 
 export default class App extends Component {
     constructor(props) {
@@ -6,6 +7,8 @@ export default class App extends Component {
     }
 
     render() {
-        return <div>Hello React</div>
+        return <div>
+            <AddMarking />
+        </div>
     }
 }
