@@ -6,21 +6,19 @@ body {
 .topic-container {
     display: grid;
     height: 100vh;
-    grid-template-columns: 20% 45% auto;
+    grid-template-columns: 20% 50% auto;
+    
 }
 
-/* .name{
-
-    color: brown;
-} */
 
 .info{
 
-    background-color: orange;
+    background-color: rgb(234, 152, 0);
     margin-top: 5px;
     margin-left: 5px;
     box-shadow: 2px 4px 4px 0;
     text-align: center;
+    
     
 
 }
@@ -29,5 +27,51 @@ body {
 
     margin-top: 40vh;
     width: auto;
+    font-weight: bold;
 }
 
+.formTitle{
+    margin-top: 5vh;
+    margin-left: 3vh;
+    font-size: 5vh;
+    font-weight: bold;
+}
+
+.formMiddle{
+ 
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+ 
+}
+
+.hr1{
+    color: rgb(255, 166, 1);
+    border-top: 1vh solid ;
+    width: 50%;
+}
+
+.hr2{
+    color: rgb(255, 166, 1);
+    width: 50%;
+    border: solid;
+}
+
+.mainDetails{
+    margin-left: 5vh;
+    box-shadow: 0 0 4px 0;
+    width: auto;
+    margin-bottom: 5vh;
+    padding:2vh
+
+}
+
+.DisplayMain{
+    background-color:rgb(242, 180, 100);
+    padding: 2vh;
+    margin-top: 10vh;
+    width: 400px;;
+}
+
+.table{
+ width: auto;
+}
