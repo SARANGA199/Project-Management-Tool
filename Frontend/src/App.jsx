@@ -1,11 +1,16 @@
-import React, {Component} from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from "./Components/UserManagement/Login";
+import Header from "./Components/Header/Header";
 
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return <div>Hello React</div>
-    }
-}
+function App() {
+    return (
+      <Router>
+          <Header/>
+          <Switch>
+              <Route exact path="/" > <Login/></Route>
+          </Switch>
+      </Router>
+    )
+  }
+  
+  export default App;
