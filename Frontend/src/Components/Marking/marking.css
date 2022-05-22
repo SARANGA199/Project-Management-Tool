@@ -7,19 +7,14 @@ body {
     display: grid;
     height: 100vh;
     grid-template-columns: 15% 50% auto;
+
     
 }
 
 
 .info{
-
     background-color:whitesmoke;
-    margin-top: 5px;
-    margin-left: 5px;
     text-align: center;
-    
-    
-
 }
 
 .formName{
@@ -73,4 +68,9 @@ body {
 .table{
  width: auto;
  column-gap: 2px;
+}
+
+.percent{
+    margin-top: 5vh;
+    margin-left: 60vh;
 }
