@@ -39,9 +39,10 @@ const CreateGroup = ()=>{
                 Member4ID,
                 Member4Email
         }
-        const promise = await axios.post("http://localhost:4000/members",data).then((res)=>{
-            if(res.status === 201){
+         const promise = await axios.post("http://localhost:9000/members",data).then((res)=>{
+             if(res.status = 201){
                 alert("Post Added successfully");
+
                 // history.push('/display');
 
             }}).catch((err)=>{
@@ -89,14 +90,14 @@ const CreateGroup = ()=>{
                             <div className="col-md-3">
                                 <label>Member 3 Name : <font color="red">*</font></label>
                                 <div className="form-group">
-                                    <input type="text"  className="form-control" value={Member3Name} onChange={e=> setMember3Name(e.target.value)} required/>
+                                    <input type="text"  className="form-control" value={Member3Name} onChange={e=> setMember3Name(e.target.value)} />
                                 </div>
                             </div>
 
                             <div className="col-md-3">
                                 <label>Member 4 Name : <font color="red">*</font></label>
                                 <div className="form-group">
-                                    <input type="text"  className="form-control" value={Member4Name} onChange={e=> setMember4Name(e.target.value)} required/>
+                                    <input type="text"  className="form-control" value={Member4Name} onChange={e=> setMember4Name(e.target.value)} />
                                 </div>
                             </div>
 
@@ -109,28 +110,28 @@ const CreateGroup = ()=>{
                             <div className="col-md-3">
                                 <label>Group Leader Student ID : <font color="red">*</font></label>
                                 <div className="form-group">
-                                    <input type="text"  className="form-control" value={leaderID} onChange={e=> setLeaderID(e.target.value)} required/>
+                                    <input type="text"  className="form-control" value={leaderID} onChange={e=> setLeaderID(e.target.value)} />
                                 </div>
                             </div>
 
                             <div className="col-md-3">
                                 <label>Member 2 Student ID : <font color="red">*</font></label>
                                 <div className="form-group">
-                                    <input type="text"  className="form-control" value={Member2ID} onChange={e=> setMember2ID(e.target.value)} required/>
+                                    <input type="text"  className="form-control" value={Member2ID} onChange={e=> setMember2ID(e.target.value)} />
                                 </div>
                             </div>
 
                             <div className="col-md-3">
                                 <label>Member 3 Student ID : <font color="red">*</font></label>
                                 <div className="form-group">
-                                    <input type="text"  className="form-control" value={Member3ID} onChange={e=> setMember3ID(e.target.value)} required/>
+                                    <input type="text"  className="form-control" value={Member3ID} onChange={e=> setMember3ID(e.target.value)} />
                                 </div>
                             </div>
 
                             <div className="col-md-3">
                                 <label>Member 4 Student ID : <font color="red">*</font></label>
                                 <div className="form-group">
-                                    <input type="text"  className="form-control" value={Member4ID} onChange={e=> setMember4ID(e.target.value)} required/>
+                                    <input type="text"  className="form-control" value={Member4ID} onChange={e=> setMember4ID(e.target.value)} />
                                 </div>
                             </div>
 
@@ -143,28 +144,28 @@ const CreateGroup = ()=>{
                             <div className="col-md-3">
                                 <label>Group Leader Email :<font color="red">*</font> </label>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={leaderEmail} onChange={e => setLeaderEmail(e.target.value)} required/>
+                                    <input type="text" className="form-control" value={leaderEmail} onChange={e => setLeaderEmail(e.target.value)} />
                                 </div>
                             </div>
 
                             <div className="col-md-3">
                                 <label>Member 2 Email : <font color="red">*</font></label>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={Member2Email} onChange={e => setMember2Email(e.target.value)} required/>
+                                    <input type="text" className="form-control" value={Member2Email} onChange={e => setMember2Email(e.target.value)} />
                                 </div>
                             </div>
 
                             <div className="col-md-3">
                                 <label>Member 3 Email : <font color="red">*</font></label>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={Member3Email} onChange={e => setMember3Email(e.target.value)} required/>
+                                    <input type="text" className="form-control" value={Member3Email} onChange={e => setMember3Email(e.target.value)} />
                                 </div>
                             </div>
 
                             <div className="col-md-3">
                                 <label>Member 4 Email : <font color="red">*</font></label>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={Member4Email} onChange={e => setMember4Email(e.target.value)} required/>
+                                    <input type="text" className="form-control" value={Member4Email} onChange={e => setMember4Email(e.target.value)} />
                                 </div>
                             </div>
 
