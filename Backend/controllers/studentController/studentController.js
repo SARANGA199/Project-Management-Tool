@@ -13,8 +13,8 @@ export const getMembers = async (req,res)=>{
 export const saveMembers = async (req,res)=>{
     const member = new Members(req.body);
     try {
-        const insertedmembers = await member.save();
-        res.status(201).json(insertedmembers);
+        await member.save();
+        res.status(201).json(member);
     } catch (error) {
         res.status(400).json({message: error.message});
     }
