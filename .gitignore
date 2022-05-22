@@ -49,8 +49,8 @@ typings/
 
 # Optional npm cache directory
 .npm
-Frontend/.parcel-cache/
-Backend/tmp/
+.parcel-cache/
+tmp/
 
 # Optional eslint cache
 .eslintcache
