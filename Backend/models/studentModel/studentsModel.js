@@ -12,13 +12,13 @@ const students = mongoose.Schema({
     },
     leaderEmail:{
         type:String,
-        required:true
+       required:true
     },
 
     //Member2
     Member2Name:{
         type:String,
-        required:true
+       required:true
     },
 
     Member2ID:{
@@ -27,7 +27,7 @@ const students = mongoose.Schema({
     },
     Member2Email:{
         type:String,
-        required:true
+       required:true
     },
 
 
@@ -43,13 +43,13 @@ const students = mongoose.Schema({
     },
     Member3Email:{
         type:String,
-        required:true
+       required:true
     },
 
     //Member4
     Member4Name:{
         type:String,
-        required:true
+       required:true
     },
 
     Member4ID:{
@@ -58,7 +58,7 @@ const students = mongoose.Schema({
     },
     Member4Email:{
         type:String,
-        required:true
+       required:true
     },
 })
 
