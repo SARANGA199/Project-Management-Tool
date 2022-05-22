@@ -13,4 +13,14 @@ router.get('/refresh_token',userController.refreshToken);
 
 router.get('/info', auth, userController.getUser);
 
+router.post('/forgot', userController.forgotPassword);
+
+router.post('/reset', auth, userController.resetPassword);
+
+router.get('/all_infor', auth, userController.getUsersAllInfor);
+
+router.patch('/update', auth, userController.updateUser);
+
+router.delete('/delete/:id', userController.deleteUser);
+
 export default router;
