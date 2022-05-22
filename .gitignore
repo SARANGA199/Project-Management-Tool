@@ -49,8 +49,6 @@ typings/
 
 # Optional npm cache directory
 .npm
-Frontend/.parcel-cache/
-Backend/tmp
 
 # Optional eslint cache
 .eslintcache
@@ -104,3 +102,4 @@ dist
 
 # TernJS port file
 .tern-port
+/Frontend/.parcel-cache/
