@@ -6,17 +6,16 @@ body {
 .topic-container {
     display: grid;
     height: 100vh;
-    grid-template-columns: 20% 50% auto;
+    grid-template-columns: 15% 50% auto;
     
 }
 
 
 .info{
 
-    background-color: rgb(234, 152, 0);
+    background-color:whitesmoke;
     margin-top: 5px;
     margin-left: 5px;
-    box-shadow: 2px 4px 4px 0;
     text-align: center;
     
     
@@ -66,12 +65,12 @@ body {
 }
 
 .DisplayMain{
-    background-color:rgb(242, 180, 100);
+    background-color:whitesmoke;
     padding: 2vh;
-    margin-top: 10vh;
-    width: 400px;;
+  
 }
 
 .table{
  width: auto;
+ column-gap: 2px;
 }
