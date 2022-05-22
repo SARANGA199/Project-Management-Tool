@@ -1,0 +1,33 @@
+body {
+    margin: 0px;
+   
+}
+
+.topic-container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 20% 45% auto;
+}
+
+/* .name{
+
+    color: brown;
+} */
+
+.info{
+
+    background-color: orange;
+    margin-top: 5px;
+    margin-left: 5px;
+    box-shadow: 2px 4px 4px 0;
+    text-align: center;
+    
+
+}
+
+.formName{
+
+    margin-top: 40vh;
+    width: auto;
+}
+
