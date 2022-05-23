@@ -1,0 +1,53 @@
+body {
+  margin: 0px;
+}
+
+.topic-container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 30% 40% auto;
+}
+
+.leftCom {
+  background-color: whitesmoke;
+}
+
+.tableControl {
+  padding: 3vh;
+  margin-top: 3vh;
+  line-height: 6vh;
+}
+
+.textNew {
+  margin-top: 1vh;
+  margin-left: 3vh;
+  margin-bottom: 0ch;
+}
+
+.title {
+  margin-top: 9vh;
+  font-weight: bold;
+  margin-left: 3vh;
+  margin-bottom: 3vh;
+}
+
+.btn1 {
+  margin-left: 50%;
+  margin-top: 10vh;
+}
+
+.formTitle {
+  margin-top: 5vh;
+  margin-left: 3vh;
+  font-size: 7vh;
+  font-weight: bold;
+  background-color: orange;
+  padding: 4vh;
+  border-radius: 5vh;
+}
+
+.input2 {
+  margin-top: 15vh;
+  margin-left: 15vh;
+  margin-bottom: 10vh;
+}
