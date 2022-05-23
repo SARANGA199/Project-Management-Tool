@@ -39,7 +39,7 @@ const CreateGroup = ()=>{
                 Member4ID,
                 Member4Email
         }
-         const promise = await axios.post("http://localhost:9000/members",data).then((res)=>{
+         const promise = await axios.post("http://localhost:8070/members",data).then((res)=>{
              if(res.status = 201){
                 alert("Post Added successfully");
 
