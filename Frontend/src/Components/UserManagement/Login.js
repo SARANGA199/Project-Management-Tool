@@ -1,26 +1,26 @@
 import React, {useState,useContext} from 'react';
 import './Styles/login.css';
+import axios from 'axios';
 
-const Login = props=>{
-    const [user,setUser] = useState({username: "", password : ""});
+function Login() {
+    const [user,setUser] = useState({email: '', password : ''});
 
     const onChange = e =>{
-        setUser({...user,[e.target.name] : e.target.value});
+      const {name, value} = e.target;
+        setUser({...user,[name] : value});
     }
 
-    const onSubmit = e =>{
-        e.preventDefault();
-        AuthService.login(user).then(data=>{
-            console.log(data);
-            const { isAuthenticated,user} = data;
-            if(isAuthenticated){
-                authContext.setUser(user);
-                authContext.setIsAuthenticated(isAuthenticated);
-                props.history.push('/');
-            }
-            else
-                alert("Invalid username or password");
-        });
+    const loginSubmit = async e =>{
+      e.preventDefault()
+      try{
+        await axios.post('/user/login', {...user})
+
+        localStorage.setItem('firstLogin', true)
+
+        window.location.href = "/"
+      } catch (err){
+        alert(err.response.data.msg)
+      }
     }
 
 
@@ -36,9 +36,9 @@ const Login = props=>{
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Welcome back!</h3>
 
-              <form onSubmit={onSubmit}>
+              <form onSubmit={loginSubmit}>
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" name="username" required onChange={onChange} placeholder="Username"></input>
+                  <input type="email" class="form-control" name="email" required onChange={onChange} placeholder="Email"></input>
                   <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating mb-3">

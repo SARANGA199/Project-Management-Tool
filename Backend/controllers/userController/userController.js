@@ -12,7 +12,7 @@ const {CLIENT_URL} = process.env
 const userController = {
     register: async (req, res) =>{
         try {
-            const {name, email, regNumber, specialization, password} = req.body;
+            const {name, email, regNumber, specialization, password, role} = req.body;
 
             const mail = await Users.findOne({email})
             if(mail) return res.status(400).json({msg: "The email already exists."})
@@ -26,7 +26,7 @@ const userController = {
             // Encrypt the Password
             const passwordHash = await bcrypt.hash(password, 10)
             const newUser = new Users({
-                name, email, regNumber, specialization, password: passwordHash
+                name, email, regNumber, specialization, role, password: passwordHash
             })
 
             // Save to mongodb
