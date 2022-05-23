@@ -1,9 +1,13 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
-import {addMarkingScheme} from '../../controllers/markingControllers/markingController.js'
+import {
+  addMarkingScheme,
+  getMarkingScheme,
+  getOneMarking,
+} from "../../controllers/markingControllers/markingController.js";
 
-
-
-router.post('/addMarking',addMarkingScheme);
+router.post("/", addMarkingScheme);
+router.get("/", getMarkingScheme);
+router.get("/:id", getOneMarking);
 
 export default router;
