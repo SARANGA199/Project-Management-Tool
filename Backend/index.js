@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from 'dotenv'
 import './db/db.js'
+import colors from 'colors';
 import fileUpload from 'express-fileupload'
 
 import cookieParser from "cookie-parser";
@@ -28,9 +29,9 @@ app.use('/api', upload);
 
 //marking controller
 app.use('/markings', markingRoutes);
-app.use('/student', studentRouter);
+app.use(studentRouter);
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 9000
 
 app.listen(PORT, () => {
 
