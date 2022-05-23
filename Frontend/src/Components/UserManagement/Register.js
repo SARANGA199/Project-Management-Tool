@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Styles/register.css";
 import Select from "react-select";
 import axios from 'axios';
+import swal from 'sweetalert';
 
 function Register() {
   const [user, setUser] = useState({
@@ -25,10 +26,10 @@ function Register() {
       const register = await axios.post('http://localhost:8000/user/register',{...user})
       console.log('x')
       localStorage.setItem("firstLogin", true);
-
+      swal("Done!", "You successfully registered!", "success");
       window.location.href = "/";
     } catch (err) {
-      alert(err.response.data.msg);
+      swal("ERROR!", err.response.data.msg, "error");
     }
   };
 
