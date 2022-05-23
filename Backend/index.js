@@ -10,6 +10,7 @@ import userRouter from "./routes/userRoutes/userRoutes.js"
 import markingRoutes from './routes/markingRoutes.js'
 import upload from './routes/userRoutes/upload.js'
 import studentRouter from "./routes/studentRoute/studentRouter.js";
+import topicRegisterRouter from "./routes/topicRegisterRoute/topicRegisterRouter.js";
 //const app = new express();
 const app = express();
 
@@ -30,8 +31,9 @@ app.use('/api', upload);
 //marking controller
 app.use('/markings', markingRoutes);
 app.use(studentRouter);
+app.use(topicRegisterRouter);
 
-const PORT = process.env.PORT || 9000
+const PORT = process.env.PORT || 8070
 
 app.listen(PORT, () => {
 
