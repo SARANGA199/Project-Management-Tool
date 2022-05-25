@@ -18,9 +18,12 @@ import "./presentation.css";
 export default function EvaluatePresentation() {
   // const [mid,SetMid] = useState();
   const [criteria, setCriteria] = useState([
-    { id: uuidv4(), criteriaName: "", marksAllocation: "" },
+    { id: uuidv4(), criteriaName: "", marksAllocation: "", marks: "" },
   ]);
-  const [marks, setMarks] = useState([{ id: uuidv4(), marks: "" }]);
+  const [marksn, setMarks] = useState();
+  // const [result, setResult] = useState([
+  //   { criteriaName: "", marksAllocation: "", marks: "" },
+  // ]);
   const [researchTopic, setResearchTopic] = useState("");
   const [projectId, setProjectId] = useState("");
 
@@ -38,37 +41,44 @@ export default function EvaluatePresentation() {
   }, []);
 
   const handleChangeInput = (id, event) => {
-    const newMarks = marks.map((i) => {
-      if (id === i.id) {
+    const newMarks = criteria.map((i, index) => {
+      if (id == index) {
         i[event.target.name] = event.target.value;
       }
       return i;
     });
 
-    setMarks(newMarks);
+    setCriteria(newMarks);
   };
+
+  console.log(criteria);
+  var sum = 0;
 
   const submitData = (e) => {
     e.preventDefault();
-    console.log(marks);
+    console.log(criteria);
+    sum = criteria
+      .map((data) => Number(data.marks.replace("$", "")))
+      .reduce((prev, curr) => prev + curr, 0);
+    setMarks(sum);
   };
 
-  const handleAddFields = () => {
-    setMarks([...marks, { id: uuidv4(), marks: "" }]);
-  };
+  // const handleAddFields = () => {
+  //   setMarks([...marks, { id: uuidv4(), marks: "" }]);
+  // };
 
-  const handleRemoveFields = (id) => {
-    const values = [...marks];
-    values.splice(
-      values.findIndex((value) => value.id === id),
-      1
-    );
-    setMarks(values);
-  };
+  // const handleRemoveFields = (id) => {
+  //   const values = [...marks];
+  //   values.splice(
+  //     values.findIndex((value) => value.id === id),
+  //     1
+  //   );
+  //   setMarks(values);
+  // };
 
-  var sum = marks
-    .map((data) => Number(data.marks.replace("$", "")))
-    .reduce((prev, curr) => prev + curr, 0);
+  // var sum = criteria
+  //   .map((data) => Number(data.marks.replace("$", "")))
+  //   .reduce((prev, curr) => prev + curr, 0);
 
   return (
     <div>
@@ -107,53 +117,97 @@ export default function EvaluatePresentation() {
           </div>
         </div>
 
-        <div>
+        <div className="map1">
           <div className="tableControl">
             <table className="table" style={{ backgroundColor: "white" }}>
               <thead>
                 <tr>
-                  <th scope="col-lg">Index</th>
-                  <th scope="col-lg">Criteria</th>
+                  <th scope="col">Index</th>
+                  <th scope="col">Criteria</th>
                   <th scope="col">Marks Allocation</th>
+                  <th scope="col">Marks</th>
                 </tr>
               </thead>
               <tbody>
-                {criteria.map((display, index) => (
+                {criteria.map((criteriaNew, index) => (
                   <tr key={index}>
                     <th scope="row">{index + 1}</th>
-                    <td>{display.criteriaName}</td>
-                    <td> {display.marksAllocation} </td>
+                    <td>
+                      <TextField
+                        className="ms-3 mt-3"
+                        name="criteriaName"
+                        variant="standard"
+                        disabled
+                        value={criteriaNew.criteriaName}
+                        onChange={(event) => handleChangeInput(index, event)}
+                      />
+                    </td>
+                    <td>
+                      <TextField
+                        name="marksAllocation"
+                        type="number"
+                        className="ms-4 mt-3"
+                        variant="standard"
+                        disabled
+                        value={criteriaNew.marksAllocation}
+                        onChange={(event) => handleChangeInput(index, event)}
+                      />
+                    </td>
+                    <td>
+                      <TextField
+                        name="marks"
+                        type="number"
+                        label="Marks"
+                        className="ms-3 mt-3"
+                        variant="outlined"
+                        required
+                        value={criteriaNew.marks}
+                        onChange={(event) => handleChangeInput(index, event)}
+                      />
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          {/* 
-      {criteria.map((criteriaNew) => (
-        <div key={criteriaNew.id}>
-          <TextField
-            className="ms-3"
-            name="criteriaName"
-            label="Criteria Name"
-            variant="outlined"
-            value={criteriaNew.criteriaName}
-          />
-          <TextField
-            name="marksAllocation"
-            type="number"
-            label="Marks Allocation"
-            className="ms-4 mb-3"
-            variant="outlined"
-            value={criteriaNew.marksAllocation}
-          />
-        </div>
-      ))} */}
+
+          <div className="btn1">
+            <button
+              className="btn btn-outline-warning"
+              variant="contained"
+              onClick={submitData}
+              type="submit"
+            >
+              SEND <SendIcon>send</SendIcon>{" "}
+            </button>
+          </div>
         </div>
 
         <div className="leftCom">
-          <h6 className="title">Add Marks</h6>
-          {marks.map((marksNew) => (
-            <div key={marksNew.id}>
+          <h6 className="title">Added Marks</h6>
+          <table className="table" style={{ backgroundColor: "white" }}>
+            <thead>
+              <tr>
+                <th scope="col">Index</th>
+                <th scope="col">Criteria</th>
+                <th scope="col">Marks Allocation</th>
+                <th scope="col">Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {criteria.map((display, index) => (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{display.criteriaName}</td>
+                  <td> {display.marksAllocation} </td>
+                  <td> {display.marks} </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          Total Marks : {marksn}
+          {/* {marks.map((marksNew, index) => (
+            <div key={index}>
               <div className="textNew">
                 <TextField
                   name="marks"
@@ -162,7 +216,7 @@ export default function EvaluatePresentation() {
                   variant="outlined"
                   required
                   value={marksNew.marks}
-                  onChange={(event) => handleChangeInput(marksNew.id, event)}
+                  onChange={(event) => handleChangeInput(index, event)}
                 />
 
                 <IconButton
@@ -176,17 +230,7 @@ export default function EvaluatePresentation() {
                 </IconButton>
               </div>
             </div>
-          ))}
-          Total Marks : {sum}
-          <div className="btn1">
-            <button
-              className="btn btn-outline-warning"
-              variant="contained"
-              type="submit"
-            >
-              SEND <SendIcon>send</SendIcon>{" "}
-            </button>
-          </div>
+          // ))} */}
         </div>
       </div>
     </div>
