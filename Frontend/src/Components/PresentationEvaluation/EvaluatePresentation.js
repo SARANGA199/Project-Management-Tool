@@ -72,9 +72,9 @@ export default function EvaluatePresentation() {
 
   return (
     <div>
-      <div className="topic-container">
+      <div className="topic-containerPre">
         <div className="leftCom">
-          <label className="formTitle">
+          <label className="formTitlePre">
             {" "}
             EVALUATE
             <br /> PRESENTATION

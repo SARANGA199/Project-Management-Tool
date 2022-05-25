@@ -127,7 +127,7 @@ export default function AddMarking() {
         <div>
           <Container>
             <form onSubmit={handleSubmit}>
-              <label className="formTitle">
+              <label className="formTitleMark">
                 {" "}
                 CREATE MARKING
                 <br /> SCHEME
@@ -257,7 +257,7 @@ export default function AddMarking() {
         </div>
 
         <div className="DisplayMain">
-          <label className="formTitle"> ADDED CRITERIA</label>
+          <label className="formTitleMark"> ADDED CRITERIA</label>
           <hr className="hr1" />
           <div>
             <table className="table" style={{ backgroundColor: "white" }}>
