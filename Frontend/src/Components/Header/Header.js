@@ -13,18 +13,23 @@ import series from './images/series-icon.svg'
 
 function Header() {
 
-    // const state = useContext(GlobalState)
-    // const [isLogged,setIsLogged ] = state.UserAPI.isLogged
-    // const [isAdmin,setIsAdmin ] = state.UserAPI.isAdmin
-    // const [crrUser, setCrrUser] = state.UserAPI.crrUser
+    const state = useContext(GlobalState)
+    const [isLogged,setIsLogged ] = state.UserAPI.isLogged
+    const [isAdmin,setIsAdmin ] = state.UserAPI.isAdmin
+    const [crrUser, setCrrUser] = state.UserAPI.crrUser
 
-    // const logoutUser = async () =>{
-    //   const logout = await axios.get('/user/logout')
-    //   localStorage.clear()
-    //   setIsAdmin(false)
-    //   setIsLogged(false)
-    //   window.location.reload(false)
-    // }
+
+    console.log(isLogged)
+    console.log(isAdmin)
+    console.log(crrUser)
+
+    const logoutUser = async () =>{
+      const logout = await axios.get('http://localhost:8000/user/logout')
+      localStorage.clear()
+      setIsAdmin(false)
+      setIsLogged(false)
+      window.location.reload(false)
+    }
 
   return (
     <Nav>
@@ -65,6 +70,7 @@ function Header() {
     </NavMenu>
     <div>
     {/* <Avatar alt={crrUser.name} >({crrUser.name}).charAt(0)</Avatar> */}
+    {/* <img src={crrUser.image} alt=""/> {crrUser.name} */}
     <Login><a href='/auth'>Login</a></Login>
     </div>
 </Nav>

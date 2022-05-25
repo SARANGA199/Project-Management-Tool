@@ -9,7 +9,7 @@
   }
 
     .regimage {
-    /* background-image: url('../Photos/log3.svg'); */
+    background-image: url('../images/reg.svg');
     background-size: 600px 580px;
     background-repeat: no-repeat;
     background-position: center;

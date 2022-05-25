@@ -24,7 +24,6 @@ function Register() {
     e.preventDefault();
     try {
       const register = await axios.post('http://localhost:8000/user/register',{...user})
-      console.log('x')
       localStorage.setItem("firstLogin", true);
       swal("Done!", "You successfully registered!", "success");
       window.location.href = "/";
