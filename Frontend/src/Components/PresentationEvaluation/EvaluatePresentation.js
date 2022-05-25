@@ -12,6 +12,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import swal from "sweetalert";
 import { v4 as uuidv4 } from "uuid";
+import swal from "sweetalert";
 
 import "./presentation.css";
 
@@ -52,15 +53,30 @@ export default function EvaluatePresentation() {
   };
 
   console.log(criteria);
-  var sum = 0;
+  var totalMarks = 0;
 
-  const submitData = (e) => {
+  const submitData = async (e) => {
     e.preventDefault();
     console.log(criteria);
-    sum = criteria
+    totalMarks = criteria
       .map((data) => Number(data.marks.replace("$", "")))
       .reduce((prev, curr) => prev + curr, 0);
-    setMarks(sum);
+    setMarks(totalMarks);
+
+    const MarksDetails = {
+      projectId,
+      researchTopic,
+      totalMarks,
+      criteria,
+    };
+    await axios
+      .post("http://localhost:8070/presentationMarks/", MarksDetails)
+      .then(() => {
+        swal("Done!", "Marks added successfully!", "success");
+      })
+      .catch((err) => {
+        alert(err);
+      });
   };
 
   // const handleAddFields = () => {
@@ -170,7 +186,6 @@ export default function EvaluatePresentation() {
               </tbody>
             </table>
           </div>
-
           <div className="btn1">
             <button
               className="btn btn-outline-warning"
@@ -181,10 +196,11 @@ export default function EvaluatePresentation() {
               SEND <SendIcon>send</SendIcon>{" "}
             </button>
           </div>
+          Total Marks : {marksn}
         </div>
 
-        <div className="leftCom">
-          <h6 className="title">Added Marks</h6>
+        {/* <div className="leftCom"> */}
+        {/* <h6 className="title">Added Marks</h6>
           <table className="table" style={{ backgroundColor: "white" }}>
             <thead>
               <tr>
@@ -204,9 +220,9 @@ export default function EvaluatePresentation() {
                 </tr>
               ))}
             </tbody>
-          </table>
-          Total Marks : {marksn}
-          {/* {marks.map((marksNew, index) => (
+          </table> */}
+
+        {/* {marks.map((marksNew, index) => (
             <div key={index}>
               <div className="textNew">
                 <TextField
@@ -231,7 +247,7 @@ export default function EvaluatePresentation() {
               </div>
             </div>
           // ))} */}
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );

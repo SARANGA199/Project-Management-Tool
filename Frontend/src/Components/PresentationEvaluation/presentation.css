@@ -5,11 +5,11 @@ body {
 .topic-containerPre {
   display: grid;
   height: 100vh;
-  grid-template-columns: 15% 55% auto;
+  grid-template-columns: 20% auto;
 }
 
 .leftCom {
-  background-color: whitesmoke;
+  background-color: white;
 }
 
 .tableControl {
@@ -52,6 +52,7 @@ body {
 }
 
 .map1 {
-  margin-top: 5vh;
   margin-left: 5vh;
+  background-color: whitesmoke;
+  padding: 5vh;
 }
