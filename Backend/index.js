@@ -11,6 +11,7 @@ import markingRoutes from './routes/markingRoutes.js'
 import upload from './routes/userRoutes/upload.js'
 import studentRouter from "./routes/studentRoute/studentRouter.js";
 import topicRegisterRouter from "./routes/topicRegisterRoute/topicRegisterRouter.js";
+import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupervisorRouter.js";
 //const app = new express();
 const app = express();
 
@@ -32,6 +33,7 @@ app.use('/api', upload);
 app.use('/markings', markingRoutes);
 app.use(studentRouter);
 app.use(topicRegisterRouter);
+app.use(requestSupervisorRouter);
 
 const PORT = process.env.PORT || 8070
 
