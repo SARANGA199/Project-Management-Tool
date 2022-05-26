@@ -22,6 +22,24 @@ export default function ViewMarkingSchemes() {
     localStorage.setItem("mid", _id);
   };
 
+  function deleteMarking(id) {
+    let ans = window.confirm(
+      "Do you really want to delete this Marking Scheme ?"
+    );
+
+    if (ans) {
+      axios
+        .delete(`http://localhost:8070/markings/${id}`)
+        .then(() => {
+          alert("Marking Scheme Deleted successfully");
+          window.location.reload(false);
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
+  }
+
   return (
     <div>
       <div className="container">
@@ -52,6 +70,13 @@ export default function ViewMarkingSchemes() {
                     onClick={() => setData(data)}
                   >
                     &nbsp;update
+                  </a>
+
+                  <a
+                    className="btn btn-danger ms-3"
+                    onClick={() => deleteMarking(data._id)}
+                  >
+                    &nbsp;Delete
                   </a>
                 </td>
               </tr>
