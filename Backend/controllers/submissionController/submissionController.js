@@ -31,3 +31,26 @@ export const displaySubmissionType = async (req,res) => {
     })
   
   }
+
+export const updateSubmissionType = async (req,res) =>{
+
+    
+  
+    const sId = req.params.id;
+    
+
+     const {submission}= req.body;
+    
+    
+
+    const update = await Submission.findByIdAndUpdate(sId, {submission:submission})
+      .then(() => {
+      res.status(200).send({ status: "Updated" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res
+        .status(500)
+        .send({ status: "Error with Updating", error: err.message });
+    });
+}

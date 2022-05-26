@@ -3,8 +3,12 @@ import axios from 'axios';
 import FileInput from "../FileInput/fileInput.jsx";
 import styles from "./styles.module.css";
 import { useHistory} from 'react-router-dom';
+import { withRouter } from "react-router";
+
 
 const TemplateForm = () => {
+
+	//const { match, location, history } = this.props;
 
 	const history = useHistory();
 
@@ -30,8 +34,10 @@ const TemplateForm = () => {
 		try {
 			const url = process.env.REACT_APP_API_URL + "/addtemplate"
 			const { data : res } = await axios.post(url, data).then(()=>{
-				console.log(res)
-			  history.push('/display');
+				alert("template add suscesfull")
+				history.push('/display');
+				console.log(data)
+			  
 			})
 			
 		} catch (error) {
@@ -81,7 +87,7 @@ const TemplateForm = () => {
 					type="document"
 					value={data.template}
 				/>
-				<button type="submit" className={styles.submit_btn} >
+				<button type="submit"  className={styles.submit_btn} >
 					Submit
 				</button>
 			</form>

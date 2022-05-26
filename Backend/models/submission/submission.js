@@ -5,7 +5,7 @@ const submissionSchema = new Schema({
 
     adminName:{
         type:String,
-        //required:true,
+        required:true,
         //trim:true
     },
     subTypeName:{
@@ -18,7 +18,7 @@ const submissionSchema = new Schema({
         required:true,
   
     },
-    submition:{
+    submission:{
         type:String, 
        // required:true,
   

@@ -12,26 +12,31 @@ import TextField from "@material-ui/core/TextField";
 // import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 
 
-const adminName="vishwa"
-    const submission = "test1"
+    
+
+    
+    // const [data, setData] = useState({
+    //     adminName: "",
+    //     subTypeName: "",
+    //     subTypeDiscription: "",
+    //     submition: "",
+    // });
 
 
 const AddSubmissiontype= ()=>{
 
     
+    const [adminName,setAdminName]=useState("vishwa")
+    const [subTypeName,setSubTypeName] = useState("")
+    const [subTypeDiscription,setSubTypeDiscription] = useState("")
+    const [submission,setSubmission] = useState("test1")
 
-    const [data, setData] = useState({
-        //adminName: "vishwa",
-        subTypeName: "",
-        subTypeDiscription: ""
-        //submition: "sample",
-    });
 
     
 
-	const handleChange = ({ currentTarget: input }) => {
-		setData({ ...data, [input.name]: input.value });
-	};
+	// const handleChange = ({ currentTarget: input }) => {
+	// 	setData({ ...data, [input.name]: input.value });
+	// };
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
@@ -90,9 +95,9 @@ const AddSubmissiontype= ()=>{
                         required
                         id="name"
                         placeholder="Type Name"
-                        onChange={handleChange}
-                        value={data.subTypeName}
-                        // onChange={(e) => setName (e.target.value)}
+                        //onChange={handleChange}
+                        value={subTypeName}
+                        onChange={(e) => setSubTypeName (e.target.value)}
                         
                      />
                 </div>
@@ -111,14 +116,14 @@ const AddSubmissiontype= ()=>{
                     label="Submission type Description"
                     required
                     name="subTypeDiscription"
-                    value={data.subTypeDiscription}
-                    onChange={handleChange}
+                    value={subTypeDiscription}
+                    //onChange={handleChange}
                     InputProps={{
                         inputComponent: TextareaAutosize,
                         rows: 3
                     }}
                     // value={description}
-                    // onChange={(e) => setDescription(e.target.value)}
+                     onChange={(e) => setSubTypeDiscription(e.target.value)}
           
                 />
             </Grid>
