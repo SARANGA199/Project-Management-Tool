@@ -47,10 +47,9 @@ export default function DisplayMarking() {
                 </td>
                 <td>
                   <a
-                    className="btn btn-warning"
                     href="/evaluatePresentation"
+                    className="btn btn-warning"
                     onClick={() => setData(data)}
-                    style={{ textDecoration: "none" }}
                   >
                     &nbsp;Evaluate
                   </a>
