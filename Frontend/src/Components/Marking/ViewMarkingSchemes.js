@@ -52,7 +52,7 @@ export default function ViewMarkingSchemes() {
   return (
     <div>
       <div className="container">
-        <table className="table" style={{ backgroundColor: "white" }}>
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">#</th>
