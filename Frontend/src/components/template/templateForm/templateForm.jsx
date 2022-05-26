@@ -2,15 +2,17 @@ import { useState } from "react";
 import axios from 'axios';
 import FileInput from "../FileInput/fileInput.jsx";
 import styles from "./styles.module.css";
-import { useHistory} from 'react-router-dom';
 import { withRouter } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 
 const TemplateForm = () => {
 
 	//const { match, location, history } = this.props;
 
-	const history = useHistory();
+	
+
+	let navigate = useNavigate();
 
 	console.log("awa")
 
@@ -35,7 +37,8 @@ const TemplateForm = () => {
 			const url = process.env.REACT_APP_API_URL + "/addtemplate"
 			const { data : res } = await axios.post(url, data).then(()=>{
 				alert("template add suscesfull")
-				history.push('/display');
+				navigate("/display");
+				//history.push('/display');
 				console.log(data)
 			  
 			})

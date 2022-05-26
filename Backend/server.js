@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import colors from 'colors'
 import dotenv from 'dotenv'
 import  './db/db.js' 
-import markingRoutes from './routes/markingRoutes.js'
+import markingRoutes from './routes/markingRoutes/markingRoutes.js'
 import templateRouter from './routes/templateRouter.js'
 import submissionRouter from "./routes/submissionRouter.js";
 
