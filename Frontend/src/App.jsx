@@ -6,6 +6,10 @@ import EvaluatePresentation from "./Components/PresentationEvaluation/EvaluatePr
 import TopicAcceptance from "./Components/TopicAcceptance/TopicAcceptance";
 import ViewMarkingSchemes from "./Components/Marking/ViewMarkingSchemes";
 import UpdateMarking from "./Components/Marking/UpdateMarking";
+import CreateGroup from './Components/CreateGroup/CreateGroup';
+import UserList from "./Components/DisplayGroupsList/DisplayGroupList";
+import TopicRegister from "./Components/TopicRegister/TopicRegister";
+import {RequestSupervisor} from "./Components/RequestSupervisor/RequestSupervisor";
 
 export default class App extends Component {
   constructor(props) {
@@ -26,6 +30,10 @@ export default class App extends Component {
           <Route path="/topicAccept" element={<TopicAcceptance />} />
           <Route path="/viewMarking" element={<ViewMarkingSchemes />} />
           <Route path="/updateMarking" element={<UpdateMarking />} />
+          <Route path="/createGroup" element={<CreateGroup />} />
+          <Route path="/userList" element={<UserList />} />
+          <Route path="/topicRegister" element={<TopicRegister />} />
+          <Route path="/requestSupervisor" element={<RequestSupervisor />} />
         </Routes>
       </BrowserRouter>
     );
