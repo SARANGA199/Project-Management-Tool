@@ -1,4 +1,4 @@
-import RequestSupervisors from "../../models/RequestSupervisorModel/RequestSupervisorModel.js";
+import RequestSupervisors from "../../models/requestSupervisorModel/requestSupervisorModel.js";
 
 export const getRequestSV =  async (req,res)=>{
     try {
