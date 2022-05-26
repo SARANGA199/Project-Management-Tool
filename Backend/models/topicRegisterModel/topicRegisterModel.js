@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import {DefaultTransporter} from "google-auth-library";
 
 const topics = mongoose.Schema({
     topicName:{
@@ -20,8 +21,10 @@ const topics = mongoose.Schema({
     topicDescription:{
         type:String,
         required:true
+    },topicStatus:{
+        type:String,
+        default:'pending'
     }
-
 })
 
 export default  mongoose.model('Topics',topics)
