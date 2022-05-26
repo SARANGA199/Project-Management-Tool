@@ -1,7 +1,11 @@
 import express from "express";
 const router = express.Router();
-import { addPresentationMark } from "../../controllers/evaluatePresentationController/evaluatePresentationController.js";
+import {
+  addPresentationMark,
+  getPresentationMarks,
+} from "../../controllers/evaluatePresentationController/evaluatePresentationController.js";
 
 router.post("/", addPresentationMark);
+router.get("/", getPresentationMarks);
 
 export default router;

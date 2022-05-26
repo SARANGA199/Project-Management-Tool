@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import GetPresentationMarks from "../PresentationMarks/DisplayPresentationMarks";
 
 export default function DisplayMarking() {
   const [request, setRequest] = useState([]);
@@ -24,6 +25,7 @@ export default function DisplayMarking() {
 
   return (
     <div>
+      <GetPresentationMarks />
       <div className="container">
         <table className="table" style={{ backgroundColor: "white" }}>
           <thead>

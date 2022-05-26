@@ -8,3 +8,12 @@ export const addPresentationMark = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+export const getPresentationMarks = async (req, res) => {
+  try {
+    const marks = await PresentationMarks.find();
+    res.status(201).json(marks);
+  } catch (err) {
+    console.catch.log(err);
+  }
+};
