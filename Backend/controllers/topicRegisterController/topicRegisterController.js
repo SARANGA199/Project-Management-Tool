@@ -41,3 +41,15 @@ export const updateTopicStatus = async (req, res) => {
       });
     });
 };
+
+export const getOneTopic = async (req, res) => {
+  let tId = req.params.id;
+
+  Topics.findById(tId)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      console.catch.log(err);
+    });
+};

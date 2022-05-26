@@ -10,9 +10,9 @@ body {
 
 .frame {
   margin-top: 2vh;
-  padding: 5vh;
   background-color: whitesmoke;
-  width: 60vh;
+  width: 40vh;
+  margin-right: 10vh;
 }
 
 .leftTopic {

@@ -89,7 +89,10 @@ export default function Topics() {
                     </button>
 
                     <button
-                      disabled={data.topicStatus === "pending"}
+                      disabled={
+                        data.topicStatus === "pending" ||
+                        data.topicStatus === "Rejected"
+                      }
                       className="btn btn-warning ms-3"
                     >
                       &nbsp;Document Upload
