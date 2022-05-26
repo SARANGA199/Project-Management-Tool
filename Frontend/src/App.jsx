@@ -4,6 +4,8 @@ import DisplayMarking from "./Components/PresentationEvaluation/DisplayMarking";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EvaluatePresentation from "./Components/PresentationEvaluation/EvaluatePresentation";
 import TopicAcceptance from "./Components/TopicAcceptance/TopicAcceptance";
+import ViewMarkingSchemes from "./Components/Marking/ViewMarkingSchemes";
+import UpdateMarking from "./Components/Marking/UpdateMarking";
 
 export default class App extends Component {
   constructor(props) {
@@ -22,6 +24,8 @@ export default class App extends Component {
           />
 
           <Route path="/topicAccept" element={<TopicAcceptance />} />
+          <Route path="/viewMarking" element={<ViewMarkingSchemes />} />
+          <Route path="/updateMarking" element={<UpdateMarking />} />
         </Routes>
       </BrowserRouter>
     );
