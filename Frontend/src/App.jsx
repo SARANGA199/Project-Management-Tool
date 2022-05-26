@@ -3,17 +3,18 @@ import AddMarking from "./Components/Marking/AddMarking";
 import DisplayMarking from "./Components/PresentationEvaluation/DisplayMarking";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EvaluatePresentation from "./Components/PresentationEvaluation/EvaluatePresentation";
-import TopicAcceptance from "./Components/TopicAcceptance/TopicAcceptance";
 import ViewMarkingSchemes from "./Components/Marking/ViewMarkingSchemes";
 import UpdateMarking from "./Components/Marking/UpdateMarking";
-import CreateGroup from './Components/CreateGroup/CreateGroup';
+import CreateGroup from "./Components/CreateGroup/CreateGroup";
 import UserList from "./Components/DisplayGroupsList/DisplayGroupList";
 import TopicRegister from "./Components/TopicRegister/TopicRegister";
-import {RequestSupervisor} from "./Components/RequestSupervisor/RequestSupervisor";
-import TemplateForm from './components/template/templateForm/templateForm.jsx';
-import Displaytemplate from './components/template/displayTemplate/display.jsx';
-import AddSubmissiontype from './components/submission/addsubmissionType.jsx';
-import DisplaysubType from './components/submission/displaySubType.jsx';
+import { RequestSupervisor } from "./Components/RequestSupervisor/RequestSupervisor";
+import TemplateForm from "./components/template/templateForm/templateForm.jsx";
+import Displaytemplate from "./components/template/displayTemplate/display.jsx";
+import AddSubmissiontype from "./components/submission/addsubmissionType.jsx";
+import DisplaysubType from "./components/submission/displaySubType.jsx";
+import Topics from "./Components/TopicAcceptance/Topics";
+import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
 
 export default class App extends Component {
   constructor(props) {
@@ -31,7 +32,8 @@ export default class App extends Component {
             element={<EvaluatePresentation />}
           />
 
-          <Route path="/topicAccept" element={<TopicAcceptance />} />
+          <Route path="/topics" element={<Topics />} />
+          <Route path="/acceptTopic" element={<AcceptTopic />} />
           <Route path="/viewMarking" element={<ViewMarkingSchemes />} />
           <Route path="/updateMarking" element={<UpdateMarking />} />
           <Route path="/createGroup" element={<CreateGroup />} />

@@ -1,0 +1,50 @@
+body {
+  margin: 0px;
+}
+
+.topicContainer {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 20% auto;
+}
+
+.frame {
+  margin-top: 2vh;
+  padding: 5vh;
+  background-color: whitesmoke;
+  width: 60vh;
+}
+
+.leftTopic {
+  background-color: whitesmoke;
+}
+
+.topicName {
+  font-weight: bold;
+  font-size: 8vh;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-top: 5vh;
+  margin-left: 5vh;
+}
+
+.topicHr {
+  color: rgb(255, 166, 1);
+  border-top: 1vh solid;
+  width: 50%;
+  margin-bottom: 4vh;
+}
+
+.topicTop {
+  font-weight: bold;
+  font-size: 7vh;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-top: 20vh;
+  margin-left: 5vh;
+}
+
+.statusUp {
+  font-size: 2vh;
+  color: orange;
+}
