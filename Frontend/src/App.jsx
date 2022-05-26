@@ -6,6 +6,14 @@ import EvaluatePresentation from "./Components/PresentationEvaluation/EvaluatePr
 import TopicAcceptance from "./Components/TopicAcceptance/TopicAcceptance";
 import ViewMarkingSchemes from "./Components/Marking/ViewMarkingSchemes";
 import UpdateMarking from "./Components/Marking/UpdateMarking";
+import CreateGroup from './Components/CreateGroup/CreateGroup';
+import UserList from "./Components/DisplayGroupsList/DisplayGroupList";
+import TopicRegister from "./Components/TopicRegister/TopicRegister";
+import {RequestSupervisor} from "./Components/RequestSupervisor/RequestSupervisor";
+import TemplateForm from './components/template/templateForm/templateForm.jsx';
+import Displaytemplate from './components/template/displayTemplate/display.jsx';
+import AddSubmissiontype from './components/submission/addsubmissionType.jsx';
+import DisplaysubType from './components/submission/displaySubType.jsx';
 
 export default class App extends Component {
   constructor(props) {
@@ -26,6 +34,14 @@ export default class App extends Component {
           <Route path="/topicAccept" element={<TopicAcceptance />} />
           <Route path="/viewMarking" element={<ViewMarkingSchemes />} />
           <Route path="/updateMarking" element={<UpdateMarking />} />
+          <Route path="/createGroup" element={<CreateGroup />} />
+          <Route path="/userList" element={<UserList />} />
+          <Route path="/topicRegister" element={<TopicRegister />} />
+          <Route path="/requestSupervisor" element={<RequestSupervisor />} />
+          <Route path="/addTemplate" element={<TemplateForm />} />
+          <Route path="/display" element={<Displaytemplate />} />
+          <Route path="/AddSubType" element={<AddSubmissiontype />} />
+          <Route path="/displaysub" element={<DisplaysubType />} />
         </Routes>
       </BrowserRouter>
     );
