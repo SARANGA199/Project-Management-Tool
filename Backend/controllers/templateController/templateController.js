@@ -16,3 +16,18 @@ export const addTemplate = async(req,res)=>{
 
     
 }
+
+export const displayTemplate = async (req,res) => {
+
+
+
+    Template.find().then((data)=>{
+       res.json(data);
+       console.log("display sussesfull")
+       
+    }).catch((err)=>{
+  
+       console.catch.log(err);
+    })
+  
+  }

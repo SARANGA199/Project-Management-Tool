@@ -1,9 +1,10 @@
 import express from 'express';
 const router = express.Router();
-import {addTemplate} from '../controllers/templateController/templateController.js'
+import {addTemplate,displayTemplate} from '../controllers/templateController/templateController.js'
 
 
 
-router.post('/addMarking',addTemplate);
+router.post('/addtemplate',addTemplate);
+router.get('/display',displayTemplate);
 
 export default router;

@@ -1,31 +1,31 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const templateSchema = new Schema({
+const submissionSchema = new Schema({
 
     adminName:{
         type:String,
         required:true,
         //trim:true
     },
-    templateTitle:{
+    subTypeName:{
         type:String,
         required:true,
         //trim:true
     },
-    templateDiscription:{
+    subTypeDiscription:{
         type:String, 
         required:true,
   
     },
-    template:{
+    submission:{
         type:String, 
-        required:true,
+       // required:true,
   
     }
    
 },{timestamps:true})
 
 
-const Template = mongoose.model('Template',templateSchema);
-export default Template;
+const Submission = mongoose.model('Submission',submissionSchema);
+export default Submission;
