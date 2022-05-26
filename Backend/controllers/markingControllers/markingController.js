@@ -28,3 +28,28 @@ export const getOneMarking = async (req, res) => {
     console.catch.log(error);
   }
 };
+
+export const updateMarking = async (req, res) => {
+  const mId = req.params.id;
+
+  const { specialization, projectName, totalMarks, criteria } = req.body;
+
+  const updateMark = {
+    mId,
+    specialization,
+    projectName,
+    totalMarks,
+    criteria,
+  };
+
+  const update = await MarkingScheme.findByIdAndUpdate(mId, updateMark)
+    .then(() => {
+      res.status(200).send({ status: "Marking is  Updated" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res
+        .status(500)
+        .send({ status: "Error with Updating Movie", error: err.message });
+    });
+};

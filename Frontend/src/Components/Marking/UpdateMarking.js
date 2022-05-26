@@ -36,7 +36,6 @@ export default function UpdateMarking() {
     axios
       .get(`http://localhost:8070/markings/${mid}`)
       .then((res) => {
-        setRequest(res.data);
         setSpecialization(res.data.specialization);
         setProjectName(res.data.projectName);
         setTotalMarks(res.data.totalMarks);
@@ -50,6 +49,9 @@ export default function UpdateMarking() {
     setMID(mid);
   }, []);
 
+  // sum = criteria
+  //   .map((data) => Number(data.marksAllocation.replace("$", "")))
+  //   .reduce((prev, curr) => prev + curr, 0);
   //handle specialization
   const handleChange = (event) => {
     setSpecialization(event.target.value);
@@ -98,11 +100,12 @@ export default function UpdateMarking() {
   const handleRemoveFields = (id) => {
     const values = [...criteria];
     values.splice(
-      values.findIndex((value) => value.id === id),
+      values.findIndex((value) => value._id === id),
       1
     );
     setCriteria(values);
   };
+
   return (
     <div>
       <div className="topic-container">
@@ -201,7 +204,7 @@ export default function UpdateMarking() {
                     />
                     <IconButton
                       disabled={criteria.length === 1}
-                      onClick={() => handleRemoveFields(index)}
+                      onClick={() => handleRemoveFields(criteriaNew._id)}
                     >
                       <RemoveIcon />
                     </IconButton>
