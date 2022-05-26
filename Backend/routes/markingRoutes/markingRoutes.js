@@ -5,11 +5,13 @@ import {
   getMarkingScheme,
   getOneMarking,
   updateMarking,
+  deleteMarking,
 } from "../../controllers/markingControllers/markingController.js";
 
 router.post("/", addMarkingScheme);
 router.get("/", getMarkingScheme);
 router.get("/:id", getOneMarking);
 router.put("/:id", updateMarking);
+router.delete("/:id", deleteMarking);
 
 export default router;

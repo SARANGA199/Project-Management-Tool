@@ -50,6 +50,20 @@ export const updateMarking = async (req, res) => {
       console.log(err);
       res
         .status(500)
-        .send({ status: "Error with Updating Movie", error: err.message });
+        .send({ status: "Error with Updating Marking", error: err.message });
+    });
+};
+
+export const deleteMarking = async (req, res) => {
+  let mId = req.params.id;
+  await MarkingScheme.findByIdAndDelete(mId)
+    .then(() => {
+      res.status(200).send({ status: "Marking  deleted" });
+    })
+    .catch((err) => {
+      console.log(err.message);
+      res
+        .status(500)
+        .send({ status: "Error with Delete Marking", error: err.message });
     });
 };
