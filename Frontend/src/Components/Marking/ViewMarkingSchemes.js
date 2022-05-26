@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import swal from "sweetalert";
 
 export default function ViewMarkingSchemes() {
   const [request, setRequest] = useState([]);
@@ -23,21 +24,29 @@ export default function ViewMarkingSchemes() {
   };
 
   function deleteMarking(id) {
-    let ans = window.confirm(
-      "Do you really want to delete this Marking Scheme ?"
-    );
-
-    if (ans) {
-      axios
-        .delete(`http://localhost:8070/markings/${id}`)
-        .then(() => {
-          alert("Marking Scheme Deleted successfully");
-          window.location.reload(false);
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    }
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`http://localhost:8070/markings/${id}`)
+          .then(() => {
+            swal("Marking Scheme Deleted successfully", {
+              icon: "success",
+            });
+            window.location.reload(false);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else {
+        swal("Deletion canceled!");
+      }
+    });
   }
 
   return (

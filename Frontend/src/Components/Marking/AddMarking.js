@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -35,6 +36,8 @@ import "./marking.css";
 import { v4 as uuidv4 } from "uuid";
 
 export default function AddMarking() {
+  let navigate = useNavigate();
+
   const [criteria, setCriteria] = useState([
     { id: uuidv4(), criteriaName: "", marksAllocation: "" },
   ]);
@@ -84,11 +87,12 @@ export default function AddMarking() {
       .post("http://localhost:8070/markings/", dataNew)
       .then(() => {
         swal("Done!", "Marking scheme added successfully!", "success");
-        e.target.reset();
       })
       .catch((err) => {
         alert(err);
       });
+
+    navigate("/viewMarking");
   }
 
   const handleChangeInput = (id, event) => {
