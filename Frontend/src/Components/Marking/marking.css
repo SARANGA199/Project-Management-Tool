@@ -1,0 +1,67 @@
+body {
+  margin: 0px;
+}
+
+.topic-container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 15% 50% auto;
+}
+
+.info {
+  background-color: whitesmoke;
+  text-align: center;
+}
+
+.formName {
+  margin-top: 40vh;
+  width: auto;
+  font-weight: bold;
+}
+
+.formTitleMark {
+  margin-top: 5vh;
+  margin-left: 3vh;
+  font-size: 5vh;
+  font-weight: bold;
+}
+
+.formMiddle {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: bold;
+}
+
+.hr1 {
+  color: rgb(255, 166, 1);
+  border-top: 1vh solid;
+  width: 50%;
+}
+
+.hr2 {
+  color: rgb(255, 166, 1);
+  width: 50%;
+  border: solid;
+}
+
+.mainDetails {
+  margin-left: 5vh;
+  box-shadow: 0 0 4px 0;
+  width: auto;
+  margin-bottom: 5vh;
+  padding: 2vh;
+}
+
+.DisplayMain {
+  background-color: whitesmoke;
+  padding: 2vh;
+}
+
+.table {
+  width: auto;
+  column-gap: 2px;
+}
+
+.percent {
+  margin-top: 5vh;
+  margin-left: 60vh;
+}

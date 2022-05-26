@@ -3,21 +3,36 @@ const Schema = mongoose.Schema;
 
 const markingSchema = new Schema({
 
-     module:{
+    specialization:{
+             
         type:String,
-        required:true,
-        trim:true
+        required:true
     },
+
     projectName:{
         type:String,
-        required:true,
-        trim:true
+        required:true
     },
-     date:{
-        type:String, 
-        required:true,
-  
+    date:{
+        type:String,
+        required:true
+    },
+    totalMarks:{
+         type:Number,
+         required:true
+
+    },
+
+     criteria:{
+        type:[
+            {
+                criteriaName:{type:String,required:true},
+                marksAllocation:{type:Number,required:true},
+                // id : {type:String,required:true}
+            }
+        ]
     }
+   
    
 },{timestamps:true})
 

@@ -1,0 +1,58 @@
+body {
+  margin: 0px;
+}
+
+.topic-containerPre {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 20% auto;
+}
+
+.leftCom {
+  background-color: white;
+}
+
+.tableControl {
+  padding: 3vh;
+  margin-top: 3vh;
+  line-height: 6vh;
+}
+
+.textNew {
+  margin-top: 1vh;
+  margin-left: 3vh;
+  margin-bottom: 0ch;
+}
+
+.title {
+  margin-top: 9vh;
+  font-weight: bold;
+  margin-left: 3vh;
+  margin-bottom: 3vh;
+}
+
+.btn1 {
+  margin-left: 50%;
+  margin-top: 10vh;
+}
+
+.formTitlePre {
+  margin-top: 5vh;
+  margin-left: 3vh;
+  font-size: 4vh;
+  font-weight: bold;
+  padding: 4vh;
+  border-radius: 5vh;
+}
+
+.input2 {
+  margin-top: 15vh;
+  margin-left: 5vh;
+  margin-bottom: 10vh;
+}
+
+.map1 {
+  margin-left: 5vh;
+  background-color: whitesmoke;
+  padding: 5vh;
+}
