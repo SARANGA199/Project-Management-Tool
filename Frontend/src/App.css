@@ -1,8 +1,8 @@
-.container {
+/* .container {
 	width: 100vw;
 	min-height: 100vh;
 	background-color: #2941ab;
-}
+} */
 
 .songs_container {
 	display: flex;

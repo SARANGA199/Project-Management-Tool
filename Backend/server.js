@@ -6,6 +6,7 @@ import colors from 'colors'
 import dotenv from 'dotenv'
 import  './db/db.js' 
 import templateRouter from './routes/templateRouter.js'
+import submissionRouter from "./routes/submissionRouter.js";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 //app.use(express.json());
 
 app.use("/template",templateRouter);
+app.use("/submission",submissionRouter);
 
 const PORT = process.env.PORT || 8000
 
