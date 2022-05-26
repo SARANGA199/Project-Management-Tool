@@ -14,10 +14,39 @@ function Register() {
     password: ""
   });
 
+      useEffect(() => {
+
+        if(document.getElementById('role').value =="Student"){
+          document.getElementById('spec').style.display = "block";
+          document.getElementById('lspec').style.display = "block";
+          document.getElementById('rarea').style.display = "none";
+          document.getElementById('lrarea').style.display = "none";
+        }else{
+          document.getElementById('spec').style.display = "none";
+          document.getElementById('lspec').style.display = "none";
+          document.getElementById('rarea').style.display = "block";
+          document.getElementById('lrarea').style.display = "block";
+        }
+       
+    },[] );
+
   const onChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
     console.log(user);
+
+    if(document.getElementById('role').value =="Student"){
+        document.getElementById('spec').style.display = "block";
+        document.getElementById('lspec').style.display = "block";
+        document.getElementById('rarea').style.display = "none";
+        document.getElementById('lrarea').style.display = "none";
+    }else{
+        document.getElementById('spec').style.display = "none";
+        document.getElementById('lspec').style.display = "none";
+        document.getElementById('rarea').style.display = "block";
+        document.getElementById('lrarea').style.display = "block";
+    }
+
   };
 
   const registerSubmit = async (e) => {
@@ -94,7 +123,7 @@ function Register() {
                       <label className="form-label" for="form3Example1m1">
                         Role
                       </label>
-                      <select name="role" class="form-select" aria-label="Default select example" onChange={onChange}>
+                      <select name="role" id="role" class="form-select" aria-label="Default select example" onChange={onChange}>
                         <option selected>Select your role</option>
                         <option value="Student">Student</option>
                         <option value="Supervisor">Supervisor</option>
@@ -137,13 +166,12 @@ function Register() {
                   </div>
                 </div>
 
-                <div className="row">
                 <div className="col-md-6 mb-4">
                     <div>
-                      <label className="form-label" for="form3Example1m1">
+                      <label className="form-label" id="lspec" for="form3Example1m1">
                         Specialization
                       </label>
-                      <select name="specialization" class="form-select" aria-label="Default select example" onChange={onChange}>
+                      <select name="specialization" id="spec" class="form-select" aria-label="Default select example" onChange={onChange}>
                         <option selected>Select your degree specialization</option>
                         <option value="SE">Softwate Engineering</option>
                         <option value="CS">Cyber Security</option>
@@ -153,10 +181,10 @@ function Register() {
                   </div>
                   <div className="col-md-6 mb-4">
                     <div>
-                      <label className="form-label" for="form3Example1m1">
+                      <label className="form-label" id="lrarea" for="form3Example1m1">
                         Interested Research Area
                       </label>
-                      <select class="form-select" aria-label="Default select example" onChange={onChange}>
+                      <select class="form-select" id="rarea" aria-label="Default select example" onChange={onChange}>
                         <option selected>Select your reasearch area</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -164,7 +192,6 @@ function Register() {
                       </select>
                     </div>
                   </div>
-                </div>
 
                 <div className="d-flex justify-content-end pt-3">
                   <button type="submit" className="btn btn-success btn-lg ms-2">

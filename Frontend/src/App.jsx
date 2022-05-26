@@ -7,6 +7,7 @@ import ForgotPassword from "./Components/UserManagement/ForgotPassword";
 import ResetPassword from "./Components/UserManagement/ResetPassword";
 import Profile from "./Components/UserManagement/Profile";
 import AllUsers from "./Components/UserManagement/AllUsers";
+import DocEvaluation from "./Components/UserManagement/DocEvaluation";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
               <Route exact path="/user/reset/:id" > <ResetPassword/></Route>
               <Route exact path="/profile" > <Profile/></Route>
               <Route exact path="/allusers" > <AllUsers/></Route>
+              <Route exact path="/doceval" > <DocEvaluation/></Route>
           </Switch>
       </Router>
       </DataProvider>
