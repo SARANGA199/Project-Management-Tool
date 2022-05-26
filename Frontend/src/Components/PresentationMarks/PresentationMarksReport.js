@@ -4,7 +4,7 @@ import "jspdf-autotable";
 const generateMARKS = (PresentationMarks) => {
   const doc = new jsPDF();
 
-  const tableColumn = ["projectId", "totalMarks"];
+  const tableColumn = ["ProjectId", "Total Marks"];
 
   const tableRows = [];
 
@@ -15,7 +15,7 @@ const generateMARKS = (PresentationMarks) => {
   });
 
   // startY is basically margin-top
-  doc.autoTable(tableColumn, tableRows, { startY: 20 });
+  doc.autoTable(tableColumn, tableRows, { theme: "grid", startY: 20 });
 
   // Received items title. and margin-top + margin-left
   doc.text("Presentation Marks ", 14, 15);
