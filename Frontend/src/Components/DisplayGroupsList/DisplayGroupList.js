@@ -3,7 +3,7 @@ import axios from "axios";
 
 function UserList(){
 
-const[members,setmembers] = useState([]);
+const[members,setMembers] = useState([]);
 
 useEffect(()=>{
     getMembers();
@@ -11,7 +11,7 @@ useEffect(()=>{
 
 const getMembers = async ()=>{
     const response = await axios.get("https://localhost:8070/members");
-    setmembers(response.data)
+    setMembers(response.data)
 }
 
 return(
@@ -36,7 +36,7 @@ return(
                     <td>{index + 1}</td>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
-                    <td>{user.gender}</td>
+                    <td>{user.id}</td>
 
                 </tr>
             ))}
