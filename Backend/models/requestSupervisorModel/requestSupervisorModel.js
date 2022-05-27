@@ -18,6 +18,10 @@ const RequestSupervisors = mongoose.Schema({
     },
     comments:{
         type:String
+    },
+    supervisorStatus:{
+        type:String,
+        default:'pending'
     }
 })
 
