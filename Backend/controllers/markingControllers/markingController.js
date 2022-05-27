@@ -54,6 +54,19 @@ export const updateMarking = async (req, res) => {
     });
 };
 
+export const getMarkingBySpecialization = async (req, res) => {
+  const specialization = req.params.specialization;
+  try {
+    const marking = await MarkingScheme.findOne({
+      specialization: specialization,
+    });
+    res.status(200).json(marking);
+  } catch (error) {
+    console.catch.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const deleteMarking = async (req, res) => {
   let mId = req.params.id;
   await MarkingScheme.findByIdAndDelete(mId)

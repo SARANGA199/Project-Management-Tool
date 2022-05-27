@@ -199,7 +199,7 @@ export default function AddMarking() {
                   <TextField
                     className="ms-3 mb-3 mt-3"
                     name="Total Marks"
-                    label="Total marks allocation"
+                    label="Total Marks Allocation "
                     type="number"
                     required
                     onChange={(e) => {
