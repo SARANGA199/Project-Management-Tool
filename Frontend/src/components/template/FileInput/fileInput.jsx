@@ -37,22 +37,30 @@ const FileInput = ({ name, label, value, type, handleInputState, ...rest }) => {
 	};
 
 	return (
-		<div className={styles.container}>
+		<div style={{width:"500px",height:"300px"}} className={styles.container}>
+			<div style={{marginLeft:"120px"}} class="file-upload-wrapper">
 			<input
+				id="input-file-now"
+				class="file-upload"
 				type="file"
 				ref={inputRef}
 				onChange={(e) => handleInputState(name, e.currentTarget.files[0])}
 				vlaue={value}
-				className={styles.input}
+				//className={styles.input}
 				{...rest}
+				
 			/>
-			<button
+			
+			</div>
+
+			
+			{/* <button
 				type="button"
 				onClick={() => inputRef.current.click()}
 				className={styles.button}
 			>
 				{label}
-			</button>
+			</button> */}
 			{/* {type === "image" && value && (
 				<img
 					src={typeof value === "string" ? value : URL.createObjectURL(value)}
@@ -67,14 +75,17 @@ const FileInput = ({ name, label, value, type, handleInputState, ...rest }) => {
 				/>
 			)}
 			{value !== null && type === "document" &&  value !== "string" && (
+				 
 				<button onClick={handleUpload} className={styles.button}>
 					Upload
 				</button>
+				
 			)}
 			{progressShow && progress < 100 && (
 				<div className={styles.progress_container}>
 					<p>{progress}%</p>
 				</div>
+				
 			)}
 			{progress === 100 && (
 				<div className={styles.progress_container}>

@@ -5,20 +5,20 @@ const submissionSchema = new Schema({
 
     adminName:{
         type:String,
-        required:true,
+        //required:true,
         //trim:true
     },
     subTypeName:{
         type:String,
-        required:true,
+        //required:true,
         //trim:true
     },
     subTypeDiscription:{
         type:String, 
-        required:true,
+        //required:true,
   
     },
-    submission:{
+    template:{
         type:String, 
        // required:true,
   

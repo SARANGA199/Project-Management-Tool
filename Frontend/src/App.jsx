@@ -12,7 +12,7 @@ import TopicRegister from "./Components/TopicRegister/TopicRegister";
 import {RequestSupervisor} from "./Components/RequestSupervisor/RequestSupervisor";
 import TemplateForm from './components/template/templateForm/templateForm.jsx';
 import Displaytemplate from './components/template/displayTemplate/display.jsx';
-import AddSubmissiontype from './components/submission/addsubmissionType.jsx';
+import AddSubmissiontype from './components/submission/addsubmissionType';
 import DisplaysubType from './components/submission/displaySubType.jsx';
 
 export default class App extends Component {

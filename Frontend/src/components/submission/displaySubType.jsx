@@ -9,11 +9,13 @@ import { async } from '@firebase/util';
 function DisplaysubType() {
     const [submisionTypes, setSubmisionType] = useState([])
 
-    const [submission,setSubmission]= useState("")
-    const [sId,setSId]= useState("")
+    //const [submission,setSubmission]= useState("")
+    //const [sId,setSId]= useState("")
 
     const [data, setData] = useState({
-		submission:""
+       
+		submission:"",
+
 	});
 
 	const handleChange = ({ currentTarget: input }) => {
@@ -49,15 +51,15 @@ useEffect(() => {
   }, [])
 
 
-  function setValue(sId) {
-    setSId(sId);
-    console.log(sId)
+//   function setValue(sId) {
+//     setSId(sId);
+//     console.log(sId)
 
-  }
+//   }
 
 
-  const HandleSubmit = async (e) => {
-    e.preventDefault()
+async function HandleSubmit (id) {
+    //e.preventDefault()
     const data ={
         submission,
 
@@ -66,7 +68,7 @@ useEffect(() => {
         //const url = process.env.REACT_APP_API_URL + "/addtemplate"
        
 
-        await axios.put(`http://localhost:8000/submission/updateSubType/${sId}`, data).then(()=>{
+        await axios.put(`http://localhost:8000/submission/updateSubType/${id}`, data).then(()=>{
             console.log(data)
             alert("create sucsesfull")
           //history.push('/display');
@@ -79,7 +81,7 @@ useEffect(() => {
 }
 
 //console.log(sId)
-console.log(submission)
+console.log(data.submission)
 
   const SubmisionType = ({submisionType}) => {
 	return (
@@ -95,12 +97,12 @@ console.log(submission)
 			<object data={song.song} type="application/pdf" width="100%" height="100%" controls />
 			<a href={template.template}>{template.templateTitle}</a> */}
 
-                <button type="addtemplate" onClick={()=>setValue(submisionType._id)} className={styles.submit_btn} >
+                <button type="addtemplate" onClick={handleChange}  className={styles.submit_btn} >
                    Addtemplate
 				</button>
             </div> 
-        {/* <div >
-            <form onSubmit={HandleSubmit}>
+        <div >
+            <form className={styles.form} onSubmit={()=>HandleSubmit(submisionType._id)}>
 
 
                     <FileInput 
@@ -110,7 +112,7 @@ console.log(submission)
                         handleInputState={handleInputState}
                         type="document"
                         //onChange={(e) => setSubmission (e.target.value)}
-                        value={submission}
+                        value={data.submission}
                         
                     />
 
@@ -120,7 +122,7 @@ console.log(submission)
 
             </form>
 
-        </div>         */}
+        </div>        
 
 		</div>
 	);
@@ -138,7 +140,7 @@ console.log(submisionTypes)
                     
                         <><><SubmisionType submisionType={submisionType} key={submisionType._id} />
                 </><div>
-                        <form className={styles.form} onSubmit={HandleSubmit}>
+                        {/* <form className={styles.form} onSubmit={()=>HandleSubmit(submisionType._id)}>
 
 
                             <FileInput
@@ -149,13 +151,13 @@ console.log(submisionTypes)
                                 handleInputState={handleInputState}
                                 type="document"
                                 //onChange={(e) => setSubmission (e.target.value)}
-                                value={submission} />
+                                value={data.submission} />
 
                             <button type="submit" className={styles.submit_btn}>
                                 Submit
                             </button>
 
-                        </form>
+                        </form> */}
 
                     </div></>       
             ))}
