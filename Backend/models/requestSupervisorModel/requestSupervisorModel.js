@@ -10,6 +10,9 @@ const RequestSupervisors = mongoose.Schema({
     groupID:{
         type:String
     },
+    groupLeaderEmail:{
+        type:String
+    },
     researchTopicName:{
         type:String
     },
