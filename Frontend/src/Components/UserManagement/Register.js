@@ -46,14 +46,15 @@ function Register() {
   };
 
   return (
-    <div className="container-fluid ps-md-0">
+    <div className="container-fluid ps-md-0 ">
       <div className="row g-0">
         <div className="d-none d-md-flex col-md-4 col-lg-6 regimage"></div>
         <div className="col-md-8 col-lg-6">
           <div className="login d-flex align-items-center py-5">
             <div className="card-body p-md-5 text-black">
               <form onSubmit={registerSubmit}>
-                <h3 className="login-heading mb-6">Let's Get Started</h3>
+                <h3 className="register-heading mb-6">Let's Get Started</h3>
+                <hr className="hr1" />
                 <br />
 
                 <div className="row">
@@ -180,7 +181,7 @@ function Register() {
                   </div>
 
                 <div className="d-flex justify-content-end pt-3">
-                  <button type="submit" className="btn btn-success btn-lg ms-2">
+                  <button className="btn btn-lg btn-warning btn-login text-uppercase fw-bold mb-4" type="submit">
                     Sign Up
                   </button>
                 </div>

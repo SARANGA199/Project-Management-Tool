@@ -15,3 +15,16 @@
     background-position: center;
     z-index: 2;
   }
+
+  .hr1 {
+    color: rgb(255, 166, 1);
+    border-top: 1vh solid;
+    width: 42%;
+  }
+
+  .register-heading {
+    font-size: 5vh;
+    color: rgb(62, 62, 62);
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  }
