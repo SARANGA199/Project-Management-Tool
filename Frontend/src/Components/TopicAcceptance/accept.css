@@ -47,8 +47,9 @@ body {
 }
 
 .acceptTot {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-weight: 700;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: bold;
   margin-left: 3vh;
   font-size: 4vh;
   margin-top: 5vh;
