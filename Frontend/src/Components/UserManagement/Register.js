@@ -14,37 +14,21 @@ function Register() {
     password: ""
   });
 
-      useEffect(() => {
-
-        if(document.getElementById('role').value =="Student"){
-          document.getElementById('spec').style.display = "block";
-          document.getElementById('lspec').style.display = "block";
-          document.getElementById('rarea').style.display = "none";
-          document.getElementById('lrarea').style.display = "none";
-        }else{
-          document.getElementById('spec').style.display = "none";
-          document.getElementById('lspec').style.display = "none";
-          document.getElementById('rarea').style.display = "block";
-          document.getElementById('lrarea').style.display = "block";
-        }
-       
-    },[] );
-
   const onChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
     console.log(user);
 
     if(document.getElementById('role').value =="Student"){
-        document.getElementById('spec').style.display = "block";
-        document.getElementById('lspec').style.display = "block";
-        document.getElementById('rarea').style.display = "none";
-        document.getElementById('lrarea').style.display = "none";
+        document.getElementById('spec').disabled=false;
+        document.getElementById('lspec').disabled=false;
+        document.getElementById('rarea').disabled=true;
+        document.getElementById('lrarea').disabled=true;
     }else{
-        document.getElementById('spec').style.display = "none";
-        document.getElementById('lspec').style.display = "none";
-        document.getElementById('rarea').style.display = "block";
-        document.getElementById('lrarea').style.display = "block";
+        document.getElementById('spec').disabled=true;
+        document.getElementById('lspec').disabled=true;
+        document.getElementById('rarea').disabled=false;
+        document.getElementById('lrarea').disabled=false;
     }
 
   };
@@ -123,7 +107,7 @@ function Register() {
                       <label className="form-label" for="form3Example1m1">
                         Role
                       </label>
-                      <select name="role" id="role" class="form-select" aria-label="Default select example" onChange={onChange}>
+                      <select name="role" id="role" class="form-select" aria-label="Default select example" onChange={onChange} >
                         <option selected>Select your role</option>
                         <option value="Student">Student</option>
                         <option value="Supervisor">Supervisor</option>
@@ -142,8 +126,8 @@ function Register() {
                       </label>
                       <input
                         type="password"
-                        name="password1"
-                        id="pwd1"
+                        name="password"
+                        id="password"
                         className="form-control form-control-lg"
                         required
                       />
@@ -156,8 +140,8 @@ function Register() {
                       </label>
                       <input
                         type="password"
-                        name="password"
-                        id="pwd2"
+                        name="cf_password"
+                        id="cf_password"
                         className="form-control form-control-lg"
                         onChange={onChange}
                         required
@@ -166,6 +150,7 @@ function Register() {
                   </div>
                 </div>
 
+                <div className="row">
                 <div className="col-md-6 mb-4">
                     <div>
                       <label className="form-label" id="lspec" for="form3Example1m1">
@@ -191,6 +176,7 @@ function Register() {
                         <option value="3">Three</option>
                       </select>
                     </div>
+                  </div>
                   </div>
 
                 <div className="d-flex justify-content-end pt-3">
