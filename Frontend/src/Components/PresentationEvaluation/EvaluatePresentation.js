@@ -95,7 +95,12 @@ export default function EvaluatePresentation() {
   // var sum = criteria
   //   .map((data) => Number(data.marks.replace("$", "")))
   //   .reduce((prev, curr) => prev + curr, 0);
-
+  const getTotal = () => {
+    var sum = criteria
+      .map((data) => Number(data.marks.replace("$", "")))
+      .reduce((prev, curr) => prev + curr, 0);
+    setMarks(sum);
+  };
   return (
     <div>
       <div className="topic-containerPre">
@@ -188,7 +193,7 @@ export default function EvaluatePresentation() {
           </div>
           <div className="btn1">
             <button
-              className="btn btn-outline-warning"
+              className="btn btn-outline-warning ms-3"
               variant="contained"
               onClick={submitData}
               type="submit"
@@ -196,7 +201,18 @@ export default function EvaluatePresentation() {
               SEND <SendIcon>send</SendIcon>{" "}
             </button>
           </div>
-          Total Marks : {marksn}
+          <div>
+            <button
+              className="btn btn-success ms-3"
+              variant="contained"
+              onClick={getTotal}
+              type="submit"
+            >
+              Generate Total Marks <SendIcon>send</SendIcon>{" "}
+            </button>
+            <br />
+            <div className="totalMark">Total Marks : {marksn}</div>
+          </div>
         </div>
 
         {/* <div className="leftCom"> */}
