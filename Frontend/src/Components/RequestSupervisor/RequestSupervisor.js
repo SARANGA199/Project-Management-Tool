@@ -154,16 +154,22 @@ export const RequestSupervisor = ()=>{
                                             <div className="col-md-12">
                                                 <label>Add Comments : </label>
                                                 <div className="form-group">
-                                                    <input type="text" className="form-control" value={comments} onChange={e => setComments(e.target.value)} required/>
+                                                    <textarea class="form-control" className="form-control"
+                                                              value={comments}
+                                                              onChange={e => setComments(e.target.value)}/>
                                                 </div>
-                                            </div>
 
+                                            </div>
+                                            <br/>
                                         </div>
+
+
                                         <div className="row">
                                         <center>
                                             <button type="submit" className="btn btn-warning">send</button>
                                         </center>
-                                    </div>
+                                        </div>
+                                        <br/>
                                     </div>
                                 </div>
                             </div>
