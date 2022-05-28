@@ -19,10 +19,10 @@
 }
 
 .song_info {
-	display: flex;
-	flex-direction: column;
-	margin-top:20px;
+	
+	align-items: left;
 	margin-bottom: 20px;
+	margin-right: 200px;
 }
 
 .song_name,
@@ -55,8 +55,8 @@
 
 .songs_container {
 	display: flex;
-	
-    background:#f2f2f2;
+	padding: 50px;
+    background:#e7e2e2;
     border-radius: 5px;
     box-shadow: 5px 5px 10px 0;
 	flex-direction: column;
@@ -65,17 +65,26 @@
 }
 
 .form {
-	padding: 50px;
+	padding: 40px;
 	width: 80%;
-	background: white;
+	background: rgb(216, 146, 81);
 	border-radius: 2px;
 	box-shadow: 5px 5px 10px 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 80%;
-    background:#fdfbfb;
     border-radius: 5px;
     box-shadow: 5px 5px 10px 0;
     text-align: left;
+}
+
+.submission_container{
+	padding: 20px;
+    background:#f2f2f2;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 0;
+	width: 500px;
+	height: auto;
+	
+
 }
