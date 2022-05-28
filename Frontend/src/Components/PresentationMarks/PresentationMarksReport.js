@@ -48,15 +48,12 @@ const generateMARKS = (specialization, totalMarks, criteria) => {
   doc.text(spec, 80, 50);
   // doc.setFont("times", "normal");
   doc.setFontSize(10);
-  doc.text(
-    `This markingScheme is for ${spec}. This MarkingScheme carries ${total} marks. `,
-    15,
-    60
-  );
+  doc.text(`This markingScheme is for ${spec}.  `, 15, 60);
+  doc.text(`This MarkingScheme carries ${total} marks.`, 15, 66);
   doc.text(
     `Note that the project will be evaluated individually  according to the below criteria.`,
     15,
-    66
+    71
   );
 
   // we define the name of our PDF file.
