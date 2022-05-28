@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
+import { getMarkingScheme } from "../../../../Backend/controllers/markingControllers/markingController";
+import getMarkingScheme from "../PresentationMarks/PresentationMarksReport";
 
 export default function ViewMarkingSchemes() {
   const [request, setRequest] = useState([]);
@@ -86,6 +88,18 @@ export default function ViewMarkingSchemes() {
                     onClick={() => deleteMarking(data._id)}
                   >
                     &nbsp;Delete
+                  </a>
+                  <a
+                    className="btn btn-success ms-3"
+                    onClick={() =>
+                      getMarkingScheme(
+                        data.specialization,
+                        data.totalMarks,
+                        data.criteria
+                      )
+                    }
+                  >
+                    &nbsp;Marking Scheme
                   </a>
                 </td>
               </tr>
