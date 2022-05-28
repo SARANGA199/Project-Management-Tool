@@ -1,7 +1,10 @@
 import React, {useState} from "react";
 import axios from "axios";
+import swal from "sweetalert";
+// import {useNavigate} from "react-router-dom";
 
 export const RequestSupervisor = ()=>{
+    // let navigate = useNavigate();
     const[researchSupervisor,setResearchSupervisor] = useState("");
     const[researchCategory,setResearchCategory]=useState("");
     const[groupID,setGroupID]=useState("");
@@ -23,7 +26,8 @@ export const RequestSupervisor = ()=>{
         }
         const promise = await axios.post("http://localhost:8070/requestSV",data).then((res)=>{
             if(res.status = 201) {
-                alert("Post Added successfully");
+                swal("Done!", "Request Send to the Supervisor!", "success");
+                // navigate("/displayRequests")
             }}).catch((err)=>{
             alert(err);
         });
@@ -111,7 +115,7 @@ export const RequestSupervisor = ()=>{
                                                  <div className="col-md-6">
                                                      <label> Research Category :</label>
                                                      <div className="form-group">
-                                                         <input type="text"  className="form-control" value={researchCategory} onChange={handleCategory}/>
+                                                         <input type="text"  className="form-control" value={researchCategory} onChange={handleCategory} disabled={true}/>
                                                      </div>
                                                  </div>
 
