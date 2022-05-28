@@ -1,5 +1,6 @@
 import RequestSV from "../../models/requestSupervisorModel/requestSupervisorModel.js";
 
+
 export const getRequestSV =  async (req,res)=>{
     try {
         const requestSupervisors = await RequestSV.find();
@@ -14,6 +15,32 @@ export const saveRequestSV = async (req,res)=>{
     try {
         await requestSupervisor.save();
         res.status(201).json(requestSupervisor);
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+}
+
+export const getRequestsById = async (req,res)=>{
+    try {
+        const sRequests = await RequestSV.findById(req.params.id);
+        res.json(sRequests);
+    } catch (error) {
+        res.status(404).json({message: error.message});
+    }
+}
+export const updateRequest = async (req,res)=>{
+    try {
+        const {supervisorStatus} = req.body
+        await RequestSV.findOneAndUpdate({_id:req.params.id},{supervisorStatus});
+        res.status(200).json({msg: "Successfully Updated !"});
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+}
+export const deleteRequest = async (req,res)=> {
+    try {
+        await RequestSV.deleteOne({_id: req.params.id});
+        res.status(200).send({status: "Request  deleted"});
     } catch (error) {
         res.status(400).json({message: error.message});
     }
