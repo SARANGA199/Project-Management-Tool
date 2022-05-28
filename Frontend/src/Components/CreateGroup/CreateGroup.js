@@ -1,5 +1,6 @@
 import React ,{ useState } from "react";
 import axios from "axios";
+import swal from "sweetalert";
 //import { useHistory } from "react-router-dom";
 
 const CreateGroup = ()=>{
@@ -41,7 +42,7 @@ const CreateGroup = ()=>{
         }
          const promise = await axios.post("http://localhost:8070/members",data).then((res)=>{
              if(res.status = 201){
-                alert("Post Added successfully");
+                 swal("Group added  successfully");
 
                 // history.push('/display');
 
