@@ -11,10 +11,12 @@ import TopicRegister from "./Components/TopicRegister/TopicRegister";
 import { RequestSupervisor } from "./Components/RequestSupervisor/RequestSupervisor";
 import TemplateForm from "./components/template/templateForm/templateForm.jsx";
 import Displaytemplate from "./components/template/displayTemplate/display.jsx";
-import AddSubmissiontype from "./components/submission/addsubmissionType.jsx";
-import DisplaysubType from "./components/submission/displaySubType.jsx";
-import Topics from "./Components/TopicAcceptance/Topics";
-import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
+import AddSubmissiontype from "./components/submission/addsubmissionType.js";
+import DisplaysubType from "./components/submission/displaySubType.js";
+import Topics from "./components/TopicAcceptance/Topics.js";
+import AcceptTopic from "./components/TopicAcceptance/AcceptTopic.js";
+import TopicEvaluate from "./components/TopicAcceptance/TopicEvaluate";
+import DisplayRequests from "./components/DisplayRequests/DisplayRequests.js";
 
 export default class App extends Component {
   constructor(props) {
@@ -34,13 +36,14 @@ export default class App extends Component {
 
           <Route path="/topics" element={<Topics />} />
           <Route path="/acceptTopic" element={<AcceptTopic />} />
+          <Route path="/evaluateTopic" element={<TopicEvaluate />} />
           <Route path="/viewMarking" element={<ViewMarkingSchemes />} />
           <Route path="/updateMarking" element={<UpdateMarking />} />
           <Route path="/createGroup" element={<CreateGroup />} />
           <Route path="/userList" element={<UserList />} />
           <Route path="/topicRegister" element={<TopicRegister />} />
           <Route path="/requestSupervisor" element={<RequestSupervisor />} />
-          <Route path="/requestSupervisor" element={<RequestSupervisor />} />
+          {/* <Route path="/requestSupervisor" element={<RequestSupervisor />} /> */}
           <Route path="/displayRequests" element={<DisplayRequests />} />
           <Route path="/addTemplate" element={<TemplateForm />} />
           <Route path="/display" element={<Displaytemplate />} />

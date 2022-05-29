@@ -42,6 +42,14 @@ export default function Topics() {
     //   });
   };
 
+
+  const setEvaluate = async (data) => {
+    let { _id } = data;
+
+    localStorage.setItem("tid", _id);
+    navigate("/evaluateTopic");
+  };  
+
   return (
     <div>
       <div className="topicContainer">
@@ -96,6 +104,17 @@ export default function Topics() {
                       className="btn btn-warning ms-3"
                     >
                       &nbsp;Document Upload
+                    </button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button
+                       class="btn btn-info"
+                      disabled={
+                         data.topicStatus === "pending" ||
+                        data.topicStatus === "Rejected"
+                      }
+                      onClick={() => setEvaluate(data)}
+                    >
+                      &nbsp;Evaluate
                     </button>
                   </td>
                 </tr>

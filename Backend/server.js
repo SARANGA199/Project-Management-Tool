@@ -5,7 +5,7 @@ import colors from 'colors'
 import dotenv from 'dotenv'
 import  './db/db.js'
 import fileUpload from 'express-fileupload'
-import cookieParser from "cookie-parser";
+import bodyParser from 'body-parser';
 
 import templateRouter from './routes/templateRouter.js'
 
@@ -17,15 +17,9 @@ import upload from './routes/userRoutes/upload.js'
 import studentRouter from "./routes/studentRoute/studentRouter.js";
 import topicRegisterRouter from "./routes/topicRegisterRoute/topicRegisterRouter.js";
 import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupervisorRouter.js";
+import topicSubmitDocRouter from "./routes/topicDocSubmitRoute/topicSubmitDocRouter.js";
 
 import cookieParser from "cookie-parser";
-import userRouter from "./routes/userRoutes/userRoutes.js";
-import presentationMarksRoutes from "./routes/presentationMarksRoutes/presentationMarksRoutes.js";
-
-import upload from "./routes/userRoutes/upload.js";
-import studentRouter from "./routes/studentRoute/studentRouter.js";
-import topicRegisterRouter from "./routes/topicRegisterRoute/topicRegisterRouter.js";
-import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupervisorRouter.js";
 
 const app = new express();
 
@@ -54,11 +48,12 @@ app.use("/presentationMarks", presentationMarksRoutes);
 app.use(studentRouter);
 app.use(topicRegisterRouter);
 app.use(requestSupervisorRouter);
+app.use("/topicSubmitDoc",topicSubmitDocRouter);
 
 
-app.use(studentRouter);
-app.use(topicRegisterRouter);
-app.use(requestSupervisorRouter);
+// app.use(studentRouter);
+// app.use(topicRegisterRouter);
+// app.use(requestSupervisorRouter);
 
 const PORT = process.env.PORT || 8000;
 
