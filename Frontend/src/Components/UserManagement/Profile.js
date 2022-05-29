@@ -20,6 +20,9 @@ function Profile() {
     const [token] = state.token
     const [loading, setLoading] = useState(false)
     const [image, setImage] = useState(false)
+    const [data, setData] = useState(initialState)
+    const {name, password, cf_password} = data
+
 
     // useEffect(() => {
     //     if(isAdmin){
@@ -29,10 +32,10 @@ function Profile() {
     //     }
     // },[token, isAdmin, dispatch, callback])
 
-    // const handleChange = e => {
-    //     const {name, value} = e.target
-    //     setData({...data, [name]:value, err:'', success: ''})
-    // }
+    const handleChange = e => {
+        const {name, value} = e.target
+        setData({...data, [name]:value, err:'', success: ''})
+    }
 
     const changeAvatar = async(e) => {
         e.preventDefault()
@@ -66,7 +69,7 @@ function Profile() {
 
     const updateInfo = () => {
         try {
-            const update = axios.patch('http://localhost:8000/user/update', {
+            const up = axios.patch('http://localhost:8000/user/update', {
                 name: name ? name : crrUser.name,
                 image: image ? image : crrUser.image
             },{
@@ -79,23 +82,23 @@ function Profile() {
         }
     }
 
-    // const updatePassword = () => {
-    //     if(isLength(password))
-    //         return setData({...data, err: "Password must be at least 6 characters.", success: ''})
+    const updatePassword = () => {
+        if(isLength(password))
+            return swal("Warning!", "Password must be at least 6 characters.", "warning");
 
-    //     if(!isMatch(password, cf_password))
-    //         return setData({...data, err: "Password did not match.", success: ''})
+        if(!isMatch(password, cf_password))
+            return swal("ERROR!", "Password did not match.", "error");
 
-    //     try {
-    //         axios.post('/user/reset', {password},{
-    //             headers: {Authorization: token}
-    //         })
+        try {
+            axios.post('http://localhost:8000/user/reset', {password},{
+                headers: {Authorization: token}
+            })
 
-    //         setData({...data, err: '' , success: "Updated Success!"})
-    //     } catch (err) {
-    //         setData({...data, err: err.response.data.msg , success: ''})
-    //     }
-    // }
+            swal("Done!", "Password updated successfully!", "success");
+        } catch (err) {
+            return swal("ERROR!", "Updated Failed!", "error");
+        }
+    }
 
     return (
         <>
@@ -118,32 +121,32 @@ function Profile() {
 
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
-                    <input type="text" name="name" id="name" value={crrUser.name}
-                    placeholder="Your name"  />
+                    <input type="text" name="name" id="name" defaultValue={crrUser.name}
+                    placeholder="Your name" onChange={handleChange} />
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="name">Registration Number</label>
-                    <input type="text" name="regNo" id="regNo" value={crrUser.regNumber}
-                    placeholder="Registration number"  />
+                    <label htmlFor="regNumber">Registration Number</label>
+                    <input type="text" name="regNumber" id="regNumber" defaultValue={crrUser.regNumber}
+                    placeholder="Registration number" onChange={handleChange} disabled/>
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input type="email" name="email" id="email" 
-                    placeholder="Your email address" disabled value={crrUser.email}/>
+                    placeholder="Your email address" disabled defaultValue={crrUser.email}/>
                 </div>
 
                 {crrUser.role ==='Student'?                
                 <div className="form-group">
-                    <label htmlFor="password">Specialization</label>
-                    <input type="text" name="spec" id="spec" value={crrUser.specialization} 
+                    <label htmlFor="spec">Specialization</label>
+                    <input type="text" name="spec" id="spec" defaultValue={crrUser.specialization} disabled
                     placeholder="Specialization" />
                 </div>
                 :
                 <div className="form-group">
-                    <label htmlFor="password">Interested Research Area</label>
-                    <input type="text" name="rarea" id="rarea" value={crrUser.researchArea} 
+                    <label htmlFor="rarea">Interested Research Area</label>
+                    <input type="text" name="rarea" id="rarea" defaultValue={crrUser.researchArea} disabled
                     placeholder="Interested research area" />
                 </div>
                 }
@@ -158,23 +161,23 @@ function Profile() {
                     <h2>Update Password</h2>
                 
                     <div className="form-group">
-                        <label htmlFor="name">Existing Password</label>
-                        <input type="text" name="name" id="name" 
+                        <label htmlFor="expass">Existing Password</label>
+                        <input type="password" name="expass" id="expass" 
                         placeholder="your existing password"  />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="email">New Password</label>
-                        <input type="email" name="email" id="email" 
-                        placeholder="new password" disabled />
+                        <label htmlFor="password">New Password</label>
+                        <input type="password" name="password" id="password" onChange={handleChange}
+                        placeholder="new password" />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="password">Confirm Password</label>
-                        <input type="password" name="password" id="password"
+                        <label htmlFor="cf_password">Confirm Password</label>
+                        <input type="password" name="cf_password" id="cf_password" onChange={handleChange}
                         placeholder="repeat your new password"   />
                     </div>
-
+                    <button onClick={updatePassword}>Update Password</button>
                 </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@ import home from './images/home-icon.svg'
 import search from './images/search-icon.svg'
 import watchlist from './images/watchlist-icon.svg'
 import originals from './images/original-icon.svg'
-import movies from './images/movie-icon.svg'
+import profile from './images/movie-icon.svg'
 import series from './images/series-icon.svg'
 
 function Header() {
@@ -50,9 +50,9 @@ function Header() {
            <img src={originals} alt='original'/>
            <span>ORIGINALS</span>
         </a>
-        <a href='/displayMovies'>
-           <img src={movies} alt='move'/>
-           <span>MOVIES</span>
+        <a href='/profile'>
+           <img src={profile} alt='move'/>
+           <span>Profile</span>
         </a>
         
         <a href='/'>
@@ -67,11 +67,12 @@ function Header() {
         </div>
 
     </NavMenu>
+    {isLogged?
     <Avatar>
       <div>
         <img src={crrUser.image} alt=""/>
       </div>
-    </Avatar>
+    </Avatar>:''}
 </Nav>
   )
 }
