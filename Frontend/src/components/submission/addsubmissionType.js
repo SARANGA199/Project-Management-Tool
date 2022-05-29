@@ -9,6 +9,7 @@ import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import FileInput from '../template/FileInput/fileInput';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 import Grid from "@material-ui/core/Grid";
@@ -36,6 +37,7 @@ import upload from "../../upload.png";
 const AddSubmissiontype= ()=>{
 
     let [showResults, setShowResults] = useState(false)
+    let navigate = useNavigate();
 
     //const [specialization, setSpecialization] = useState("");
     //const [adminName,setAdminName]=useState("vishwa")
@@ -44,12 +46,12 @@ const AddSubmissiontype= ()=>{
     // const [submission,setSubmission] = useState("test1")
 
     const [data, setData] = useState({
-            adminName:"default",
-            subTypeName:"default",
-            subTypeDiscription:"default",
-            submission:"default",
-            templateTitle: "default",
-		        templateDiscription: "default",
+            adminName:"test",
+            subTypeName:"",
+            subTypeDiscription:"",
+            template:"",
+            templateTitle: "",
+		        templateDiscription: "",
 	});
 
     
@@ -77,8 +79,9 @@ const AddSubmissiontype= ()=>{
            
 
             const { data : res } =  axios.post('http://localhost:8070/submission/addSubType', data).then(()=>{
-				console.log(data)
+				          console.log(data)
                 alert("create sucsesfull")
+                navigate("/displaysub");
 			  //history.push('/display');
 			})
 			
@@ -138,7 +141,7 @@ const AddSubmissiontype= ()=>{
                     <b>Submission type Name:</b>
                     </InputLabel>
                   <select
-                  
+                  required
                   name="subTypeName"
                   value={data.subTypeName}
                   onChange={handleChange}
@@ -174,7 +177,7 @@ const AddSubmissiontype= ()=>{
                     fullWidth
                     multiline
                     label="Submission type Description"
-                    required
+                    
                     name="subTypeDiscription"
                     value={data.subTypeDiscription}
                     onChange={handleChange}

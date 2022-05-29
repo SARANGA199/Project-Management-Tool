@@ -13,7 +13,7 @@ import {RequestSupervisor} from "./Components/RequestSupervisor/RequestSuperviso
 import TemplateForm from './components/template/templateForm/templateForm.jsx';
 import Displaytemplate from './components/template/displayTemplate/display.jsx';
 import AddSubmissiontype from './components/submission/addsubmissionType';
-import DisplaysubType from './components/submission/displaySubType.jsx';
+import DisplaysubType from './components/submission/displaySubType';
 
 export default class App extends Component {
   constructor(props) {
