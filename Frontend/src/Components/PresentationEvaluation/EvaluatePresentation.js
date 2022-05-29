@@ -15,10 +15,11 @@ import { v4 as uuidv4 } from "uuid";
 import swal from "sweetalert";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import getMarkingScheme from "../PresentationMarks/PresentationMarksReport";
-
+import { useNavigate } from "react-router-dom";
 import "./presentation.css";
 
 export default function EvaluatePresentation() {
+  let navigate = useNavigate();
   const [criteria, setCriteria] = useState([
     { id: uuidv4(), criteriaName: "", marksAllocation: "", marks: "" },
   ]);
@@ -27,11 +28,13 @@ export default function EvaluatePresentation() {
   const [projectId, setProjectId] = useState("");
   const [specialization, setSpecialization] = useState("");
   const [marks, setTotal] = useState("");
+  const [mid, setMid] = useState("");
 
   useEffect(() => {
     let type = localStorage.getItem("typeName");
     setProjectId(localStorage.getItem("groupID"));
     setDocument(localStorage.getItem("SubmitDoc"));
+    setMid(localStorage.getItem("mid"));
 
     axios
       .get(`http://localhost:8070/markings/presentations/${type}`)
@@ -66,6 +69,19 @@ export default function EvaluatePresentation() {
       .reduce((prev, curr) => prev + curr, 0);
     setMarks(totalMarks);
 
+    let evaluateStatus = "Evaluated";
+
+    const value = {
+      evaluateStatus,
+    };
+
+    const update = await axios
+      .put(`http://localhost:8070/stdSubmitDoc/${mid}`, value)
+      .then(() => {})
+      .catch((err) => {
+        swal(err);
+      });
+
     const MarksDetails = {
       projectId,
       totalMarks,
@@ -75,6 +91,7 @@ export default function EvaluatePresentation() {
       .post("http://localhost:8070/presentationMarks/", MarksDetails)
       .then(() => {
         swal("Done!", "Marks added successfully!", "success");
+        navigate("/");
       })
       .catch((err) => {
         alert(err);

@@ -77,3 +77,8 @@ body {
   margin-left: 2vh;
   border: solid orange;
 }
+
+.submitColor {
+  color: orange;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

@@ -23,5 +23,9 @@ const stdSubmitDocsSchema = mongoose.Schema({
   SubmitDoc: {
     type: String,
   },
+  evaluateStatus: {
+    type: String,
+    default: "Pending",
+  },
 });
 export default mongoose.model("StdSubmitDocs", stdSubmitDocsSchema);
