@@ -26,8 +26,7 @@ app.use(cookieParser())
 app.use(fileUpload({
   useTempFiles: true
 }))
-app.use(bodyParser.urlencoded({ extended: true }));    
-app.use(bodyParser.json());
+
 //app.use(express.json());
 
 app.use("/template",templateRouter);
