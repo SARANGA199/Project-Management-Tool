@@ -11,10 +11,11 @@ import TopicRegister from "./Components/TopicRegister/TopicRegister";
 import { RequestSupervisor } from "./Components/RequestSupervisor/RequestSupervisor";
 import TemplateForm from "./components/template/templateForm/templateForm.jsx";
 import Displaytemplate from "./components/template/displayTemplate/display.jsx";
-import AddSubmissiontype from "./components/submission/addsubmissionType.jsx";
-import DisplaysubType from "./components/submission/displaySubType.jsx";
+import AddSubmissiontype from "./components/submission/addsubmissionType";
+import DisplaysubType from "./components/submission/displaySubType";
 import Topics from "./Components/TopicAcceptance/Topics";
 import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
+import DisplayRequest from "./Components/DisplayRequests/DisplayRequests";
 
 export default class App extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class App extends Component {
           <Route path="/topicRegister" element={<TopicRegister />} />
           <Route path="/requestSupervisor" element={<RequestSupervisor />} />
           <Route path="/requestSupervisor" element={<RequestSupervisor />} />
-          <Route path="/displayRequests" element={<DisplayRequests />} />
+          <Route path="/displayRequests" element={<DisplayRequest />} />
           <Route path="/addTemplate" element={<TemplateForm />} />
           <Route path="/display" element={<Displaytemplate />} />
           <Route path="/AddSubType" element={<AddSubmissiontype />} />
