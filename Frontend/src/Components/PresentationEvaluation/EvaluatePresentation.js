@@ -13,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import swal from "sweetalert";
 import { v4 as uuidv4 } from "uuid";
 import swal from "sweetalert";
+import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 
 import "./presentation.css";
 
@@ -25,14 +26,16 @@ export default function EvaluatePresentation() {
   // const [result, setResult] = useState([
   //   { criteriaName: "", marksAllocation: "", marks: "" },
   // ]);
-  const [researchTopic, setResearchTopic] = useState("");
+  const [document, setDocument] = useState("");
   const [projectId, setProjectId] = useState("");
 
   useEffect(() => {
-    let mid = localStorage.getItem("mid");
+    let type = localStorage.getItem("typeName");
+    setProjectId(localStorage.getItem("groupID"));
+    setDocument(localStorage.getItem("SubmitDoc"));
 
     axios
-      .get(`http://localhost:8070/markings/${mid}`)
+      .get(`http://localhost:8070/markings/presentations/${type}`)
       .then((res) => {
         setCriteria(res.data.criteria);
       })
@@ -64,7 +67,6 @@ export default function EvaluatePresentation() {
 
     const MarksDetails = {
       projectId,
-      researchTopic,
       totalMarks,
       criteria,
     };
@@ -116,23 +118,16 @@ export default function EvaluatePresentation() {
               name="Project ID"
               label="Project ID"
               required
+              value={projectId}
               onChange={(e) => {
                 setProjectId(e.target.value);
               }}
               variant="outlined"
             />
-            <div>
-              <TextField
-                className="ms-3 mb-3 mt-3"
-                name="Research Topic"
-                label="Research Topic"
-                type="text"
-                required
-                onChange={(e) => {
-                  setResearchTopic(e.target.value);
-                }}
-                variant="outlined"
-              />
+            <div className="ms-3 mt-4">
+              <a href={document} className="btn btn-warning btn-lg">
+                Student Presentation <DownloadOutlinedIcon />
+              </a>
             </div>
           </div>
         </div>
