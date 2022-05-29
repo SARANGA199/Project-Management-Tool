@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AddMarking from "./Components/Marking/AddMarking";
-import DisplayMarking from "./Components/PresentationEvaluation/DisplayMarking";
+import DisplaySubmitPresentation from "./Components/PresentationEvaluation/DisplaySubmitPresentation";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EvaluatePresentation from "./Components/PresentationEvaluation/EvaluatePresentation";
 import ViewMarkingSchemes from "./Components/Marking/ViewMarkingSchemes";
@@ -26,7 +26,7 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DisplayMarking />} />
+          <Route path="/" element={<DisplaySubmitPresentation />} />
           <Route path="/add" element={<AddMarking />} />
           <Route
             path="/evaluatePresentation"

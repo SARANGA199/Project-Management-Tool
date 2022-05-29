@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export default function DisplayMarking() {
+export default function DisplaySubmitPresentation() {
   const [request, setRequest] = useState([]);
 
   useEffect(() => {
+    const type = "Presentation";
     axios
-      .get("http://localhost:8070/markings/")
+      .get(`http://localhost:8070/stdSubmitDoc/${type}`)
       .then((res) => {
         console.log(res.data);
         setRequest(res.data);
@@ -17,9 +18,12 @@ export default function DisplayMarking() {
   }, []);
 
   const setData = (data) => {
-    let { _id } = data;
+    let { _id, groupID, typeName, SubmitDoc } = data;
 
     localStorage.setItem("mid", _id);
+    localStorage.setItem("groupID", groupID);
+    localStorage.setItem("typeName", typeName);
+    localStorage.setItem("SubmitDoc", SubmitDoc);
   };
 
   return (
@@ -29,9 +33,9 @@ export default function DisplayMarking() {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">specialization</th>
-              <th scope="col">projectName</th>
-              <th scope="col">totalMarks</th>
+              <th scope="col">groupID</th>
+              <th scope="col">groupLeader Email</th>
+              <th scope="col">type Name</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -39,11 +43,11 @@ export default function DisplayMarking() {
             {request.map((data, index) => (
               <tr key={index}>
                 <th scope="row">{index + 1}</th>
-                <td>{data.specialization}</td>
+                <td>{data.groupID}</td>
 
-                <td>{data.projectName}</td>
+                <td>{data.groupLeaderEmail}</td>
                 <td>
-                  <b>{data.totalMarks}</b>
+                  <b>{data.typeName}</b>
                 </td>
                 <td>
                   <a

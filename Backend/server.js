@@ -18,6 +18,7 @@ import topicRegisterRouter from "./routes/topicRegisterRoute/topicRegisterRouter
 import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupervisorRouter.js";
 
 import userRouter from "./routes/userRoutes/userRoutes.js";
+import stdSubmitDoc from "./routes/stdSubmitDocRoute/stdSubmitDocRouter.js";
 
 const app = new express();
 
@@ -47,10 +48,7 @@ app.use("/presentationMarks", presentationMarksRoutes);
 app.use(studentRouter);
 app.use(topicRegisterRouter);
 app.use(requestSupervisorRouter);
-
-app.use(studentRouter);
-app.use(topicRegisterRouter);
-app.use(requestSupervisorRouter);
+app.use(stdSubmitDoc);
 
 const PORT = process.env.PORT || 8000;
 
