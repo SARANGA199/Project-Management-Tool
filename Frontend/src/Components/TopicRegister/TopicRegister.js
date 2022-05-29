@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import axios from "axios";
+import swal from "sweetalert";
 
 
 const TopicRegister = ()=>{
@@ -20,7 +21,7 @@ const TopicRegister = ()=>{
         }
         const promise = await axios.post("http://localhost:8070/topics",data).then((res)=>{
             if(res.status = 201) {
-                alert("Post Added successfully");
+                swal("Done!", "Request Send to the Supervisor!", "success");
             }}).catch((err)=>{
             alert(err);
         });
@@ -97,7 +98,7 @@ const TopicRegister = ()=>{
                             <div className="col-md-12">
                                 <label>Brief Description of the Research : </label>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={topicDescription}
+                                    <textarea class="form-control" className="form-control" value={topicDescription}
                                            onChange={e => setTopicDescription(e.target.value)} required/>
                                 </div>
                             </div>
