@@ -11,6 +11,7 @@ const presentationSchema = new Schema(
       type: Number,
       required: true,
     },
+    specialization: { type: String, required: true },
 
     criteria: {
       type: [
