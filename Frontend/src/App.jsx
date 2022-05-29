@@ -15,6 +15,10 @@ import AddSubmissiontype from "./components/submission/addsubmissionType.jsx";
 import DisplaysubType from "./components/submission/displaySubType.jsx";
 import Topics from "./Components/TopicAcceptance/Topics";
 import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
+import DisplayRequests  from "./Components/DisplayRequests/DisplayRequests";
+import StdSubmitDoc from "./Components/StdSubmitDoc/StdSubmitDoc.jsx";
+import TopicSubmitDoc from "./Components/TopicSubmitDoc/TopicSubmitDoc.js"
+
 
 export default class App extends Component {
   constructor(props) {
@@ -42,6 +46,9 @@ export default class App extends Component {
           <Route path="/requestSupervisor" element={<RequestSupervisor />} />
           <Route path="/requestSupervisor" element={<RequestSupervisor />} />
           <Route path="/displayRequests" element={<DisplayRequests />} />
+          <Route path="/stdSubmitDoc" element={<StdSubmitDoc />} />
+          <Route path="/topicSubmitDoc" element={<TopicSubmitDoc />} />
+
           <Route path="/addTemplate" element={<TemplateForm />} />
           <Route path="/display" element={<Displaytemplate />} />
           <Route path="/AddSubType" element={<AddSubmissiontype />} />

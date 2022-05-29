@@ -17,6 +17,8 @@ import upload from './routes/userRoutes/upload.js'
 import studentRouter from "./routes/studentRoute/studentRouter.js";
 import topicRegisterRouter from "./routes/topicRegisterRoute/topicRegisterRouter.js";
 import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupervisorRouter.js";
+import stdSubmitDocRouter from "./routes/stdSubmitDocRoute/stdSubmitDocRouter.js";
+import topicSubmitDocRouter from "./routes/topicDocSubmitRoute/topicSubmitDocRouter.js";
 
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/userRoutes/userRoutes.js";
@@ -56,6 +58,9 @@ app.use("/presentationMarks", presentationMarksRoutes);
 app.use(studentRouter);
 app.use(topicRegisterRouter);
 app.use(requestSupervisorRouter);
+app.use("/stdSubmitDoc",stdSubmitDocRouter);
+app.use("/topicSubmitDoc",topicSubmitDocRouter);
+const PORT = process.env.PORT || 8070
 
 
 app.use(studentRouter);
