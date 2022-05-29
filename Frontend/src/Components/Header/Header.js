@@ -1,7 +1,7 @@
 import React,{ useState, useContext} from 'react'
 import { GlobalState } from '../../GlobalState';
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import logo from './images/SLIIT.png'
 import home from './images/home-icon.svg'
@@ -13,7 +13,7 @@ import series from './images/series-icon.svg'
 
 function Header() {
 
-    let history = useHistory();
+    let navigate = useNavigate();
     const state = useContext(GlobalState)
     const [isLogged,setIsLogged ] = state.UserAPI.isLogged
     const [isAdmin,setIsAdmin ] = state.UserAPI.isAdmin
@@ -23,7 +23,7 @@ function Header() {
       localStorage.clear()
       setIsAdmin(false)
       setIsLogged(false)
-      history.push("/");
+      navigate("/");
       window.location.reload(false)
     }
 
