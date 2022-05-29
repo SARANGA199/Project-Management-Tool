@@ -19,9 +19,10 @@
 }
 
 .song_info {
-	display: flex;
-	flex-direction: column;
-	margin-left: 10px;
+	
+	align-items: left;
+	margin-bottom: 20px;
+	margin-right: 200px;
 }
 
 .song_name,
@@ -55,7 +56,7 @@
 .songs_container {
 	display: flex;
 	padding: 50px;
-    background:#f2f2f2;
+    background:#e7e2e2;
     border-radius: 5px;
     box-shadow: 5px 5px 10px 0;
 	flex-direction: column;
@@ -63,12 +64,41 @@
 	justify-content: center;
 }
 
+.subTypes_container {
+	display: flex;
+	padding: 2px;
+    background:#e7e2e2;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 0;
+	flex-direction: column;
+	align-items: left;
+	width:80%;
+	height: fit-content;
+	margin-left: 100px;
+
+}
+
 .form {
-	width: 450px;
-	background: white;
+	padding: 40px;
+	width: 80%;
+	background: rgb(216, 146, 81);
 	border-radius: 2px;
-	padding: 10px;
+	box-shadow: 5px 5px 10px 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 0;
+    text-align: left;
+}
+
+.submission_container{
+	padding: 20px;
+    background:#f2f2f2;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 0;
+	width: 500px;
+	height: auto;
+	
+
 }

@@ -6,23 +6,30 @@ const submissionSchema = new Schema({
     adminName:{
         type:String,
         required:true,
-        //trim:true
+        trim:true
     },
     subTypeName:{
         type:String,
         required:true,
-        //trim:true
+        trim:true
     },
     subTypeDiscription:{
         type:String, 
-        required:true,
+        //required:true,
   
     },
-    submission:{
+    template:{
         type:String, 
        // required:true,
   
-    }
+    },
+    templateTitle:{
+        type:String,
+    },
+	templateDiscription:{
+        type:String,
+    },
+
    
 },{timestamps:true})
 

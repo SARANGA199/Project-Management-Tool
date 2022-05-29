@@ -2,7 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import FileInput from "../FileInput/fileInput.jsx";
 import styles from "./styles.module.css";
+import { withRouter } from "react-router";
 import { useNavigate } from "react-router-dom";
+
 
 const TemplateForm = () => {
   //const { match, location, history } = this.props;
@@ -88,6 +90,8 @@ const TemplateForm = () => {
 			const { data : res } = await axios.post(url, data).then(()=>{
 				alert("template add suscesfull")
 				// history.push('/display');
+				navigate("/display");
+			
 				console.log(data)
 			  
 			})
