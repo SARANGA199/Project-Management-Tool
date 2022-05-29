@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import updateSupervisorStatus from "./UpdateSupervisorStatus";
 
 function DisplayRequests(){
 
@@ -13,6 +14,12 @@ function DisplayRequests(){
         const response = await axios.get("http://localhost:8070/requestSV");
         setRequestSupervisors(response.data)
     }
+
+    const setData = (data) => {
+        let { _id } = data;
+
+        localStorage.setItem("rid", _id);
+    };
 
 
     return(
