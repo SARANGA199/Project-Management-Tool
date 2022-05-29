@@ -63,7 +63,7 @@ export default function ViewMarkingSchemes() {
           </div>
         </div>
         <div className="container">
-          <div className="topicName">MARKING SCHEMES</div>
+          <div className="topicNam">MARKING SCHEMES</div>
           <hr className="topicHr" />
           <table className="table frame">
             <thead>

@@ -52,7 +52,7 @@ export default function Topics() {
           </div>
         </div>
         <div className="container">
-          <div className="topicName">TOPICS</div>
+          <div className="topicNam">TOPICS</div>
           <hr className="topicHr" />
           <table className="table frame">
             <thead>

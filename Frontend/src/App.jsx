@@ -38,7 +38,7 @@ export default class App extends Component {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route path="/" element={<DisplaySubmitPresentation />} />
+            <Route exact path="/" element={<DisplaySubmitPresentation />} />
             <Route path="/add" element={<AddMarking />} />
             <Route
               path="/evaluatePresentation"
@@ -54,7 +54,7 @@ export default class App extends Component {
             <Route path="/topicRegister" element={<TopicRegister />} />
             <Route path="/requestSupervisor" element={<RequestSupervisor />} />
             <Route path="/requestSupervisor" element={<RequestSupervisor />} />
-            <Route path="/displayRequests" element={<DisplayRequest />} />
+            <Route path="/displayRequests" element={<DisplayRequests />} />
             <Route path="/addTemplate" element={<TemplateForm />} />
             <Route path="/display" element={<Displaytemplate />} />
             <Route path="/AddSubType" element={<AddSubmissiontype />} />
