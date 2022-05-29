@@ -10,7 +10,7 @@ const TemplateForm = () => {
 
 	//const { match, location, history } = this.props;
 
-	const history = useHistory();
+	// const history = useHistory();
 
 	console.log("awa")
 
@@ -35,7 +35,7 @@ const TemplateForm = () => {
 			const url = process.env.REACT_APP_API_URL + "/addtemplate"
 			const { data : res } = await axios.post(url, data).then(()=>{
 				alert("template add suscesfull")
-				history.push('/display');
+				// history.push('/display');
 				console.log(data)
 			  
 			})

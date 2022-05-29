@@ -23,7 +23,7 @@ return(
                    Table
                     <table className="table table-bordered "  >
 
-                        <thead>
+
 
                             <tr>
                             <th scope="col">No</th>
@@ -33,33 +33,33 @@ return(
                             <th scope="col">Email Address</th>
                             </tr>
 
-                        </thead>
+
 
 
                         {/*<tbody>*/}
                             {members.map((data, index) => (
                                 <td>
-                                    <tr class="table-secondary" key={data._id}>
+                                    <tr class="table-secondary" key={index}>
                                         <td rowSpan="4">{index + 1}</td>
                                         <td class="table-danger">Leader</td>
                                         <td class="table-danger" >{data.leaderName}</td>
                                         <td class="table-danger">{data.leaderID}</td>
                                         <td class="table-danger">{data.leaderEmail}</td>
-                                    </tr>
 
-                                    <tr>
+
+
                                         <td className="table-warning">Member 2</td>
                                         <td className="table-warning">{data.Member2Name}</td>
                                         <td className="table-warning">{data.Member2ID}</td>
                                         <td className="table-warning">{data.Member2Email}</td>
-                                    </tr>
-                                    <tr>
+
+
                                         <td className="table-success">Member 3</td>
                                         <td className="table-success">{data.Member3Name}</td>
                                         <td className="table-success">{data.Member3ID}</td>
                                         <td className="table-success">{data.Member3Email}</td>
-                                    </tr>
-                                    <tr>
+
+
                                         <td className="table-primary">Member 4</td>
                                         <td className="table-primary">{data.Member4Name}</td>
                                         <td className="table-primary">{data.Member4ID}</td>
