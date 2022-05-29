@@ -12,7 +12,7 @@ import {
 router.post("/", addMarkingScheme);
 router.get("/", getMarkingScheme);
 router.get("/:id", getOneMarking);
-router.get("/:specialization", getMarkingBySpecialization);
+router.get("/presentations/:specialization", getMarkingBySpecialization);
 router.put("/:id", updateMarking);
 router.delete("/:id", deleteMarking);
 

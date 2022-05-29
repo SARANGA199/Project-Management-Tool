@@ -1,18 +1,31 @@
 import mongoose from "mongoose";
 
 const stdSubmitDocsSchema = mongoose.Schema({
-  groupID:{
-      type:String
+  groupID: {
+    type: String,
   },
-  groupLeaderName:{
-      type:String
+  groupLeaderName: {
+    type: String,
   },
-  groupLeaderEmail:{
-      type:String
+  groupLeaderEmail: {
+    type: String,
   },
-  submissionComments:{
-      type:String
-  }
+  submissionType: {
+    type: String,
+  },
+  typeName: {
+    type: String,
+  },
 
-})
-export  default mongoose.model("StdSubmitDocs",stdSubmitDocsSchema);
+  submissionComments: {
+    type: String,
+  },
+  SubmitDoc: {
+    type: String,
+  },
+  evaluateStatus: {
+    type: String,
+    default: "Pending",
+  },
+});
+export default mongoose.model("StdSubmitDocs", stdSubmitDocsSchema);

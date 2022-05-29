@@ -49,9 +49,9 @@ export default function UpdateMarking() {
     setMID(mid);
   }, []);
 
-  // sum = criteria
-  //   .map((data) => Number(data.marksAllocation.replace("$", "")))
-  //   .reduce((prev, curr) => prev + curr, 0);
+  var sum = criteria
+    .map((data) => Number(data.marksAllocation.toString().replace("$", "")))
+    .reduce((prev, curr) => prev + curr, 0);
   //handle specialization
   const handleChange = (event) => {
     setSpecialization(event.target.value);
@@ -265,13 +265,13 @@ export default function UpdateMarking() {
               </tbody>
             </table>
 
-            {/* <h5 className="percent">100%</h5>
+            <h5 className="percent">100%</h5>
             <ProgressBar
               style={{ height: "40px" }}
               variant="warning"
               now={sum}
             />
-            <h5>{sum}% percent marks allocated </h5> */}
+            <h5>{sum}% percent marks allocated </h5>
           </div>
         </div>
       </div>

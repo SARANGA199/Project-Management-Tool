@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AddMarking from "./Components/Marking/AddMarking";
-import DisplayMarking from "./Components/PresentationEvaluation/DisplayMarking";
+import DisplaySubmitPresentation from "./Components/PresentationEvaluation/DisplaySubmitPresentation";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EvaluatePresentation from "./Components/PresentationEvaluation/EvaluatePresentation";
 import ViewMarkingSchemes from "./Components/Marking/ViewMarkingSchemes";
@@ -35,40 +35,40 @@ export default class App extends Component {
   render() {
     return (
       <DataProvider>
-      <BrowserRouter>
-      <Header/>
-        <Routes>
-          <Route path="/" element={<DisplayMarking />} />
-          <Route path="/add" element={<AddMarking />} />
-          <Route
-            path="/evaluatePresentation"
-            element={<EvaluatePresentation />}
-          />
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<DisplaySubmitPresentation />} />
+            <Route path="/add" element={<AddMarking />} />
+            <Route
+              path="/evaluatePresentation"
+              element={<EvaluatePresentation />}
+            />
 
-          <Route path="/topics" element={<Topics />} />
-          <Route path="/acceptTopic" element={<AcceptTopic />} />
-          <Route path="/viewMarking" element={<ViewMarkingSchemes />} />
-          <Route path="/updateMarking" element={<UpdateMarking />} />
-          <Route path="/createGroup" element={<CreateGroup />} />
-          <Route path="/userList" element={<UserList />} />
-          <Route path="/topicRegister" element={<TopicRegister />} />
-          <Route path="/requestSupervisor" element={<RequestSupervisor />} />
-          <Route path="/requestSupervisor" element={<RequestSupervisor />} />
-          <Route path="/displayRequests" element={<DisplayRequests />} />
-          <Route path="/addTemplate" element={<TemplateForm />} />
-          <Route path="/display" element={<Displaytemplate />} />
-          <Route path="/AddSubType" element={<AddSubmissiontype />} />
-          <Route path="/displaysub" element={<DisplaysubType />} />
+            <Route path="/topics" element={<Topics />} />
+            <Route path="/acceptTopic" element={<AcceptTopic />} />
+            <Route path="/viewMarking" element={<ViewMarkingSchemes />} />
+            <Route path="/updateMarking" element={<UpdateMarking />} />
+            <Route path="/createGroup" element={<CreateGroup />} />
+            <Route path="/userList" element={<UserList />} />
+            <Route path="/topicRegister" element={<TopicRegister />} />
+            <Route path="/requestSupervisor" element={<RequestSupervisor />} />
+            <Route path="/requestSupervisor" element={<RequestSupervisor />} />
+            <Route path="/displayRequests" element={<DisplayRequest />} />
+            <Route path="/addTemplate" element={<TemplateForm />} />
+            <Route path="/display" element={<Displaytemplate />} />
+            <Route path="/AddSubType" element={<AddSubmissiontype />} />
+            <Route path="/displaysub" element={<DisplaysubType />} />
 
-          <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/fpass" element={<ForgotPassword/>} />
-          <Route path="/user/reset/:id" element={<ResetPassword/>} />
-          <Route path="/profile" element={<Profile/>} />
-          <Route path="/allusers" element={<AllUsers/>} />
-          <Route path="/doceval" element={<DocEvaluation/>} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/fpass" element={<ForgotPassword />} />
+            <Route path="/user/reset/:id" element={<ResetPassword />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/allusers" element={<AllUsers />} />
+            <Route path="/doceval" element={<DocEvaluation />} />
+          </Routes>
+        </BrowserRouter>
       </DataProvider>
     );
   }

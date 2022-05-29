@@ -13,28 +13,35 @@ import MenuItem from "@mui/material/MenuItem";
 import swal from "sweetalert";
 import { v4 as uuidv4 } from "uuid";
 import swal from "sweetalert";
-
+import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
+import getMarkingScheme from "../PresentationMarks/PresentationMarksReport";
+import { useNavigate } from "react-router-dom";
 import "./presentation.css";
 
 export default function EvaluatePresentation() {
-  // const [mid,SetMid] = useState();
+  let navigate = useNavigate();
   const [criteria, setCriteria] = useState([
     { id: uuidv4(), criteriaName: "", marksAllocation: "", marks: "" },
   ]);
-  const [marksn, setMarks] = useState();
-  // const [result, setResult] = useState([
-  //   { criteriaName: "", marksAllocation: "", marks: "" },
-  // ]);
-  const [researchTopic, setResearchTopic] = useState("");
+  const [marksn, setMarks] = useState(0);
+  const [document, setDocument] = useState("");
   const [projectId, setProjectId] = useState("");
+  const [specialization, setSpecialization] = useState("");
+  const [marks, setTotal] = useState("");
+  const [mid, setMid] = useState("");
 
   useEffect(() => {
-    let mid = localStorage.getItem("mid");
+    let type = localStorage.getItem("typeName");
+    setProjectId(localStorage.getItem("groupID"));
+    setDocument(localStorage.getItem("SubmitDoc"));
+    setMid(localStorage.getItem("mid"));
 
     axios
-      .get(`http://localhost:8070/markings/${mid}`)
+      .get(`http://localhost:8070/markings/presentations/${type}`)
       .then((res) => {
         setCriteria(res.data.criteria);
+        setSpecialization(res.data.specialization);
+        setTotal(res.data.totalMarks);
       })
       .catch((err) => {
         alert(err);
@@ -62,9 +69,21 @@ export default function EvaluatePresentation() {
       .reduce((prev, curr) => prev + curr, 0);
     setMarks(totalMarks);
 
+    let evaluateStatus = "Evaluated";
+
+    const value = {
+      evaluateStatus,
+    };
+
+    const update = await axios
+      .put(`http://localhost:8070/stdSubmitDoc/${mid}`, value)
+      .then(() => {})
+      .catch((err) => {
+        swal(err);
+      });
+
     const MarksDetails = {
       projectId,
-      researchTopic,
       totalMarks,
       criteria,
     };
@@ -72,28 +91,13 @@ export default function EvaluatePresentation() {
       .post("http://localhost:8070/presentationMarks/", MarksDetails)
       .then(() => {
         swal("Done!", "Marks added successfully!", "success");
+        navigate("/");
       })
       .catch((err) => {
         alert(err);
       });
   };
 
-  // const handleAddFields = () => {
-  //   setMarks([...marks, { id: uuidv4(), marks: "" }]);
-  // };
-
-  // const handleRemoveFields = (id) => {
-  //   const values = [...marks];
-  //   values.splice(
-  //     values.findIndex((value) => value.id === id),
-  //     1
-  //   );
-  //   setMarks(values);
-  // };
-
-  // var sum = criteria
-  //   .map((data) => Number(data.marks.replace("$", "")))
-  //   .reduce((prev, curr) => prev + curr, 0);
   const getTotal = () => {
     var sum = criteria
       .map((data) => Number(data.marks.replace("$", "")))
@@ -109,35 +113,36 @@ export default function EvaluatePresentation() {
             EVALUATE
             <br /> PRESENTATION
           </label>
-
+          <hr className="evaluateHr" />
           <div className="input2">
             <TextField
               className="ms-3 mb-3 mt-3"
               name="Project ID"
               label="Project ID"
               required
+              value={projectId}
               onChange={(e) => {
                 setProjectId(e.target.value);
               }}
               variant="outlined"
             />
-            <div>
-              <TextField
-                className="ms-3 mb-3 mt-3"
-                name="Research Topic"
-                label="Research Topic"
-                type="text"
-                required
-                onChange={(e) => {
-                  setResearchTopic(e.target.value);
-                }}
-                variant="outlined"
-              />
+            <div className="ms-3 mt-4">
+              <a href={document} className="btn btn-warning btn-lg">
+                Student Presentation <DownloadOutlinedIcon />
+              </a>
             </div>
           </div>
         </div>
 
         <div className="map1">
+          <div className="getMarkingBtn">
+            <button
+              className="btn btn-warning ms-3"
+              onClick={() => getMarkingScheme(specialization, marks, criteria)}
+            >
+              <DownloadOutlinedIcon /> &nbsp;Marking Scheme
+            </button>
+          </div>
           <div className="tableControl">
             <table className="table" style={{ backgroundColor: "white" }}>
               <thead>
@@ -192,7 +197,7 @@ export default function EvaluatePresentation() {
           </div>
           <div className="btn1">
             <button
-              className="btn btn-outline-warning ms-3"
+              className="btn btn-outline-warning btn-lg ms-3"
               variant="contained"
               onClick={submitData}
               type="submit"
@@ -201,16 +206,16 @@ export default function EvaluatePresentation() {
             </button>
           </div>
           <div>
+            <div className="totalMark">Total Marks : {marksn}</div>
             <button
-              className="btn btn-success ms-3"
+              className="btn btn-warning ms-3"
               variant="contained"
               onClick={getTotal}
               type="submit"
             >
-              Generate Total Marks <SendIcon>send</SendIcon>{" "}
+              Generate Total Marks
             </button>
             <br />
-            <div className="totalMark">Total Marks : {marksn}</div>
           </div>
         </div>
       </div>

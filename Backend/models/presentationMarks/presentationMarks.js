@@ -7,12 +7,6 @@ const presentationSchema = new Schema(
       type: String,
       required: true,
     },
-
-    researchTopic: {
-      type: String,
-      required: true,
-    },
-
     totalMarks: {
       type: Number,
       required: true,
