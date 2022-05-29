@@ -11,10 +11,13 @@ import UserList from "./Components/DisplayGroupsList/DisplayGroupList";
 import TopicRegister from "./Components/TopicRegister/TopicRegister";
 import {RequestSupervisor} from "./Components/RequestSupervisor/RequestSupervisor";
 import DisplayRequests  from "./Components/DisplayRequests/DisplayRequests";
-import TemplateForm from './components/template/templateForm/templateForm.jsx';
-import Displaytemplate from './components/template/displayTemplate/display.jsx';
-import AddSubmissiontype from './components/submission/addsubmissionType.jsx';
-import DisplaysubType from './components/submission/displaySubType.jsx';
+import StdSubmitDoc from "./Components/StdSubmitDoc/StdSubmitDoc.jsx";
+import TopicSubmitDoc from "./Components/TopicSubmitDoc/TopicSubmitDoc.js"
+
+import TemplateForm from "./Components/template/templateForm/templateForm.jsx";
+import Displaytemplate from './Components/template/displayTemplate/display.jsx';
+import AddSubmissiontype from './Components/submission/addsubmissionType.jsx';
+import DisplaysubType from './Components/submission/displaySubType.jsx';
 
 export default class App extends Component {
   constructor(props) {
@@ -41,6 +44,9 @@ export default class App extends Component {
           <Route path="/requestSupervisor" element={<RequestSupervisor />} />
           <Route path="/requestSupervisor" element={<RequestSupervisor />} />
           <Route path="/displayRequests" element={<DisplayRequests />} />
+          <Route path="/stdSubmitDoc" element={<StdSubmitDoc />} />
+          <Route path="/topicSubmitDoc" element={<TopicSubmitDoc />} />
+
           <Route path="/addTemplate" element={<TemplateForm />} />
           <Route path="/display" element={<Displaytemplate />} />
           <Route path="/AddSubType" element={<AddSubmissiontype />} />
