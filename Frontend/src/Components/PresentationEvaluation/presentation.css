@@ -61,9 +61,19 @@ body {
   border-radius: 2vh;
   padding: 2vh;
   margin-top: 3vh;
+  margin-bottom: 3vh;
   width: 35vh;
-  margin-left: 3vh;
+  margin-left: 2vh;
   font-size: 4vh;
   font-weight: bold;
   box-shadow: 0 0 4px 0;
+}
+
+.getMarkingBtn {
+  margin-left: 121vh;
+}
+
+.evaluateHr {
+  margin-left: 2vh;
+  border: solid orange;
 }

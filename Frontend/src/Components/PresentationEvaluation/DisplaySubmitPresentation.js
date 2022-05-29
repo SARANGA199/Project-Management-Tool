@@ -33,9 +33,9 @@ export default function DisplaySubmitPresentation() {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">groupID</th>
-              <th scope="col">groupLeader Email</th>
-              <th scope="col">type Name</th>
+              <th scope="col">GroupID</th>
+              <th scope="col">GroupLeader Email</th>
+              <th scope="col">Type Name</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
