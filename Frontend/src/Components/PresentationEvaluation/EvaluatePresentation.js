@@ -52,7 +52,6 @@ export default function EvaluatePresentation() {
     setCriteria(newMarks);
   };
 
-  console.log(criteria);
   var totalMarks = 0;
 
   const submitData = async (e) => {
@@ -95,7 +94,12 @@ export default function EvaluatePresentation() {
   // var sum = criteria
   //   .map((data) => Number(data.marks.replace("$", "")))
   //   .reduce((prev, curr) => prev + curr, 0);
-
+  const getTotal = () => {
+    var sum = criteria
+      .map((data) => Number(data.marks.replace("$", "")))
+      .reduce((prev, curr) => prev + curr, 0);
+    setMarks(sum);
+  };
   return (
     <div>
       <div className="topic-containerPre">
@@ -188,7 +192,7 @@ export default function EvaluatePresentation() {
           </div>
           <div className="btn1">
             <button
-              className="btn btn-outline-warning"
+              className="btn btn-outline-warning ms-3"
               variant="contained"
               onClick={submitData}
               type="submit"
@@ -196,58 +200,19 @@ export default function EvaluatePresentation() {
               SEND <SendIcon>send</SendIcon>{" "}
             </button>
           </div>
-          Total Marks : {marksn}
+          <div>
+            <button
+              className="btn btn-success ms-3"
+              variant="contained"
+              onClick={getTotal}
+              type="submit"
+            >
+              Generate Total Marks <SendIcon>send</SendIcon>{" "}
+            </button>
+            <br />
+            <div className="totalMark">Total Marks : {marksn}</div>
+          </div>
         </div>
-
-        {/* <div className="leftCom"> */}
-        {/* <h6 className="title">Added Marks</h6>
-          <table className="table" style={{ backgroundColor: "white" }}>
-            <thead>
-              <tr>
-                <th scope="col">Index</th>
-                <th scope="col">Criteria</th>
-                <th scope="col">Marks Allocation</th>
-                <th scope="col">Marks</th>
-              </tr>
-            </thead>
-            <tbody>
-              {criteria.map((display, index) => (
-                <tr key={index}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{display.criteriaName}</td>
-                  <td> {display.marksAllocation} </td>
-                  <td> {display.marks} </td>
-                </tr>
-              ))}
-            </tbody>
-          </table> */}
-
-        {/* {marks.map((marksNew, index) => (
-            <div key={index}>
-              <div className="textNew">
-                <TextField
-                  name="marks"
-                  type="number"
-                  label="Marks"
-                  variant="outlined"
-                  required
-                  value={marksNew.marks}
-                  onChange={(event) => handleChangeInput(index, event)}
-                />
-
-                <IconButton
-                  disabled={marks.length === 1}
-                  onClick={() => handleRemoveFields(marksNew.id)}
-                >
-                  <RemoveIcon />
-                </IconButton>
-                <IconButton onClick={handleAddFields}>
-                  <AddIcon />
-                </IconButton>
-              </div>
-            </div>
-          // ))} */}
-        {/* </div> */}
       </div>
     </div>
   );

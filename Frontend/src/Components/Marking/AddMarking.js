@@ -147,7 +147,7 @@ export default function AddMarking() {
                     style={{ width: "220px" }}
                   >
                     <InputLabel id="demo-simple-select-label">
-                      specialization field
+                      Scheme Type
                     </InputLabel>
                     <Select
                       labelId="demo-simple-select-label"
@@ -157,13 +157,30 @@ export default function AddMarking() {
                       autoWidth
                       onChange={handleChange}
                     >
-                      <MenuItem value={"Presentation"}>
-                        Presentation Evaluation
+                      <MenuItem value={"Proposal Presentation"}>
+                        Proposal Presentation
                       </MenuItem>
-                      <MenuItem value={"Proposal"}>
-                        Proposal Evaluation
+                      <MenuItem value={"Progress Presentation"}>
+                        Progress Presentation
                       </MenuItem>
-                      <MenuItem value={"Final"}>Final Evaluation</MenuItem>
+                      <MenuItem value={"Final Presentation"}>
+                        Final Presentation
+                      </MenuItem>
+                      <MenuItem value={"Charter Documentation"}>
+                        Charter Documentation
+                      </MenuItem>
+                      <MenuItem value={"Scrum Documentation"}>
+                        Scrum Documentation
+                      </MenuItem>
+                      <MenuItem value={"Proposal Documentation"}>
+                        Proposal Documentation
+                      </MenuItem>
+                      <MenuItem value={"Progress Documentation"}>
+                        Progress Documentation
+                      </MenuItem>
+                      <MenuItem value={"Final Documentation"}>
+                        Final Documentation
+                      </MenuItem>
                     </Select>
                   </FormControl>
                 </Box>
@@ -171,7 +188,7 @@ export default function AddMarking() {
                 <TextField
                   className="ms-3 mb-3 mt-3"
                   name="Project Name"
-                  label="Project Name"
+                  label="Scheme Name"
                   required
                   onChange={(e) => {
                     setProjectName(e.target.value);
@@ -182,7 +199,7 @@ export default function AddMarking() {
                   <TextField
                     className="ms-3 mb-3 mt-3"
                     name="Total Marks"
-                    label="Total marks allocation"
+                    label="Total Marks Allocation "
                     type="number"
                     required
                     onChange={(e) => {
