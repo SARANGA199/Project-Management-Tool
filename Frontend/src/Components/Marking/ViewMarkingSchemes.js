@@ -1,6 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
+import { getMarkingScheme } from "../../../../Backend/controllers/markingControllers/markingController";
+import getMarkingScheme from "../PresentationMarks/PresentationMarksReport";
+import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
+import "../TopicAcceptance/topicAccept.css";
 
 export default function ViewMarkingSchemes() {
   const [request, setRequest] = useState([]);
@@ -51,47 +55,69 @@ export default function ViewMarkingSchemes() {
 
   return (
     <div>
-      <div className="container">
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">specialization</th>
-              <th scope="col">projectName</th>
-              <th scope="col">totalMarks</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {request.map((data, index) => (
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>{data.specialization}</td>
-
-                <td>{data.projectName}</td>
-                <td>
-                  <b>{data.totalMarks}</b>
-                </td>
-                <td>
-                  <a
-                    href="/updateMarking"
-                    className="btn btn-warning"
-                    onClick={() => setData(data)}
-                  >
-                    &nbsp;update
-                  </a>
-
-                  <a
-                    className="btn btn-danger ms-3"
-                    onClick={() => deleteMarking(data._id)}
-                  >
-                    &nbsp;Delete
-                  </a>
-                </td>
+      <div className="topicContainer">
+        <div className="leftTopic">
+          <div className="topicTop">
+            SLIIT <br />
+            RESEARCH
+          </div>
+        </div>
+        <div className="container">
+          <div className="topicName">MARKING SCHEMES</div>
+          <hr className="topicHr" />
+          <table className="table frame">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">specialization</th>
+                <th scope="col">projectName</th>
+                <th scope="col">totalMarks</th>
+                <th scope="col">Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {request.map((data, index) => (
+                <tr key={index}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{data.specialization}</td>
+
+                  <td>{data.projectName}</td>
+                  <td>
+                    <b>{data.totalMarks}</b>
+                  </td>
+                  <td>
+                    <a
+                      href="/updateMarking"
+                      className="btn btn-warning"
+                      onClick={() => setData(data)}
+                    >
+                      &nbsp;update
+                    </a>
+
+                    <a
+                      className="btn btn-danger ms-3"
+                      onClick={() => deleteMarking(data._id)}
+                    >
+                      &nbsp;Delete
+                    </a>
+                    <button
+                      className="btn btn-success ms-3"
+                      onClick={() =>
+                        getMarkingScheme(
+                          data.specialization,
+                          data.totalMarks,
+                          data.criteria
+                        )
+                      }
+                    >
+                      <DownloadOutlinedIcon /> &nbsp;Marking Scheme
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

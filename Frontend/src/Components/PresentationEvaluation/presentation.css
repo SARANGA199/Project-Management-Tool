@@ -32,14 +32,14 @@ body {
 }
 
 .btn1 {
-  margin-left: 50%;
-  margin-top: 10vh;
+  margin-left: 80%;
+  margin-top: 1vh;
 }
 
 .formTitlePre {
   margin-top: 5vh;
-  margin-left: 3vh;
-  font-size: 4vh;
+  margin-left: 1vh;
+  font-size: 5vh;
   font-weight: bold;
   padding: 4vh;
   border-radius: 5vh;
@@ -55,4 +55,15 @@ body {
   margin-left: 5vh;
   background-color: whitesmoke;
   padding: 5vh;
+}
+
+.totalMark {
+  border-radius: 2vh;
+  padding: 2vh;
+  margin-top: 3vh;
+  width: 35vh;
+  margin-left: 3vh;
+  font-size: 4vh;
+  font-weight: bold;
+  box-shadow: 0 0 4px 0;
 }
