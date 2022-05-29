@@ -1,3 +1,9 @@
+/* html, body 
+{ 
+ height: 100%;
+ overflow: hidden
+} */
+
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
     font-size: 1rem;
     line-height: 2.15;
@@ -10,7 +16,7 @@
 
     .regimage {
     background-image: url('../images/reg.svg');
-    background-size: 600px 580px;
+    background-size: 700px 680px;
     background-repeat: no-repeat;
     background-position: center;
     z-index: 2;
@@ -28,3 +34,11 @@
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   }
+
+  .regTop {
+    margin-top: -70px;
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
+ }

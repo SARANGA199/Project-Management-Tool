@@ -48,9 +48,10 @@ function DocEvaluation() {
                     <table className="customers">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
+                                <th>Index</th>
+                                <th>Criteria</th>
+                                <th>Allocated Marks</th>
+                                <th>Given Marks</th>
                             </tr>
                         </thead>
                         <tbody>

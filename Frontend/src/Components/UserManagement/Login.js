@@ -9,23 +9,25 @@ function Login() {
     const onChange = e =>{
       const {name, value} = e.target;
         setUser({...user,[name] : value});
+        console.log(user);
     }
 
     const loginSubmit = async e =>{
       e.preventDefault()
       try{
-        await axios.post('http://localhost:8000/user/login', {...user})
+        const {data} = await axios.post('http://localhost:8000/user/login', {...user})
 
         localStorage.setItem('firstLogin', true)
-        // Cookies.set("refreshtoken","refreshtoken")
+        
+        localStorage.setItem('User', JSON.stringify(data.result))
+        localStorage.setItem("refreshtoken",data.accesstoken)
+        // Cookies.set("refreshtoken",data.accesstoken,{expires:1})
         swal("Done!", "You successfully logged in!", "success");
         window.location.href = "/"
       } catch (err){
         swal("ERROR!", err.response.data.msg, "error");
       }
     }
-
-
 
     return(
 <div className="container-fluid ps-md-0">
@@ -48,12 +50,12 @@ function Login() {
                   <label for="floatingInput">Email</label>
                 </div>
                 <div className="form-floating mb-3">
-                  <input type="password" className="form-control" name="password" required onChange={onChange} placeholder="Password"></input>
+                  <input type="password" className="form-control" name="password" id='password' required onChange={onChange} placeholder="Password"></input>
                   <label for="floatingPassword">Password</label>
                 </div>
 
                 <div>
-                    <a className="small" style={{color:"black"}} href={"/forgotpw"}>Forgot password?</a>
+                    <a className="small" style={{color:"black"}} href={"/fpass"}>Forgot password?</a>
                   </div>
                 <br/>
                 <div className="d-grid">

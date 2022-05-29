@@ -16,7 +16,7 @@ function UserAPI(token) {
 
                     setCrrUser(res.data)
                     setIsLogged(true)
-                    res.data.role === 1 ? setIsAdmin(true): setIsAdmin(false)
+                    res.data.role == "Admin" ? setIsAdmin(true): setIsAdmin(false)
                     console.log(res)
 
                 } catch (err) {

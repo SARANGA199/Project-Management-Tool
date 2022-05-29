@@ -11,6 +11,7 @@ function Register() {
     regNumber: "",
     role: "",
     specialization: "",
+    researchArea:"",
     password: ""
   });
 
@@ -46,6 +47,7 @@ function Register() {
   };
 
   return (
+    <div className="regTop" >
     <div className="container-fluid ps-md-0 ">
       <div className="row g-0">
         <div className="d-none d-md-flex col-md-4 col-lg-6 regimage"></div>
@@ -128,6 +130,7 @@ function Register() {
                       <input
                         type="password"
                         name="password"
+                        onChange={onChange}
                         id="password"
                         className="form-control form-control-lg"
                         required
@@ -144,7 +147,6 @@ function Register() {
                         name="cf_password"
                         id="cf_password"
                         className="form-control form-control-lg"
-                        onChange={onChange}
                         required
                       />
                     </div>
@@ -170,7 +172,7 @@ function Register() {
                       <label className="form-label" id="lrarea" for="form3Example1m1">
                         Interested Research Area
                       </label>
-                      <select class="form-select" id="rarea" aria-label="Default select example" onChange={onChange}>
+                      <select name="researchArea" class="form-select" id="rarea" aria-label="Default select example" onChange={onChange}>
                         <option selected>Select your reasearch area</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -181,7 +183,7 @@ function Register() {
                   </div>
 
                 <div className="d-flex justify-content-end pt-3">
-                  <button className="btn btn-lg btn-warning btn-login text-uppercase fw-bold mb-4" type="submit">
+                  <button className="btn btn-lg btn-warning btn-login text-uppercase fw-bold mb-5" type="submit">
                     Sign Up
                   </button>
                 </div>
@@ -190,6 +192,7 @@ function Register() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

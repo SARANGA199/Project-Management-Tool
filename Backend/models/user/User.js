@@ -18,7 +18,9 @@ const userSchema = new mongoose.Schema({
     },
     specialization: {
         type: String,
-        required: true
+    },
+    researchArea: {
+        type: String,
     },
     password: {
         type: String,

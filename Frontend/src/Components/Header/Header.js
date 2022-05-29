@@ -1,9 +1,9 @@
 import React,{ useState, useContext} from 'react'
 import { GlobalState } from '../../GlobalState';
 import styled from "styled-components";
-// import { Avatar } from '@material-ui/core'
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
-import logo from './images/logo.svg'
+import logo from './images/SLIIT.png'
 import home from './images/home-icon.svg'
 import search from './images/search-icon.svg'
 import watchlist from './images/watchlist-icon.svg'
@@ -13,28 +13,24 @@ import series from './images/series-icon.svg'
 
 function Header() {
 
+    let history = useHistory();
     const state = useContext(GlobalState)
     const [isLogged,setIsLogged ] = state.UserAPI.isLogged
     const [isAdmin,setIsAdmin ] = state.UserAPI.isAdmin
     const [crrUser, setCrrUser] = state.UserAPI.crrUser
 
-
-    console.log(isLogged)
-    console.log(isAdmin)
-    console.log(crrUser)
-
     const logoutUser = async () =>{
-      const logout = await axios.get('http://localhost:8000/user/logout')
       localStorage.clear()
       setIsAdmin(false)
       setIsLogged(false)
+      history.push("/");
       window.location.reload(false)
     }
 
   return (
     <Nav>
     <Logo>
-       <img src={logo} alt='Disney+' />
+       <img src={logo} alt='sliit'/>
     </Logo>
 
     <NavMenu>
@@ -64,15 +60,18 @@ function Header() {
            <span>SERIES</span>
         </a>
 
-        <div> <Logout>Logout</Logout>
+        <div>
+          {isLogged?
+          <Logout onClick={logoutUser}>Logout</Logout>:
+          <Logout><a href='/login'>Login</a></Logout>}
         </div>
 
     </NavMenu>
-    <div>
-    {/* <Avatar alt={crrUser.name} >({crrUser.name}).charAt(0)</Avatar> */}
-    {/* <img src={crrUser.image} alt=""/> {crrUser.name} */}
-    <Login><a href='/auth'>Login</a></Login>
-    </div>
+    <Avatar>
+      <div>
+        <img src={crrUser.image} alt=""/>
+      </div>
+    </Avatar>
 </Nav>
   )
 }
@@ -91,6 +90,18 @@ const Nav = styled.nav`
  letter-spacing:16px;
  z-index:3;
 `
+
+const Avatar = styled.div`
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  position: relative;
+  right: -230px;
+  margin: 15px auto;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+`;
 
 const Logo = styled.a`
   padding: 0;
@@ -166,29 +177,12 @@ const NavMenu = styled.div`
   } */
 `;
 
-const Login = styled.a`
-  background-color: rgba(0, 0, 0, 0.6);
-  text-decoration: none;
-  padding: 8px 16px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  border: 1px solid #f9f9f9;
-  cursor:pointer;
-  border-radius: 4px;
-  transition: all 0.2s ease 0s;
-  &:hover {
-    background-color: #f9f9f9;
-    color: #000;
-    border-color: transparent;
-  }
-`;
-
 const Logout = styled.a`
   background-color: #f9f9f9;
   padding: 8px 16px;
   position: absolute;
   top: 20px;
-  right: -600px;
+  right: -620px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   border: 1px solid #f9f9f9;
@@ -220,27 +214,6 @@ const DropDown = styled.div`
   letter-spacing: 3px;
   width: 100px;
   opacity: 0;
-`;
-
-const SignOut = styled.div`
-  position: relative;
-  height: 48px;
-  width: 48px;
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  ${UserImg} {
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-  }
-  &:hover {
-    ${DropDown} {
-      opacity: 1;
-      transition-duration: 1s;
-    }
-  }
 `;
 
 export default Header

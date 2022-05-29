@@ -1,32 +1,25 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {isLength, isMatch} from '../utils/validation/Validation.js'
 import './Styles/profile.css';
+import { GlobalState } from '../../GlobalState';
 
 const initialState = {
     name: '',
     password: '',
     cf_password: '',
-    err: '',
-    success: ''
 }
 
 function Profile() {
-    // const auth = useSelector(state => state.auth)
-    // const token = useSelector(state => state.token)
 
-    // const users = useSelector(state => state.users)
-
-    // const {user, isAdmin} = auth
-    // const [data, setData] = useState(initialState)
-    // const {name, password, cf_password, err, success} = data
-
-    // const [avatar, setAvatar] = useState(false)
-    // const [loading, setLoading] = useState(false)
-    // const [callback, setCallback] = useState(false)
-
-    // const dispatch = useDispatch()
+    const state = useContext(GlobalState)
+    const [isLogged,setIsLogged ] = state.UserAPI.isLogged
+    const [isAdmin,setIsAdmin ] = state.UserAPI.isAdmin
+    const [crrUser, setCrrUser] = state.UserAPI.crrUser
+    const [token] = state.token
+    const [loading, setLoading] = useState(false)
+    const [image, setImage] = useState(false)
 
     // useEffect(() => {
     //     if(isAdmin){
@@ -41,49 +34,50 @@ function Profile() {
     //     setData({...data, [name]:value, err:'', success: ''})
     // }
 
-    // const changeAvatar = async(e) => {
-    //     e.preventDefault()
-    //     try {
-    //         const file = e.target.files[0]
+    const changeAvatar = async(e) => {
+        e.preventDefault()
+        try {
+            const file = e.target.files[0]
 
-    //         if(!file) return setData({...data, err: "No files were uploaded." , success: ''})
+            if(!file) return swal("ERROR!", "No files were uploaded!", "error");
 
-    //         if(file.size > 1024 * 1024)
-    //             return setData({...data, err: "Size too large." , success: ''})
+            if(file.size > 1024 * 1024)
+                return swal("ERROR!", "Size too large.", "error");
 
-    //         if(file.type !== 'image/jpeg' && file.type !== 'image/png')
-    //             return setData({...data, err: "File format is incorrect." , success: ''})
+            if(file.type !== 'image/jpeg' && file.type !== 'image/png')
+                return swal("ERROR!", "File format is incorrect.", "error");
 
-    //         let formData =  new FormData()
-    //         formData.append('file', file)
 
-    //         setLoading(true)
-    //         const res = await axios.post('/api/upload_avatar', formData, {
-    //             headers: {'content-type': 'multipart/form-data', Authorization: token}
-    //         })
+            let formData =  new FormData()
+            formData.append('file', file)
 
-    //         setLoading(false)
-    //         setAvatar(res.data.url)
+            setLoading(true)
+            const res = await axios.post('http://localhost:8000/api/upload_image', formData, {
+                headers: {'content-type': 'multipart/form-data', Authorization: token}
+            })
+            setLoading(false)
+            swal("Done!", "Image upload successfull!", "success");
+            setImage(res.data.url)
             
-    //     } catch (err) {
-    //         setData({...data, err: err.response.data.msg , success: ''})
-    //     }
-    // }
+        } catch (err) {
+            return swal("ERROR!", err.response.res.msg, "error");
+        }
+    }
 
-    // const updateInfor = () => {
-    //     try {
-    //         axios.patch('/user/update', {
-    //             name: name ? name : user.name,
-    //             avatar: avatar ? avatar : user.avatar
-    //         },{
-    //             headers: {Authorization: token}
-    //         })
+    const updateInfo = () => {
+        try {
+            const update = axios.patch('http://localhost:8000/user/update', {
+                name: name ? name : crrUser.name,
+                image: image ? image : crrUser.image
+            },{
+                headers: {Authorization: token}
+            })
 
-    //         setData({...data, err: '' , success: "Updated Success!"})
-    //     } catch (err) {
-    //         setData({...data, err: err.response.data.msg , success: ''})
-    //     }
-    // }
+            swal("Done!", "Updated Success!", "success");
+        } catch (err) {
+            return swal("ERROR!", "Updated Failed!", "error");
+        }
+    }
 
     // const updatePassword = () => {
     //     if(isLength(password))
@@ -103,82 +97,58 @@ function Profile() {
     //     }
     // }
 
-    // const handleUpdate = () => {
-    //     if(name || avatar) updateInfor()
-    //     if(password) updatePassword()
-    // }
-
-    // const handleDelete = async (id) => {
-    //     try {
-    //         if(user._id !== id){
-    //             if(window.confirm("Are you sure you want to delete this account?")){
-    //                 setLoading(true)
-    //                 await axios.delete(`/user/delete/${id}`, {
-    //                     headers: {Authorization: token}
-    //                 })
-    //                 setLoading(false)
-    //                 setCallback(!callback)
-    //             }
-    //         }
-            
-    //     } catch (err) {
-    //         setData({...data, err: err.response.data.msg , success: ''})
-    //     }
-    // }
-
     return (
         <>
-        {/* <div>
-            {err && showErrMsg(err)}
-            {success && showSuccessMsg(success)}
+        <div>
             {loading && <h3>Loading.....</h3>}
-        </div> */}
+        </div>
         <div className="profile_page">
             <div className="col-left">
                 <div className='card'>
                 <h2>User Profile</h2>
 
                 <div className="avatar">
-                    {/* <img src={avatar ? avatar : user.avatar} alt=""/> */}
+                    <img src={image ? image : crrUser.image} alt=""/>
                     <span>
                         <i className="fas fa-camera"></i>
                         <p>Change</p>
-                        <input type="file" name="file" id="file_up" />
+                        <input type="file" name="file" id="file_up" onChange={changeAvatar} />
                     </span>
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
-                    <input type="text" name="name" id="name" 
+                    <input type="text" name="name" id="name" value={crrUser.name}
                     placeholder="Your name"  />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="name">Registration Number</label>
+                    <input type="text" name="regNo" id="regNo" value={crrUser.regNumber}
+                    placeholder="Registration number"  />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input type="email" name="email" id="email" 
-                    placeholder="Your email address" disabled />
+                    placeholder="Your email address" disabled value={crrUser.email}/>
                 </div>
 
+                {crrUser.role ==='Student'?                
                 <div className="form-group">
-                    <label htmlFor="password">New Password</label>
-                    <input type="password" name="password" id="password"
-                    placeholder="Your password"   />
+                    <label htmlFor="password">Specialization</label>
+                    <input type="text" name="spec" id="spec" value={crrUser.specialization} 
+                    placeholder="Specialization" />
                 </div>
-
+                :
                 <div className="form-group">
-                    <label htmlFor="cf_password">Confirm New Password</label>
-                    <input type="password" name="cf_password" id="cf_password"
-                    placeholder="Confirm password"   />
+                    <label htmlFor="password">Interested Research Area</label>
+                    <input type="text" name="rarea" id="rarea" value={crrUser.researchArea} 
+                    placeholder="Interested research area" />
                 </div>
+                }
 
-                <div>
-                    <em style={{color: "crimson"}}> 
-                    * If you update your password here, you will not be able 
-                        to login quickly using google and facebook.
-                    </em>
-                </div>
-
-                {/* <button disabled={loading} onClick={handleUpdate}>Update</button> */}
+                <button onClick={updateInfo}>Update</button>
                 </div>
             </div>
 
