@@ -16,6 +16,16 @@ import DisplaysubType from "./components/submission/displaySubType.jsx";
 import Topics from "./Components/TopicAcceptance/Topics";
 import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
 
+import { DataProvider } from "./GlobalState";
+import Login from "./Components/UserManagement/Login";
+import Header from "./Components/Header/Header";
+import Register from "./Components/UserManagement/Register";
+import ForgotPassword from "./Components/UserManagement/ForgotPassword";
+import ResetPassword from "./Components/UserManagement/ResetPassword";
+import Profile from "./Components/UserManagement/Profile";
+import AllUsers from "./Components/UserManagement/AllUsers";
+import DocEvaluation from "./Components/UserManagement/DocEvaluation";
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +33,9 @@ export default class App extends Component {
 
   render() {
     return (
+      <DataProvider>
       <BrowserRouter>
+      <Header/>
         <Routes>
           <Route path="/" element={<DisplayMarking />} />
           <Route path="/add" element={<AddMarking />} />
@@ -46,8 +58,17 @@ export default class App extends Component {
           <Route path="/display" element={<Displaytemplate />} />
           <Route path="/AddSubType" element={<AddSubmissiontype />} />
           <Route path="/displaysub" element={<DisplaysubType />} />
+
+          <Route exact path="/login" > <Login/></Route>
+          <Route exact path="/register" > <Register/></Route>
+          <Route exact path="/fpass" > <ForgotPassword/></Route>
+          <Route exact path="/user/reset/:id" > <ResetPassword/></Route>
+          <Route exact path="/profile" > <Profile/></Route>
+          <Route exact path="/allusers" > <AllUsers/></Route>
+          <Route exact path="/doceval" > <DocEvaluation/></Route>
         </Routes>
       </BrowserRouter>
+      </DataProvider>
     );
   }
 }

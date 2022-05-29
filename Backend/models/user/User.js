@@ -18,15 +18,17 @@ const userSchema = new mongoose.Schema({
     },
     specialization: {
         type: String,
-        required: true
+    },
+    researchArea: {
+        type: String,
     },
     password: {
         type: String,
         required: true
     },
     role: {
-        type: Number,
-        default: 0
+        type: String,
+        required: true
     },
     image: {
         type: String,

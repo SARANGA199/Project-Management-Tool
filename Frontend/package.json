@@ -37,7 +37,10 @@
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "sweetalert": "^2.1.2",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "js-cookie": "^3.0.1",
+    "react-select": "^5.3.2",
+    "react-redux": "^8.0.1"
   },
   "browserslist": {
     "production": [
@@ -50,6 +53,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-    
   }
 }
