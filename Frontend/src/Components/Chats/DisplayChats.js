@@ -20,16 +20,12 @@ export default function DisplayChats() {
   // console.log(email);
 
   useEffect(() => {
-    function getForum() {
-      const forum = axios
-        .get(`http://localhost:8070/member/${crrUser.email}`)
-        .then((res) => {
-          setGroupId(res.data.GroupID);
-        })
-        .catch((err) => {});
-    }
-
-    getForum();
+    const forum = axios
+      .get(`http://localhost:8070/member/${crrUser.email}`)
+      .then((res) => {
+        setGroupId(res.data.GroupID);
+      })
+      .catch((err) => {});
   });
 
   const getChat = async () => {

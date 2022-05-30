@@ -17,6 +17,10 @@ const chatReplySchema = new Schema(
       type: String,
       required: true,
     },
+    title: {
+      type: String,
+      required: true,
+    },
     reply: {
       type: String,
       required: true,
