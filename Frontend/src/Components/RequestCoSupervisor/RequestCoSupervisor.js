@@ -150,6 +150,21 @@ export default function RequestCoSupervisor() {
                                                 </div>
                                             </div>
 
+
+                                            <div className="row">
+                                                <div className="col-md-6">
+                                                    <center>
+                                                        <button
+                                                            type="submit"
+                                                            className="btn btn-success btn-lg"
+                                                            onClick={() => setData({coSupervisor})}
+                                                        >
+                                                            &nbsp;Accept
+                                                        </button>
+                                                    </center>
+                                                </div>
+                                            </div>
+
                                         </div>
 
 
