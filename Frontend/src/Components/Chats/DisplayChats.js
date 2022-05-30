@@ -67,7 +67,7 @@ export default function DisplayChats() {
             </h6>{" "}
             <br />
             <h6 className="ms-3">{message}</h6>
-            <a className="btChat" href="#">
+            <a className="btChat" href="/reply">
               Reply
             </a>
           </div>
