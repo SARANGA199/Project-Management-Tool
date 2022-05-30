@@ -86,7 +86,7 @@ export default function DisplayChats() {
             <div className="cardChaReply" key={index}>
               <h6 className="titleChat">
                 {" "}
-                <h6>Reply : {topic}</h6>
+                <h6>Reply : {rep.title}</h6>
               </h6>
               <h6 className="ms-3">
                 by <b className="chatBody"> {rep.name}</b> - {rep.createdAt}

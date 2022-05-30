@@ -29,6 +29,7 @@ export default function ChatReply() {
   const [crrUser, setCrrUser] = state.UserAPI.crrUser;
 
   const [reply, setReply] = useState("");
+  const [title, setTitle] = useState("");
 
   const forumId = localStorage.getItem("fid");
   const userId = crrUser._id;
@@ -41,6 +42,7 @@ export default function ChatReply() {
       userId,
       forumId,
       name,
+      title,
       reply,
     };
 
@@ -88,6 +90,14 @@ export default function ChatReply() {
                     InputLabelProps={{
                       shrink: true,
                     }}
+                  />
+
+                  <TextField
+                    id="filled-number"
+                    label="Reply for"
+                    type="text"
+                    variant="outlined"
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
               </Box>
