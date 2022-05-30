@@ -17,6 +17,7 @@ import Topics from "./components/TopicAcceptance/Topics.js";
 import AcceptTopic from "./components/TopicAcceptance/AcceptTopic.js";
 import TopicEvaluate from "./components/TopicAcceptance/TopicEvaluate";
 import DisplayRequests from "./components/DisplayRequests/DisplayRequests.js";
+import AddPanelMember from "./components/AlocatePanel/AddPanelMember.js"
 
 export default class App extends Component {
   constructor(props) {
@@ -49,6 +50,7 @@ export default class App extends Component {
           <Route path="/display" element={<Displaytemplate />} />
           <Route path="/AddSubType" element={<AddSubmissiontype />} />
           <Route path="/displaysub" element={<DisplaysubType />} />
+          <Route path="/AddPanelMember" element={<AddPanelMember />} />
         </Routes>
       </BrowserRouter>
     );

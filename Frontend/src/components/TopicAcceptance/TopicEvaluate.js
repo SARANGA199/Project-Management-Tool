@@ -11,6 +11,7 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import styled from "styled-components";
+//import document from "../../";
 
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -96,9 +97,9 @@ console.log(topicSubmitDoc)
           <div className="acceptLabel">
             <label className="acceptTot">Details of Topic </label>
             <hr className="hr3" />
-            <div style={{paddingLeft:"350px",marginBottom:"50px"}}>
+            <div style={{paddingLeft:"350px",marginBottom:"30px"}}>
             <Box>
-            <a href={topicSubmitDoc}>submit document</a>
+            <a href={topicSubmitDoc} style={{textDecoration:"none"}}>submit document</a>
             </Box>
             </div>
             <Box
