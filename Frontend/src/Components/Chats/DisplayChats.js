@@ -14,6 +14,8 @@ export default function DisplayChats() {
   const [time, setTime] = useState("");
   const [fid, setFid] = useState("");
 
+  const [allReply, setAllReply] = useState([]);
+
   //const email = crrUser.email;
   // console.log(email);
 
@@ -23,7 +25,6 @@ export default function DisplayChats() {
         .get(`http://localhost:8070/member/${crrUser.email}`)
         .then((res) => {
           setGroupId(res.data.GroupID);
-          console.log(res.data.GroupID);
         })
         .catch((err) => {});
     }
@@ -31,13 +32,10 @@ export default function DisplayChats() {
     getForum();
   });
 
-  console.log(groupId);
-
   const getChat = async () => {
     const chat = await axios
       .get(`http://localhost:8070/chatForum/${groupId}`)
       .then((res) => {
-        console.log(res.data);
         setAuther(res.data.auther);
         setTopic(res.data.topic);
         setMessage(res.data.message);
@@ -48,8 +46,18 @@ export default function DisplayChats() {
   };
 
   getChat();
-  console.log(fid);
+
   localStorage.setItem("fid", fid);
+
+  //get Reply
+  const getReply = async () => {
+    const reply = await axios
+      .get(`http://localhost:8070/chatReply/${fid}`)
+      .then((res) => {
+        setAllReply(res.data);
+      });
+  };
+  getReply();
 
   return (
     <div>
@@ -64,6 +72,7 @@ export default function DisplayChats() {
           <div className="topicNam">GROUP - {groupId}</div>
           <hr className="topicHr" />
 
+          {/* card */}
           <div className="cardChat">
             <h6 className="titleChat">{topic}</h6>
             <h6 className="ms-3">
@@ -75,6 +84,24 @@ export default function DisplayChats() {
               Reply
             </a>
           </div>
+
+          {/* Reply */}
+          {allReply.map((rep, index) => (
+            <div className="cardChat" key={index}>
+              <h6 className="titleChat">
+                {" "}
+                <h6>Reply : {topic}</h6>
+              </h6>
+              <h6 className="ms-3">
+                by <b className="chatBody"> {rep.name}</b> - {rep.createdAt}
+              </h6>{" "}
+              <br />
+              <h6 className="ms-3">{rep.reply}</h6>
+              <a className="btChat" href="/reply">
+                Reply
+              </a>
+            </div>
+          ))}
         </div>
       </div>
     </div>

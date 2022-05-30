@@ -39,20 +39,20 @@ export default function ChatReply() {
     e.preventDefault();
     const data = {
       userId,
-      name,
       forumId,
+      name,
       reply,
     };
 
     await axios
-      .post("http://localhost:8070/chatForum/", data)
+      .post("http://localhost:8070/chatReply/", data)
       .then((res) => {
-        swal("Success", "Chat Forum Created Successfully", "success");
+        swal("Success", "Chat Reply Successfully Added", "success");
         navigate("/displayChat");
       })
       .catch((err) => {
         console.log(err);
-        swal("Error", "Chat Forum Creation Failed", "error");
+        swal("Error", "Reply  Failed", "error");
       });
   };
 
