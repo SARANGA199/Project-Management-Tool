@@ -12,6 +12,7 @@ export default function DisplayChats() {
   const [topic, setTopic] = useState("");
   const [message, setMessage] = useState("");
   const [time, setTime] = useState("");
+  const [fid, setFid] = useState("");
 
   //const email = crrUser.email;
   // console.log(email);
@@ -41,11 +42,14 @@ export default function DisplayChats() {
         setTopic(res.data.topic);
         setMessage(res.data.message);
         setTime(res.data.createdAt);
+        setFid(res.data._id);
       })
       .catch((err) => {});
   };
 
   getChat();
+  console.log(fid);
+  localStorage.setItem("fid", fid);
 
   return (
     <div>
