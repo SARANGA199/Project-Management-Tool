@@ -26,6 +26,7 @@ import ResetPassword from "./Components/UserManagement/ResetPassword";
 import Profile from "./Components/UserManagement/Profile";
 import AllUsers from "./Components/UserManagement/AllUsers";
 import DocEvaluation from "./Components/UserManagement/DocEvaluation";
+import CreateChat from "./Components/Chats/CreateChat";
 
 export default class App extends Component {
   constructor(props) {
@@ -38,7 +39,11 @@ export default class App extends Component {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route exact path="/" element={<DisplaySubmitPresentation />} />
+            <Route
+              exact
+              path="/submitPre"
+              element={<DisplaySubmitPresentation />}
+            />
             <Route path="/add" element={<AddMarking />} />
             <Route
               path="/evaluatePresentation"
@@ -67,6 +72,8 @@ export default class App extends Component {
             <Route path="/profile" element={<Profile />} />
             <Route path="/allusers" element={<AllUsers />} />
             <Route path="/doceval" element={<DocEvaluation />} />
+
+            <Route path="/" element={<CreateChat />} />
           </Routes>
         </BrowserRouter>
       </DataProvider>
