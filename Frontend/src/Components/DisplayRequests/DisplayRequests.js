@@ -44,7 +44,7 @@ function DisplayRequests(){
                                 <th scope="col">Group ID </th>
                                 <th scope="col">Group Leader Email</th>
                                 <th scope="col">Research Topic Name </th>
-                                <th scope="col">Add Comments   </th>
+                                <th scope="col">Comments   </th>
                                 <th scope="col">Request Status   </th>
                                 <th scope="col">Action </th>
                             </tr>
