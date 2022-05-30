@@ -27,6 +27,7 @@ import Profile from "./Components/UserManagement/Profile";
 import AllUsers from "./Components/UserManagement/AllUsers";
 import DocEvaluation from "./Components/UserManagement/DocEvaluation";
 import CreateChat from "./Components/Chats/CreateChat";
+import DisplayChats from "./Components/Chats/DisplayChats";
 
 export default class App extends Component {
   constructor(props) {
@@ -74,6 +75,7 @@ export default class App extends Component {
             <Route path="/doceval" element={<DocEvaluation />} />
 
             <Route path="/" element={<CreateChat />} />
+            <Route path="/displayChat" element={<DisplayChats />} />
           </Routes>
         </BrowserRouter>
       </DataProvider>

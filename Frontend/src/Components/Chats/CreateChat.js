@@ -24,6 +24,7 @@ import { async } from "@firebase/util";
 import axios from "axios";
 
 export default function CreateChat() {
+  const navigate = useNavigate();
   const state = useContext(GlobalState);
   const [crrUser, setCrrUser] = state.UserAPI.crrUser;
   // const [auther, setAutherName] = useState("");
@@ -54,6 +55,7 @@ export default function CreateChat() {
       .post("http://localhost:8070/chatForum/", data)
       .then((res) => {
         swal("Success", "Chat Forum Created Successfully", "success");
+        navigate("/displayChat");
       })
       .catch((err) => {
         console.log(err);
