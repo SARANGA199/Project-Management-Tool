@@ -3,6 +3,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
 export default function DisplayCoSupervisors(){
+    let navigate = useNavigate();
     const [RequestCoSupervisors,setRequestCoSupervisors] = useState([]);
     useEffect(()=>{
         getRequestSV();
@@ -12,6 +13,12 @@ export default function DisplayCoSupervisors(){
         const response = await axios.get("http://localhost:8070/requestSV");
         setRequestCoSupervisors(response.data)
     }
+    const setCData = (data) => {
+        let { _id } = data;
+
+        localStorage.setItem("rid", _id);
+        navigate("/updateCoSupervisorStatus");
+    };
     return(
         <div className="container">
             <br/>
