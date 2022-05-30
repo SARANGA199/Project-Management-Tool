@@ -87,7 +87,7 @@ export default function DisplayChats() {
 
           {/* Reply */}
           {allReply.map((rep, index) => (
-            <div className="cardChat" key={index}>
+            <div className="cardChaReply" key={index}>
               <h6 className="titleChat">
                 {" "}
                 <h6>Reply : {topic}</h6>
