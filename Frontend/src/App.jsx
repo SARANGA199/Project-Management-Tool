@@ -5,19 +5,21 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EvaluatePresentation from "./Components/PresentationEvaluation/EvaluatePresentation";
 import ViewMarkingSchemes from "./Components/Marking/ViewMarkingSchemes";
 import UpdateMarking from "./Components/Marking/UpdateMarking";
+import TemplateForm from "./Components/template/templateForm/templateForm.jsx";
+import Displaytemplate from "./Components/template/displayTemplate/display.jsx";
+import AddSubmissiontype from "./Components/submission/addsubmissionType.js";
+import DisplaysubType from "./Components/submission/displaySubType.js";
+import Topics from "./Components/TopicAcceptance/Topics";
+import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
+
 import CreateGroup from "./Components/CreateGroup/CreateGroup";
 import UserList from "./Components/DisplayGroupsList/DisplayGroupList";
 import TopicRegister from "./Components/TopicRegister/TopicRegister";
 import { RequestSupervisor } from "./Components/RequestSupervisor/RequestSupervisor";
-import TemplateForm from "./components/template/templateForm/templateForm.jsx";
-import Displaytemplate from "./components/template/displayTemplate/display.jsx";
-import AddSubmissiontype from "./components/submission/addsubmissionType.jsx";
-import DisplaysubType from "./components/submission/displaySubType.jsx";
-import Topics from "./Components/TopicAcceptance/Topics";
-import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
 import DisplayRequests  from "./Components/DisplayRequests/DisplayRequests";
 import StdSubmitDoc from "./Components/StdSubmitDoc/StdSubmitDoc.jsx";
 import TopicSubmitDoc from "./Components/TopicSubmitDoc/TopicSubmitDoc.js"
+import UpdateSupervisorStatus from "./Components/DisplayRequests/UpdateSupervisorStatus";
 
 
 export default class App extends Component {
@@ -40,14 +42,15 @@ export default class App extends Component {
           <Route path="/acceptTopic" element={<AcceptTopic />} />
           <Route path="/viewMarking" element={<ViewMarkingSchemes />} />
           <Route path="/updateMarking" element={<UpdateMarking />} />
+
           <Route path="/createGroup" element={<CreateGroup />} />
           <Route path="/userList" element={<UserList />} />
           <Route path="/topicRegister" element={<TopicRegister />} />
           <Route path="/requestSupervisor" element={<RequestSupervisor />} />
-          <Route path="/requestSupervisor" element={<RequestSupervisor />} />
           <Route path="/displayRequests" element={<DisplayRequests />} />
           <Route path="/stdSubmitDoc" element={<StdSubmitDoc />} />
           <Route path="/topicSubmitDoc" element={<TopicSubmitDoc />} />
+          <Route path="/updateSupervisorStatus" element={<UpdateSupervisorStatus />} />
 
           <Route path="/addTemplate" element={<TemplateForm />} />
           <Route path="/display" element={<Displaytemplate />} />
