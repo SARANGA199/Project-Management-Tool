@@ -48,3 +48,24 @@ body {
   font-size: 2vh;
   color: orange;
 }
+
+.titleChat {
+  margin-left: 2vh;
+}
+
+.chatBody {
+  color: orange;
+}
+
+.btChat {
+  text-decoration: none;
+  color: orange;
+  margin-left: 100vh;
+}
+
+.cardChat {
+  padding: 3vh;
+  box-shadow: 0 0 0 0;
+  background-color: whitesmoke;
+  width: 70%;
+}

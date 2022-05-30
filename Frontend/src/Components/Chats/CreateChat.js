@@ -162,6 +162,10 @@ export default function CreateChat() {
               </div>
             </form>
           </div>
+          <a href="/displayChat" className="btn btn-warning ms-3">
+            {" "}
+            Chats
+          </a>
         </div>
       </div>
     </div>
