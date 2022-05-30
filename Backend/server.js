@@ -28,7 +28,7 @@ import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupe
 
 import userRouter from "./routes/userRoutes/userRoutes.js";
 import stdSubmitDoc from "./routes/stdSubmitDocRoute/stdSubmitDocRouter.js";
-
+import chatForumRoutes from "./routes/chatForumRoutes/chatForumRoutes.js";
 const app = new express();
 
 dotenv.config();
@@ -57,6 +57,9 @@ app.use(studentRouter);
 app.use(topicRegisterRouter);
 app.use(requestSupervisorRouter);
 app.use(stdSubmitDoc);
+
+//chatForum routes
+app.use("/chatForum", chatForumRoutes);
 
 const PORT = process.env.PORT || 8000;
 
