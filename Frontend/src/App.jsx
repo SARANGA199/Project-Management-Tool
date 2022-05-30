@@ -20,6 +20,7 @@ import DisplayRequests  from "./Components/DisplayRequests/DisplayRequests";
 import StdSubmitDoc from "./Components/StdSubmitDoc/StdSubmitDoc.jsx";
 import TopicSubmitDoc from "./Components/TopicSubmitDoc/TopicSubmitDoc.js"
 import UpdateSupervisorStatus from "./Components/DisplayRequests/UpdateSupervisorStatus";
+import RequestCoSupervisor from "./Components/RequestCoSupervisor/RequestCoSupervisor";
 
 
 export default class App extends Component {
@@ -51,6 +52,7 @@ export default class App extends Component {
           <Route path="/stdSubmitDoc" element={<StdSubmitDoc />} />
           <Route path="/topicSubmitDoc" element={<TopicSubmitDoc />} />
           <Route path="/updateSupervisorStatus" element={<UpdateSupervisorStatus />} />
+          <Route path="/requestCoSupervisor" element={<RequestCoSupervisor />} />
 
           <Route path="/addTemplate" element={<TemplateForm />} />
           <Route path="/display" element={<Displaytemplate />} />
