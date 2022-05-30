@@ -63,7 +63,7 @@ export default class App extends Component {
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/fpass" element={<ForgotPassword/>} />
-          <Route path="/user/reset/:id" element={<ResetPassword/>} />
+          <Route path="/user/reset/:token" element={<ResetPassword/>} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/allusers" element={<AllUsers/>} />
           <Route path="/doceval" element={<DocEvaluation/>} />
