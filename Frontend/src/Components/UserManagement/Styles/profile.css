@@ -165,3 +165,10 @@ div.card {
     font-size: 10px;
     margin-left: 7px;
 }
+
+.tabl-heading {
+    font-size: 7vh;
+    color: rgb(62, 62, 62);
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  }

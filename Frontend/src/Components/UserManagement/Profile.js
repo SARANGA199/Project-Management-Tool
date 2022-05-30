@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useContext} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {isLength, isMatch} from '../utils/validation/Validation.js'
@@ -23,14 +23,6 @@ function Profile() {
     const [data, setData] = useState(initialState)
     const {name, password, cf_password} = data
 
-
-    // useEffect(() => {
-    //     if(isAdmin){
-    //         fetchAllUsers(token).then(res =>{
-    //             dispatch(dispatchGetAllUsers(res))
-    //         })
-    //     }
-    // },[token, isAdmin, dispatch, callback])
 
     const handleChange = e => {
         const {name, value} = e.target

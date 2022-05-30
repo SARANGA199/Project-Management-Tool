@@ -152,6 +152,23 @@ const userController = {
             return res.status(500).json({msg: err.message})
         }
     },
+    getAllInfo: async (req, res) => {
+        try {
+            Users.find().exec((err,users) =>{
+                if(err){
+                  return res.status(400).json({
+                    error:err
+                  });
+                }
+                return res.status(200).json({
+                  success:true,
+                  existingUsers:users
+                });
+              });
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
     updateUser: async (req, res) => {
         try {
             const {name, image} = req.body

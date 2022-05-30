@@ -23,4 +23,6 @@ router.patch('/update', auth, userController.updateUser);
 
 router.delete('/delete/:id', userController.deleteUser);
 
+router.get('/all_users', userController.getAllInfo);
+
 export default router;

@@ -36,6 +36,7 @@ function Register() {
 
   const registerSubmit = async (e) => {
     e.preventDefault();
+    if(document.getElementById('role').value =="Student"){
     try {
       const register = await axios.post('http://localhost:8000/user/register',{...user})
       localStorage.setItem("firstLogin", true);
@@ -44,6 +45,17 @@ function Register() {
     } catch (err) {
       swal("ERROR!", err.response.data.msg, "error");
     }
+  }
+  else{
+    try {
+      const pendregister = await axios.post('http://localhost:8000/pending/register',{...user})
+      swal("Done!", "You successfully registered!", "success");
+      window.location.href = "/";
+    } catch (err) {
+      swal("ERROR!", err.response.data.msg, "error");
+    }
+
+  }
   };
 
   return (

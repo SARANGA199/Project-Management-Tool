@@ -2,16 +2,12 @@ import React, {useState,useEffect,useContext} from "react";
 import axios from 'axios';
 export default function DisplayRouteRequest() {
   
-
-
-
-
-    const[profile,setprofile] = useState([]);
+    const[users,setUsers] = useState([]);
 
     useEffect(()=>{
             
-        axios.get("http://localhost:8000/user/all_users").then((res)=>{
-                setprofile(res.data.existingUsers);
+        axios.get("http://localhost:8000/pending/getall").then((res)=>{
+            setUsers(res.data.pendingUsers);
             }).catch((err)=>{
                 alert(err.message);
              })
@@ -23,13 +19,20 @@ export default function DisplayRouteRequest() {
     const setData = (data) => {
         let { _id,name, email,regNumber,specialization,researchArea,role} = data;
 
-        localStorage.setItem('uid', _id);
-        localStorage.setItem('Name', name);
-        localStorage.setItem('Email', email);
-        localStorage.setItem('RegistrationNo', regNumber);
-        localStorage.setItem('Specialization', specialization);
-        localStorage.setItem('InterestedResearchArea', researchArea);
-        localStorage.setItem('Role', role);
+        // localStorage.setItem('uid', _id);
+        // localStorage.setItem('Name', name);
+        // localStorage.setItem('Email', email);
+        // localStorage.setItem('RegistrationNo', regNumber);
+        // localStorage.setItem('Specialization', specialization);
+        // localStorage.setItem('InterestedResearchArea', researchArea);
+        // localStorage.setItem('Role', role);
+        try {
+          const register = axios.post('http://localhost:8000/user/register',{...data})
+          swal("Done!", "You successfully registered!", "success");
+          axios.delete(`http://localhost:8000/pending/delete/${data._id}`)
+        } catch (err) {
+          swal("ERROR!", err.response.data.msg, "error");
+        }
 
 }
 
@@ -44,17 +47,17 @@ const handleDelete = (id) => {
           })
           .then((willDelete) => {
             if (willDelete) {
-                 axios.delete(`http://localhost:8000/user/delete/${id}`)
-                swal("Poof! Selected account has been deleted!", {
+                 axios.delete(`http://localhost:8000/pending/delete/${id}`)
+                swal("Poof! Your imaginary file has been deleted!", {
                     icon: "success",
                   });
                 } else {
-                    swal("User account is safe!");
+                    swal("The account is safe!");
                   }
                 });
         
     } catch (err) {
-        return swal("ERROR!", "Updated Failed!", "error");
+        return swal("ERROR!", "Deletion Failed!", "error");
     }
 }
 
@@ -64,18 +67,8 @@ const handleDelete = (id) => {
         <div className = "container " style={{width:"100%"}}>
 
                  <div className="addform1"><br/>
-                     <h1 className="tabl-heading mb-4">All Users </h1></div>
-
-
-             
-                 {/* <a className="btn btn-warning" 
-                            type="button"
-                            href={`http://localhost:3000/report`}
-                            style={{textDecoration:'none'}}>
-                            <i></i>&nbsp;Generate Report
-                            </a> */}
-
-      
+                     <h1 className="tabl-heading mb-4">Pending for Approval </h1></div>
+                     
 <table className="customers">
   
           <thead>
@@ -84,7 +77,6 @@ const handleDelete = (id) => {
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Registration Number</th>
-                    <th scope="col">Specialization</th>
                     <th scope="col">Interested Research Area</th>
                     <th scope="col">Role</th>
                     <th scope="col">Action</th>
@@ -92,26 +84,25 @@ const handleDelete = (id) => {
                  
           </thead>
          <tbody>
-             {profile.map((data,index)=>(
+             {users.map((data,index)=>(
                     
                     <tr key={index}>
                        <th scope="row">{index+1}</th>
                        <td>{data.name}</td>
                        <td>{data.email}</td>
                        <td>{data.regNumber}</td>
-                       <td>{data.specialization}</td>
                        <td>{data.researchArea}</td>
                        <td>{data.role}</td>
                       
 
                        <td>
   
-                         <a className="btn btn-warning" href={`/editprofile/${data._id}`} onClick={() => setData(data)}>
-                            <i className= "fas fa-edit"></i>&nbsp;Update
+                         <a className="btn btn-warning" onClick={() => setData(data)}>
+                            <i className= "fas fa-edit"></i>&nbsp;Accept
                          </a>
                          &nbsp;
                          <a className="btn btn-danger" onClick={() => handleDelete(data._id)}>
-                            <i className= "fas fa-trash-alt"></i>&nbsp;Delete
+                            <i className= "fas fa-trash-alt"></i>&nbsp;Decline
                          </a>
 
   

@@ -10,7 +10,8 @@ import fileUpload from 'express-fileupload'
 import templateRouter from './routes/templateRouter.js'
 
 import submissionRouter from "./routes/submissionRouter.js";
-import userRouter from "./routes/userRoutes/userRoutes.js"
+import userRouter from "./routes/userRoutes/userRoutes.js";
+import pendingUserRouter from "./routes/userRoutes/pendingUserRoutes.js"
 import markingRoutes from "./routes/markingRoutes/markingRoutes.js"
 import presentationMarksRoutes from "./routes/presentationMarksRoutes/presentationMarksRoutes.js";
 import upload from './routes/userRoutes/upload.js'
@@ -43,7 +44,7 @@ app.use("/submission", submissionRouter);
 
 //routes
 app.use('/user', userRouter);
-
+app.use('/pending', pendingUserRouter);
 app.use('/api', upload);
 
 //marking controller
