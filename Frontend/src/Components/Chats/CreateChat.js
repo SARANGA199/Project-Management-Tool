@@ -135,6 +135,7 @@ export default function CreateChat() {
                   required
                   type="text"
                   variant="outlined"
+                  style={{ width: "43ch" }}
                   onChange={(e) => setTopic(e.target.value)}
                 />
               </Box>
