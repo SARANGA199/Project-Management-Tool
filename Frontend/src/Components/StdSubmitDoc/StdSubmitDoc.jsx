@@ -48,53 +48,6 @@ export default function StdSubmitDoc() {
 
     return (
 
-        //
-        // <div className={styles.container}>
-        //     <form className={styles.form} onSubmit={handleSubmit} >
-        //         <h1 className={styles.heading}>Template upload Form</h1>
-        //         <input
-        //             type="text"
-        //             className={styles.input}
-        //             placeholder="Admin Name"
-        //             name="adminName"
-        //             onChange={handleChange}
-        //             value={data.groupID}
-        //         />
-        //         <input
-        //             type="text"
-        //             className={styles.input}
-        //             placeholder="Template Title"
-        //             name="templateTitle"
-        //             onChange={handleChange}
-        //             value={data.groupLeaderName}
-        //         />
-        //         <input
-        //             type="text"
-        //             className={styles.input}
-        //             placeholder="Template Discription"
-        //             name="templateDiscription"
-        //             onChange={handleChange}
-        //             value={data.groupLeaderEmail}
-        //         />
-        //         {/* <FileInput
-        // 			name="img"
-        // 			label="Choose Image"
-        // 			handleInputState={handleInputState}
-        // 			type="image"
-        // 			value={data.img}
-        // 		/> */}
-        //         <FileInput
-        //             name="template"
-        //             label="Choose Document"
-        //             handleInputState={handleInputState}
-        //             type="document"
-        //             value={data.SubmitDoc}
-        //         />
-        //         <button type="submit"  className={styles.submit_btn} >
-        //             Submit
-        //         </button>
-        //     </form>
-        // </div>
         <div className="container">
             <div className="card">
                 <div className="card-body">

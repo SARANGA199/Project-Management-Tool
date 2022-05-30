@@ -76,11 +76,11 @@ export const RequestSupervisor = ()=>{
 
                                             {researchCategory === "IOT" ? (
 
-                                                    <div className="card">
-                                                        <div className="card-body">
-                                                    <label>IOT : </label>
-                                                        </div>
+                                                <div className="card">
+                                                    <div className="card-body">
+                                                        <label>IOT : </label>
                                                     </div>
+                                                </div>
                                             ):(<label>
 
                                             </label>)
@@ -104,22 +104,22 @@ export const RequestSupervisor = ()=>{
                                 <div className="card">
                                     <div className="card-body">
                                         <h5 className="card-title">form</h5>
-                                             <div className="row">
-                                                 <div className="col-md-6">
-                                                     <label> Research Supervisor :</label>
-                                                     <div className="form-group">
-                                                         <input type="text"  className="form-control" value={researchSupervisor} onChange={e => setResearchSupervisor(e.target.value)}/>
-                                                     </div>
-                                                 </div>
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <label> Research Supervisor :</label>
+                                                <div className="form-group">
+                                                    <input type="text"  className="form-control" value={researchSupervisor} onChange={e => setResearchSupervisor(e.target.value)}/>
+                                                </div>
+                                            </div>
 
-                                                 <div className="col-md-6">
-                                                     <label> Research Category :</label>
-                                                     <div className="form-group">
-                                                         <input type="text"  className="form-control" value={researchCategory} onChange={handleCategory} disabled={true}/>
-                                                     </div>
-                                                 </div>
+                                            <div className="col-md-6">
+                                                <label> Research Category :</label>
+                                                <div className="form-group">
+                                                    <input type="text"  className="form-control" value={researchCategory} onChange={handleCategory} disabled={true}/>
+                                                </div>
+                                            </div>
 
-                                             </div>
+                                        </div>
 
                                         <div className="row">
                                             <div className="col-md-6">
@@ -165,67 +165,15 @@ export const RequestSupervisor = ()=>{
 
 
                                         <div className="row">
-                                        <center>
-                                            <button type="submit" className="btn btn-warning">send</button>
-                                        </center>
+                                            <center>
+                                                <button type="submit" className="btn btn-warning">send</button>
+                                            </center>
                                         </div>
                                         <br/>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-                        {/*<div className="row">*/}
-
-                        {/*    <div className="col-md-12">*/}
-                        {/*        <label>Research Category : </label>*/}
-                        {/*            <div className="form-group">*/}
-                        {/*                <select className="form-select" aria-label="Default select example">*/}
-                        {/*                     <option selected>Select Category</option>*/}
-                        {/*                     <option value="IOT">IOT</option>*/}
-                        {/*                     <option value="DS">DS</option>*/}
-                        {/*                 </select>*/}
-                        {/*            </div>*/}
-                        {/*    </div>*/}
-
-                        {/*</div>*/}
-
-                        {/*{researchCategory === "IOT" ? (*/}
-                        {/*<div className="row">*/}
-                        {/*        <label>IOT : </label>*/}
-                        {/*</div>*/}
-                        {/*    ):(<label>*/}
-
-                        {/*</label>)*/}
-                        {/*}*/}
-
-                        {/*{researchCategory === "DS" ? (*/}
-                        {/*    <div className="row">*/}
-                        {/*        <label>DS : </label>*/}
-                        {/*    </div>*/}
-                        {/*):(<label>*/}
-
-                        {/*</label>)*/}
-                        {/*}*/}
-
-
-                        {/*</div>):*/}
-                        {/*    <div className="row">*/}
-
-                        {/*        <div className="col-md-12">*/}
-                        {/*            <label>IOT : </label>*/}
-                        {/*            <div className="form-group">*/}
-
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*        }*/}
-
-                        {/*}*/}
-
-
-
                     </form>
                 </div>
             </div>

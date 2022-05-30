@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import updateSupervisorStatus from "./UpdateSupervisorStatus";
+import {useNavigate} from "react-router-dom";
 
 function DisplayRequests(){
-
+    let navigate = useNavigate();
     const [RequestSupervisors,setRequestSupervisors] = useState([]);
 
     useEffect(()=>{
@@ -19,8 +20,15 @@ function DisplayRequests(){
         let { _id } = data;
 
         localStorage.setItem("rid", _id);
+        navigate("/updateSupervisorStatus");
     };
+// need to change
+    const setDataCoVisor = (data) => {
+        let { _id } = data;
 
+        localStorage.setItem("rid", _id);
+        navigate("/requestCoSupervisor");
+    };
 
     return(
         <div>
@@ -42,28 +50,43 @@ function DisplayRequests(){
                             </tr>
 
                             <tbody>
-                               {RequestSupervisors.map((data, index)=>(
-                                   <tr key ={index}>
-                                       <td>{index + 1}</td>
-                                       <td>{data.researchSupervisor}</td>
-                                       <td>{data.researchCategory}</td>
-                                       <td>{data.groupID}</td>
-                                       <td>{data.groupLeaderEmail}</td>
-                                       <td>{data.researchTopicName}</td>
-                                       <td>{data.comments}</td>
-                                       <td>{data.supervisorStatus}</td>
-                                       <td>
-                                           {/*need to change*/}
-                                           <a
-                                               href="/updateSupervisorStatus"
-                                               className="btn btn-warning"
-                                               onClick={() => setData(data)}
-                                           >
-                                               &nbsp;update
-                                           </a>
-                                       </td>
-                                    </tr>
-                               ))}
+                            {RequestSupervisors.map((data, index)=>(
+                                <tr key ={index}>
+                                    <td>{index + 1}</td>
+                                    <td>{data.researchSupervisor}</td>
+                                    <td>{data.researchCategory}</td>
+                                    <td>{data.groupID}</td>
+                                    <td>{data.groupLeaderEmail}</td>
+                                    <td>{data.researchTopicName}</td>
+                                    <td>{data.comments}</td>
+                                    <td>{data.supervisorStatus}</td>
+                                    <td>
+                                        <button
+                                            className="btn btn-primary"
+                                            disabled={
+                                                data.supervisorStatus === "Accepted" ||
+                                                data.supervisorStatus === "Rejected"
+                                            }
+                                            onClick={() => setData(data)}
+                                        >
+                                            &nbsp;update
+                                        </button>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            className="btn btn-info ms-3"
+                                            disabled={
+                                                data.supervisorStatus === "pending" ||
+                                                data.supervisorStatus === "Rejected"
+                                            }
+                                            onClick={() => setDataCoVisor(data)}
+                                        >
+                                            &nbsp;Request Co-Supervisor
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
                             </tbody>
                         </table>
                     </div>
