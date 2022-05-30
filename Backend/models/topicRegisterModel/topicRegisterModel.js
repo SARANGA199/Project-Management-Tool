@@ -24,6 +24,10 @@ const topics = mongoose.Schema({
     },topicStatus:{
         type:String,
         default:'pending'
+        
+    },topicFeedback:{
+        type:String,
+        default:'pending'
     }
 })
 

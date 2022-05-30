@@ -16,6 +16,8 @@ import DisplaysubType from "./components/submission/displaySubType.js";
 import Topics from "./Components/TopicAcceptance/Topics";
 import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
 import DisplayRequests from "./Components/DisplayRequests/DisplayRequests.js";
+import TopicEvaluate from "./components/TopicAcceptance/TopicEvaluate";
+import AddPanelMember from "./components/AlocatePanel/AddPanelMember.js";
 
 import { DataProvider } from "./GlobalState";
 import Login from "./Components/UserManagement/Login";
@@ -67,6 +69,9 @@ export default class App extends Component {
             <Route path="/profile" element={<Profile />} />
             <Route path="/allusers" element={<AllUsers />} />
             <Route path="/doceval" element={<DocEvaluation />} />
+
+            <Route path="/evaluateTopic" element={<TopicEvaluate />} />
+            <Route path="/AddPanelMember" element={<AddPanelMember />} />
           </Routes>
         </BrowserRouter>
       </DataProvider>

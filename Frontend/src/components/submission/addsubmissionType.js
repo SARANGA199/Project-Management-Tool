@@ -25,14 +25,7 @@ import upload from "../../upload.png";
 
     
 
-    
-    // const [data, setData] = useState({
-    //     adminName: "",
-    //     subTypeName: "",
-    //     subTypeDiscription: "",
-    //     submition: "",
-    // });
-
+  
 
 const AddSubmissiontype= ()=>{
 
@@ -149,12 +142,12 @@ const AddSubmissiontype= ()=>{
                   data-style="btn-warning"
                     aria-label=".form-select-sm example">
                     <option selected>Select Type</option>
-                    <option value={"ProposalPresentation"}>Proposal Presentation</option>
-                    <option value={"ProgressPresentation"}>Progress Presentation</option>
-                    <option value={"CharterDocumentation"}>Charter Documentation</option>
-                    <option value={"ScrumDocumentation"}>Scrum Documentation</option>
-                    <option value={"ProgressDocumentation"}>Progress Documentation</option>
-                    <option value={"FinalDocumentation"}>Final Documentation</option>
+                    <option value={"Proposal Presentation"}>Proposal Presentation</option>
+                    <option value={"Progress Presentation"}>Progress Presentation</option>
+                    <option value={"Charter Documentation"}>Charter Documentation</option>
+                    <option value={"Scrum Documentation"}>Scrum Documentation</option>
+                    <option value={"Progress Documentation"}>Progress Documentation</option>
+                    <option value={"Final Documentation"}>Final Documentation</option>
                   </select>
                   </div>
 

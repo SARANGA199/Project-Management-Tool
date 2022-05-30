@@ -1,21 +1,25 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import colors from "colors";
-import dotenv from "dotenv";
-import "./db/db.js";
-import fileUpload from "express-fileupload";
-// import cookieParser from "cookie-parser";
+import colors from 'colors'
+import dotenv from 'dotenv'
+import  './db/db.js'
+import fileUpload from 'express-fileupload'
+import bodyParser from 'body-parser';
 
 import templateRouter from "./routes/templateRouter.js";
 
 import submissionRouter from "./routes/submissionRouter.js";
 import markingRoutes from "./routes/markingRoutes/markingRoutes.js";
 import presentationMarksRoutes from "./routes/presentationMarksRoutes/presentationMarksRoutes.js";
-import upload from "./routes/userRoutes/upload.js";
+import upload from './routes/userRoutes/upload.js'
 import studentRouter from "./routes/studentRoute/studentRouter.js";
 import topicRegisterRouter from "./routes/topicRegisterRoute/topicRegisterRouter.js";
 import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupervisorRouter.js";
+import topicSubmitDocRouter from "./routes/topicDocSubmitRoute/topicSubmitDocRouter.js";
+import allocatePanelRouter from "./routes/allocatePanelRoutes/allocatePanelRouter.js"
+
+import cookieParser from "cookie-parser";
 
 // import cookieParser from "cookie-parser";
 // import userRouter from "./routes/userRoutes/userRoutes.js";
@@ -57,6 +61,14 @@ app.use(studentRouter);
 app.use(topicRegisterRouter);
 app.use(requestSupervisorRouter);
 app.use(stdSubmitDoc);
+app.use("/topicSubmitDoc",topicSubmitDocRouter);
+app.use("/allocatePanel",allocatePanelRouter);
+
+
+
+// app.use(studentRouter);
+// app.use(topicRegisterRouter);
+// app.use(requestSupervisorRouter);
 
 const PORT = process.env.PORT || 8000;
 

@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-import "./topicAccept.css";
+import "../TopicAcceptance/topicAccept.css";
 
-export default function Topics() {
+export default function AddPanelMember() {
   let navigate = useNavigate();
   const [request, setRequest] = useState([]);
   const [disable, setDisable] = useState(false);
@@ -60,42 +60,32 @@ export default function Topics() {
           </div>
         </div>
         <div className="container">
-          <div className="topicNam">TOPICS</div>
+          <div className="topicName">ADD  PANEL  MEMBERS</div>
           <hr className="topicHr" />
           <table className="table frame">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">topicName</th>
-                <th scope="col">topicCategory</th>
-                <th scope="col">groupID</th>
-                <th scope="col">topicStatus</th>
-                <th scope="col">Action</th>
+                <th scope="col"><center>#</center></th>
+                <th scope="col"><center>topicName</center></th>
+                <th scope="col"><center>topicCategory</center></th>
+                <th scope="col"><center>groupID</center></th>
+                <th scope="col"><center>topicStatus</center></th>
+                <th scope="col"><center>Action</center></th>
               </tr>
             </thead>
             <tbody>
               {request.map((data, index) => (
                 <tr key={index}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{data.topicName}</td>
+                  <th scope="row"><center>{index + 1}</center></th>
+                  <td><center>{data.topicName}</center></td>
 
-                  <td>{data.topicCategory}</td>
-                  <td>{data.groupID}</td>
+                  <td><center>{data.topicCategory}</center></td>
+                  <td><center>{data.groupID}</center></td>
                   <td>
-                    <b className="statusUp">{data.topicStatus}</b>
+                    <b className="statusUp"><center>{data.topicStatus}</center></b>
                   </td>
                   <td>
-                    <button
-                      className="btn btn-success"
-                      disabled={
-                        data.topicStatus === "Accepted" ||
-                        data.topicStatus === "Rejected"
-                      }
-                      onClick={() => setData(data)}
-                    >
-                      &nbsp;Acceptance
-                    </button>
-
+                    <center>  
                     <button
                       disabled={
                         data.topicStatus === "pending" ||
@@ -103,19 +93,9 @@ export default function Topics() {
                       }
                       className="btn btn-warning ms-3"
                     >
-                      &nbsp;Document Upload
+                      <b>+  Add Members</b>
                     </button>
-                    &nbsp;&nbsp;&nbsp;
-                    <button
-                       class="btn btn-info"
-                      disabled={
-                         data.topicStatus === "pending" ||
-                        data.topicStatus === "Rejected"
-                      }
-                      onClick={() => setEvaluate(data)}
-                    >
-                      &nbsp;Evaluate
-                    </button>
+                    </center>
                   </td>
                 </tr>
               ))}

@@ -1,4 +1,5 @@
 import Topics from "../../models/topicRegisterModel/topicRegisterModel.js";
+import nodemailer from 'nodemailer';
 
 export const getTopics = async (req, res) => {
   try {
@@ -42,6 +43,98 @@ export const updateTopicStatus = async (req, res) => {
     });
 };
 
+export const updateTopicFeedback = async (req, res) => {
+  const tId = req.params.id;
+
+  const { 
+    topicFeedback,
+    email,
+    groupID,
+    topicName } = req.body;
+
+
+  const updateTopic = {
+    tId,
+    topicFeedback,
+  };
+  const updateFeedback = await Topics.findByIdAndUpdate(tId, updateTopic)
+    .then(() => {
+      
+      res.status(200).send({ status: "Topic Feedback is  Updated" });
+      //res.console.log(updateFeedback)
+
+      //mail send
+      let transporter = nodemailer.createTransport({
+
+        service: 'gmail',
+    
+        auth: {
+    
+              user: 'themoviehub3020@gmail.com' ,
+    
+              pass: 'moviehub3020'
+    
+         }
+    
+    });
+    
+    
+    
+    
+    let mailOptions = {
+    
+        from: 'themoviehub3020@gmail.com',             //need to add new email
+    
+        to: `${email}`,
+    
+        subject: 'Research Project Topic Feedback',
+    
+        // text: nameOnCard + ' Your Payment Done!!' +<br></br>+
+    
+        // 'Customer Name' + ' '+ <br>dfdf<br/>+
+    
+        // 'Customer mobile'
+    
+    
+    
+        text: 'Hey there, it is our first message sent with Nodemailer ',
+    
+       
+       
+    
+        html: `<br>  Group ID:${groupID} </br><br>  Topic Name:${topicName} </br> <br>  Feedback:${topicFeedback} </br><br> Your Group Topic is Accept!! <br />`,
+    
+       
+    
+    };
+    
+    
+    
+    
+    transporter.sendMail(mailOptions, (err, data) => {
+    
+        if (err) {
+    
+            console.log('Error occurs',err);
+    
+         }
+    
+            console.log('Email sent!!!');
+    
+        });
+    
+
+
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        status: "Error with Updating Topic Feedback",
+        error: err.message,
+      });
+    });
+};
+
 export const getOneTopic = async (req, res) => {
   let tId = req.params.id;
 
@@ -50,6 +143,6 @@ export const getOneTopic = async (req, res) => {
       res.json(data);
     })
     .catch((err) => {
-      console.catch.log(err);
+      console.log(err);
     });
 };
