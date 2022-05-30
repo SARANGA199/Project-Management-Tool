@@ -17,18 +17,10 @@ import studentRouter from "./routes/studentRoute/studentRouter.js";
 import topicRegisterRouter from "./routes/topicRegisterRoute/topicRegisterRouter.js";
 import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupervisorRouter.js";
 
-// import cookieParser from "cookie-parser";
-// import userRouter from "./routes/userRoutes/userRoutes.js";
-// import presentationMarksRoutes from "./routes/presentationMarksRoutes/presentationMarksRoutes.js";
-
-// import upload from "./routes/userRoutes/upload.js";
-// import studentRouter from "./routes/studentRoute/studentRouter.js";
-// import topicRegisterRouter from "./routes/topicRegisterRoute/topicRegisterRouter.js";
-// import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupervisorRouter.js";
-
 import userRouter from "./routes/userRoutes/userRoutes.js";
 import stdSubmitDoc from "./routes/stdSubmitDocRoute/stdSubmitDocRouter.js";
 import chatForumRoutes from "./routes/chatForumRoutes/chatForumRoutes.js";
+import ChatReplyRoutes from "./routes/chatForumRoutes/chatReplyRoutes.js";
 const app = new express();
 
 dotenv.config();
@@ -60,6 +52,7 @@ app.use(stdSubmitDoc);
 
 //chatForum routes
 app.use("/chatForum", chatForumRoutes);
+app.use("/chatReply", ChatReplyRoutes);
 
 const PORT = process.env.PORT || 8000;
 
