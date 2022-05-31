@@ -26,8 +26,9 @@ import Register from "./Components/UserManagement/Register";
 import ForgotPassword from "./Components/UserManagement/ForgotPassword";
 import ResetPassword from "./Components/UserManagement/ResetPassword";
 import Profile from "./Components/UserManagement/Profile";
-import AllUsers from "./Components/UserManagement/AllUsers";
+import AllUsers from "./components/UserManagement/AllUsers";
 import DocEvaluation from "./Components/UserManagement/DocEvaluation";
+import AddMember from "./components/AlocatePanel/AddMember.js";
 
 export default class App extends Component {
   constructor(props) {
@@ -71,7 +72,8 @@ export default class App extends Component {
             <Route path="/doceval" element={<DocEvaluation />} />
 
             <Route path="/evaluateTopic" element={<TopicEvaluate />} />
-            <Route path="/AddPanelMember" element={<AddPanelMember />} />
+            <Route path="/addPanelMember" element={<AddPanelMember />} />
+            <Route path="/addMember" element={< AddMember />} />
           </Routes>
         </BrowserRouter>
       </DataProvider>

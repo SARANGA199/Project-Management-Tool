@@ -21,33 +21,36 @@ export default function AddPanelMember() {
       });
   }, []);
 
-  const setData = async (data) => {
-    let { _id } = data;
+  // const setData = async (data) => {
+  //   let { _id,groupID } = data;
+
+  //   localStorage.setItem("tid", _id);
+  //   localStorage.setItem("groupid", groupID);
+  //   navigate("/acceptTopic");
+
+  //   // const value = {
+  //   //   topicStatus,
+  //   // };
+
+  //   // const update = await axios
+  //   //   .put(`http://localhost:8070/topics/${_id}`, value)
+  //   //   .then(() => {
+  //   //     swal(`Topic is ${topicStatus}ed`);
+  //   //     window.location.reload(false);
+  //   //   })
+  //   //   .catch((err) => {
+  //   //     swal(`Something went to wrong !!!`);
+  //   //   });
+  // };
+
+
+  const setMember = async (data) => {
+    let { _id,groupID,topicCategory } = data;
 
     localStorage.setItem("tid", _id);
-    navigate("/acceptTopic");
-
-    // const value = {
-    //   topicStatus,
-    // };
-
-    // const update = await axios
-    //   .put(`http://localhost:8070/topics/${_id}`, value)
-    //   .then(() => {
-    //     swal(`Topic is ${topicStatus}ed`);
-    //     window.location.reload(false);
-    //   })
-    //   .catch((err) => {
-    //     swal(`Something went to wrong !!!`);
-    //   });
-  };
-
-
-  const setEvaluate = async (data) => {
-    let { _id } = data;
-
-    localStorage.setItem("tid", _id);
-    navigate("/evaluateTopic");
+    localStorage.setItem("groupid", groupID);
+    localStorage.setItem("category", topicCategory);
+    navigate("/addMember");
   };  
 
   return (
@@ -91,6 +94,7 @@ export default function AddPanelMember() {
                         data.topicStatus === "pending" ||
                         data.topicStatus === "Rejected"
                       }
+                      onClick={() => setMember(data)}
                       className="btn btn-warning ms-3"
                     >
                       <b>+  Add Members</b>
