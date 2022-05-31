@@ -43,3 +43,16 @@ export const addMember = async (req, res) => {
       });
     });
 };
+
+export const getPanelMember = async (req, res) => {
+
+  groupID = req.params.groupId;
+  id = res.params.memberId;
+
+  try {
+    const panel = await PanelScheme.findOne({$and:[{groupID:groupID},{panelMembers:{id:id}}]});
+    res.status(201).json(panel);
+  } catch (err) {
+    console.catch.log(err);
+  }
+};

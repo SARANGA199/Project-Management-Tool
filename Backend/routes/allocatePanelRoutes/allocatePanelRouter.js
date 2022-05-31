@@ -3,12 +3,14 @@ const router = express.Router();
 import {
     addPanelMember,
     getPanel,
-    addMember
+    addMember,
+    getPanelMember
 } from "../../controllers/allocatePanelController/allocatePanelController.js";
 
 router.post("/", addPanelMember);
 router.get("/", getPanel);
 router.put("/member", addMember);
+router.get("/member/:groupId/:memberId");
 
 
 export default router;
