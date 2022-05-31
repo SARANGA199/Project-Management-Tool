@@ -32,6 +32,7 @@ import ChatReply from "./Components/Chats/ChatReply";
 import DisplayOneForum from "./Components/Chats/DisplayOneForum";
 import UpdateReply from "./Components/Chats/UpdateReply";
 import UpdateChatForum from "./Components/Chats/UpdateChatForum";
+import DisplayAllForums from "./Components/Chats/DisplayAllForums";
 
 export default class App extends Component {
   constructor(props) {
@@ -84,6 +85,7 @@ export default class App extends Component {
             <Route path="/oneForum" element={<DisplayOneForum />} />
             <Route path="/editReply" element={<UpdateReply />} />
             <Route path="/editChatForum" element={<UpdateChatForum />} />
+            <Route path="/allForums" element={<DisplayAllForums />} />
           </Routes>
         </BrowserRouter>
       </DataProvider>

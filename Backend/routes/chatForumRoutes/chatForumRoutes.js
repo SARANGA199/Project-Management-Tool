@@ -7,9 +7,11 @@ import {
   getOneForum,
   deleteChatForum,
   updateChatForum,
+  getForums,
 } from "../../controllers/chatForum/chatForumController.js";
 
 router.post("/", addChatForum);
+router.get("/", getForums);
 router.get("/:gid", getForumBYGroupID);
 router.get("/forum/:id", getOneForum);
 router.put("/:id", updateChatForum);

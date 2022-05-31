@@ -69,3 +69,12 @@ export const updateChatForum = async (req, res) => {
         .send({ status: "Error with Updating Forum", error: err.message });
     });
 };
+
+export const getForums = async (req, res) => {
+  try {
+    const forum = await ChatForum.find();
+    res.status(201).json(forum);
+  } catch (err) {
+    console.catch.log(err);
+  }
+};
