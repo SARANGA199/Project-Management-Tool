@@ -105,6 +105,29 @@ export default function AddMember() {
       });
   };
 
+  const setDelete = async (data) => {
+
+    let {_id,name,regNumber} = data
+
+    
+
+    const removeMember = {
+        groupID,
+        name,
+        regNumber
+    };
+
+    const update =  axios
+      .post(`http://localhost:8070/allocatePanel/remove/${_id}`, removeMember)
+      .then(() => {
+        swal(`${name} remove in the ${groupID} group panel`)
+        window.location.reload()
+        //navigate("/topics");
+      })
+      .catch((err) => {
+        swal(`Something went to wrong !!!`);
+      });
+  };
 
 console.log(chekMembers.find((data)=>(data.id=='6294e47b90dc134fa04a4d')))
 
@@ -143,16 +166,25 @@ console.log(chekMembers.find((data)=>(data.id=='6294e47b90dc134fa04a4d')))
                     <center>
                    {chekMembers.find((cdata)=>(cdata.id==`${data._id}`))==null?(
                     <button
-                      disabled={
-                        data.topicStatus === "pending" ||
-                        data.topicStatus === "Rejected"
-                      }
+                    //   disabled={
+                    //     data.topicStatus === "pending" ||
+                    //     data.topicStatus === "Rejected"
+                    //   }
                       onClick={() => setData(data)}
                       className="btn btn-warning ms-3"
                     >
                       <b>+  Add</b>
                     </button>
-                    ):null}
+                    ):<button
+                    // disabled={
+                    //   data.topicStatus === "pending" ||
+                    //   data.topicStatus === "Rejected"
+                    // }
+                    onClick={() => setDelete(data)}
+                    className="btn btn-danger ms-3"
+                  >
+                    <b>-  Remove</b>
+                  </button>}
                     </center>
                   
                   </td>

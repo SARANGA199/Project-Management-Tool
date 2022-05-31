@@ -61,3 +61,29 @@ export const getPanelMember = async (req, res) => {
     console.catch.log(err);
   }
 };
+
+export const removeMember = async (req, res) => {
+  const mId = req.params.id;
+    //console.log("awa")
+  const { groupID,
+    _id,name,regNumber } = req.body;
+
+  // const updatepanel = {
+  //   groupID,
+  //   panelMembers,
+  // };
+
+  var member = {"id": _id,"name": name, "regNumber": regNumber};
+
+  const update = await PanelScheme.findOneAndUpdate({groupID:groupID},{$pull:{panelMembers:member}})
+    .then(() => {
+      res.status(200).send({ status: "Panel member remove" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        status: "Error with Adding panel member",
+        error: err.message,
+      });
+    });
+};
