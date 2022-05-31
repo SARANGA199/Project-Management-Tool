@@ -4,6 +4,7 @@ import {
     saveRequestSV,
     getRequestsById,
     updateRequest,
+    updateCoSupervisorRequest,
     deleteRequest
 } from "../../controllers/requestSupervisorController/requestSupervisorController.js";
 
@@ -13,6 +14,8 @@ router.get('/requestSV',getRequestSV);
 router.post('/requestSV',saveRequestSV);
 router.get('/requestSV/:id',getRequestsById);
 router.put('/requestSV/:id',updateRequest);
+router.put('/requestSV/:id',updateCoSupervisorRequest);
+
 router.delete('/requestSV/:id',deleteRequest);
 
 export default router;
