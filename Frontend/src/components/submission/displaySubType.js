@@ -6,8 +6,10 @@ import FileInput from '../template/FileInput/fileInput';
 import { async } from '@firebase/util';
 import pdf from "../../pdf.png";
 import Button from "@material-ui/core/Button";
+import { useNavigate } from "react-router-dom";
 
 function DisplaysubType() {
+  let navigate = useNavigate();
     const [submisionTypes, setSubmisionType] = useState([])
 
     //const [submission,setSubmission]= useState("")
@@ -35,6 +37,22 @@ useEffect(() => {
     
   }, [])
 
+  const setData = async (data) => {
+    
+    let { _id,subTypeName,subTypeDiscription,templateTitle,templateDiscription,template} = data;
+
+    console.log("awa")
+
+    localStorage.setItem("Sid", _id);
+    localStorage.setItem("SubTypeName",subTypeName);
+    localStorage.setItem("SubTypeDiscription", subTypeDiscription);
+    localStorage.setItem("TemplateTitle", templateTitle);
+    localStorage.setItem("TemplateDiscription", templateDiscription);
+    localStorage.setItem("Template", template);
+    
+    navigate("/updateSub");
+  }
+
 
 
 //console.log(sId)
@@ -57,7 +75,7 @@ useEffect(() => {
       ):null}
       <center>
                  <div style={{paddingTop: '20px'}}  className="col-xl-12">
-                      <Button  type="submit" className="btn btn-primary mt-5 "  >UPDATE</Button>
+                      <Button  type="submit" className="btn btn-primary mt-5 " onClick={() => setData(submisionType)} >UPDATE</Button>
                 </div>
                 </center>
                 <div style={{paddingTop: '20px'}}  className="col-xl-12">

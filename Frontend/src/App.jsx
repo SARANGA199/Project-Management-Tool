@@ -29,6 +29,7 @@ import Profile from "./Components/UserManagement/Profile";
 import AllUsers from "./components/UserManagement/AllUsers";
 import DocEvaluation from "./Components/UserManagement/DocEvaluation";
 import AddMember from "./components/AlocatePanel/AddMember.js";
+import UpdateSubmissionType from "./components/submission/UpdateSubmissionType";
 
 export default class App extends Component {
   constructor(props) {
@@ -62,6 +63,7 @@ export default class App extends Component {
             <Route path="/display" element={<Displaytemplate />} />
             <Route path="/AddSubType" element={<AddSubmissiontype />} />
             <Route path="/displaysub" element={<DisplaysubType />} />
+            <Route path="/updateSub" element={<UpdateSubmissionType />} />
 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

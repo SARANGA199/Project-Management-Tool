@@ -38,13 +38,16 @@ const UpdateSubmissionType= ()=>{
     // const [subTypeDiscription,setSubTypeDiscription] = useState("")
     // const [submission,setSubmission] = useState("test1")
 
+    // let sId = localStorage.getItem("Sid");
+    // let sId = localStorage.getItem("Sid");
+
     const [data, setData] = useState({
-            adminName:"test",
-            subTypeName:"",
-            subTypeDiscription:"",
-            template:"",
-            templateTitle: "",
-		        templateDiscription: "",
+            adminName:localStorage.getItem("Sid"),
+            subTypeName:localStorage.getItem("SubTypeName"),
+            subTypeDiscription:localStorage.getItem("SubTypeDiscription"),
+            template:localStorage.getItem("Template"),
+            templateTitle: localStorage.getItem("TemplateTitle"),
+		        templateDiscription: localStorage.getItem("TemplateDiscription"),
 	});
 
     
@@ -71,9 +74,9 @@ const UpdateSubmissionType= ()=>{
 			//const url = process.env.REACT_APP_API_URL + "/addtemplate"
            
 
-            const { data : res } =  axios.post('http://localhost:8070/submission/addSubType', data).then(()=>{
+            const { data : res } =  axios.put('http://localhost:8070/submission/updateAlldata', data).then(()=>{
 				          console.log(data)
-                alert("create sucsesfull")
+                alert("Update sucsesfull")
                 navigate("/displaysub");
 			  //history.push('/display');
 			})
@@ -267,7 +270,7 @@ const UpdateSubmissionType= ()=>{
                   </div>
                   <center>
                  <div style={{paddingTop: '20px'}}  className="col-xl-12">
-                      <Button  type="submit" className="btn btn-primary mt-5 "  >CREATE</Button>
+                      <Button  type="submit" className="btn btn-primary mt-5 "  >   UPDATE</Button>
                 </div>
                 </center>
             </form>  
