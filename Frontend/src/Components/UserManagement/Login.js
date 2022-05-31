@@ -22,7 +22,7 @@ function Login() {
         localStorage.setItem('User', JSON.stringify(data.result))
         localStorage.setItem("refreshtoken",data.accesstoken)
         // Cookies.set("refreshtoken",data.accesstoken,{expires:1})
-        swal("Done!", "You successfully logged in!", "success");
+        swal("Logged In!", "You successfully logged in!", "success");
         window.location.href = "/"
       } catch (err){
         swal("ERROR!", err.response.data.msg, "error");

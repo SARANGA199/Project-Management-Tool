@@ -72,7 +72,7 @@ function Header() {
       <div>
         <img src={crrUser.image} alt=""/>
       </div>
-    </Avatar>:''}
+    </Avatar>:null}
 </Nav>
   )
 }

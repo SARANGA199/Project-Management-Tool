@@ -107,7 +107,7 @@ function Profile() {
         <div className="profile_page">
             <div className="col-left">
                 <div className='card'>
-                <h2>User Profile</h2>
+                <h2>{crrUser.name}</h2>
 
                 <div className="avatar">
                     <img src={image ? image : crrUser.image} alt=""/>

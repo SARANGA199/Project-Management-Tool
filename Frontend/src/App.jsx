@@ -26,7 +26,8 @@ import ResetPassword from "./Components/UserManagement/ResetPassword";
 import Profile from "./Components/UserManagement/Profile";
 import AllUsers from "./Components/UserManagement/AllUsers";
 import DocEvaluation from "./Components/UserManagement/DocEvaluation";
-import PendingUsers from "./Components/UserManagement/PendingUsers.js"
+import PendingUsers from "./Components/UserManagement/PendingUsers.js";
+import UpdateUser from "./Components/UserManagement/UpdateUser.js";
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -68,6 +69,7 @@ export default class App extends Component {
           <Route path="/allusers" element={<AllUsers/>} />
           <Route path="/PendingUsers" element={<PendingUsers/>} />
           <Route path="/doceval" element={<DocEvaluation/>} />
+          <Route path="/updateuser" element={<UpdateUser/>} />
         </Routes>
       </BrowserRouter>
       </DataProvider>
