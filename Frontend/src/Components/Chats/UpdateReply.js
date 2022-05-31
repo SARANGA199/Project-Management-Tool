@@ -123,7 +123,7 @@ export default function UpdateReply() {
 
                 <button
                   type="submit"
-                  className=" btn btn-outline-warning btn-lg ms-5 mt-5"
+                  className=" btn btn-outline-warning ms-5 mt-5"
                 >
                   &nbsp;Update Reply
                 </button>
