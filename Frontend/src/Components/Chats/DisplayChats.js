@@ -77,38 +77,14 @@ export default function DisplayChats() {
               <a className="btChat" onClick={() => getForumDetails(forum)}>
                 View
               </a>
-            </div>
-          ))}
-          {/* Reply */}
-          {/* {allReply.map((rep, index) => (
-            <div className="cardChaReply" key={index}>
-              <h6 className="titleChat">
-                {" "}
-                <h6>Reply : {rep.title}</h6>
-              </h6>
-              <h6 className="ms-3">
-                by <b className="chatBody"> {rep.name}</b> - {rep.createdAt}
-              </h6>{" "}
-              <br />
-              <h6 className="ms-3">{rep.reply}</h6>
-              <a className="btChat" href="/reply">
-                Reply
-              </a>
-              {rep.userId === crrUser._id ? (
-                <div className="btnChtGroup">
-                  <a
-                    className="btChatEdit"
-                    href="#"
-                    visible={rep.userId === crrUser._id}
-                  >
+              {/* login user only */}
+              {forum.userId === crrUser._id ? (
+                <div className="btnChtGroupNew">
+                  <a className="btChatUpdate" href="/editChatForum">
                     Edit
                   </a>
 
-                  <a
-                    className="btChatDelete"
-                    href="#"
-                    visible={rep.userId === crrUser._id}
-                  >
+                  <a className="btChatNewDelete" href="#">
                     Delete
                   </a>
                 </div>
@@ -116,7 +92,7 @@ export default function DisplayChats() {
                 ""
               )}
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
     </div>

@@ -107,3 +107,19 @@ body {
   background-color: whitesmoke;
   width: 70%;
 }
+
+.btChatUpdate {
+  text-decoration: none;
+  color: orange;
+  margin-right: 2vh;
+}
+
+.btChatNewDelete {
+  text-decoration: none;
+  color: orange;
+}
+
+.btnChtGroupNew {
+  margin-left: 87vh;
+  margin-top: -3.3vh;
+}
