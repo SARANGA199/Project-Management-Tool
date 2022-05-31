@@ -45,20 +45,20 @@ export default function AddMember() {
         // setGroupId(res.data.groupID);
         // setEmail(res.data.groupLeaderEmail);
 
-        const newValue = {
-            groupID,
-            researchArea,
-        };
+        // const newValue = {
+        //     groupID,
+        //     researchArea,
+        // };
     
-        axios
-          .post(`http://localhost:8070/allocatePanel/`, newValue)
-          .then(() => {
-            //swal("sent feedback")
-            //navigate("/topics");
-          })
-          .catch((err) => {
-            swal(`Something went to wrong !!!`);
-          });
+        // axios
+        //   .post(`http://localhost:8070/allocatePanel/`, newValue)
+        //   .then(() => {
+        //     //swal("sent feedback")
+        //     //navigate("/topics");
+        //   })
+        //   .catch((err) => {
+        //     swal(`Something went to wrong !!!`);
+        //   });
 
 
 

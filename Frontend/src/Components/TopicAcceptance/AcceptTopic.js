@@ -73,6 +73,8 @@ export default function AcceptTopic() {
 
         });
 
+      }else if(topicStatus=="Rejected"){
+        navigate("/topics");
       }
 
       })
