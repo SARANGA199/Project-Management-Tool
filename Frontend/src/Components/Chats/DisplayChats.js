@@ -47,6 +47,38 @@ export default function DisplayChats() {
     navigate("/oneForum");
   };
 
+  //delete forum
+  const deleteForum = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`http://localhost:8070/chatForum/${id}`)
+          .then(() => {
+            swal("Your forum has been deleted.", {
+              icon: "success",
+            });
+            window.location.reload(false);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else {
+        swal("Deletion canceled!");
+      }
+    });
+  };
+
+  const updateForum = (forum) => {
+    let { _id } = forum;
+    localStorage.setItem("forID", _id);
+  };
+
   return (
     <div>
       <div className="topicContainer">
@@ -62,12 +94,10 @@ export default function DisplayChats() {
 
           {/* card */}
           {forums.map((forum, index) => (
-            <div
-              key={index}
-              className="cardChat"
-              onClick={() => getForumDetails(forum)}
-            >
-              <h6 className="titleChat">{forum.topic}</h6>
+            <div key={index} className="cardChat">
+              <h6 className="titleChat" onClick={() => getForumDetails(forum)}>
+                {forum.topic}
+              </h6>
               <h6 className="ms-3">
                 by <b className="chatBody"> {forum.auther}</b> -{" "}
                 {forum.createdAt}
@@ -80,11 +110,18 @@ export default function DisplayChats() {
               {/* login user only */}
               {forum.userId === crrUser._id ? (
                 <div className="btnChtGroupNew">
-                  <a className="btChatUpdate" href="/editChatForum">
+                  <a
+                    className="btChatUpdate"
+                    href="/editChatForum"
+                    onClick={() => updateForum(forum)}
+                  >
                     Edit
                   </a>
 
-                  <a className="btChatNewDelete" href="#">
+                  <a
+                    className="btChatNewDelete"
+                    onClick={() => deleteForum(forum._id)}
+                  >
                     Delete
                   </a>
                 </div>
