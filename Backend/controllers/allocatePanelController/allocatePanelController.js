@@ -47,7 +47,8 @@ export const addMember = async (req, res) => {
 export const getPanelMember = async (req, res) => {
 
  let groupID = req.params.groupId;
- let memberId = req.params.memberId;
+ //let memberId = req.params.memberId;
+
  
 
   try {

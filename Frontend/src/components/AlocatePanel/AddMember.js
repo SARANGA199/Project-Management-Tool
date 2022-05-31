@@ -28,7 +28,7 @@ export default function AddMember() {
   //const [topicFeedback, setTopicFeedback] = useState();
   const [tid, setTid] = useState();
   //const [email,setEmail]=useState("");
-  //const [panelMembers,setPanelMembers]=useState([]);
+  const [panelMembers,setPanelMembers]=useState([]);
 
   useEffect(() => {
     let id = localStorage.getItem("tid");
@@ -50,15 +50,17 @@ export default function AddMember() {
         //     researchArea,
         // };
     
-        // axios
-        //   .post(`http://localhost:8070/allocatePanel/`, newValue)
-        //   .then(() => {
-        //     //swal("sent feedback")
-        //     //navigate("/topics");
-        //   })
-        //   .catch((err) => {
-        //     swal(`Something went to wrong !!!`);
-        //   });
+        axios
+          .get(`http://localhost:8070/allocatePanel/member/${groupID}`)
+          .then((res) => {
+            //swal("sent feedback")
+            //navigate("/topics");
+            console.log(res.data)
+            setPanelMembers(res.data);
+          })
+          .catch((err) => {
+            swal(`Something went to wrong !!!`);
+          });
 
 
 
