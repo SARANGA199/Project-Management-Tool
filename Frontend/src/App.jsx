@@ -38,7 +38,7 @@ export default class App extends Component {
       <BrowserRouter>
       <Header/>
         <Routes>
-          <Route path="/" element={<DisplayMarking />} />
+          <Route path="/displayMarking" element={<DisplayMarking />} />
           <Route path="/add" element={<AddMarking />} />
           <Route
             path="/evaluatePresentation"

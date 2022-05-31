@@ -10,6 +10,7 @@ function UserAPI(token) {
         if(token){
             const getUser = async () =>{
                 try {
+                    console.log(token)
                     const res = await axios.get('http://localhost:8000/user/info', {
                         headers: {Authorization: token}
                     })

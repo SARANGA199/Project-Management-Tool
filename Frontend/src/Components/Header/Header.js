@@ -102,6 +102,10 @@ const Avatar = styled.div`
   border: 2px solid #ddd;
   border-radius: 50%;
   cursor: pointer;
+  img {
+    display: block;
+    width: 100%;
+  }
 `;
 
 const Logo = styled.a`
