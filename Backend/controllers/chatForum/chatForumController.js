@@ -32,3 +32,40 @@ export const getOneForum = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const deleteChatForum = async (req, res) => {
+  let rId = req.params.id;
+  await ChatForum.findByIdAndDelete(rId)
+    .then(() => {
+      res.status(200).send({ status: "Forum deleted" });
+    })
+    .catch((err) => {
+      console.log(err.message);
+      res
+        .status(500)
+        .send({ status: "Error with Deleting Forum", error: err.message });
+    });
+};
+
+export const updateChatForum = async (req, res) => {
+  const fId = req.params.id;
+
+  const { topic, message } = req.body;
+
+  const updateForum = {
+    fId,
+    topic,
+    message,
+  };
+
+  const update = await ChatForum.findByIdAndUpdate(fId, updateForum)
+    .then(() => {
+      res.status(200).send({ status: "Forum is  Updated" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res
+        .status(500)
+        .send({ status: "Error with Updating Forum", error: err.message });
+    });
+};
