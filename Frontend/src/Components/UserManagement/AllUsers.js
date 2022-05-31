@@ -59,11 +59,54 @@ const handleDelete = (id) => {
 }
 
 
+const filterData = (prof,searchkey) =>{
+
+  const result= prof.filter((profile) =>
+  profile.name.toLowerCase().includes(searchkey) ||
+  profile.name.includes(searchkey) ||
+  profile.regNumber.toLowerCase().includes(searchkey) ||
+  profile.regNumber.includes(searchkey) ||
+  profile.role.toLowerCase().includes(searchkey) ||
+  profile.role.includes(searchkey)
+  )
+
+  setprofile(result)
+}
+
+
+ function hancdleSearchArea(e) {
+       
+ const searchkey = e.currentTarget.value;
+
+ axios.get("http://localhost:8000/user/all_users").then((res)=>{
+         if(res.data.success){
+           filterData(res.data.existingUsers,searchkey)
+         }
+ });
+
+}
 
     return (
         <div className = "container " style={{width:"100%"}}>
+          <br/>
+          <div className="allusers">
+          <div className="row">
+               <h4> Search here </h4>
+              <div className="col-lg-12  mt-2 mb-2">
+                  <input
+                    className="form-control"
+                    type="search"
+                    placeholder="search...( name, registration no, role)"
+                    name="search"
+                    onChange={hancdleSearchArea}>
+                      
+                    </input>
+                  
+              </div>
+              </div>
+            </div>
 
-                 <div className="addform1"><br/>
+                 <div className="addform1">
                      <h1 className="tabl-heading mb-4">All Users </h1></div>
 
 
