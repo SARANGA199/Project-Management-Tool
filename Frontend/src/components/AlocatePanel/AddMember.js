@@ -28,7 +28,9 @@ export default function AddMember() {
   //const [topicFeedback, setTopicFeedback] = useState();
   const [tid, setTid] = useState();
   //const [email,setEmail]=useState("");
-  const [panelMembers,setPanelMembers]=useState([]);
+  const [chekMembers,setChekMembers]=useState([
+    { id: "", name: "", regNumber: "" },
+  ]);
 
   useEffect(() => {
     let id = localStorage.getItem("tid");
@@ -56,7 +58,7 @@ export default function AddMember() {
             //swal("sent feedback")
             //navigate("/topics");
             console.log(res.data)
-            setPanelMembers(res.data);
+            setChekMembers(res.data.panelMembers);
           })
           .catch((err) => {
             swal(`Something went to wrong !!!`);
@@ -81,6 +83,8 @@ export default function AddMember() {
 
     let {_id,researchArea,name,regNumber} = data
 
+    
+
     const newMember = {
         groupID,
         researchArea,
@@ -93,6 +97,7 @@ export default function AddMember() {
       .put(`http://localhost:8070/allocatePanel/member`, newMember)
       .then(() => {
         swal(`${name} add to the ${groupID} group`)
+        window.location.reload()
         //navigate("/topics");
       })
       .catch((err) => {
@@ -101,7 +106,7 @@ export default function AddMember() {
   };
 
 
-console.log(members)
+console.log(chekMembers.find((data)=>(data.id=='6294e47b90dc134fa04a4d')))
 
   return (
     <div>
@@ -113,7 +118,7 @@ console.log(members)
           </div>
         </div>
         <div className="container">
-          <div style={{marginLeft:"20px"}} className="topicName">PANEL  MEMBERS</div>
+          <div style={{marginLeft:"20px"}} className="topicName">{groupID} GROUP PANEL  MEMBERS</div>
           <hr className="topicHr" />
           <table className="table frame">
             <thead>
@@ -134,7 +139,9 @@ console.log(members)
 
                   <td><center>{data.researchArea}</center></td>
                   <td>
-                    <center>  
+                  
+                    <center>
+                   {chekMembers.find((cdata)=>(cdata.id==`${data._id}`))==null?(
                     <button
                       disabled={
                         data.topicStatus === "pending" ||
@@ -145,12 +152,16 @@ console.log(members)
                     >
                       <b>+  Add</b>
                     </button>
+                    ):null}
                     </center>
+                  
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          {/* { chekMembers.map((mdata,index) => (mdata. ))} */}
+          
         </div>
       </div>
     </div>

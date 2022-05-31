@@ -52,7 +52,7 @@ export const getPanelMember = async (req, res) => {
  
 
   try {
-    const panel = await PanelScheme.findOne({groupID:groupID}).select('panelMembers.id');
+    const panel = await PanelScheme.findOne({groupID:groupID});
     //const filterPanel = await panel.find({id:id});
 
 
