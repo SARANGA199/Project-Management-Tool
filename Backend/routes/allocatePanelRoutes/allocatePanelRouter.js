@@ -10,7 +10,7 @@ import {
 router.post("/", addPanelMember);
 router.get("/", getPanel);
 router.put("/member", addMember);
-router.get("/member/:groupId/:memberId");
+router.get("/member/:groupId/:memberId",getPanelMember);
 
 
 export default router;

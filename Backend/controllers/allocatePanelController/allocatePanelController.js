@@ -46,11 +46,15 @@ export const addMember = async (req, res) => {
 
 export const getPanelMember = async (req, res) => {
 
-  groupID = req.params.groupId;
-  id = res.params.memberId;
+ let groupID = req.params.groupId;
+ let memberId = req.params.memberId;
+ 
 
   try {
-    const panel = await PanelScheme.findOne({$and:[{groupID:groupID},{panelMembers:{id:id}}]});
+    const panel = await PanelScheme.findOne({groupID:groupID}).select('panelMembers.id');
+    //const filterPanel = await panel.find({id:id});
+
+
     res.status(201).json(panel);
   } catch (err) {
     console.catch.log(err);
