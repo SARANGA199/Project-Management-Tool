@@ -96,6 +96,27 @@ export default function DisplayChats() {
               <a className="btChat" href="/reply">
                 Reply
               </a>
+              {rep.userId === crrUser._id ? (
+                <div className="btnChtGroup">
+                  <a
+                    className="btChatEdit"
+                    href="#"
+                    visible={rep.userId === crrUser._id}
+                  >
+                    Edit
+                  </a>
+
+                  <a
+                    className="btChatDelete"
+                    href="#"
+                    visible={rep.userId === crrUser._id}
+                  >
+                    Delete
+                  </a>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           ))}
         </div>

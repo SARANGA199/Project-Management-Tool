@@ -79,3 +79,20 @@ body {
   background-color: whitesmoke;
   width: 70%;
 }
+
+.btChatEdit {
+  text-decoration: none;
+  color: orange;
+  margin-right: 2vh;
+}
+
+.btChatDelete {
+  text-decoration: none;
+
+  color: orange;
+}
+
+.btnChtGroup {
+  margin-left: 87vh;
+  margin-top: -3.3vh;
+}
