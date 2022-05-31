@@ -13,7 +13,7 @@ import Topics from "./Components/TopicAcceptance/Topics";
 import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
 
 import CreateGroup from "./Components/CreateGroup/CreateGroup";
-import UserList from "./Components/DisplayGroupsList/DisplayGroupList";
+import GroupList from "./Components/DisplayGroupsList/DisplayGroupList";
 import TopicRegister from "./Components/TopicRegister/TopicRegister";
 import { RequestSupervisor } from "./Components/RequestSupervisor/RequestSupervisor";
 import DisplayRequests  from "./Components/DisplayRequests/DisplayRequests";
@@ -46,7 +46,7 @@ export default class App extends Component {
           <Route path="/updateMarking" element={<UpdateMarking />} />
 
           <Route path="/createGroup" element={<CreateGroup />} />
-          <Route path="/userList" element={<UserList />} />
+          <Route path="/groupList" element={<GroupList />} />
           <Route path="/topicRegister" element={<TopicRegister />} />
           <Route path="/requestSupervisor" element={<RequestSupervisor />} />
           <Route path="/displayRequests" element={<DisplayRequests />} />
