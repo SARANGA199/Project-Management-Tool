@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 
-function UserList(){
+function GroupList(){
 
     const[members,setMembers] = useState([]);
-    const[groupIDStatus,setGroupIDStatus] = useState([]);
+    const[GroupID,setGroupID] = useState([]);
 
     useEffect(()=>{
         getMembers();
@@ -38,14 +38,14 @@ function UserList(){
                         <th>Leader Name</th>
                         <th>Leader Email</th>
                         <th>Member 2 ID</th>
-                        <th>Leader 2 Name</th>
-                        <th>Leader 2 Email</th>
+                        <th>Member 2 Name</th>
+                        <th>Member 2 Email</th>
                         <th>Member 3 Name</th>
-                        <th>Leader 3 ID</th>
-                        <th>Leader 3 Email</th>
+                        <th>Member 3 ID</th>
+                        <th>Member 3 Email</th>
                         <th>Member 4 Name</th>
-                        <th>Leader 4 ID</th>
-                        <th>Leader 4 Email</th>
+                        <th>Member 4 ID</th>
+                        <th>Member 4 Email</th>
                         <th>Group ID</th>
                         <th>Assign Group ID</th>
                     </tr>
@@ -66,10 +66,10 @@ function UserList(){
                             <td className="table-primary">{data.Member4Name}</td>
                             <td className="table-primary">{data.Member4ID}</td>
                             <td className="table-primary">{data.Member4Email}</td>
-                            <td className="table-info">{data.groupIDStatus}</td>
+                            <td className="table-info">{data.GroupID}</td>
                             <td className="table-info">
                                 <div className="form-group">
-                                    <input type="text"  className="form-control"   value={groupIDStatus} />
+                                    <input type="text"  className="form-control"   value={GroupID} />
                                 </div>
                             </td>
 
@@ -88,7 +88,7 @@ function UserList(){
     );
 }
 
-export default UserList;
+export default GroupList;
 
 
 
