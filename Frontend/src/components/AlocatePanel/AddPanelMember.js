@@ -97,7 +97,7 @@ export default function AddPanelMember() {
                       onClick={() => setMember(data)}
                       className="btn btn-warning ms-3"
                     >
-                      <b>+  Add Members</b>
+                      <b>View Members</b>
                     </button>
                     </center>
                   </td>

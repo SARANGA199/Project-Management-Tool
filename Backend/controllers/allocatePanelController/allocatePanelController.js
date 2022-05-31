@@ -66,14 +66,14 @@ export const removeMember = async (req, res) => {
   const mId = req.params.id;
     //console.log("awa")
   const { groupID,
-    _id,name,regNumber } = req.body;
+    name,regNumber } = req.body;
 
   // const updatepanel = {
   //   groupID,
   //   panelMembers,
   // };
 
-  var member = {"id": _id,"name": name, "regNumber": regNumber};
+  var member = {"id": mId,"name": name, "regNumber": regNumber};
 
   const update = await PanelScheme.findOneAndUpdate({groupID:groupID},{$pull:{panelMembers:member}})
     .then(() => {
