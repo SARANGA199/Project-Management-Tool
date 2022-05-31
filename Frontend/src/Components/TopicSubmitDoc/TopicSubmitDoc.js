@@ -114,7 +114,7 @@ export default function TopicSubmitDoc() {
                                                 <br/>
                                                 <div>
                                                     <center>
-                                                        <button type="submit" className="btn btn-warning">Upload Document</button>
+                                                        <button type="submit" className="btn btn-warning">Submit Document</button>
                                                     </center>
                                                 </div>
                                             </form>
