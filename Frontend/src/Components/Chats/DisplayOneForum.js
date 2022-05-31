@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { deleteChatReply } from "../../../../Backend/controllers/chatForum/chatReplyController";
 import { GlobalState } from "../../GlobalState";
 import "../TopicAcceptance/topicAccept.css";
 
@@ -46,6 +47,40 @@ export default function DisplayOneForum() {
       });
   };
   getReply();
+
+  //delete reply
+  const deleteChatReply = async (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`http://localhost:8070/chatReply/${id}`)
+          .then(() => {
+            swal("Your reply has been deleted.", {
+              icon: "success",
+            });
+            window.location.reload(false);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else {
+        swal("Deletion canceled!");
+      }
+    });
+  };
+
+  //update reply
+  const editReply = (rep) => {
+    const { _id } = rep;
+
+    localStorage.setItem("replyID", _id);
+  };
 
   return (
     <div>
@@ -93,16 +128,19 @@ export default function DisplayOneForum() {
                 <div className="btnChtGroup">
                   <a
                     className="btChatEdit"
-                    href="#"
-                    visible={rep.userId === crrUser._id}
+                    href="/editReply"
+                    onClick={() => {
+                      editReply(rep);
+                    }}
                   >
                     Edit
                   </a>
 
                   <a
                     className="btChatDelete"
-                    href="#"
-                    visible={rep.userId === crrUser._id}
+                    onClick={() => {
+                      deleteChatReply(rep._id);
+                    }}
                   >
                     Delete
                   </a>
