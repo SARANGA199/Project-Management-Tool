@@ -17,6 +17,7 @@ export default function DisplayOneForum() {
   const [message, setMessage] = useState("");
   const [time, setTime] = useState("");
   const [foruiD, setForumId] = useState("");
+  const [GroupId, setGroupID] = useState("");
   const [allReply, setAllReply] = useState([]);
 
   useEffect(() => {
@@ -30,6 +31,7 @@ export default function DisplayOneForum() {
         setTopic(res.data.topic);
         setMessage(res.data.message);
         setTime(res.data.createdAt);
+        setGroupID(res.data.groupID);
       })
       .catch((err) => {});
     setForumId(fid);
@@ -92,7 +94,7 @@ export default function DisplayOneForum() {
           </div>
         </div>
         <div className="container">
-          <div className="topicNam">GROUP - {gid}</div>
+          <div className="topicNam">GROUP - {GroupId}</div>
           <hr className="topicHr" />
 
           {/* card */}
