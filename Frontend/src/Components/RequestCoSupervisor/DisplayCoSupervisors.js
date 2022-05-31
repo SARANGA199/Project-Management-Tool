@@ -19,6 +19,12 @@ export default function DisplayCoSupervisors(){
         localStorage.setItem("rid", _id);
         navigate("/updateCoSupervisorStatus");
     };
+    const setDataCoVisor = (data) => {
+        let { _id } = data;
+
+        localStorage.setItem("rid", _id);
+        navigate("/requestCoSupervisor");
+    };
     return(
         <div className="container">
             <br/>
