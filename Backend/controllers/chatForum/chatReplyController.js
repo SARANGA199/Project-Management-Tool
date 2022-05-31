@@ -58,3 +58,14 @@ export const updateChatReply = async (req, res) => {
         .send({ status: "Error with Updating Reply", error: err.message });
     });
 };
+
+export const getOneReply = async (req, res) => {
+  const rid = req.params.id;
+
+  try {
+    const chat = await ChatReply.findById(rid);
+    res.status(200).json(chat);
+  } catch (error) {
+    console.catch.log(error);
+  }
+};
