@@ -54,6 +54,7 @@ export default function DisplayChats() {
   const getForumDetails = (forum) => {
     let { _id } = forum;
     localStorage.setItem("forID", _id);
+    localStorage.setItem("groupID", groupId);
     navigate("/oneForum");
   };
 
