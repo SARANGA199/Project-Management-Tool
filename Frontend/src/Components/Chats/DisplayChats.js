@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { GlobalState } from "../../GlobalState";
 import "../TopicAcceptance/topicAccept.css";
 
 export default function DisplayChats() {
+  const navigate = useNavigate();
   const state = useContext(GlobalState);
   const [crrUser, setCrrUser] = state.UserAPI.crrUser;
   const [groupId, setGroupId] = useState("");
@@ -12,8 +14,8 @@ export default function DisplayChats() {
   const [topic, setTopic] = useState("");
   const [message, setMessage] = useState("");
   const [time, setTime] = useState("");
-  const [fid, setFid] = useState("");
 
+  const [forums, setForums] = useState([]);
   const [allReply, setAllReply] = useState([]);
 
   //const email = crrUser.email;
@@ -32,28 +34,28 @@ export default function DisplayChats() {
     const chat = await axios
       .get(`http://localhost:8070/chatForum/${groupId}`)
       .then((res) => {
-        setAuther(res.data.auther);
-        setTopic(res.data.topic);
-        setMessage(res.data.message);
-        setTime(res.data.createdAt);
-        setFid(res.data._id);
+        setForums(res.data);
       })
       .catch((err) => {});
   };
 
   getChat();
 
-  localStorage.setItem("fid", fid);
-
   //get Reply
-  const getReply = async () => {
-    const reply = await axios
-      .get(`http://localhost:8070/chatReply/${fid}`)
-      .then((res) => {
-        setAllReply(res.data);
-      });
+  // const getReply = async () => {
+  //   const reply = await axios
+  //     .get(`http://localhost:8070/chatReply/${fid}`)
+  //     .then((res) => {
+  //       setAllReply(res.data);
+  //     });
+  // };
+  // getReply();
+
+  const getForumDetails = (forum) => {
+    let { _id } = forum;
+    localStorage.setItem("forID", _id);
+    navigate("/oneForum");
   };
-  getReply();
 
   return (
     <div>
@@ -69,20 +71,25 @@ export default function DisplayChats() {
           <hr className="topicHr" />
 
           {/* card */}
-          <div className="cardChat">
-            <h6 className="titleChat">{topic}</h6>
-            <h6 className="ms-3">
-              by <b className="chatBody"> {auther}</b> - {time}
-            </h6>{" "}
-            <br />
-            <h6 className="ms-3">{message}</h6>
-            <a className="btChat" href="/reply">
-              Reply
-            </a>
-          </div>
-
+          {forums.map((forum, index) => (
+            <div
+              key={index}
+              className="cardChat"
+              onClick={() => getForumDetails(forum)}
+            >
+              <h6 className="titleChat">{forum.topic}</h6>
+              <h6 className="ms-3">
+                by <b className="chatBody"> {forum.auther}</b> - {time}
+              </h6>{" "}
+              <br />
+              <h6 className="ms-3">{forum.message}</h6>
+              <a className="btChat" onClick={() => getForumDetails(forum)}>
+                View
+              </a>
+            </div>
+          ))}
           {/* Reply */}
-          {allReply.map((rep, index) => (
+          {/* {allReply.map((rep, index) => (
             <div className="cardChaReply" key={index}>
               <h6 className="titleChat">
                 {" "}
@@ -118,7 +125,7 @@ export default function DisplayChats() {
                 ""
               )}
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

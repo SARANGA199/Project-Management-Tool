@@ -29,6 +29,7 @@ import DocEvaluation from "./Components/UserManagement/DocEvaluation";
 import CreateChat from "./Components/Chats/CreateChat";
 import DisplayChats from "./Components/Chats/DisplayChats";
 import ChatReply from "./Components/Chats/ChatReply";
+import DisplayOneForum from "./Components/Chats/DisplayOneForum";
 
 export default class App extends Component {
   constructor(props) {
@@ -78,6 +79,7 @@ export default class App extends Component {
             <Route path="/" element={<CreateChat />} />
             <Route path="/displayChat" element={<DisplayChats />} />
             <Route path="/reply" element={<ChatReply />} />
+            <Route path="/oneForum" element={<DisplayOneForum />} />
           </Routes>
         </BrowserRouter>
       </DataProvider>

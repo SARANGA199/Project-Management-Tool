@@ -65,9 +65,11 @@ body {
 
 .cardChat {
   padding: 3vh;
+  margin-top: 3vh;
   box-shadow: 0 0 0 0;
   background-color: whitesmoke;
   width: 70%;
+  cursor: pointer;
 }
 
 .cardChaReply {
