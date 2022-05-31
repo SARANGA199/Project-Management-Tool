@@ -22,6 +22,7 @@ import TopicSubmitDoc from "./Components/TopicSubmitDoc/TopicSubmitDoc.js"
 import UpdateSupervisorStatus from "./Components/DisplayRequests/UpdateSupervisorStatus";
 import RequestCoSupervisor from "./Components/RequestCoSupervisor/RequestCoSupervisor";
 import DisplayCoSupervisors from "./Components/RequestCoSupervisor/DisplayCoSupervisors";
+import UpdateCoSupervisorStatus from "./Components/RequestCoSupervisor/UpdateCoSupervisors";
 
 export default class App extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ export default class App extends Component {
           <Route path="/updateSupervisorStatus" element={<UpdateSupervisorStatus />} />
           <Route path="/requestCoSupervisor" element={<RequestCoSupervisor />} />
           <Route path="/displayCoSupervisors" element={<DisplayCoSupervisors />} />
+          <Route path="/updateCoSupervisorStatus" element={<UpdateCoSupervisorStatus />} />
 
           <Route path="/addTemplate" element={<TemplateForm />} />
           <Route path="/display" element={<Displaytemplate />} />
