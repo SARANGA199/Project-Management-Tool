@@ -61,6 +61,7 @@ body {
   text-decoration: none;
   color: orange;
   margin-left: 100vh;
+  cursor: pointer;
 }
 
 .cardChat {
@@ -97,4 +98,12 @@ body {
 .btnChtGroup {
   margin-left: 87vh;
   margin-top: -3.3vh;
+}
+
+.cardChatOne {
+  padding: 3vh;
+  margin-top: 3vh;
+  box-shadow: 0 0 0 0;
+  background-color: whitesmoke;
+  width: 70%;
 }

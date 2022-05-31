@@ -16,7 +16,6 @@ export default function DisplayChats() {
   const [time, setTime] = useState("");
 
   const [forums, setForums] = useState([]);
-  const [allReply, setAllReply] = useState([]);
 
   //const email = crrUser.email;
   // console.log(email);
@@ -40,16 +39,6 @@ export default function DisplayChats() {
   };
 
   getChat();
-
-  //get Reply
-  // const getReply = async () => {
-  //   const reply = await axios
-  //     .get(`http://localhost:8070/chatReply/${fid}`)
-  //     .then((res) => {
-  //       setAllReply(res.data);
-  //     });
-  // };
-  // getReply();
 
   const getForumDetails = (forum) => {
     let { _id } = forum;
@@ -80,7 +69,8 @@ export default function DisplayChats() {
             >
               <h6 className="titleChat">{forum.topic}</h6>
               <h6 className="ms-3">
-                by <b className="chatBody"> {forum.auther}</b> - {time}
+                by <b className="chatBody"> {forum.auther}</b> -{" "}
+                {forum.createdAt}
               </h6>{" "}
               <br />
               <h6 className="ms-3">{forum.message}</h6>

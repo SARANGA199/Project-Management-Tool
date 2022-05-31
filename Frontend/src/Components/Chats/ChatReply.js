@@ -31,7 +31,7 @@ export default function ChatReply() {
   const [reply, setReply] = useState("");
   const [title, setTitle] = useState("");
 
-  const forumId = localStorage.getItem("fid");
+  const forumId = localStorage.getItem("ForumID");
   const userId = crrUser._id;
   const name = crrUser.name;
   console.log(forumId);
@@ -50,7 +50,7 @@ export default function ChatReply() {
       .post("http://localhost:8070/chatReply/", data)
       .then((res) => {
         swal("Success", "Chat Reply Successfully Added", "success");
-        navigate("/displayChat");
+        navigate("/oneForum");
       })
       .catch((err) => {
         console.log(err);
