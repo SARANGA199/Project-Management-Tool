@@ -61,6 +61,30 @@ export const updateRequest = async (req, res) => {
         });
 };
 
+
+export const updateCoSupervisorRequest = async (req, res) => {
+    const rId = req.params.id;
+
+    const {coSupervisorStatus} = req.body;
+
+    const updateReq = {
+        rId,
+        coSupervisorStatus
+    };
+
+    const update = await RequestSV.findByIdAndUpdate(rId, updateReq)
+        .then(() => {
+            res.status(200).send({ status: "Request status is  Updated" });
+        })
+        .catch((err) => {
+            console.log(err);
+            res
+                .status(500)
+                .send({ status: "Error with Updating status", error: err.message });
+        });
+};
+
+
 export const deleteRequest = async (req,res)=> {
     try {
         await RequestSV.deleteOne({rid: req.params.id});
