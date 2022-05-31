@@ -49,8 +49,7 @@ function Register() {
   else{
     try {
       const pendregister = await axios.post('http://localhost:8000/pending/register',{...user})
-      swal("Done!", "You successfully registered!", "success");
-      window.location.href = "/";
+      swal("Done!", "You successfully registered! Please Wait till the admin verifies your Details", "success");
     } catch (err) {
       swal("ERROR!", err.response.data.msg, "error");
     }

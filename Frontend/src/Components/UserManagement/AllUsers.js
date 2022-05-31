@@ -107,11 +107,11 @@ const handleDelete = (id) => {
                        <td>
   
                          <a className="btn btn-warning" href={`/editprofile/${data._id}`} onClick={() => setData(data)}>
-                            <i className= "fas fa-edit"></i>&nbsp;Update
+                            &nbsp;Update
                          </a>
                          &nbsp;
                          <a className="btn btn-danger" onClick={() => handleDelete(data._id)}>
-                            <i className= "fas fa-trash-alt"></i>&nbsp;Delete
+                            &nbsp;Delete
                          </a>
 
   

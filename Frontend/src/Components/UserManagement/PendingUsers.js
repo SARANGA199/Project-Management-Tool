@@ -19,13 +19,6 @@ export default function DisplayRouteRequest() {
     const setData = (data) => {
         let { _id,name, email,regNumber,specialization,researchArea,role} = data;
 
-        // localStorage.setItem('uid', _id);
-        // localStorage.setItem('Name', name);
-        // localStorage.setItem('Email', email);
-        // localStorage.setItem('RegistrationNo', regNumber);
-        // localStorage.setItem('Specialization', specialization);
-        // localStorage.setItem('InterestedResearchArea', researchArea);
-        // localStorage.setItem('Role', role);
         try {
           const register = axios.post('http://localhost:8000/user/register',{...data})
           swal("Done!", "You successfully registered!", "success");
@@ -98,11 +91,11 @@ const handleDelete = (id) => {
                        <td>
   
                          <a className="btn btn-warning" onClick={() => setData(data)}>
-                            <i className= "fas fa-edit"></i>&nbsp;Accept
+                            &nbsp;Accept
                          </a>
                          &nbsp;
                          <a className="btn btn-danger" onClick={() => handleDelete(data._id)}>
-                            <i className= "fas fa-trash-alt"></i>&nbsp;Decline
+                            &nbsp;Decline
                          </a>
 
   

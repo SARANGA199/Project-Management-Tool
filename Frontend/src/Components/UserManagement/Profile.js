@@ -97,6 +97,13 @@ function Profile() {
         <div>
             {loading && <h3>Loading.....</h3>}
         </div>
+        <div className="profContainer">
+        <div className="profLeft">
+          <div className="profTop">
+            MY <br />
+            PROFILE
+          </div>
+        </div>
         <div className="profile_page">
             <div className="col-left">
                 <div className='card'>
@@ -151,7 +158,7 @@ function Profile() {
                 <div className="col-right">
                 <div className='card'>
                     <h2>Update Password</h2>
-                
+                    <br/>
                     <div className="form-group">
                         <label htmlFor="expass">Existing Password</label>
                         <input type="password" name="expass" id="expass" 
@@ -168,11 +175,12 @@ function Profile() {
                         <label htmlFor="cf_password">Confirm Password</label>
                         <input type="password" name="cf_password" id="cf_password" onChange={handleChange}
                         placeholder="repeat your new password"   />
-                    </div>
+                    </div><br/>
                     <button onClick={updatePassword}>Update Password</button>
                 </div>
                 </div>
             </div>
+        </div>
         </div>
         </>
     )
