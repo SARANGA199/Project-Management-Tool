@@ -12,7 +12,6 @@ export default function RequestCoSupervisor() {
         const[groupLeaderEmail,setGroupLeaderEmail]=useState("");
         const[researchTopicName,setResearchTopicName]=useState("");
         const[comments,setComments]=useState("");
-        const[supervisorStatus,setSupervisorStatus]=useState("");
         const[coSupervisor,setCoSupervisor] = useState("");
         const [requestID, setRID] = useState("");
 
@@ -49,9 +48,8 @@ export default function RequestCoSupervisor() {
             const update = await axios
                 .put(`http://localhost:8070/requestSV/${requestID}`, newValue)
                 .then(() => {
-                    alert("sudssdsdsdscd")
-                    swal(`Supervisor is ${supervisorStatus}ed`);
-                    navigate("/displayRequests");
+                    swal("Request Send!");
+                    navigate("/displayCoSupervisors");
                 })
                 .catch((err) => {
                     swal(`Something went wrong !!!`);
@@ -166,10 +164,6 @@ export default function RequestCoSupervisor() {
                                             </div>
 
                                         </div>
-
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -180,51 +174,4 @@ export default function RequestCoSupervisor() {
 
         )
     }
-
-
-
-
-// async function handleSubmit(e) {
-//     e.preventDefault();
-//
-//     const dataNew = {
-//         researchSupervisor,
-//         researchCategory,
-//         groupID,
-//         groupLeaderEmail,
-//         researchTopicName,
-//         comments,
-//         supervisorStatus,
-//     };
-//
-//     await axios
-//         .put(`http://localhost:8070/requestSV/${requestID}`, dataNew)
-//         .then(() => {
-//             e.target.reset();
-//         })
-//         .catch((err) => {
-//             alert(err);
-//         });
-// }
-
-// async function saveRequest(e){
-//     e.preventDefault();
-//     const data = {
-//         researchSupervisor,
-//         researchCategory,
-//         groupID,
-//         groupLeaderEmail,
-//         researchTopicName,
-//         comments
-//     }
-//     const promise = await axios.get(`http://localhost:8070/requestSV/${rid}`,data).then((res)=>{
-//         if(res.status = 201) {
-//             alert("Post Added successfully");
-//         }}).catch((err)=>{
-//         alert(err);
-//     });
-// }
-// const handleCategory = (event)=>{
-//     setResearchCategory(event.target.value);
-// }
 

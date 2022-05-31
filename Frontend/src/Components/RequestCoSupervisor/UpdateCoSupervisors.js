@@ -47,7 +47,7 @@ export default function UpdateCoSupervisorStatus() {
         };
 
 
-        const updateStatus = await axios
+        const update = await axios
             .put(`http://localhost:8070/requestSV/${requestID}`, newData)
             .then(() => {
                 swal(`Co-Supervisor is ${coSupervisorStatus}ed`);

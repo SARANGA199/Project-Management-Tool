@@ -19,12 +19,12 @@ export default function DisplayCoSupervisors(){
         localStorage.setItem("rid", _id);
         navigate("/updateCoSupervisorStatus");
     };
-    const setDataCoVisor = (data) => {
-        let { _id } = data;
-
-        localStorage.setItem("rid", _id);
-        navigate("/requestCoSupervisor");
-    };
+    // const setDataCoVisor = (data) => {
+    //     let { _id } = data;
+    //
+    //     localStorage.setItem("rid", _id);
+    //     navigate("/requestCoSupervisor");
+    // };
     return(
         <div className="container">
             <br/>
@@ -76,9 +76,10 @@ export default function DisplayCoSupervisors(){
                                             data.coSupervisorStatus === "pending" ||
                                             data.coSupervisorStatus === "Rejected"
                                         }
-                                        onClick={() => setDataCoVisor(data)}
+                                        // onClick={() => setDataCoVisor(data)}
                                     >
                                         &nbsp;Request Co-Supervisor
+                                        {/*//nothing */}
                                     </button>
                                 </td>
                             </tr>
