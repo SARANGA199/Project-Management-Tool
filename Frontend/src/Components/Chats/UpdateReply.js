@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { GlobalState } from "../../GlobalState";
-import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -30,27 +29,31 @@ export default function UpdateReply() {
 
   const [reply, setReply] = useState("");
   const [title, setTitle] = useState("");
-  const [replyId, setReplyId] = useState("");
+  const [repID, setReplyId] = useState("");
 
   const name = crrUser.name;
 
   useEffect(() => {
-    const rid = localStorage.getItem("replyID");
-    console.log(rid);
-  });
+    const Rid = localStorage.getItem("replyID");
+    console.log(Rid);
 
-  console.log(replyId);
+    axios.get(`http://localhost:8070/chatReply/reply/${Rid}`).then((res) => {
+      setReply(res.data.reply);
+      setTitle(res.data.title);
+    });
+
+    setReplyId(Rid);
+  }, []);
 
   const submitData = async (e) => {
     e.preventDefault();
     const data = {
-      replyId,
       title,
       reply,
     };
 
     await axios
-      .put(`http://localhost:8070/chatReply/${replyId}`, data)
+      .put(`http://localhost:8070/chatReply/${repID}`, data)
       .then((res) => {
         swal("Success", "Chat Reply Successfully Updated", "success");
         navigate("/oneForum");
