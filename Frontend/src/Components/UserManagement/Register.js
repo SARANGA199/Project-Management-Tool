@@ -36,6 +36,8 @@ function Register() {
 
   const registerSubmit = async (e) => {
     e.preventDefault();
+    if(document.getElementById("password").value == document.getElementById("cf_password").value)
+    {
     if(document.getElementById('role').value =="Student"){
     try {
       const register = await axios.post('http://localhost:8000/user/register',{...user})
@@ -55,7 +57,10 @@ function Register() {
     }
 
   }
-  };
+  }else{
+    swal("ERROR!", "Passwords Mismatched!", "error");
+  }
+  }
 
   return (
     <div className="regTop" >
@@ -144,7 +149,8 @@ function Register() {
                         onChange={onChange}
                         id="password"
                         className="form-control form-control-lg"
-                        required
+                        required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                       />
                     </div>
                   </div>
@@ -172,9 +178,11 @@ function Register() {
                       </label>
                       <select name="specialization" id="spec" class="form-select" aria-label="Default select example" onChange={onChange}>
                         <option selected>Select your degree specialization</option>
-                        <option value="SE">Softwate Engineering</option>
-                        <option value="CS">Cyber Security</option>
-                        <option value="N">Networking</option>
+                        <option value="Softwate Engineering">Softwate Engineering</option>
+                        <option value="Cyber Security">Cyber Security</option>
+                        <option value="Networking">Networking</option>
+                        <option value="Data Management">Data Management</option>
+                        <option value="Quality Assurance">Quality Assurance</option>
                       </select>
                     </div>
                   </div>
@@ -185,9 +193,12 @@ function Register() {
                       </label>
                       <select name="researchArea" class="form-select" id="rarea" aria-label="Default select example" onChange={onChange}>
                         <option selected>Select your reasearch area</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="Machine Learning">Machine Learning</option>
+                        <option value="Computer Architecture">Computer Architecture</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option value="Robotics">Robotics</option>
+                        <option value="Systems and Networking">Systems and Networking</option>
+                        <option value="Data Science">Data Science</option>
                       </select>
                     </div>
                   </div>
