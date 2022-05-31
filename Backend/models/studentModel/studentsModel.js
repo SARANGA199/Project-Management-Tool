@@ -61,7 +61,8 @@ const students = mongoose.Schema({
        required:true
     },
 
-    groupIDStatus:{
+    // groupIDStatus:{
+    GroupID:{
         type:String,
     }
 })
