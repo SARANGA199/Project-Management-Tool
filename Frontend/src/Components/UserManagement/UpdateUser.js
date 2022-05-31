@@ -1,16 +1,11 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import './Styles/profile.css';
-import { GlobalState } from '../../GlobalState';
+import { id } from 'date-fns/locale';
 
 function Profile() {
 
-    const state = useContext(GlobalState)
-    const [isLogged,setIsLogged ] = state.UserAPI.isLogged
-    const [isAdmin,setIsAdmin ] = state.UserAPI.isAdmin
-    const [token] = state.token
-    const [loading, setLoading] = useState(false)
-
+    const [id,setId] = useState();
     const [name, setName] = useState();
     const [email,setEmail] = useState();
     const [regNumber,setRegNumber]= useState();
@@ -20,29 +15,15 @@ function Profile() {
 
     useEffect(() => {
 
-        setName(localStorage.getItem('Name'))
+        setId(localStorage.getItem('uid'));
+        setName(localStorage.getItem('Name'));
         setEmail(localStorage.getItem('Email'));
         setRegNumber(localStorage.getItem('RegistrationNo'));
-        setSpecialization(localStorage.getItem('Specialization'))
+        setSpecialization(localStorage.getItem('Specialization'));
         setResearchArea(localStorage.getItem('InterestedResearchArea'));
         setRole(localStorage.getItem('Role'));
 
     },[] );
-
-    // const updateInfo = () => {
-    //     try {
-    //         const up = axios.patch('http://localhost:8000/user/update', {
-    //             name: name ? name : crrUser.name,
-    //             image: image ? image : crrUser.image
-    //         },{
-    //             headers: {Authorization: token}
-    //         })
-
-    //         swal("Done!", "Updated Success!", "success");
-    //     } catch (err) {
-    //         return swal("ERROR!", "Updated Failed!", "error");
-    //     }
-    // }
 
     function submitData(e) {
         e.preventDefault();
@@ -55,26 +36,26 @@ function Profile() {
             researchArea,
             role
         }
-
-        let ans = window.confirm("Are you really wanted to update ?");
-
-        if(ans){
-
-        axios.put(`http://localhost:8070/routeOrder/updateOrderRoute/${orderId}`,newRoute).then(()=>{
-
-            alert("Route Updated Successfully");
-           
-            history.push('/routeOrder');
-    
-         }).catch((err)=>{
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+              axios.put(`http://localhost:8000/user/updateUsr/${id}`,newRoute)
+              swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+              });
+            } else {
+              swal("Your imaginary file is safe!");
+            }
+          }).catch((err)=>{
     
             alert(err);
          })
-          
-         
-        }   
-                 
-
+      
     }
 
     return (
@@ -107,8 +88,8 @@ function Profile() {
                 <div className="form-outline">
                 <div className="form-group">
                     <label htmlFor="regNumber">Registration Number</label>
-                    <input type="text" name="regNumber" id="regNumber" defaultValue={email}
-                    placeholder="Registration number" onChange={e=>{setEmail(e.target.value);}}/>
+                    <input type="text" name="regNumber" id="regNumber" defaultValue={regNumber}
+                    placeholder="Registration number" onChange={e=>{setRegNumber(e.target.value);}}/>
                 </div>
                 </div>
                 </div>
@@ -119,8 +100,8 @@ function Profile() {
                 <div className="form-outline">
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" defaultValue={regNumber}
-                    placeholder="Your email address" onChange={e=>{setRegNumber(e.target.value);}}/>
+                    <input type="email" name="email" id="email" defaultValue={email}
+                    placeholder="Your email address" onChange={e=>{setEmail(e.target.value);}}/>
                 </div>
                 </div>
                 </div>
@@ -145,9 +126,9 @@ function Profile() {
                 </div>
                 
                 <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" defaultValue={role}
-                    placeholder="Your email address" onChange={e=>{setRole(e.target.value);}}/>
+                    <label htmlFor="role">Email</label>
+                    <input type="text" name="role" id="role" defaultValue={role}
+                    placeholder="Your role" onChange={e=>{setRole(e.target.value);}}/>
                 </div>
 
                 <button>Update</button>

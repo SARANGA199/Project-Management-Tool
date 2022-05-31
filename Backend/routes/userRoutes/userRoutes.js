@@ -21,6 +21,8 @@ router.get('/all_infor', auth, userController.getUsersAllInfor);
 
 router.patch('/update', auth, userController.updateUser);
 
+router.put('/updateUsr/:id', userController.updateAUser);
+
 router.delete('/delete/:id', userController.deleteUser);
 
 router.get('/all_users', userController.getAllInfo);

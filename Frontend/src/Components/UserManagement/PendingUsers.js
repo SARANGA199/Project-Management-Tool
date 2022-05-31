@@ -11,8 +11,6 @@ export default function DisplayRouteRequest() {
             }).catch((err)=>{
                 alert(err.message);
              })
-        
-
     },[])
 
     
@@ -21,7 +19,7 @@ export default function DisplayRouteRequest() {
 
         try {
           const register = axios.post('http://localhost:8000/user/register',{...data})
-          swal("Done!", "You successfully registered!", "success");
+          swal("Done!", "User successfully added!", "success");
           axios.delete(`http://localhost:8000/pending/delete/${data._id}`)
         } catch (err) {
           swal("ERROR!", err.response.data.msg, "error");
@@ -86,11 +84,10 @@ const handleDelete = (id) => {
                        <td>{data.regNumber}</td>
                        <td>{data.researchArea}</td>
                        <td>{data.role}</td>
-                      
 
                        <td>
   
-                         <a className="btn btn-warning" onClick={() => setData(data)}>
+                         <a className="btn btn-success" onClick={() => setData(data)}>
                             &nbsp;Accept
                          </a>
                          &nbsp;

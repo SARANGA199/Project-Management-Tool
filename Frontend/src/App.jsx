@@ -69,7 +69,7 @@ export default class App extends Component {
           <Route path="/allusers" element={<AllUsers/>} />
           <Route path="/PendingUsers" element={<PendingUsers/>} />
           <Route path="/doceval" element={<DocEvaluation/>} />
-          <Route path="/updateuser" element={<UpdateUser/>} />
+          <Route path="/updateuser/:id" element={<UpdateUser/>} />
         </Routes>
       </BrowserRouter>
       </DataProvider>

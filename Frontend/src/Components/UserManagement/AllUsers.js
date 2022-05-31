@@ -149,7 +149,7 @@ const filterData = (prof,searchkey) =>{
 
                        <td>
   
-                         <a className="btn btn-warning" href={`/editprofile/${data._id}`} onClick={() => setData(data)}>
+                         <a className="btn btn-warning" href={`/updateuser/${data._id}`} onClick={() => setData(data)}>
                             &nbsp;Update
                          </a>
                          &nbsp;
