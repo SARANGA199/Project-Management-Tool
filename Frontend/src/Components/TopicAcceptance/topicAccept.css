@@ -66,7 +66,7 @@ body {
 
 .cardChat {
   padding: 3vh;
-  margin-top: 3vh;
+  margin-top: 1vh;
   box-shadow: 0 0 0 0;
   background-color: whitesmoke;
   width: 70%;
@@ -122,4 +122,16 @@ body {
 .btnChtGroupNew {
   margin-left: 87vh;
   margin-top: -3.3vh;
+}
+
+.groupIdSty {
+  font-size: 3vh;
+  font-weight: bold;
+  margin-top: 4vh;
+}
+
+.topicHrGroup {
+  color: rgb(255, 166, 1);
+  border-top: 1vh solid;
+  width: 8%;
 }

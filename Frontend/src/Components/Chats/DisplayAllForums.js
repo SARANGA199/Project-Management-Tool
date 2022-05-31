@@ -13,7 +13,7 @@ export default function DisplayAllForums() {
 
   useEffect(() => {
     const forum = axios
-      .get(`http://localhost:8070/chatForum/`)
+      .get(`http://localhost:8070/chatForum/forums`)
       .then((res) => {
         setForums(res.data);
         console.log(res.data);
@@ -70,26 +70,31 @@ export default function DisplayAllForums() {
           </div>
         </div>
         <div className="container">
-          <div className="topicNam">GROUP -</div>
+          <div className="topicNam">Chat Forums</div>
           <hr className="topicHr" />
 
           {/* card */}
           {forums.map((forum, index) => (
-            <div key={index} className="cardChat">
-              <h6 className="titleChat" onClick={() => getForumDetails(forum)}>
-                {forum.topic}
-              </h6>
-              <h6 className="ms-3">
-                by <b className="chatBody"> {forum.auther}</b> -{" "}
-                {forum.createdAt}
-              </h6>{" "}
-              <br />
-              <h6 className="ms-3">{forum.message}</h6>
-              <a className="btChat" onClick={() => getForumDetails(forum)}>
-                View
-              </a>
-              {/* login user only */}
-              {forum.userId === crrUser._id ? (
+            <div key={index}>
+              <div className="groupIdSty">GROUP - {forum.groupID}</div>
+              <hr className="topicHrGroup" />
+              <div className="cardChat">
+                <h6
+                  className="titleChat"
+                  onClick={() => getForumDetails(forum)}
+                >
+                  {forum.topic}
+                </h6>
+                <h6 className="ms-3">
+                  by <b className="chatBody"> {forum.auther}</b> -{" "}
+                  {forum.createdAt}
+                </h6>{" "}
+                <br />
+                <h6 className="ms-3">{forum.message}</h6>
+                <a className="btChat" onClick={() => getForumDetails(forum)}>
+                  View
+                </a>
+                {/* login user only */}
                 <div className="btnChtGroupNew">
                   <a
                     className="btChatUpdate"
@@ -106,9 +111,7 @@ export default function DisplayAllForums() {
                     Delete
                   </a>
                 </div>
-              ) : (
-                ""
-              )}
+              </div>
             </div>
           ))}
         </div>
