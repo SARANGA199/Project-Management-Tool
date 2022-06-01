@@ -31,10 +31,22 @@ export default function CreateChat() {
   const [topic, setTopic] = useState("");
   const [message, setMessage] = useState("");
   const [groupID, setGroupID] = useState("");
+  const [groupDetails, setGroupDetails] = useState([]);
 
   const auther = crrUser.name;
   const userId = crrUser._id;
   console.log(userId);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8070/members")
+      .then((res) => {
+        setGroupDetails(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   //handle specialization
   const handleChange = (event) => {
@@ -124,9 +136,11 @@ export default function CreateChat() {
                         autoWidth
                         onChange={handleChange}
                       >
-                        <MenuItem value={"G20"}>G20</MenuItem>
-                        <MenuItem value={"G21"}>G21</MenuItem>
-                        <MenuItem value={"G22"}>G22</MenuItem>
+                        {groupDetails.map((data, index) => (
+                          <MenuItem key={index} value={data.GroupID}>
+                            {data.GroupID}
+                          </MenuItem>
+                        ))}
                       </Select>
                     </FormControl>
                   </Box>
