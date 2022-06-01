@@ -9,24 +9,33 @@ export const getMembers = async (req, res) => {
   }
 };
 
-// export const saveMembers = async (req,res)=>{
-//     const member = new Members(req.body);
-//     try {
-//         await member.save();
-//         res.status(201).json(member);
-//     } catch (error) {
-//         res.status(400).json({message: error.message});
-//     }
-// }
-export const saveMembers = async (req, res) => {
-  const member = new Members(req.body);
-  try {
-    const insertedmembers = await member.save();
-    res.status(201).json(insertedmembers);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
+export const saveMembers = async (req,res)=>{
+    const member = new Members(req.body);
+    try {
+        await member.save()
+            .then(async member => {
+                res.status(201).json(member);
+
+
+                let value = await Members.countDocuments({})
+                const GroupID = 'REG_GROUP_'+(value+1)
+            })
+
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+}
+
+
+// export const saveMembers = async (req, res) => {
+//   const member = new Members(req.body);
+//   try {
+//     const insertedmembers = await member.save();
+//     res.status(201).json(insertedmembers);
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// };
 
 export const getGroupID = async (req, res) => {
   const mail = req.params.email;
