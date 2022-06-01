@@ -35,6 +35,7 @@ import DisplayOneForum from "./Components/Chats/DisplayOneForum";
 import UpdateReply from "./Components/Chats/UpdateReply";
 import UpdateChatForum from "./Components/Chats/UpdateChatForum";
 import DisplayAllForums from "./Components/Chats/DisplayAllForums";
+import DisplayPresentationMarks from "./Components/PresentationEvaluation/DisplayPresentationMarks";
 
 export default class App extends Component {
   constructor(props) {
@@ -56,6 +57,10 @@ export default class App extends Component {
             <Route
               path="/evaluatePresentation"
               element={<EvaluatePresentation />}
+            />
+            <Route
+              path="/presentationMarks"
+              element={<DisplayPresentationMarks />}
             />
 
             <Route path="/topics" element={<Topics />} />
