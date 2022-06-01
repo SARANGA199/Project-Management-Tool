@@ -6,26 +6,21 @@ import EvaluatePresentation from "./Components/PresentationEvaluation/EvaluatePr
 import ViewMarkingSchemes from "./Components/Marking/ViewMarkingSchemes";
 import UpdateMarking from "./Components/Marking/UpdateMarking";
 import CreateGroup from "./Components/CreateGroup/CreateGroup";
-import UserList from "./Components/DisplayGroupsList/DisplayGroupList";
 import TopicRegister from "./Components/TopicRegister/TopicRegister";
 import { RequestSupervisor } from "./Components/RequestSupervisor/RequestSupervisor";
-import TemplateForm from "./components/template/templateForm/templateForm.jsx";
-import Displaytemplate from "./components/template/displayTemplate/display.jsx";
-import AddSubmissiontype from "./components/submission/addsubmissionType.js";
-import DisplaysubType from "./components/submission/displaySubType.js";
 
 import TemplateForm from "./Components/template/templateForm/templateForm.jsx";
 import Displaytemplate from "./Components/template/displayTemplate/display.jsx";
 import AddSubmissiontype from "./Components/submission/addsubmissionType.js";
 import DisplaysubType from "./Components/submission/displaySubType.js";
 
+
+
 import Topics from "./Components/TopicAcceptance/Topics";
 import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
-import Topics from "./components/TopicAcceptance/Topics";
-import AcceptTopic from "./components/TopicAcceptance/AcceptTopic";
 import DisplayRequests from "./Components/DisplayRequests/DisplayRequests.js";
-import TopicEvaluate from "./components/TopicAcceptance/TopicEvaluate";
-import AddPanelMember from "./components/AlocatePanel/AddPanelMember.js";
+import TopicEvaluate from "./Components/TopicAcceptance/TopicEvaluate";
+import AddPanelMember from "./Components/AlocatePanel/AddPanelMember.js";
 
 import { DataProvider } from "./GlobalState";
 import Login from "./Components/UserManagement/Login";
@@ -34,7 +29,7 @@ import Register from "./Components/UserManagement/Register";
 import ForgotPassword from "./Components/UserManagement/ForgotPassword";
 import ResetPassword from "./Components/UserManagement/ResetPassword";
 import Profile from "./Components/UserManagement/Profile";
-import AllUsers from "./components/UserManagement/AllUsers";
+import AllUsers from "./Components/UserManagement/AllUsers";
 import DocEvaluation from "./Components/UserManagement/DocEvaluation";
 import CreateChat from "./Components/Chats/CreateChat";
 import DisplayChats from "./Components/Chats/DisplayChats";
@@ -55,8 +50,8 @@ import UpdateSupervisorStatus from "./Components/DisplayRequests/UpdateSuperviso
 import RequestCoSupervisor from "./Components/RequestCoSupervisor/RequestCoSupervisor";
 import DisplayCoSupervisors from "./Components/RequestCoSupervisor/DisplayCoSupervisors";
 import UpdateCoSupervisorStatus from "./Components/RequestCoSupervisor/UpdateCoSupervisors";
-import AddMember from "./components/AlocatePanel/AddMember.js";
-import UpdateSubmissionType from "./components/submission/UpdateSubmissionType";
+import AddMember from "./Components/AlocatePanel/AddMember.js";
+import UpdateSubmissionType from "./Components/submission/UpdateSubmissionType";
 
 export default class App extends Component {
   constructor(props) {
