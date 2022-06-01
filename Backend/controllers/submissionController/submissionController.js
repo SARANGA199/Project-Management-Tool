@@ -62,11 +62,11 @@ export const updateAllSubmissionTypeData = async (req,res) =>{
   const sId = req.params.id;
   
 
-   const {submission}= req.body;
+   //const {submission}= req.body;
   
   
 
-  const update = await Submission.findByIdAndUpdate(sId, {submission:submission})
+  const update = await Submission.findByIdAndUpdate(sId, req.body)
     .then(() => {
     res.status(200).send({ status: "Updated" });
   })
