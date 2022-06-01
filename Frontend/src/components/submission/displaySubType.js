@@ -37,6 +37,32 @@ useEffect(() => {
     
   }, [])
 
+  function deleteSubType(id) {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`http://localhost:8070/submission/deleteSubType/${id}`)
+          .then(() => {
+            swal("Submission Type Deleted successfully", {
+              icon: "success",
+            });
+            window.location.reload(false);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else {
+        swal("Deletion canceled!");
+      }
+    });
+  }
+
   const setData = async (data) => {
     
     let { _id,subTypeName,subTypeDiscription,templateTitle,templateDiscription,template} = data;
@@ -76,6 +102,9 @@ useEffect(() => {
       <center>
                  <div style={{paddingTop: '20px'}}  className="col-xl-12">
                       <Button  type="submit" className="btn btn-primary mt-5 " onClick={() => setData(submisionType)} >UPDATE</Button>
+                </div>
+                <div style={{paddingTop: '20px'}}  className="col-xl-12">
+                      <Button  type="submit" className="btn btn-primary mt-5 " onClick={() => deleteSubType(submisionType._id)} >DELETE</Button>
                 </div>
                 </center>
                 <div style={{paddingTop: '20px'}}  className="col-xl-12">
