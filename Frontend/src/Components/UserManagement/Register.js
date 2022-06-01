@@ -42,7 +42,7 @@ function Register() {
     try {
       const register = await axios.post('http://localhost:8000/user/register',{...user})
       localStorage.setItem("firstLogin", true);
-      swal("Done!", "You successfully registered!", "success");
+      swal("Done!", "Register Success! Please activate your email to start.", "success");
       window.location.href = "/";
     } catch (err) {
       swal("ERROR!", err.response.data.msg, "error");

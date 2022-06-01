@@ -28,6 +28,8 @@ import AllUsers from "./Components/UserManagement/AllUsers";
 import DocEvaluation from "./Components/UserManagement/DocEvaluation";
 import PendingUsers from "./Components/UserManagement/PendingUsers.js";
 import UpdateUser from "./Components/UserManagement/UpdateUser.js";
+import DocumentEvaluation from "./Components/DocumentEvaluation/DocumentEvaluation.js";
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -70,6 +72,8 @@ export default class App extends Component {
           <Route path="/PendingUsers" element={<PendingUsers/>} />
           <Route path="/doceval" element={<DocEvaluation/>} />
           <Route path="/updateuser/:id" element={<UpdateUser/>} />
+          <Route path="/documenteval" element={<DocumentEvaluation/>} />
+
         </Routes>
       </BrowserRouter>
       </DataProvider>

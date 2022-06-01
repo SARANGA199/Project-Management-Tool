@@ -5,6 +5,8 @@ import auth from "../../middleware/auth.js";
 
 router.post('/register',userController.register);
 
+router.post('/activation', userController.activateEmail);
+
 router.post('/login',userController.login);
 
 router.get('/logout',userController.logout);
