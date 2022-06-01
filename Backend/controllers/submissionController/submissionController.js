@@ -23,7 +23,7 @@ export const displaySubmissionType = async (req,res) => {
 
     Submission.find().then((data)=>{
        res.json(data);
-       console.log("display sussesfull")
+       
        
     }).catch((err)=>{
   
