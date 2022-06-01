@@ -20,10 +20,6 @@ import allocatePanelRouter from "./routes/allocatePanelRoutes/allocatePanelRoute
 import stdSubmitDocRouter from "./routes/stdSubmitDocRoute/stdSubmitDocRouter.js";
 import userRouter from "./routes/userRoutes/userRoutes.js";
 
-
-
-import userRouter from "./routes/userRoutes/userRoutes.js";
-import stdSubmitDoc from "./routes/stdSubmitDocRoute/stdSubmitDocRouter.js";
 import chatForumRoutes from "./routes/chatForumRoutes/chatForumRoutes.js";
 import ChatReplyRoutes from "./routes/chatForumRoutes/chatReplyRoutes.js";
 const app = new express();
