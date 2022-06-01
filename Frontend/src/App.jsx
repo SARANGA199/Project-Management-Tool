@@ -29,6 +29,7 @@ import DocEvaluation from "./Components/UserManagement/DocEvaluation";
 import PendingUsers from "./Components/UserManagement/PendingUsers.js";
 import UpdateUser from "./Components/UserManagement/UpdateUser.js";
 import DocumentEvaluation from "./Components/DocumentEvaluation/DocumentEvaluation.js";
+import ActivationEmail from "./Components/UserManagement/ActivationEmail";
 
 export default class App extends Component {
   constructor(props) {
@@ -73,6 +74,7 @@ export default class App extends Component {
           <Route path="/doceval" element={<DocEvaluation/>} />
           <Route path="/updateuser/:id" element={<UpdateUser/>} />
           <Route path="/documenteval" element={<DocumentEvaluation/>} />
+          <Route path="/user/activate/:activation_token" element={<ActivationEmail/>} />
 
         </Routes>
       </BrowserRouter>
