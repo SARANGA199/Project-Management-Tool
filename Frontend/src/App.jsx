@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component,useContext } from "react";
+import { GlobalState } from '../../GlobalState.js'
 import AddMarking from "./Components/Marking/AddMarking";
 import DisplayMarking from "./Components/PresentationEvaluation/DisplayMarking";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -30,6 +31,7 @@ import PendingUsers from "./Components/UserManagement/PendingUsers.js";
 import UpdateUser from "./Components/UserManagement/UpdateUser.js";
 import DocumentEvaluation from "./Components/DocumentEvaluation/DocumentEvaluation.js";
 import ActivationEmail from "./Components/UserManagement/ActivationEmail";
+import NotFound from "./Components/utils/NotFound/NotFound.JS";
 
 export default class App extends Component {
   constructor(props) {
