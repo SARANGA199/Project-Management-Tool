@@ -15,7 +15,7 @@ export const addSubmissiontype = async(req,res)=>{
 
 
     
-}
+};
 
 export const displaySubmissionType = async (req,res) => {
 
@@ -30,7 +30,7 @@ export const displaySubmissionType = async (req,res) => {
        console.catch.log(err);
     })
   
-  }
+  };
 
 export const updateSubmissionType = async (req,res) =>{
 
@@ -53,7 +53,7 @@ export const updateSubmissionType = async (req,res) =>{
         .status(500)
         .send({ status: "Error with Updating", error: err.message });
     });
-}
+};
 
 export const updateAllSubmissionTypeData = async (req,res) =>{
 
@@ -76,4 +76,18 @@ export const updateAllSubmissionTypeData = async (req,res) =>{
       .status(500)
       .send({ status: "Error with Updating", error: err.message });
   });
-}
+};
+
+export const deleteSubType = async (req, res) => {
+  let sId = req.params.id;
+  await Submission.findByIdAndDelete(sId)
+    .then(() => {
+      res.status(200).send({ status: "Submission Type  deleted" });
+    })
+    .catch((err) => {
+      console.log(err.message);
+      res
+        .status(500)
+        .send({ status: "Error with Delete Submission Type", error: err.message });
+    });
+};

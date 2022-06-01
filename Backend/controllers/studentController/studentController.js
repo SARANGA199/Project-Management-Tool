@@ -24,7 +24,7 @@ export const saveMembers = async (req,res)=>{
       Member4Email} = req.body;
     let value = await Members.countDocuments({})
     const GroupID = 'REG_GROUP_'+(value+1)
-    console.log(GroupID)
+   
     try {
 
       const group = new Members({leaderName,

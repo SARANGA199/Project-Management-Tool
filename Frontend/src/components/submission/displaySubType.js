@@ -81,6 +81,9 @@ useEffect(() => {
                 <div style={{paddingTop: '20px'}}  className="col-xl-12">
                       <Button  type="submit" className="btn btn-primary mt-5 "  >SUBMIT DOCUMENT</Button>
                 </div>
+                <div style={{paddingTop: '20px'}}  className="col-xl-12">
+                      <Button  type="submit" className="btn btn-primary mt-5 "  >VIEW {submisionType.subTypeName} MARKS</Button>
+                </div>
             </div>        
 
 		</div>
