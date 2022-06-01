@@ -38,11 +38,11 @@ const UpdateSubmissionType= ()=>{
     // const [subTypeDiscription,setSubTypeDiscription] = useState("")
     // const [submission,setSubmission] = useState("test1")
 
-    // let sId = localStorage.getItem("Sid");
+     let sId = localStorage.getItem("Sid");
     // let sId = localStorage.getItem("Sid");
 
     const [data, setData] = useState({
-            adminName:localStorage.getItem("Sid"),
+            adminName:"test",
             subTypeName:localStorage.getItem("SubTypeName"),
             subTypeDiscription:localStorage.getItem("SubTypeDiscription"),
             template:localStorage.getItem("Template"),
@@ -51,6 +51,13 @@ const UpdateSubmissionType= ()=>{
 	});
 
     
+  // const setDocumetData =async(action)=>{
+
+  //   setShowResults(action)
+  //   const[data,setData]=useState({template:""})
+
+  // }
+
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
@@ -74,8 +81,8 @@ const UpdateSubmissionType= ()=>{
 			//const url = process.env.REACT_APP_API_URL + "/addtemplate"
            
 
-            const { data : res } =  axios.put('http://localhost:8070/submission/updateAlldata', data).then(()=>{
-				          console.log(data)
+            const { data : res } = await axios.put(`http://localhost:8070/submission/updateAlldata/${sId}`, data).then(()=>{
+				         // console.log(data)
                 alert("Update sucsesfull")
                 navigate("/displaysub");
 			  //history.push('/display');
