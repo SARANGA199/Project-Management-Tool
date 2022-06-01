@@ -60,6 +60,11 @@ const students = mongoose.Schema({
         type:String,
        required:true
     },
+
+    // groupIDStatus:{
+    GroupID:{
+        type:String,
+    }
 })
 
 export default mongoose.model('Members',students);

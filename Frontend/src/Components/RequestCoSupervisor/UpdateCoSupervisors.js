@@ -4,7 +4,7 @@ import swal from "sweetalert";
 import {useNavigate} from "react-router-dom";
 
 
-export default function UpdateSupervisorStatus() {
+export default function UpdateCoSupervisorStatus() {
     let navigate = useNavigate();
     const[researchSupervisor,setResearchSupervisor] = useState("");
     const[researchCategory,setResearchCategory]=useState("");
@@ -12,7 +12,8 @@ export default function UpdateSupervisorStatus() {
     const[groupLeaderEmail,setGroupLeaderEmail]=useState("");
     const[researchTopicName,setResearchTopicName]=useState("");
     const[comments,setComments]=useState("");
-    const[supervisorStatus,setSupervisorStatus]=useState("");
+    const[coSupervisor,setCoSupervisor]=useState("");
+    const[coSupervisorStatus,setCoSupervisorStatus]=useState("");
     const [requestID, setRID] = useState("");
 
 
@@ -28,7 +29,8 @@ export default function UpdateSupervisorStatus() {
                 setGroupLeaderEmail(res.data.groupLeaderEmail);
                 setResearchTopicName(res.data.researchTopicName);
                 setComments(res.data.comments);
-                setSupervisorStatus(res.data.supervisorStatus);
+                setCoSupervisor(res.data.coSupervisor);
+                setCoSupervisorStatus(res.data.coSupervisorStatus);
                 console.log(res.data);
             })
             .catch((err) => {
@@ -39,18 +41,17 @@ export default function UpdateSupervisorStatus() {
     }, []);
 
 
-    const setData = async (supervisorStatus) => {
-        const newValue = {
-            supervisorStatus,
+    const setData = async (coSupervisorStatus) => {
+        const newData = {
+            coSupervisorStatus,
         };
 
 
         const update = await axios
-            .put(`http://localhost:8070/requestSV/${requestID}`, newValue)
+            .put(`http://localhost:8070/requestSV/${requestID}`, newData)
             .then(() => {
-                alert("sudssdsdsdscd")
-                swal(`Supervisor is ${supervisorStatus}ed`);
-                navigate("/displayRequests");
+                swal(`Co-Supervisor is ${coSupervisorStatus}ed`);
+                navigate("/displayCoSupervisors");
             })
             .catch((err) => {
                 swal(`Something went wrong !!!`);
@@ -113,6 +114,14 @@ export default function UpdateSupervisorStatus() {
                                             </div>
 
                                             <div className="row">
+                                            <div className="col-md-12">
+                                                <label> Research Supervisor :</label>
+                                                <div className="form-group">
+                                                    <input type="text"  className="form-control" value={researchSupervisor}  disabled={true}/>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div className="row">
                                                 <div className="col-md-12">
                                                     <label>Comments : </label>
                                                     <div className="form-group">
@@ -131,16 +140,16 @@ export default function UpdateSupervisorStatus() {
                                         <h5 className="card-title">form</h5>
                                         <div className="row">
                                             <div className="col-md-6">
-                                                <label> Research Supervisor :</label>
+                                                <label> Research Co-Supervisor :</label>
                                                 <div className="form-group">
-                                                    <input type="text"  className="form-control" value={researchSupervisor}  disabled={true}/>
+                                                    <input type="text"  className="form-control" value={coSupervisor}  disabled={true}/>
                                                 </div>
                                             </div>
 
                                             <div className="col-md-6">
                                                 <label>Request Status :</label>
                                                 <div className="form-group">
-                                                    <input type="text"  className="form-control" value={supervisorStatus} />
+                                                    <input type="text"  className="form-control" value={coSupervisorStatus} />
                                                 </div>
                                             </div>
                                         </div>
@@ -190,49 +199,4 @@ export default function UpdateSupervisorStatus() {
 }
 
 
-
-
-// async function handleSubmit(e) {
-//     e.preventDefault();
-//
-//     const dataNew = {
-//         researchSupervisor,
-//         researchCategory,
-//         groupID,
-//         groupLeaderEmail,
-//         researchTopicName,
-//         comments,
-//         supervisorStatus,
-//     };
-//
-//     await axios
-//         .put(`http://localhost:8070/requestSV/${requestID}`, dataNew)
-//         .then(() => {
-//             e.target.reset();
-//         })
-//         .catch((err) => {
-//             alert(err);
-//         });
-// }
-
-// async function saveRequest(e){
-//     e.preventDefault();
-//     const data = {
-//         researchSupervisor,
-//         researchCategory,
-//         groupID,
-//         groupLeaderEmail,
-//         researchTopicName,
-//         comments
-//     }
-//     const promise = await axios.get(`http://localhost:8070/requestSV/${rid}`,data).then((res)=>{
-//         if(res.status = 201) {
-//             alert("Post Added successfully");
-//         }}).catch((err)=>{
-//         alert(err);
-//     });
-// }
-// const handleCategory = (event)=>{
-//     setResearchCategory(event.target.value);
-// }
 

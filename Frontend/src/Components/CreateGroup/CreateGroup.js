@@ -5,9 +5,7 @@ import swal from "sweetalert";
 
 const CreateGroup = ()=>{
 
-    //const history = useHistory();
-
-    const[leaderName,setLeaderName] = useState("");
+     const[leaderName,setLeaderName] = useState("");
      const[leaderID,setLeaderID] = useState("");
      const[leaderEmail,setLeaderEmail] = useState("");
 

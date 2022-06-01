@@ -22,7 +22,15 @@ const RequestSupervisors = mongoose.Schema({
     supervisorStatus:{
         type:String,
         default:'pending'
-    }
+    },
+    coSupervisor:{
+        type:String,
+        default:' '
+    },
+    coSupervisorStatus:{
+        type:String,
+        default:'pending'
+    },
 })
 
 export default mongoose.model('RequestSV',RequestSupervisors);

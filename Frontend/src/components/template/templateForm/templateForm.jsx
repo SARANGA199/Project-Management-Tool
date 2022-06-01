@@ -23,6 +23,7 @@ const TemplateForm = () => {
   const handleInputState = (name, value) => {
     setData((prev) => ({ ...prev, [name]: value }));
   };
+	// const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -88,8 +89,9 @@ const TemplateForm = () => {
 			const url = process.env.REACT_APP_API_URL + "/addtemplate"
 			const { data : res } = await axios.post(url, data).then(()=>{
 				alert("template add suscesfull")
+				// history.push('/display');
 				navigate("/display");
-				//history.push('/display');
+			
 				console.log(data)
 			  
 			})
