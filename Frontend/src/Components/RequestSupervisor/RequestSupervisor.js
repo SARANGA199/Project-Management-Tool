@@ -12,6 +12,7 @@ export const RequestSupervisor = ()=>{
     const[researchTopicName,setResearchTopicName]=useState("");
     const[comments,setComments]=useState("");
     const [submission, setSubmission] = useState([]);
+    const [supervisor, setSupervisor] = useState([]);
     
 
     useEffect(() => {
@@ -23,7 +24,20 @@ export const RequestSupervisor = ()=>{
           .catch((err) => {
             console.log(err);
           });
+          
       }, []);
+
+      const setSupervisorData = async (data) => {
+
+        axios
+          .get(`http://localhost:8070/user/infoSupervisor/${data}`)
+          .then((res) => {
+            setSupervisor(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
 
 
     async function saveRequest(e){
@@ -78,7 +92,7 @@ export const RequestSupervisor = ()=>{
                                         <div className="col-md-12">
                                             <label>Research Category : </label>
                                             <div className="form-group">
-                                                <select className="form-select" aria-label="Default select example" value={researchCategory} onChange={e => setResearchCategory(e.target.value)}>
+                                                <select className="form-select" aria-label="Default select example" value={researchCategory} onChange={() => setSupervisorData(e.target.value)}>
                                                 {submission.map((data, index) => (
                                                     <option key={index} value={data.subTypeName}>{data.subTypeName}</option>
                 
@@ -86,11 +100,11 @@ export const RequestSupervisor = ()=>{
                                                 </select>
                                             </div>
 
-                                            <label>Research Category : </label>
+                                            <label>Supervisor : </label>
                                             <div className="form-group">
                                                 <select className="form-select" aria-label="Default select example" value={researchCategory} onChange={e => setResearchCategory(e.target.value)}>
-                                                {submission.map((data, index) => (
-                                                    <option key={index} value={data.subTypeName}>{data.subTypeName}</option>
+                                                {supervisor.map((data, index) => (
+                                                    <option key={index} value={data.name}>{data.name}</option>
                 
                                                     ))}
                                                 </select>
