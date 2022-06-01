@@ -86,7 +86,10 @@ export default function DisplayAllForums() {
                   {forum.topic}
                 </h6>
                 <h6 className="ms-3">
-                  by <b className="chatBody"> {forum.auther}</b> -{" "}
+                  <a href="/profile">
+                    {" "}
+                    by <b className="chatBody"> {forum.auther}</b> -{" "}
+                  </a>
                   {forum.createdAt}
                 </h6>{" "}
                 <br />
