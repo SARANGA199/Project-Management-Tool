@@ -29,6 +29,10 @@ const submissionSchema = new Schema({
 	templateDiscription:{
         type:String,
     },
+    marksStatus:{
+        type:String,
+        default:"Disable"
+    },
 
    
 },{timestamps:true})
