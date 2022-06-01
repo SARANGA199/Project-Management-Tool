@@ -6,7 +6,7 @@ export default function DisplayRouteRequest() {
 
     useEffect(()=>{
             
-        axios.get("http://localhost:8000/pending/getall").then((res)=>{
+        axios.get("http://localhost:8070/pending/getall").then((res)=>{
             setUsers(res.data.pendingUsers);
             }).catch((err)=>{
                 alert(err.message);
@@ -18,9 +18,9 @@ export default function DisplayRouteRequest() {
         let { _id,name, email,regNumber,specialization,researchArea,role} = data;
 
         try {
-          const register = axios.post('http://localhost:8000/user/accept',{...data})
+          const register = axios.post('http://localhost:8070/user/accept',{...data})
           swal("Done!", "User successfully added!", "success");
-          axios.delete(`http://localhost:8000/pending/delete/${data._id}`)
+          axios.delete(`http://localhost:8070/pending/delete/${data._id}`)
           window.location.reload(false);
         } catch (err) {
           swal("ERROR!", err.response.data.msg, "error");
@@ -39,7 +39,7 @@ const handleDelete = (id) => {
           })
           .then((willDelete) => {
             if (willDelete) {
-                 axios.delete(`http://localhost:8000/pending/delete/${id}`)
+                 axios.delete(`http://localhost:8070/pending/delete/${id}`)
                 swal("Poof! Your imaginary file has been deleted!", {
                     icon: "success",
                   });

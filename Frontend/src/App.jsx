@@ -1,5 +1,4 @@
 import React, { Component,useContext } from "react";
-import { GlobalState } from '../../GlobalState.js'
 import AddMarking from "./Components/Marking/AddMarking";
 import DisplayMarking from "./Components/PresentationEvaluation/DisplayMarking";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -46,11 +45,7 @@ export default class App extends Component {
         <Routes>
           <Route path="/displayMarking" element={<DisplayMarking />} />
           <Route path="/add" element={<AddMarking />} />
-          <Route
-            path="/evaluatePresentation"
-            element={<EvaluatePresentation />}
-          />
-
+          <Route path="/evaluatePresentation" element={<EvaluatePresentation />}/>
           <Route path="/topics" element={<Topics />} />
           <Route path="/acceptTopic" element={<AcceptTopic />} />
           <Route path="/viewMarking" element={<ViewMarkingSchemes />} />

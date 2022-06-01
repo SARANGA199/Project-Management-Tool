@@ -40,17 +40,16 @@ function Register() {
     {
     if(document.getElementById('role').value =="Student"){
     try {
-      const register = await axios.post('http://localhost:8000/user/register',{...user})
+      const register = await axios.post('http://localhost:8070/user/register',{...user})
       localStorage.setItem("firstLogin", true);
       swal("Done!", "Register Success! Please activate your email to start.", "success");
-      window.location.href = "/";
     } catch (err) {
       swal("ERROR!", err.response.data.msg, "error");
     }
   }
   else{
     try {
-      const pendregister = await axios.post('http://localhost:8000/pending/register',{...user})
+      const pendregister = await axios.post('http://localhost:8070/pending/register',{...user})
       swal("Done!", "You successfully registered! Please Wait till the admin verifies your Details", "success");
     } catch (err) {
       swal("ERROR!", err.response.data.msg, "error");

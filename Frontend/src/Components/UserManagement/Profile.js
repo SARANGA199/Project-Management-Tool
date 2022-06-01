@@ -47,7 +47,7 @@ function Profile() {
             formData.append('file', file)
 
             setLoading(true)
-            const res = await axios.post('http://localhost:8000/api/upload_image', formData, {
+            const res = await axios.post('http://localhost:8070/api/upload_image', formData, {
                 headers: {'content-type': 'multipart/form-data', Authorization: token}
             })
             setLoading(false)
@@ -61,7 +61,7 @@ function Profile() {
 
     const updateInfo = () => {
         try {
-            const up = axios.patch('http://localhost:8000/user/update', {
+            const up = axios.patch('http://localhost:8070/user/update', {
                 name: name ? name : crrUser.name,
                 image: image ? image : crrUser.image
             },{
@@ -82,7 +82,7 @@ function Profile() {
             return swal("ERROR!", "Password did not match.", "error");
 
         try {
-            axios.post('http://localhost:8000/user/reset', {password},{
+            axios.post('http://localhost:8070/user/reset', {password},{
                 headers: {Authorization: token}
             })
 

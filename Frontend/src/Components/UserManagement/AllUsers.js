@@ -10,7 +10,7 @@ export default function DisplayRouteRequest() {
 
     useEffect(()=>{
             
-        axios.get("http://localhost:8000/user/all_users").then((res)=>{
+        axios.get("http://localhost:8070/user/all_users").then((res)=>{
                 setprofile(res.data.existingUsers);
             }).catch((err)=>{
                 alert(err.message);
@@ -44,7 +44,7 @@ const handleDelete = (id) => {
           })
           .then((willDelete) => {
             if (willDelete) {
-                 axios.delete(`http://localhost:8000/user/delete/${id}`)
+                 axios.delete(`http://localhost:8070/user/delete/${id}`)
                 swal("Poof! Selected account has been deleted!", {
                     icon: "success",
                   });
@@ -79,7 +79,7 @@ const filterData = (prof,searchkey) =>{
        
  const searchkey = e.currentTarget.value;
 
- axios.get("http://localhost:8000/user/all_users").then((res)=>{
+ axios.get("http://localhost:8070/user/all_users").then((res)=>{
          if(res.data.success){
            filterData(res.data.existingUsers,searchkey)
          }

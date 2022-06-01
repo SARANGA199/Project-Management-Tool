@@ -44,7 +44,7 @@ function Profile() {
             dangerMode: true,
           }).then((willDelete) => {
             if (willDelete) {
-              axios.put(`http://localhost:8000/user/updateUsr/${id}`,newRoute)
+              axios.put(`http://localhost:8070/user/updateUsr/${id}`,newRoute)
               swal("Poof! Your imaginary file has been deleted!", {
                 icon: "success",
               });
