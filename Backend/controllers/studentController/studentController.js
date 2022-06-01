@@ -9,24 +9,56 @@ export const getMembers = async (req, res) => {
   }
 };
 
-// export const saveMembers = async (req,res)=>{
-//     const member = new Members(req.body);
-//     try {
-//         await member.save();
-//         res.status(201).json(member);
-//     } catch (error) {
-//         res.status(400).json({message: error.message});
-//     }
-// }
-export const saveMembers = async (req, res) => {
-  const member = new Members(req.body);
-  try {
-    const insertedmembers = await member.save();
-    res.status(201).json(insertedmembers);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
+export const saveMembers = async (req,res)=>{
+    const {leaderName,
+      leaderID,
+      leaderEmail,
+      Member2Name,
+      Member2ID,
+      Member2Email,
+      Member3Name,
+      Member3ID,
+      Member3Email,
+      Member4Name,
+      Member4ID,
+      Member4Email} = req.body;
+    let value = await Members.countDocuments({})
+    const GroupID = 'REG_GROUP_'+(value+1)
+   
+    try {
+
+      const group = new Members({leaderName,
+        leaderID,
+        leaderEmail,
+        Member2Name,
+        Member2ID,
+        Member2Email,
+        Member3Name,
+        Member3ID,
+        Member3Email,
+        Member4Name,
+        Member4ID,
+        Member4Email,GroupID})
+        await group.save()
+            .then(() => {
+                res.status(201).json("student group add");
+              })
+
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+}
+
+
+// export const saveMembers = async (req, res) => {
+//   const member = new Members(req.body);
+//   try {
+//     const insertedmembers = await member.save();
+//     res.status(201).json(insertedmembers);
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// };
 
 export const getGroupID = async (req, res) => {
   const mail = req.params.email;
