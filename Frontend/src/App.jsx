@@ -28,6 +28,13 @@ import ResetPassword from "./Components/UserManagement/ResetPassword";
 import Profile from "./Components/UserManagement/Profile";
 import AllUsers from "./Components/UserManagement/AllUsers";
 import DocEvaluation from "./Components/UserManagement/DocEvaluation";
+import CreateChat from "./Components/Chats/CreateChat";
+import DisplayChats from "./Components/Chats/DisplayChats";
+import ChatReply from "./Components/Chats/ChatReply";
+import DisplayOneForum from "./Components/Chats/DisplayOneForum";
+import UpdateReply from "./Components/Chats/UpdateReply";
+import UpdateChatForum from "./Components/Chats/UpdateChatForum";
+import DisplayAllForums from "./Components/Chats/DisplayAllForums";
 
 export default class App extends Component {
   constructor(props) {
@@ -40,7 +47,11 @@ export default class App extends Component {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route exact path="/" element={<DisplaySubmitPresentation />} />
+            <Route
+              exact
+              path="/submitPre"
+              element={<DisplaySubmitPresentation />}
+            />
             <Route path="/add" element={<AddMarking />} />
             <Route
               path="/evaluatePresentation"
@@ -72,6 +83,13 @@ export default class App extends Component {
 
             <Route path="/evaluateTopic" element={<TopicEvaluate />} />
             <Route path="/AddPanelMember" element={<AddPanelMember />} />
+            <Route path="/" element={<CreateChat />} />
+            <Route path="/displayChat" element={<DisplayChats />} />
+            <Route path="/reply" element={<ChatReply />} />
+            <Route path="/oneForum" element={<DisplayOneForum />} />
+            <Route path="/editReply" element={<UpdateReply />} />
+            <Route path="/editChatForum" element={<UpdateChatForum />} />
+            <Route path="/allForums" element={<DisplayAllForums />} />
           </Routes>
         </BrowserRouter>
       </DataProvider>

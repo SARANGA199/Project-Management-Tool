@@ -84,6 +84,7 @@ export default function EvaluatePresentation() {
 
     const MarksDetails = {
       projectId,
+      specialization,
       totalMarks,
       criteria,
     };

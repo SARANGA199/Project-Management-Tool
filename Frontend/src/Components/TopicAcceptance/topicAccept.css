@@ -48,3 +48,90 @@ body {
   font-size: 2vh;
   color: orange;
 }
+
+.titleChat {
+  margin-left: 2vh;
+}
+
+.chatBody {
+  color: orange;
+}
+
+.btChat {
+  text-decoration: none;
+  color: orange;
+  margin-left: 100vh;
+  cursor: pointer;
+}
+
+.cardChat {
+  padding: 3vh;
+  margin-top: 1vh;
+  box-shadow: 0 0 0 0;
+  background-color: whitesmoke;
+  width: 70%;
+  cursor: pointer;
+}
+
+.cardChaReply {
+  margin-top: 3vh;
+  margin-bottom: 2vh;
+  margin-left: 40vh;
+  padding: 3vh;
+  box-shadow: 0 0 0 0;
+  background-color: whitesmoke;
+  width: 70%;
+}
+
+.btChatEdit {
+  text-decoration: none;
+  color: orange;
+  margin-right: 2vh;
+}
+
+.btChatDelete {
+  text-decoration: none;
+
+  color: orange;
+}
+
+.btnChtGroup {
+  margin-left: 87vh;
+  margin-top: -3.3vh;
+}
+
+.cardChatOne {
+  padding: 3vh;
+  margin-top: 3vh;
+  box-shadow: 0 0 0 0;
+  background-color: whitesmoke;
+  width: 70%;
+}
+
+.btChatUpdate {
+  text-decoration: none;
+  color: orange;
+  margin-right: 2vh;
+}
+
+.btChatNewDelete {
+  text-decoration: none;
+  color: orange;
+}
+
+.btnChtGroupNew {
+  margin-left: 87vh;
+  margin-top: -3.3vh;
+}
+
+.groupIdSty {
+  font-size: 3vh;
+  font-weight: bold;
+  margin-top: 4vh;
+}
+
+.topicHrGroup {
+  color: rgb(255, 166, 1);
+  border-top: 1vh solid;
+  width: 8%;
+}
