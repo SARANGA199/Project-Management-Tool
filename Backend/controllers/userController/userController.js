@@ -65,6 +65,8 @@ const userController = {
             const accesstoken = createAccessToken({id: user._id})
             const refreshtoken = createRefreshToken({id: user._id})
 
+           
+
             // res.cookie('refreshtoken', refreshtoken, {
             //     httpOnly: true,
             //     path: '/user/refresh_token',
@@ -173,6 +175,19 @@ const userController = {
             return res.status(500).json({msg: err.message})
         }
     },
+    getPanelMembers: async (req, res) => {
+        
+        const area = req.params.researchArea;
+        
+        try {
+            const users = await Users.find({$and:[{role:"Panel_Member"},{researchArea:area}]}).select('-password')
+
+            res.json(users)
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+
 }
 
 const createAccessToken = (user) =>{

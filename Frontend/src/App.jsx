@@ -21,6 +21,8 @@ import DisplaysubType from "./Components/submission/displaySubType.js";
 
 import Topics from "./Components/TopicAcceptance/Topics";
 import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
+import Topics from "./components/TopicAcceptance/Topics";
+import AcceptTopic from "./components/TopicAcceptance/AcceptTopic";
 import DisplayRequests from "./Components/DisplayRequests/DisplayRequests.js";
 import TopicEvaluate from "./components/TopicAcceptance/TopicEvaluate";
 import AddPanelMember from "./components/AlocatePanel/AddPanelMember.js";
@@ -32,7 +34,7 @@ import Register from "./Components/UserManagement/Register";
 import ForgotPassword from "./Components/UserManagement/ForgotPassword";
 import ResetPassword from "./Components/UserManagement/ResetPassword";
 import Profile from "./Components/UserManagement/Profile";
-import AllUsers from "./Components/UserManagement/AllUsers";
+import AllUsers from "./components/UserManagement/AllUsers";
 import DocEvaluation from "./Components/UserManagement/DocEvaluation";
 import CreateChat from "./Components/Chats/CreateChat";
 import DisplayChats from "./Components/Chats/DisplayChats";
@@ -53,6 +55,8 @@ import UpdateSupervisorStatus from "./Components/DisplayRequests/UpdateSuperviso
 import RequestCoSupervisor from "./Components/RequestCoSupervisor/RequestCoSupervisor";
 import DisplayCoSupervisors from "./Components/RequestCoSupervisor/DisplayCoSupervisors";
 import UpdateCoSupervisorStatus from "./Components/RequestCoSupervisor/UpdateCoSupervisors";
+import AddMember from "./components/AlocatePanel/AddMember.js";
+import UpdateSubmissionType from "./components/submission/UpdateSubmissionType";
 
 export default class App extends Component {
   constructor(props) {
@@ -97,6 +101,7 @@ export default class App extends Component {
             <Route path="/display" element={<Displaytemplate />} />
             <Route path="/AddSubType" element={<AddSubmissiontype />} />
             <Route path="/displaysub" element={<DisplaysubType />} />
+            <Route path="/updateSub" element={<UpdateSubmissionType />} />
 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -115,6 +120,8 @@ export default class App extends Component {
             <Route path="/editReply" element={<UpdateReply />} />
             <Route path="/editChatForum" element={<UpdateChatForum />} />
             <Route path="/allForums" element={<DisplayAllForums />} />
+            <Route path="/addPanelMember" element={<AddPanelMember />} />
+            <Route path="/addMember" element={< AddMember />} />
           </Routes>
         </BrowserRouter>
       </DataProvider>

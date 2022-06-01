@@ -23,4 +23,6 @@ router.patch('/update', auth, userController.updateUser);
 
 router.delete('/delete/:id', userController.deleteUser);
 
+router.get('/info/:researchArea', userController.getPanelMembers);
+
 export default router;

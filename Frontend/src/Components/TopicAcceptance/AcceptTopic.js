@@ -53,7 +53,30 @@ export default function AcceptTopic() {
       .put(`http://localhost:8070/topics/${tid}`, newValue)
       .then(() => {
         swal(`Topic is ${topicStatus}ed`);
+        //navigate("/topics");
+
+      if(topicStatus=="Accepted")  {
+
+        const newValue = {
+          groupID,
+          researchArea:topicCategory,
+      };
+  
+      axios
+        .post(`http://localhost:8070/allocatePanel/`, newValue)
+        .then(() => {
+          //swal("sent feedback")
+          navigate("/topics");
+        })
+        .catch((err) => {
+          swal(`Something went to wrong !!!`);
+
+        });
+
+      }else if(topicStatus=="Rejected"){
         navigate("/topics");
+      }
+
       })
       .catch((err) => {
         swal(`Something went to wrong !!!`);

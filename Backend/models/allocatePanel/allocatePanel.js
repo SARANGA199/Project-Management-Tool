@@ -6,18 +6,18 @@ const panelsSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    specialization:{
+    researchArea:{
              
         type:String,
         required:true
     },
     panelMembers:{
         type:[
-            {
-                memberID:{type:String,required:true},
-                meberName:{type:String,required:true},
-                // id : {type:String,required:true}
-            }
+            // {
+            //     memberID:{type:String,required:true},
+            //     meberName:{type:String,required:true},
+            //     // id : {type:String,required:true}
+            // }
         ]
     }
 },{timestamps:true})
