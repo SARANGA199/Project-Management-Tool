@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { GlobalState } from "../../GlobalState";
-import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -23,43 +22,45 @@ import "../TopicAcceptance/accept.css";
 import { async } from "@firebase/util";
 import axios from "axios";
 
-export default function CreateChat() {
+export default function UpdateReply() {
   const navigate = useNavigate();
   const state = useContext(GlobalState);
   const [crrUser, setCrrUser] = state.UserAPI.crrUser;
-  // const [auther, setAutherName] = useState("");
-  const [topic, setTopic] = useState("");
-  const [message, setMessage] = useState("");
-  const [groupID, setGroupID] = useState("");
 
-  const auther = crrUser.name;
-  const userId = crrUser._id;
-  console.log(userId);
+  const [reply, setReply] = useState("");
+  const [title, setTitle] = useState("");
+  const [repID, setReplyId] = useState("");
 
-  //handle specialization
-  const handleChange = (event) => {
-    setGroupID(event.target.value);
-  };
+  const name = crrUser.name;
+
+  useEffect(() => {
+    const Rid = localStorage.getItem("replyID");
+    console.log(Rid);
+
+    axios.get(`http://localhost:8070/chatReply/reply/${Rid}`).then((res) => {
+      setReply(res.data.reply);
+      setTitle(res.data.title);
+    });
+
+    setReplyId(Rid);
+  }, []);
 
   const submitData = async (e) => {
     e.preventDefault();
     const data = {
-      userId,
-      auther,
-      groupID,
-      topic,
-      message,
+      title,
+      reply,
     };
 
     await axios
-      .post("http://localhost:8070/chatForum/", data)
+      .put(`http://localhost:8070/chatReply/${repID}`, data)
       .then((res) => {
-        swal("Success", "Chat Forum Created Successfully", "success");
-        navigate("/displayChat");
+        swal("Success", "Chat Reply Successfully Updated", "success");
+        navigate("/oneForum");
       })
       .catch((err) => {
         console.log(err);
-        swal("Error", "Chat Forum Creation Failed", "error");
+        swal("Error", "Error with updating ", "error");
       });
   };
 
@@ -75,71 +76,37 @@ export default function CreateChat() {
         <div>
           <div className="acceptLabel">
             <form onSubmit={submitData}>
-              <label className="acceptTot">Add New Forum </label>
+              <label className="acceptTot">Edit Reply </label>
               <hr className="hr3" />
               <Box
                 component="form"
                 sx={{
                   "& .MuiTextField-root": { m: 1, width: "25ch" },
                 }}
-                noValidate
-                autoComplete="off"
               >
                 <div>
                   <TextField
                     id="filled-number"
-                    label="Auther Name"
+                    label="Name"
                     type="text"
                     variant="outlined"
-                    value={auther}
+                    value={name}
+                    disabled
                     InputLabelProps={{
                       shrink: true,
                     }}
-                    // onChange={(e) => setAutherName(e.target.value)}
                   />
-                  {/* 
-                <TextField
-                  id="filled-number2"
-                  label="Date"
-                  type="date"
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                /> */}
 
-                  <Box sx={{ minWidth: 120 }}>
-                    <FormControl
-                      className="ms-3 mb-3 mt-3"
-                      style={{ width: "220px" }}
-                    >
-                      <InputLabel id="demo-simple-select-label">
-                        Group ID
-                      </InputLabel>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select-label"
-                        // value={specialization}
-                        label="specialization"
-                        autoWidth
-                        onChange={handleChange}
-                      >
-                        <MenuItem value={"G20"}>G20</MenuItem>
-                        <MenuItem value={"G21"}>G21</MenuItem>
-                        <MenuItem value={"G22"}>G22</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Box>
+                  <TextField
+                    id="filled-number2"
+                    label="Reply for"
+                    type="text"
+                    variant="outlined"
+                    style={{ width: "350px" }}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
                 </div>
-                <TextField
-                  id="filled-number3"
-                  label="Title"
-                  required
-                  type="text"
-                  variant="outlined"
-                  style={{ width: "43ch" }}
-                  onChange={(e) => setTopic(e.target.value)}
-                />
               </Box>
               <div className="textCont ms-2 mb-3 mt-3">
                 <div class="form-group ">
@@ -149,15 +116,16 @@ export default function CreateChat() {
                     id="exampleFormControlTextarea1"
                     rows="6"
                     required
-                    onChange={(e) => setMessage(e.target.value)}
+                    value={reply}
+                    onChange={(e) => setReply(e.target.value)}
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className=" btn btn-outline-warning btn-lg ms-5 mt-5"
+                  className=" btn btn-outline-warning ms-5 mt-5"
                 >
-                  &nbsp;Add Forum
+                  &nbsp;Update Reply
                 </button>
               </div>
             </form>
