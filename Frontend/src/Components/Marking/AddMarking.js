@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -42,11 +42,23 @@ export default function AddMarking() {
     { id: uuidv4(), criteriaName: "", marksAllocation: "" },
   ]);
   const [specialization, setSpecialization] = useState("");
+  const [submission, setSubmission] = useState([]);
   const [projectName, setProjectName] = useState("");
   const [date, setDate] = useState(new Date());
   var [totalMarks, setTotalMarks] = useState("");
   var value = 0;
   var [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8070/submission/displaySubType")
+      .then((res) => {
+        setSubmission(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   //handle specialization
   const handleChange = (event) => {
@@ -157,30 +169,11 @@ export default function AddMarking() {
                       autoWidth
                       onChange={handleChange}
                     >
-                      <MenuItem value={"Proposal Presentation"}>
-                        Proposal Presentation
-                      </MenuItem>
-                      <MenuItem value={"Progress Presentation"}>
-                        Progress Presentation
-                      </MenuItem>
-                      <MenuItem value={"Final Presentation"}>
-                        Final Presentation
-                      </MenuItem>
-                      <MenuItem value={"Charter Documentation"}>
-                        Charter Documentation
-                      </MenuItem>
-                      <MenuItem value={"Scrum Documentation"}>
-                        Scrum Documentation
-                      </MenuItem>
-                      <MenuItem value={"Proposal Documentation"}>
-                        Proposal Documentation
-                      </MenuItem>
-                      <MenuItem value={"Progress Documentation"}>
-                        Progress Documentation
-                      </MenuItem>
-                      <MenuItem value={"Final Documentation"}>
-                        Final Documentation
-                      </MenuItem>
+                      {submission.map((data, index) => (
+                        <MenuItem key={index} value={data.subTypeName}>
+                          {data.subTypeName}
+                        </MenuItem>
+                      ))}
                     </Select>
                   </FormControl>
                 </Box>

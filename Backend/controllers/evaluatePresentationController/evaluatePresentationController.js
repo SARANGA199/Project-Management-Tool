@@ -17,3 +17,16 @@ export const getPresentationMarks = async (req, res) => {
     console.catch.log(err);
   }
 };
+
+export const getMarksByType = async (req, res) => {
+  const marks = req.params.type;
+  try {
+    const mark = await PresentationMarks.find({
+      specialization: marks,
+    });
+    res.status(200).json(mark);
+  } catch (error) {
+    console.catch.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};

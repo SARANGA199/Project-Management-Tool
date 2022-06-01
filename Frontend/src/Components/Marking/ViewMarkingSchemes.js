@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
 import { getMarkingScheme } from "../../../../Backend/controllers/markingControllers/markingController";
-import getMarkingScheme from "../PresentationMarks/PresentationMarksReport";
+import getMarkingScheme from "../PresentationMarks/GetMarkingSchemes";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import "../TopicAcceptance/topicAccept.css";
 

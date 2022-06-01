@@ -36,6 +36,10 @@ export default function ChatReply() {
   const name = crrUser.name;
   console.log(forumId);
 
+  useEffect(() => {
+    setTitle(localStorage.getItem("ReplyName"));
+  }, []);
+
   const submitData = async (e) => {
     e.preventDefault();
     const data = {
@@ -96,6 +100,7 @@ export default function ChatReply() {
                     id="filled-number"
                     label="Reply for"
                     type="text"
+                    value={title}
                     variant="outlined"
                     onChange={(e) => setTitle(e.target.value)}
                   />

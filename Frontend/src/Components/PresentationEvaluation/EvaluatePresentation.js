@@ -14,7 +14,7 @@ import swal from "sweetalert";
 import { v4 as uuidv4 } from "uuid";
 import swal from "sweetalert";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import getMarkingScheme from "../PresentationMarks/PresentationMarksReport";
+import getMarkingScheme from "../PresentationMarks/GetMarkingSchemes";
 import { useNavigate } from "react-router-dom";
 import "./presentation.css";
 

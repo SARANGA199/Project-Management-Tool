@@ -84,6 +84,13 @@ export default function DisplayOneForum() {
     localStorage.setItem("replyID", _id);
   };
 
+  //reply
+  const ReplyToChat = (reply) => {
+    const { name } = reply;
+    localStorage.setItem("ReplyName", name);
+    navigate("/reply");
+  };
+
   return (
     <div>
       <div className="topicContainer">
@@ -106,7 +113,7 @@ export default function DisplayOneForum() {
             </h6>{" "}
             <br />
             <h6 className="ms-3">{message}</h6>
-            <a className="btChat" href="reply">
+            <a className="btChat" onClick={() => ReplyToChat(rep)}>
               Reply
             </a>
           </div>
@@ -116,14 +123,14 @@ export default function DisplayOneForum() {
             <div className="cardChaReply" key={index}>
               <h6 className="titleChat">
                 {" "}
-                <h6>Reply : {rep.title}</h6>
+                <h6>Reply To : {rep.title}</h6>
               </h6>
               <h6 className="ms-3">
                 by <b className="chatBody"> {rep.name}</b> - {rep.createdAt}
               </h6>{" "}
               <br />
               <h6 className="ms-3">{rep.reply}</h6>
-              <a className="btChat" href="/reply">
+              <a className="btChat" onClick={() => ReplyToChat(rep)}>
                 Reply
               </a>
               {rep.userId === crrUser._id ? (

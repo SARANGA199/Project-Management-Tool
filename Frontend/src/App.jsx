@@ -38,6 +38,7 @@ import DisplayOneForum from "./Components/Chats/DisplayOneForum";
 import UpdateReply from "./Components/Chats/UpdateReply";
 import UpdateChatForum from "./Components/Chats/UpdateChatForum";
 import DisplayAllForums from "./Components/Chats/DisplayAllForums";
+import DisplayPresentationMarks from "./Components/PresentationEvaluation/DisplayPresentationMarks";
 
 import CreateGroup from "./Components/CreateGroup/CreateGroup";
 import GroupList from "./Components/DisplayGroupsList/DisplayGroupList";
@@ -73,6 +74,10 @@ export default class App extends Component {
             <Route
               path="/evaluatePresentation"
               element={<EvaluatePresentation />}
+            />
+            <Route
+              path="/presentationMarks"
+              element={<DisplayPresentationMarks />}
             />
 
             <Route path="/topics" element={<Topics />} />

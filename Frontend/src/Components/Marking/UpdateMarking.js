@@ -27,11 +27,21 @@ export default function UpdateMarking() {
   ]);
   const [specialization, setSpecialization] = useState("");
   const [projectName, setProjectName] = useState("");
+  const [submission, setSubmission] = useState([]);
   var [totalMarks, setTotalMarks] = useState("");
   const [markID, setMID] = useState("");
 
   useEffect(() => {
     let mid = localStorage.getItem("mid");
+
+    axios
+      .get("http://localhost:8070/submission/displaySubType")
+      .then((res) => {
+        setSubmission(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     axios
       .get(`http://localhost:8070/markings/${mid}`)
@@ -141,30 +151,11 @@ export default function UpdateMarking() {
                       autoWidth
                       onChange={handleChange}
                     >
-                      <MenuItem value={"Proposal Presentation"}>
-                        Proposal Presentation
-                      </MenuItem>
-                      <MenuItem value={"Progress Presentation"}>
-                        Progress Presentation
-                      </MenuItem>
-                      <MenuItem value={"Final Presentation"}>
-                        Final Presentation
-                      </MenuItem>
-                      <MenuItem value={"Charter Documentation"}>
-                        Charter Documentation
-                      </MenuItem>
-                      <MenuItem value={"Scrum Documentation"}>
-                        Scrum Documentation
-                      </MenuItem>
-                      <MenuItem value={"Proposal Documentation"}>
-                        Proposal Documentation
-                      </MenuItem>
-                      <MenuItem value={"Progress Documentation"}>
-                        Progress Documentation
-                      </MenuItem>
-                      <MenuItem value={"Final Documentation"}>
-                        Final Documentation
-                      </MenuItem>
+                      {submission.map((data, index) => (
+                        <MenuItem key={index} value={data.subTypeName}>
+                          {data.subTypeName}
+                        </MenuItem>
+                      ))}
                     </Select>
                   </FormControl>
                 </Box>
