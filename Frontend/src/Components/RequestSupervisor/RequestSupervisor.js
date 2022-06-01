@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import axios from "axios";
 import swal from "sweetalert";
 // import {useNavigate} from "react-router-dom";
@@ -11,7 +11,19 @@ export const RequestSupervisor = ()=>{
     const[groupLeaderEmail,setGroupLeaderEmail]=useState("");
     const[researchTopicName,setResearchTopicName]=useState("");
     const[comments,setComments]=useState("");
+    const [submission, setSubmission] = useState([]);
+    
 
+    useEffect(() => {
+        axios
+          .get("http://localhost:8070/submission/displaySubType")
+          .then((res) => {
+            setSubmission(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, []);
 
 
     async function saveRequest(e){
@@ -67,9 +79,20 @@ export const RequestSupervisor = ()=>{
                                             <label>Research Category : </label>
                                             <div className="form-group">
                                                 <select className="form-select" aria-label="Default select example" value={researchCategory} onChange={e => setResearchCategory(e.target.value)}>
-                                                    <option selected>Select Category</option>
-                                                    <option value="IOT">IOT</option>
-                                                    <option value="DS">DS</option>
+                                                {submission.map((data, index) => (
+                                                    <option key={index} value={data.subTypeName}>{data.subTypeName}</option>
+                
+                                                    ))}
+                                                </select>
+                                            </div>
+
+                                            <label>Research Category : </label>
+                                            <div className="form-group">
+                                                <select className="form-select" aria-label="Default select example" value={researchCategory} onChange={e => setResearchCategory(e.target.value)}>
+                                                {submission.map((data, index) => (
+                                                    <option key={index} value={data.subTypeName}>{data.subTypeName}</option>
+                
+                                                    ))}
                                                 </select>
                                             </div>
 
