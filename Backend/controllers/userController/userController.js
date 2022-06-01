@@ -79,6 +79,23 @@ const userController = {
             return res.status(500).json({msg: err.message})
         }
     },
+    accept: async (req, res) =>{
+        try {
+            const {name, email, regNumber, specialization, researchArea, password, role} = req.body;
+
+            const newUser = new Users({
+                name, email, regNumber, specialization, researchArea, role, password
+            })
+
+            await newUser.save()
+
+            res.json({msg: "Successfully Registered...!"})
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+        
+    },
     login: async (req, res) =>{
         try {
             const {email, password} = req.body;

@@ -18,9 +18,10 @@ export default function DisplayRouteRequest() {
         let { _id,name, email,regNumber,specialization,researchArea,role} = data;
 
         try {
-          const register = axios.post('http://localhost:8000/user/register',{...data})
+          const register = axios.post('http://localhost:8000/user/accept',{...data})
           swal("Done!", "User successfully added!", "success");
           axios.delete(`http://localhost:8000/pending/delete/${data._id}`)
+          window.location.reload(false);
         } catch (err) {
           swal("ERROR!", err.response.data.msg, "error");
         }
@@ -42,6 +43,7 @@ const handleDelete = (id) => {
                 swal("Poof! Your imaginary file has been deleted!", {
                     icon: "success",
                   });
+                  window.location.reload(false);
                 } else {
                     swal("The account is safe!");
                   }

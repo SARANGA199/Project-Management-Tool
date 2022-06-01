@@ -48,6 +48,7 @@ const handleDelete = (id) => {
                 swal("Poof! Selected account has been deleted!", {
                     icon: "success",
                   });
+                  window.location.reload(false);
                 } else {
                     swal("User account is safe!");
                   }
