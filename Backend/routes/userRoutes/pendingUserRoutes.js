@@ -4,6 +4,8 @@ import pendingUserController from "../../controllers/userController/pendingUserC
 
 router.post('/register',pendingUserController.register);
 
+router.post('/activation', pendingUserController.activateEmail);
+
 router.get('/getall',pendingUserController.getAllInfo);
 
 router.delete('/delete/:id', pendingUserController.deleteUser);

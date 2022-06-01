@@ -10,7 +10,7 @@ function ActivationEmail() {
             const activationEmail = async () => {
                 try {
                     console.log(activation_token)
-                    const res = await axios.post('http://localhost:8070/user/activation', {activation_token})
+                    const res = await axios.post('http://localhost:8070/pending/activation', {activation_token})
                     swal("Good job!", "You clicked the button!", "success").then(() => {
                         window.location.href = "/login"
                     })

@@ -1,5 +1,6 @@
 import PendingUsers from '../../models/user/PendingUsers.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import sendMail from './sendMail.js';
 import { google } from "googleapis";
 const { OAuth2 } = google.auth;
@@ -28,27 +29,38 @@ const pendingUserController = {
                 name, email, regNumber, specialization, researchArea, role, password: passwordHash
             })
 
-            // Save to mongodb
-            await newUser.save()
+            const activation_token = createActivationToken(newUser)
 
-            res.json({msg: "Successfully Registered...!"})
+            const url = `${CLIENT_URL}/pending/activate/${activation_token}`
+            sendMail(email, url, "Verify your email address")
 
-            // Then create jsonwebtoken to authentication
-            // const accesstoken = createAccessToken({id: newUser._id})
-            // const refreshtoken = createRefreshToken({id: newUser._id})
-                        
-            // res.cookie('refreshtoken', refreshtoken, {
-            // httpOnly: true,
-            // path: '/user/refresh_token',
-            // maxAge: 7*24*60*60*1000 // 7d
-            // })
-            
-            // res.json({accesstoken})
+
+            res.json({msg: "Register Success! Please activate your email to start."})
 
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
 
+    },
+    activateEmail: async (req, res) => {
+        try {
+            const {activation_token} = req.body
+            const user = jwt.verify(activation_token, process.env.ACTIVATION_TOKEN_SECRET)
+            const {name, email, regNumber, specialization, researchArea, password, role} = user
+            const check = await PendingUsers.findOne({email})
+            if(check) return res.status(400).json({msg:"This email already exists."})
+
+            const newUser = new PendingUsers({
+                name, email, regNumber, specialization, researchArea, password, role
+            })
+
+            await newUser.save()
+
+            res.json({msg: "Account has been activated!"})
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
     },
     getAllInfo: async (req, res) => {
         try {
@@ -76,6 +88,10 @@ const pendingUserController = {
             return res.status(500).json({msg: err.message})
         }
     },
+}
+
+const createActivationToken = (user) => {
+    return jwt.sign(user.toJSON(), process.env.ACTIVATION_TOKEN_SECRET, {expiresIn: '5m'})
 }
 
 export default pendingUserController;

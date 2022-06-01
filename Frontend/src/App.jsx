@@ -30,6 +30,7 @@ import PendingUsers from "./Components/UserManagement/PendingUsers.js";
 import UpdateUser from "./Components/UserManagement/UpdateUser.js";
 import DocumentEvaluation from "./Components/DocumentEvaluation/DocumentEvaluation.js";
 import ActivationEmail from "./Components/UserManagement/ActivationEmail";
+import PendActivationEmail from "./Components/UserManagement/PendActivationEmail.js"
 import NotFound from "./Components/utils/NotFound/NotFound.JS";
 
 export default class App extends Component {
@@ -72,6 +73,7 @@ export default class App extends Component {
           <Route path="/updateuser/:id" element={<UpdateUser/>} />
           <Route path="/documenteval" element={<DocumentEvaluation/>} />
           <Route path="/user/activate/:activation_token" element={<ActivationEmail/>} />
+          <Route path="/pending/activate/:activation_token" element={<PendActivationEmail/>} />
 
         </Routes>
       </BrowserRouter>
