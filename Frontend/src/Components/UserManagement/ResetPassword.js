@@ -12,7 +12,7 @@ const initialState = {
 function ResetPassword() {
     const [data, setData] = useState(initialState)
     const {token} = useParams()
-    console.log(token)
+    console.log(useParams())
     const {password, cf_password} = data
 
     const handleChangeInput = e => {
@@ -24,7 +24,7 @@ function ResetPassword() {
     const handleResetPass = async () => {
         
         try {
-            const res = await axios.post('http://localhost:8000/user/reset', {password}, {
+            const res = await axios.post('http://localhost:8070/user/reset', {password}, {
                 headers: {Authorization: token}
             })
 

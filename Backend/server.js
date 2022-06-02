@@ -9,7 +9,9 @@ import fileUpload from 'express-fileupload'
 import templateRouter from "./routes/templateRouter.js";
 
 import submissionRouter from "./routes/submissionRouter.js";
-import markingRoutes from "./routes/markingRoutes/markingRoutes.js";
+import userRouter from "./routes/userRoutes/userRoutes.js";
+import pendingUserRouter from "./routes/userRoutes/pendingUserRoutes.js"
+import markingRoutes from "./routes/markingRoutes/markingRoutes.js"
 import presentationMarksRoutes from "./routes/presentationMarksRoutes/presentationMarksRoutes.js";
 import upload from './routes/userRoutes/upload.js'
 import studentRouter from "./routes/studentRoute/studentRouter.js";
@@ -18,11 +20,8 @@ import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupe
 import topicSubmitDocRouter from "./routes/topicDocSubmitRoute/topicSubmitDocRouter.js";
 import allocatePanelRouter from "./routes/allocatePanelRoutes/allocatePanelRouter.js"
 import stdSubmitDocRouter from "./routes/stdSubmitDocRoute/stdSubmitDocRouter.js";
-import userRouter from "./routes/userRoutes/userRoutes.js";
 
-
-
-
+import documentMarksRoutes from "./routes/documentMarksRoutes/documentMarksRoutes.js"
 
 import chatForumRoutes from "./routes/chatForumRoutes/chatForumRoutes.js";
 import ChatReplyRoutes from "./routes/chatForumRoutes/chatReplyRoutes.js";
@@ -43,9 +42,10 @@ app.use("/template", templateRouter);
 app.use("/submission", submissionRouter);
 
 //routes
-app.use("/user", userRouter);
-
-app.use("/api", upload);
+app.use('/user', userRouter);
+app.use('/pending', pendingUserRouter);
+app.use('/api', upload);
+app.use('/documentMarks', documentMarksRoutes);
 
 //marking controller
 app.use("/markings", markingRoutes);

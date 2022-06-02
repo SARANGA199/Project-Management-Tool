@@ -49,17 +49,6 @@ export const saveMembers = async (req,res)=>{
     }
 }
 
-
-// export const saveMembers = async (req, res) => {
-//   const member = new Members(req.body);
-//   try {
-//     const insertedmembers = await member.save();
-//     res.status(201).json(insertedmembers);
-//   } catch (error) {
-//     res.status(400).json({ message: error.message });
-//   }
-// };
-
 export const getGroupID = async (req, res) => {
   const mail = req.params.email;
 

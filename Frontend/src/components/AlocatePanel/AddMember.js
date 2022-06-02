@@ -23,11 +23,11 @@ import "../TopicAcceptance/topicAccept.css";
 export default function AddMember() {
   let navigate = useNavigate();
   const [ members,  setMembers] = useState([]);
-   const [topicCategory, setToCategory] = useState();
+   const [topicName, setTopicName] = useState();
   const [groupID, setGroupId] = useState();
-  //const [topicFeedback, setTopicFeedback] = useState();
+  const [toCategory, setToCategory] = useState();
   const [tid, setTid] = useState();
-  //const [email,setEmail]=useState("");
+  const [leaderMail,setLeaderMail]=useState("");
   const [chekMembers,setChekMembers]=useState([
     { id: "", name: "", regNumber: "" },
   ]);
@@ -36,6 +36,10 @@ export default function AddMember() {
     let id = localStorage.getItem("tid");
     let groupID = localStorage.getItem("groupid");
     let researchArea = localStorage.getItem("category");
+    let topicName = localStorage.getItem("topic");
+    let leaderMail = localStorage.getItem("leaderMail");
+    setTopicName(topicName);
+    setLeaderMail(leaderMail)
     //console.log(tCategory);
 
     axios
@@ -81,7 +85,7 @@ export default function AddMember() {
 
   const setData = async (data) => {
 
-    let {_id,researchArea,name,regNumber} = data
+    let {_id,researchArea,name,regNumber,email} = data
 
     
 
@@ -90,7 +94,10 @@ export default function AddMember() {
         researchArea,
          _id,
         name,
-        regNumber
+        regNumber,
+        email,
+        topicName,
+        leaderMail
     };
 
     const update =  axios
@@ -148,7 +155,8 @@ console.log(chekMembers.find((data)=>(data.id=='6294e47b90dc134fa04a4d')))
               <tr>
                 <th scope="col"><center>#</center></th>
                 <th scope="col"><center>Member ID</center></th>
-                <th scope="col"><center>name</center></th>
+                <th scope="col"><center>Name</center></th>
+                <th scope="col"><center>Email</center></th>
                 <th scope="col"><center>Interested Field</center></th>
                 <th scope="col"><center>Action</center></th>
               </tr>
@@ -159,7 +167,7 @@ console.log(chekMembers.find((data)=>(data.id=='6294e47b90dc134fa04a4d')))
                     <th scope="row"><center>{index + 1}</center></th>
                   <th><center>{data.regNumber}</center></th>
                   <td><center>{data.name}</center></td>
-
+                  <td><center>{data.email}</center></td>
                   <td><center>{data.researchArea}</center></td>
                   <td>
                   

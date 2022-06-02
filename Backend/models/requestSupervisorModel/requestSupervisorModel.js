@@ -25,7 +25,7 @@ const RequestSupervisors = mongoose.Schema({
     },
     coSupervisor:{
         type:String,
-        default:' '
+        default:''
     },
     coSupervisorStatus:{
         type:String,

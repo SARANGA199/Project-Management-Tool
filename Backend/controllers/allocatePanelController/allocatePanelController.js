@@ -1,4 +1,5 @@
 import PanelScheme from "../../models/allocatePanel/allocatePanel.js";
+import nodemailer from "nodemailer";
 
 export const addPanelMember = async (req, res) => {
   try {
@@ -22,7 +23,7 @@ export const addMember = async (req, res) => {
   //const tId = req.params.id;
     //console.log("awa")
   const { groupID,
-    _id,name,regNumber } = req.body;
+    _id,name,regNumber,email,topicName,leaderMail } = req.body;
 
   // const updatepanel = {
   //   groupID,
@@ -34,6 +35,43 @@ export const addMember = async (req, res) => {
   const update = await PanelScheme.findOneAndUpdate({groupID:groupID},{$push:{panelMembers:member}})
     .then(() => {
       res.status(200).send({ status: "Panel member added" });
+
+      //mail send
+      let transporter = nodemailer.createTransport({
+        service: "gmail",
+
+        auth: {
+          user: "themoviehub3020@gmail.com",
+
+          pass: "moviehub3020",
+        },
+      });
+
+      let mailOptions = {
+        from: "themoviehub3020@gmail.com", //need to add new email
+
+        to: `${email}`,
+
+        subject: "Panel Member allocate Notification",
+
+        // text: nameOnCard + ' Your Payment Done!!' +<br></br>+
+
+        // 'Customer Name' + ' '+ <br>dfdf<br/>+
+
+        // 'Customer mobile'
+
+        text: "Hey there, it is our first message sent with Nodemailer ",
+
+        html: `<br>  ${name},Your are add to this group as a panel member!!</br><br> Group ID:${groupID} </br><br> Leader Mail:${leaderMail}  </br><br> Topic Name:${topicName} </br> <br>Thank You!! <br />`,
+      };
+
+      transporter.sendMail(mailOptions, (err, data) => {
+        if (err) {
+          console.log("Error occurs", err);
+        }
+
+        console.log("Email sent!!!");
+      });
     })
     .catch((err) => {
       console.log(err);

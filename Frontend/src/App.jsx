@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,useContext } from "react";
 import AddMarking from "./Components/Marking/AddMarking";
 import DisplaySubmitPresentation from "./Components/PresentationEvaluation/DisplaySubmitPresentation";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -30,7 +30,6 @@ import ForgotPassword from "./Components/UserManagement/ForgotPassword";
 import ResetPassword from "./Components/UserManagement/ResetPassword";
 import Profile from "./Components/UserManagement/Profile";
 import AllUsers from "./Components/UserManagement/AllUsers";
-import DocEvaluation from "./Components/UserManagement/DocEvaluation";
 import CreateChat from "./Components/Chats/CreateChat";
 import DisplayChats from "./Components/Chats/DisplayChats";
 import ChatReply from "./Components/Chats/ChatReply";
@@ -53,6 +52,13 @@ import DisplayCoSupervisors from "./Components/RequestCoSupervisor/DisplayCoSupe
 import UpdateCoSupervisorStatus from "./Components/RequestCoSupervisor/UpdateCoSupervisors";
 import AddMember from "./Components/AlocatePanel/AddMember.js";
 import UpdateSubmissionType from "./Components/submission/UpdateSubmissionType";
+import PendingUsers from "./Components/UserManagement/PendingUsers.js";
+import UpdateUser from "./Components/UserManagement/UpdateUser.js";
+import ActivationEmail from "./Components/UserManagement/ActivationEmail";
+import PendActivationEmail from "./Components/UserManagement/PendActivationEmail.js"
+import DocumentEvaluation from "./Components/DocumentEvaluation/DocumentEvaluation.js";
+import DisplaySubmitDocuments from "./Components/DocumentEvaluation/DisplaySubmitDocuments";
+import NotFound from "./Components/utils/NotFound/NotFound.JS";
 
 export default class App extends Component {
   constructor(props) {
@@ -103,13 +109,18 @@ export default class App extends Component {
             <Route path="/displaysub" element={<DisplaysubType />} />
             <Route path="/updateSub" element={<UpdateSubmissionType />} />
 
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/fpass" element={<ForgotPassword />} />
-            <Route path="/user/reset/:id" element={<ResetPassword />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/allusers" element={<AllUsers />} />
-            <Route path="/doceval" element={<DocEvaluation />} />
+            <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
+          <Route path="/fpass" element={<ForgotPassword/>} />
+          <Route path="/user/reset/:token" element={<ResetPassword/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/allusers" element={<AllUsers/>} />
+          <Route path="/PendingUsers" element={<PendingUsers/>} />
+          <Route path="/updateuser/:id" element={<UpdateUser/>} />
+          <Route path="/user/activate/:activation_token" element={<ActivationEmail/>} />
+          <Route path="/pending/activate/:activation_token" element={<PendActivationEmail/>} />
+          <Route path="/evaluatedocument" element={<DocumentEvaluation/>} />
+          <Route path="/submitdocs" element={<DisplaySubmitDocuments/>} />
 
             <Route path="/evaluateTopic" element={<TopicEvaluate />} />
             <Route path="/AddPanelMember" element={<AddPanelMember />} />
