@@ -33,7 +33,7 @@ const userController = {
 
             const url = `${CLIENT_URL}/user/activate/${activation_token}`
             sendMail(email, url, "Verify your email address")
-
+            console.log(url)
 
             res.json({msg: "Register Success! Please activate your email to start."})
 

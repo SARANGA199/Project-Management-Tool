@@ -14,22 +14,6 @@ export const RequestSupervisor = ()=>{
     const [supervisor, setSupervisor] = useState([]);
 
 
-    
-
-      const setSupervisorData = async () => {
-
-        //setResearchCategory(data)
-        axios
-          .get(`http://localhost:8070/user/infoSupervisor/${researchCategory}`)
-          .then((res) => {
-            setSupervisor(res.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
-
-
 
     const setSupervisorData = async () => {
 

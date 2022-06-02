@@ -106,7 +106,7 @@ function Profile() {
         </div>
         <div className="profile_page">
             <div className="col-left">
-                <div className='card'>
+                <div className='profilecard'>
                 <h2>{crrUser.name}</h2>
 
                 <div className="avatar">
@@ -156,7 +156,7 @@ function Profile() {
 
             <div className="profile_page">
                 <div className="col-right">
-                <div className='card'>
+                <div className='profilecard'>
                     <h2>Update Password</h2>
                     <br/>
                     <div className="form-group">

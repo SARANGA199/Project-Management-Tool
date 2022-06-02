@@ -20,7 +20,6 @@ import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupe
 import topicSubmitDocRouter from "./routes/topicDocSubmitRoute/topicSubmitDocRouter.js";
 import allocatePanelRouter from "./routes/allocatePanelRoutes/allocatePanelRouter.js"
 import stdSubmitDocRouter from "./routes/stdSubmitDocRoute/stdSubmitDocRouter.js";
-import userRouter from "./routes/userRoutes/userRoutes.js";
 
 import documentMarksRoutes from "./routes/documentMarksRoutes/documentMarksRoutes.js"
 

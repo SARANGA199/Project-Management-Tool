@@ -30,7 +30,6 @@ import ForgotPassword from "./Components/UserManagement/ForgotPassword";
 import ResetPassword from "./Components/UserManagement/ResetPassword";
 import Profile from "./Components/UserManagement/Profile";
 import AllUsers from "./Components/UserManagement/AllUsers";
-import DocEvaluation from "./Components/UserManagement/DocEvaluation";
 import CreateChat from "./Components/Chats/CreateChat";
 import DisplayChats from "./Components/Chats/DisplayChats";
 import ChatReply from "./Components/Chats/ChatReply";
