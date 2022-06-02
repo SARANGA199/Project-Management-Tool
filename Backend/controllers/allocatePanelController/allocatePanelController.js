@@ -34,6 +34,43 @@ export const addMember = async (req, res) => {
   const update = await PanelScheme.findOneAndUpdate({groupID:groupID},{$push:{panelMembers:member}})
     .then(() => {
       res.status(200).send({ status: "Panel member added" });
+
+      //mail send
+      let transporter = nodemailer.createTransport({
+        service: "gmail",
+
+        auth: {
+          user: "themoviehub3020@gmail.com",
+
+          pass: "moviehub3020",
+        },
+      });
+
+      let mailOptions = {
+        from: "themoviehub3020@gmail.com", //need to add new email
+
+        to: `${email}`,
+
+        subject: "Research Project Topic Feedback",
+
+        // text: nameOnCard + ' Your Payment Done!!' +<br></br>+
+
+        // 'Customer Name' + ' '+ <br>dfdf<br/>+
+
+        // 'Customer mobile'
+
+        text: "Hey there, it is our first message sent with Nodemailer ",
+
+        html: `<br>  Group ID:${groupID} </br><br>  Topic Name:${topicName} </br> <br>  Feedback:${topicFeedback} </br><br> Your Group Topic is Accept!! <br />`,
+      };
+
+      transporter.sendMail(mailOptions, (err, data) => {
+        if (err) {
+          console.log("Error occurs", err);
+        }
+
+        console.log("Email sent!!!");
+      });
     })
     .catch((err) => {
       console.log(err);

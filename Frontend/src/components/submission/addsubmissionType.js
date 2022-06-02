@@ -153,6 +153,7 @@ const AddSubmissiontype= ()=>{
                 <InputLabel id="demo-simple-select-label">
                     <b>Submission Discription:</b>
                     </InputLabel>
+                    <br></br>
                 <OutlinedInput
                     fullWidth
                     multiline
@@ -195,6 +196,7 @@ const AddSubmissiontype= ()=>{
                     <InputLabel id="demo-simple-select-label">
                     <b>Submission Template Name :</b>
                     </InputLabel>
+                    <br></br>
                     <OutlinedInput
                         style={{width:"280px"}}
                         type="text"
@@ -210,11 +212,12 @@ const AddSubmissiontype= ()=>{
                      />
                      </Grid>
 
-
+                     <br></br>
                      <Grid style={{marginRight:"100px"}} className={styles.song_info}>
                 <InputLabel id="demo-simple-select-label">
                     <b>Template Discription:</b>
                     </InputLabel>
+                    <br></br>
                 <OutlinedInput
                     style={{width:"400px"}}
                     fullWidth
