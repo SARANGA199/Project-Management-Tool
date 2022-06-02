@@ -104,16 +104,18 @@ const UpdateSubmissionType= ()=>{
 
     return(
     
-        <div className="container" align="center">
-
-
-        <div className="row">
-            <div className="col-12">
-                <div className="mb-3 mt-3">
-                  <center> <h2>CREATE SUBMISSION TYPE</h2></center> 
-                </div>
-            </div>
+      <div>
+      <div className="topicContainer">
+        <div className="leftTopic">
+          <div className="topicTop">
+            SLIIT <br />
+            RESEARCH
+          </div>
         </div>
+
+      <div className="container">
+      <div style={{marginLeft:"20px"}} className="topicName">UPDATE  SUBMISSION  TYPE</div>
+          <hr className="topicHr" />
 
  
   <form className={styles.form} onSubmit={handleUpdate}  >  
@@ -268,11 +270,13 @@ const UpdateSubmissionType= ()=>{
                 </center>
             </form>  
            
-          </div>  
-            
-            
-
-        );
+            </div>
+           
+           </div>  
+                 </div>      
+                       
+           
+                   );
 
 }
 
