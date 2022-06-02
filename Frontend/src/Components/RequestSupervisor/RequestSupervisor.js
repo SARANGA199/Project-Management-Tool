@@ -12,8 +12,18 @@ export const RequestSupervisor = ()=>{
     const[researchTopicName,setResearchTopicName]=useState("");
     const[comments,setComments]=useState("");
     const [supervisor, setSupervisor] = useState([]);
+    const [groupDetails, setGroupDetails] = useState([]);
 
-
+    useEffect(() => {
+        axios
+            .get("http://localhost:8070/members")
+            .then((res) => {
+                setGroupDetails(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
 
     const setSupervisorData = async () => {
 
@@ -87,8 +97,8 @@ export const RequestSupervisor = ()=>{
                                                     <option  value={"SE"}>SE</option>
                                                 </select>
                                             </div>
-
-                                            <label>Supervisor : </label>
+                                           <br/>
+                                            <label>Research Supervisor : </label>
                                             <div className="form-group">
                                                 <select className="form-select" aria-label="Default select example" value={researchSupervisor} onChange={e => setResearchSupervisor(e.target.value)}>
 
@@ -98,9 +108,7 @@ export const RequestSupervisor = ()=>{
 
                                                 </select>
                                             </div>
-
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -108,12 +116,12 @@ export const RequestSupervisor = ()=>{
                             <div className="col-sm-6">
                                 <div className="card">
                                     <div className="card-body">
-                                        <h5 className="card-title">form</h5>
+
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <label> Research Supervisor :</label>
                                                 <div className="form-group">
-                                                    <input type="text"  className="form-control" value={researchSupervisor} onChange={handleSupervisor}/>
+                                                    <input type="text"  className="form-control" value={researchSupervisor} onChange={handleSupervisor} disabled={true}/>
                                                 </div>
                                             </div>
 
@@ -128,9 +136,15 @@ export const RequestSupervisor = ()=>{
 
                                         <div className="row">
                                             <div className="col-md-6">
-                                                <label> Group ID :</label>
+                                                <label>Group ID : </label>
                                                 <div className="form-group">
-                                                    <input type="text" className="form-control" value={groupID} onChange={e => setGroupID(e.target.value)} required/>
+                                                    <select className="form-select" aria-label="Default select example" value={groupID} onChange={e => setGroupID(e.target.value)}>
+                                                        {groupDetails.map((data, index) => (
+                                                            <option key={index} value={data.GroupID}>
+                                                                {data.GroupID}
+                                                            </option>
+                                                        ))}
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -140,6 +154,7 @@ export const RequestSupervisor = ()=>{
                                                     <input type="email" className="form-control" value={groupLeaderEmail} onChange={e => setGroupLeaderEmail(e.target.value)} required/>
                                                 </div>
                                             </div>
+
 
                                         </div>
 
@@ -151,7 +166,6 @@ export const RequestSupervisor = ()=>{
                                                     <input type="text" className="form-control" value={researchTopicName} onChange={e => setResearchTopicName(e.target.value)} required/>
                                                 </div>
                                             </div>
-
                                         </div>
 
                                         <div className="row">
@@ -168,7 +182,7 @@ export const RequestSupervisor = ()=>{
                                             <br/>
                                         </div>
 
-
+                                             <br/>
                                         <div className="row">
                                             <center>
                                                 <button type="submit" className="btn btn-warning">send</button>
