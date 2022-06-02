@@ -6,9 +6,9 @@ import dotenv from 'dotenv'
 import  './db/db.js'
 import fileUpload from 'express-fileupload'
 
-import templateRouter from "./routes/templateRouter.js";
+import templateRouter from "./routes/submissionRouter/templateRouter.js";
 
-import submissionRouter from "./routes/submissionRouter.js";
+import submissionRouter from "./routes/submissionRouter/submissionRouter.js";
 import userRouter from "./routes/userRoutes/userRoutes.js";
 import pendingUserRouter from "./routes/userRoutes/pendingUserRoutes.js"
 import markingRoutes from "./routes/markingRoutes/markingRoutes.js"

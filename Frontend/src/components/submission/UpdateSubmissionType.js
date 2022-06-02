@@ -99,26 +99,23 @@ const UpdateSubmissionType= ()=>{
 		}
 	};
 
-  //   //handle specialization
-  // const handleChangeDropDown = (event) => {
-  //   //setSpecialization(event.target.value)
-
-  //   handleChange(data.subTypeName) = setData(event.target.value) ;
-  // };
+ 
 
 
     return(
     
-        <div className="container" align="center">
-
-
-        <div className="row">
-            <div className="col-12">
-                <div className="mb-3 mt-3">
-                  <center> <h2>CREATE SUBMISSION TYPE</h2></center> 
-                </div>
-            </div>
+      <div>
+      <div className="topicContainer">
+        <div className="leftTopic">
+          <div className="topicTop">
+            SLIIT <br />
+            RESEARCH
+          </div>
         </div>
+
+      <div className="container">
+      <div style={{marginLeft:"20px"}} className="topicName">UPDATE  SUBMISSION  TYPE</div>
+          <hr className="topicHr" />
 
  
   <form className={styles.form} onSubmit={handleUpdate}  >  
@@ -129,21 +126,7 @@ const UpdateSubmissionType= ()=>{
                     <div className="row">
                 
             <div className={styles.submission_container} >
-                    {/* <Grid>
-                    <label>Submission Type Name : </label>
-                    <OutlinedInput
-                        type="text"
-                        name="subTypeName"
-                        label="Submission type Name"
-                        required
-                        id="name"
-                        placeholder="Type Name"
-                        onChange={handleChange}
-                        value={data.subTypeName}
-                        //onChange={(e) => setSubTypeName (e.target.value)}
-                        
-                     />
-                     </Grid> */}
+                    
                 <div>
                 <InputLabel style={{width:"400px"}} id="demo-simple-select-label">
                     <b>Submission type Name:</b>
@@ -287,11 +270,13 @@ const UpdateSubmissionType= ()=>{
                 </center>
             </form>  
            
-          </div>  
-            
-            
-
-        );
+            </div>
+           
+           </div>  
+                 </div>      
+                       
+           
+                   );
 
 }
 

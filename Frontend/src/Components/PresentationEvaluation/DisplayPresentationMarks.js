@@ -12,7 +12,8 @@ export default function DisplayPresentationMarks() {
   const [preType, setPreType] = useState("");
 
   useEffect(() => {
-    const type = "Proposal Presentation";
+   
+    const type = localStorage.getItem("STypeName");
     axios
       .get(`http://localhost:8070/presentationMarks/marks/${type}`)
       .then((res) => {
@@ -41,7 +42,7 @@ export default function DisplayPresentationMarks() {
           </button>
         </div>
         <div className="container">
-          <div className="topicNam">PROPOSAL PRESENTATIONS</div>
+          <div className="topicNam">{preType}</div>
           <hr className="topicHr" />
           <table className="table frame">
             <thead>

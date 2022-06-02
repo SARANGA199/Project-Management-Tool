@@ -10,11 +10,11 @@ import {
 
 const router = express.Router();
 
-router.get("/requestSV", getRequestSV);
-router.post("/requestSV", saveRequestSV);
-router.get("/requestSV/:id", getRequestsById);
-router.put("/requestSV/:id", updateRequest);
-router.put("/request/:id", updateCoSupervisorRequest);
+router.get('/requestSV',getRequestSV);
+router.post('/requestSV',saveRequestSV);
+router.get('/requestSV/:id',getRequestsById);
+router.put('/requestSV/:id',updateRequest);
+router.put('/requestCoSV/:id',updateCoSupervisorRequest);
 
 router.delete("/requestSV/:id", deleteRequest);
 
