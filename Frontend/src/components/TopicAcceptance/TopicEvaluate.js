@@ -161,7 +161,7 @@ console.log(topicSubmitDoc)
                 />
              </div>   
             </Box>
-            <form onSubmit={setData}>
+            
             <div className="textCont ms-2 mb-3 mt-3">
               <div class="form-group ">
                 <label for="exampleFormControlTextarea1"><b>Feedback of the Research Topic:</b></label>
@@ -179,6 +179,7 @@ console.log(topicSubmitDoc)
               <div style={{paddingLeft:"360px"}}>
               <button
                 
+                  onClick={()=>setData()}
                   className="btn btn-outline-warning"
                   variant="contained"
                   type="submit"
@@ -186,7 +187,7 @@ console.log(topicSubmitDoc)
                   SEND <SendIcon>send</SendIcon>{" "}
                 </button>
                 </div>
-                </form>
+                
            
           </div>
         </div>

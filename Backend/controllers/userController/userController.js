@@ -267,6 +267,19 @@ const userController = {
         }
     },
 
+    getCosupervisorMembers: async (req, res) => {
+        
+        const area = req.params.researchArea;
+        
+        try {
+            const users = await Users.find({$and:[{role:"Supervisor"},{researchArea:area}]}).select('-password')
+
+            res.json(users)
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+
 }
 
 const createActivationToken = (user) => {
