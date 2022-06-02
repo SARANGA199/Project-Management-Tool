@@ -104,9 +104,10 @@ function DisplaysubType() {
           <div className="submissionDes">
             {submisionType.subTypeDiscription}
           </div>
+          {submisionType.template != "" ? (
           <div className="subContainerSub">
             <div>
-              {submisionType.template != "" ? (
+             
                 <>
                   <div>
                     <a href={submisionType.template}>
@@ -119,10 +120,11 @@ function DisplaysubType() {
                     </a>
                   </div>
                 </>
-              ) : null}
+              
             </div>
             <div className="tempDesc">{submisionType.templateDiscription}</div>
           </div>
+          ) : null}
           <div className="submitTop1">
             Submit Your {submisionType.subTypeName} Here ...
           </div>
