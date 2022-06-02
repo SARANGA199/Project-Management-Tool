@@ -11,7 +11,7 @@ function ActivationEmail() {
                 try {
                     console.log(activation_token)
                     const res = await axios.post('http://localhost:8070/pending/activation', {activation_token})
-                    swal("Good job!", "You clicked the button!", "success").then(() => {
+                    swal("Activated!", "You successfully registered! Please Wait till the admin verifies your Details", "success").then(() => {
                         window.location.href = "/login"
                     })
                 } catch (err) {

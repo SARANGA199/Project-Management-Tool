@@ -38,18 +38,18 @@ function Profile() {
         }
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
+            text: "You are going to update a users account!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
           }).then((willDelete) => {
             if (willDelete) {
               axios.put(`http://localhost:8070/user/updateUsr/${id}`,newRoute)
-              swal("Poof! Your imaginary file has been deleted!", {
+              swal("Poof! User account successfully updated!", {
                 icon: "success",
               });
             } else {
-              swal("Your imaginary file is safe!");
+              swal("User account is safe!");
             }
           }).catch((err)=>{
     

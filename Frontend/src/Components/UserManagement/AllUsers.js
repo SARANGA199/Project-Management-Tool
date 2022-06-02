@@ -55,7 +55,7 @@ const handleDelete = (id) => {
                 });
         
     } catch (err) {
-        return swal("ERROR!", "Updated Failed!", "error");
+        return swal("ERROR!", "Deleted Failed!", "error");
     }
 }
 

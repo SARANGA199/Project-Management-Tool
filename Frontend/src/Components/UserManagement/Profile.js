@@ -95,7 +95,7 @@ function Profile() {
     return (
         <>
         <div>
-            {loading && <h3>Loading.....</h3>}
+            {loading && <h3>Uploading Image.....</h3>}
         </div>
         <div className="profContainer">
         <div className="profLeft">

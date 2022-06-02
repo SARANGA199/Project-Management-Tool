@@ -42,7 +42,9 @@ function Register() {
     try {
       const register = await axios.post('http://localhost:8070/user/register',{...user})
       localStorage.setItem("firstLogin", true);
-      swal("Done!", "Register Success! Please activate your email to start.", "success");
+      swal("Done!", "Register Success! Please activate your email to start.", "success").then(() => {
+        window.location.href = "/login"
+    })
     } catch (err) {
       swal("ERROR!", err.response.data.msg, "error");
     }
@@ -50,7 +52,9 @@ function Register() {
   else{
     try {
       const pendregister = await axios.post('http://localhost:8070/pending/register',{...user})
-      swal("Done!", "You successfully registered! Please Wait till the admin verifies your Details", "success");
+      swal("Done!", "Register Success! Please activate your email to start.", "success").then(() => {
+        window.location.href = "/login"
+    })
     } catch (err) {
       swal("ERROR!", err.response.data.msg, "error");
     }

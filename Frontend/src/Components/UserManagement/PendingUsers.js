@@ -40,7 +40,7 @@ const handleDelete = (id) => {
           .then((willDelete) => {
             if (willDelete) {
                  axios.delete(`http://localhost:8070/pending/delete/${id}`)
-                swal("Poof! Your imaginary file has been deleted!", {
+                swal("Poof! User account has been deleted!", {
                     icon: "success",
                   });
                   window.location.reload(false);
