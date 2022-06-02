@@ -12,7 +12,7 @@ export default function DisplayPresentationMarks() {
   const [preType, setPreType] = useState("");
 
   useEffect(() => {
-    const type = "Final Presentation";
+    const type = "Proposal Presentation";
     axios
       .get(`http://localhost:8070/presentationMarks/marks/${type}`)
       .then((res) => {

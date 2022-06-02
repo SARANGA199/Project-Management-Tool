@@ -1,0 +1,155 @@
+body {
+  margin: 0px;
+}
+
+.submissionContainer {
+  display: grid;
+  grid-template-columns: 20% auto;
+}
+
+.submissionLeft {
+  background-color: whitesmoke;
+}
+
+.submissionTopic {
+  font-weight: bold;
+  font-size: 7vh;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-top: 10vh;
+  margin-left: 5vh;
+}
+
+.submissionTopicT1 {
+  font-weight: bold;
+  font-size: 6vh;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-top: 5vh;
+  margin-left: 5vh;
+}
+
+.HrSubmission {
+  color: rgb(255, 166, 1);
+  border-top: 1vh solid;
+  width: 50%;
+
+  margin-bottom: 4vh;
+}
+
+.cardSubmission {
+  padding: 3vh;
+  margin-top: 1vh;
+  margin-left: 3vh;
+  box-shadow: 0 0 0 0;
+  background-color: whitesmoke;
+  width: 70%;
+  padding: 5vh;
+}
+
+.submissionCartTopic {
+  width: 70%;
+  margin-left: 3vh;
+  font-weight: bold;
+  font-size: 3vh;
+  margin-top: 5vh;
+  background-color: whitesmoke;
+  padding: 1vh;
+}
+
+.submissionDes {
+  font-size: 2.5vh;
+  margin-top: 2vh;
+  margin-left: 1vh;
+  margin-bottom: 3vh;
+  font-weight: bold;
+}
+
+.subContainerSub {
+  display: grid;
+  grid-template-columns: 30% auto;
+  box-shadow: 0 0 0 0;
+  background-color: white;
+  padding: 2vh;
+}
+
+.iconsSubmission {
+  width: 50%;
+  height: 50%;
+  padding: 1vh;
+}
+
+.TemplateNameSub {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.aTagSub {
+  text-decoration: none;
+  color: rgb(255, 166, 1);
+}
+
+.aTagSub:hover {
+  color: rgb(255, 166, 1);
+  text-decoration: none;
+}
+
+.tempDesc {
+  font-size: 2vh;
+  padding: 2vh;
+}
+
+.submitBTSub {
+  margin-top: 1vh;
+  margin-left: 1vh;
+}
+
+.submitTop1 {
+  font-weight: bold;
+  margin-left: 2vh;
+  margin-top: 3vh;
+}
+
+.EnableDisable {
+  margin-top: 3vh;
+  display: grid;
+  grid-template-columns: 40% auto;
+  box-shadow: 0 0 0 0;
+  background-color: white;
+  padding: 2vh;
+}
+
+.enaDesa {
+  margin-left: 15vh;
+  padding: 2vh;
+}
+
+.enaDesa1 {
+  padding: 2vh;
+  margin-top: 2vh;
+}
+
+.UpdateSub1 {
+  margin-top: 3vh;
+  margin-left: 70vh;
+}
+
+.upSub {
+  text-decoration: none;
+  color: orange;
+}
+
+.upSub:hover {
+  text-decoration: none;
+  color: orange;
+}
+
+.deSub {
+  text-decoration: none;
+  color: orange;
+}
+
+.deSub:hover {
+  text-decoration: none;
+  color: orange;
+}

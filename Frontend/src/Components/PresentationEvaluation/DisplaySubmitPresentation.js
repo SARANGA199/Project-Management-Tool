@@ -11,7 +11,7 @@ export default function DisplaySubmitPresentation() {
   useEffect(() => {
     const type = "Presentation";
     axios
-      .get(`http://localhost:8070/stdSubmitDoc/${type}`)
+      .get(`http://localhost:8070/stdSubmitDoc/stdSubmitDoc/${type}`)
       .then((res) => {
         console.log(res.data);
         setRequest(res.data);

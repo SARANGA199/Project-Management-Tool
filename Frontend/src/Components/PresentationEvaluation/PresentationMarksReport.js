@@ -20,7 +20,7 @@ const presentationMarksReport = (Type, marks) => {
 
   var img = new Image();
   img.src =
-    "https://res.cloudinary.com/donfmtaf4/image/upload/v1653761426/markingFinal_asud0m.png";
+    "https://res.cloudinary.com/donfmtaf4/image/upload/v1654153704/Group_2_ny8ylr.png";
   doc.addImage(img, "png", 10, 10, 180, 42);
 
   // startY is basically margin-top
