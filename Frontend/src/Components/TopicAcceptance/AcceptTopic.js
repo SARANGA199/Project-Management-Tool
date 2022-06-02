@@ -26,6 +26,7 @@ export default function AcceptTopic() {
   const [groupID, setGroupId] = useState();
   const [topicDescription, setToDescription] = useState();
   const [tid, setTid] = useState();
+  const [groupLeaderEmail, setGroupLeaderEmail] = useState();
 
   useEffect(() => {
     let id = localStorage.getItem("tid");
@@ -37,16 +38,21 @@ export default function AcceptTopic() {
         setToCategory(res.data.topicCategory);
         setGroupId(res.data.groupID);
         setToDescription(res.data.topicDescription);
+        setGroupLeaderEmail(res.data.groupLeaderEmail);
       })
       .catch((err) => {
         alert(err);
       });
     setTid(id);
   }, []);
+  console.log(groupLeaderEmail);
 
   const setData = async (topicStatus) => {
     const newValue = {
       topicStatus,
+      groupLeaderEmail,
+      groupID,
+      topicName,
     };
 
     const update = await axios
@@ -110,6 +116,7 @@ export default function AcceptTopic() {
                   label="Group ID"
                   type="text"
                   value={groupID}
+                  disabled
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -121,6 +128,7 @@ export default function AcceptTopic() {
                   label="Research Category"
                   type="text"
                   value={topicCategory}
+                  disabled
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -132,6 +140,7 @@ export default function AcceptTopic() {
                 label="Research Topic"
                 type="text"
                 value={topicName}
+                disabled
                 InputLabelProps={{
                   shrink: true,
                 }}

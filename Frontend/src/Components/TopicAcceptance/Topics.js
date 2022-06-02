@@ -42,13 +42,12 @@ export default function Topics() {
     //   });
   };
 
-
   const setEvaluate = async (data) => {
     let { _id } = data;
 
     localStorage.setItem("tid", _id);
     navigate("/evaluateTopic");
-  };  
+  };
 
   return (
     <div>
@@ -95,7 +94,6 @@ export default function Topics() {
                     >
                       &nbsp;Acceptance
                     </button>
-
                     <button
                       disabled={
                         data.topicStatus === "pending" ||
@@ -107,9 +105,9 @@ export default function Topics() {
                     </button>
                     &nbsp;&nbsp;&nbsp;
                     <button
-                       class="btn btn-info"
+                      class="btn btn-info"
                       disabled={
-                         data.topicStatus === "pending" ||
+                        data.topicStatus === "pending" ||
                         data.topicStatus === "Rejected"
                       }
                       onClick={() => setEvaluate(data)}

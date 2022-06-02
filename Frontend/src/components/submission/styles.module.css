@@ -45,7 +45,7 @@
 }
 .container {
 	padding: 50px;
-    background:#f2f2f2;
+    background:white;
     border-radius: 5px;
     box-shadow: 5px 5px 10px 0;
 	width: 100vw;
@@ -56,7 +56,7 @@
 .songs_container {
 	display: flex;
 	padding: 50px;
-    background:#e7e2e2;
+    background:white;
     border-radius: 5px;
     box-shadow: 5px 5px 10px 0;
 	flex-direction: column;
@@ -67,7 +67,7 @@
 .subTypes_container {
 	display: flex;
 	padding: 2px;
-    background:#e7e2e2;
+    background:white;
     border-radius: 5px;
     box-shadow: 5px 5px 10px 0;
 	flex-direction: column;
@@ -81,7 +81,7 @@
 .form {
 	padding: 40px;
 	width: 80%;
-	background: rgb(249, 249, 249);
+	background: white;
 	border-radius: 2px;
 	box-shadow: 5px 5px 10px 0;
 	display: flex;
@@ -94,7 +94,7 @@
 
 .submission_container{
 	padding: 20px;
-    background:#f2f2f2;
+    background:white;
     border-radius: 5px;
     box-shadow: 5px 5px 10px 0;
 	width: 500px;

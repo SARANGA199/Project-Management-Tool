@@ -39,17 +39,22 @@ const UpdateSubmissionType= ()=>{
     // const [submission,setSubmission] = useState("test1")
 
      let sId = localStorage.getItem("Sid");
-    // let sId = localStorage.getItem("Sid");
+     let SubTypeName = localStorage.getItem("SubTypeName");
+     let SubTypeDiscription = localStorage.getItem("SubTypeDiscription");
+     let Template = localStorage.getItem("Template");
+     let TemplateTitle = localStorage.getItem("TemplateTitle");
+     let TemplateDiscription = localStorage.getItem("TemplateDiscription");
 
     const [data, setData] = useState({
             adminName:"test",
-            subTypeName:localStorage.getItem("SubTypeName"),
-            subTypeDiscription:localStorage.getItem("SubTypeDiscription"),
-            template:localStorage.getItem("Template"),
-            templateTitle: localStorage.getItem("TemplateTitle"),
-		        templateDiscription: localStorage.getItem("TemplateDiscription"),
+            subTypeName:SubTypeName,
+            subTypeDiscription:SubTypeDiscription,
+            template:Template,
+            templateTitle: TemplateTitle,
+		        templateDiscription: TemplateDiscription,
 	});
 
+   
     
   // const setDocumetData =async(action)=>{
 
@@ -68,7 +73,7 @@ const UpdateSubmissionType= ()=>{
 		setData((prev) => ({ ...prev, [name]: value }));
 	};
 
-	const handleSubmit = async (e) => {
+	const handleUpdate = async (e) => {
 		e.preventDefault()
         // const data ={
         //     adminName:"vishwa",
@@ -81,7 +86,7 @@ const UpdateSubmissionType= ()=>{
 			//const url = process.env.REACT_APP_API_URL + "/addtemplate"
            
 
-            const { data : res } = await axios.put(`http://localhost:8070/submission/updateAlldata/${sId}`, data).then(()=>{
+           await axios.put(`http://localhost:8070/submission/updateAlldata/${sId}`, data).then(()=>{
 				         // console.log(data)
                 alert("Update sucsesfull")
                 navigate("/displaysub");
@@ -116,7 +121,7 @@ const UpdateSubmissionType= ()=>{
         </div>
 
  
-  <form className={styles.form} onSubmit={handleSubmit}  >  
+  <form className={styles.form} onSubmit={handleUpdate}  >  
 
                 <div className="row"> 
                 

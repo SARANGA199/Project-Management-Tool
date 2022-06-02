@@ -25,4 +25,6 @@ router.delete('/delete/:id', userController.deleteUser);
 
 router.get('/info/:researchArea', userController.getPanelMembers);
 
+router.get('/infoSupervisor/:researchArea', userController.getSupervisorMembers);
+
 export default router;

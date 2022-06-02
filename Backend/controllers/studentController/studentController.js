@@ -11,6 +11,26 @@ export const getMembers = async (req, res) => {
 
 export const saveMembers = async (req,res)=>{
     const {leaderName,
+
+
+      leaderID,
+      leaderEmail,
+      Member2Name,
+      Member2ID,
+      Member2Email,
+      Member3Name,
+      Member3ID,
+      Member3Email,
+      Member4Name,
+      Member4ID,
+      Member4Email} = req.body;
+    let value = await Members.countDocuments({})
+    const GroupID = 'REG_GROUP_'+(value+1)
+   
+    try {
+
+      const group = new Members({leaderName,
+
         leaderID,
         leaderEmail,
         Member2Name,
@@ -21,6 +41,7 @@ export const saveMembers = async (req,res)=>{
         Member3Email,
         Member4Name,
         Member4ID,
+
         Member4Email} = req.body;
     let value = await Members.countDocuments({})
     const GroupID = 'REG_GROUP_'+(value+1)
@@ -44,6 +65,7 @@ export const saveMembers = async (req,res)=>{
                 res.status(201).json("student group add");
             })
 
+
     } catch (error) {
         res.status(400).json({message: error.message});
     }
@@ -61,20 +83,22 @@ export const saveMembers = async (req,res)=>{
 // };
 
 export const getGroupID = async (req, res) => {
-    const mail = req.params.email;
 
-    try {
-        const member = await Members.findOne({
-            $or: [
-                { leaderEmail: mail },
-                { Member2Email: mail },
-                { Member3Email: mail },
-                { Member4Email: mail },
-            ],
-        });
+  const mail = req.params.email;
 
-        res.status(200).json(member);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+  try {
+    const member = await Members.findOne({
+      $or: [
+        { leaderEmail: mail },
+        { Member2Email: mail },
+        { Member3Email: mail },
+        { Member4Email: mail },
+      ],
+    });
+
+    res.status(200).json(member);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
 };
