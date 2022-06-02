@@ -1,13 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import "./topicAccept.css";
+import { GlobalState } from "../../GlobalState";
 
 export default function Topics() {
   let navigate = useNavigate();
+  const state = useContext(GlobalState);
   const [request, setRequest] = useState([]);
   const [disable, setDisable] = useState(false);
+  const [crrUser, setCrrUser] = state.UserAPI.crrUser;
 
   useEffect(() => {
     axios
@@ -84,16 +87,21 @@ export default function Topics() {
                     <b className="statusUp">{data.topicStatus}</b>
                   </td>
                   <td>
-                    <button
-                      className="btn btn-success"
-                      disabled={
-                        data.topicStatus === "Accepted" ||
-                        data.topicStatus === "Rejected"
-                      }
-                      onClick={() => setData(data)}
-                    >
-                      &nbsp;Acceptance
-                    </button>
+                    {crrUser.role === "Supervisor" ||
+                    crrUser.role === "Co-Supervisor" ? (
+                      <button
+                        className="btn btn-success"
+                        disabled={
+                          data.topicStatus === "Accepted" ||
+                          data.topicStatus === "Rejected"
+                        }
+                        onClick={() => setData(data)}
+                      >
+                        &nbsp;Acceptance
+                      </button>
+                    ) : (
+                      " "
+                    )}
                     <button
                       disabled={
                         data.topicStatus === "pending" ||
@@ -104,16 +112,20 @@ export default function Topics() {
                       &nbsp;Document Upload
                     </button>
                     &nbsp;&nbsp;&nbsp;
-                    <button
-                      class="btn btn-info"
-                      disabled={
-                        data.topicStatus === "pending" ||
-                        data.topicStatus === "Rejected"
-                      }
-                      onClick={() => setEvaluate(data)}
-                    >
-                      &nbsp;Evaluate
-                    </button>
+                    {crrUser.role === "Panel_Member" ? (
+                      <button
+                        class="btn btn-info"
+                        disabled={
+                          data.topicStatus === "pending" ||
+                          data.topicStatus === "Rejected"
+                        }
+                        onClick={() => setEvaluate(data)}
+                      >
+                        &nbsp;Evaluate
+                      </button>
+                    ) : (
+                      " "
+                    )}
                   </td>
                 </tr>
               ))}

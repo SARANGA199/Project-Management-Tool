@@ -59,8 +59,14 @@ function Header() {
             <img src={series} alt="series" />
             <span>CHATS</span>
           </a>
-        ) : (
+        ) : crrUser.role === "Supervisor" ||
+          crrUser.role === "Co-Supervisor" ? (
           <a href="/allForums">
+            <img src={series} alt="series" />
+            <span>CHATS</span>
+          </a>
+        ) : (
+          <a href="/">
             <img src={series} alt="series" />
             <span>CHATS</span>
           </a>

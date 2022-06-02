@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -19,6 +19,8 @@ import Container from "@mui/material/Container";
 import FormControl from "@mui/material/FormControl";
 import swal from "sweetalert";
 import "./accept.css";
+import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
+import { GlobalState } from "../../GlobalState";
 
 export default function TopicEvaluate() {
   let navigate = useNavigate();
@@ -27,8 +29,8 @@ export default function TopicEvaluate() {
   const [groupID, setGroupId] = useState();
   const [topicFeedback, setTopicFeedback] = useState();
   const [tid, setTid] = useState();
-  const [email,setEmail]=useState("");
-  const [topicSubmitDoc,setTopicSubmitDoc]=useState("");
+  const [email, setEmail] = useState("");
+  const [topicSubmitDoc, setTopicSubmitDoc] = useState("");
 
   useEffect(() => {
     let id = localStorage.getItem("tid");
@@ -41,49 +43,44 @@ export default function TopicEvaluate() {
         setGroupId(res.data.groupID);
         setEmail(res.data.groupLeaderEmail);
 
-
-        console.log(res.data.groupID)
+        console.log(res.data.groupID);
         axios
-        .get(`http://localhost:8070/topicSubmitDoc/displayTopicDoc/${res.data.groupID}`)
-        .then((res) => {
-          setTopicSubmitDoc(res.data.topicSubmitDoc);
-        })
-        .catch((err) => {
-          alert(err);
-        });
-
-
-
+          .get(
+            `http://localhost:8070/topicSubmitDoc/displayTopicDoc/${res.data.groupID}`
+          )
+          .then((res) => {
+            setTopicSubmitDoc(res.data.topicSubmitDoc);
+          })
+          .catch((err) => {
+            alert(err);
+          });
       })
       .catch((err) => {
         alert(err);
       });
 
-      
-
-      
     setTid(id);
   }, []);
 
   const setData = async () => {
     const newValue = {
-        topicFeedback,
-        email,
-        groupID,
-        topicName
+      topicFeedback,
+      email,
+      groupID,
+      topicName,
     };
 
     const update = await axios
       .put(`http://localhost:8070/topicFeedback/${tid}`, newValue)
       .then(() => {
-        swal("sent feedback")
+        swal("sent feedback");
         navigate("/topics");
       })
       .catch((err) => {
         swal(`Something went to wrong !!!`);
       });
   };
-console.log(topicSubmitDoc)
+  console.log(topicSubmitDoc);
   return (
     <div>
       <div className="acceptContainer">
@@ -97,10 +94,14 @@ console.log(topicSubmitDoc)
           <div className="acceptLabel">
             <label className="acceptTot">Details of Topic </label>
             <hr className="hr3" />
-            <div style={{paddingLeft:"350px",marginBottom:"30px"}}>
-            <Box>
-            <a href={topicSubmitDoc} style={{textDecoration:"none"}}>submit document</a>
-            </Box>
+            <div style={{ paddingLeft: "300px", marginBottom: "30px" }}>
+              <a
+                href={topicSubmitDoc}
+                className="btn btn-warning"
+                style={{ textDecoration: "none" }}
+              >
+                <DownloadOutlinedIcon /> Document
+              </a>
             </div>
             <Box
               component="form"
@@ -111,7 +112,6 @@ console.log(topicSubmitDoc)
               autoComplete="off"
             >
               <div>
-              
                 <TextField
                   id="filled-number"
                   label="Group ID"
@@ -123,7 +123,7 @@ console.log(topicSubmitDoc)
                   variant="outlined"
                   disabled
                 />
-                
+
                 <TextField
                   id="filled-number2"
                   label="Research Category"
@@ -137,18 +137,18 @@ console.log(topicSubmitDoc)
                 />
               </div>
               <div>
-              <TextField
-                id="filled-number3"
-                label="Research Topic"
-                type="text"
-                value={topicName}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant="outlined"
-                disabled
-              />
-              <TextField
+                <TextField
+                  id="filled-number3"
+                  label="Research Topic"
+                  type="text"
+                  value={topicName}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="outlined"
+                  disabled
+                />
+                <TextField
                   id="filled-number2"
                   label="Group Leader Email"
                   type="text"
@@ -159,35 +159,35 @@ console.log(topicSubmitDoc)
                   variant="outlined"
                   disabled
                 />
-             </div>   
+              </div>
             </Box>
             <form onSubmit={setData}>
-            <div className="textCont ms-2 mb-3 mt-3">
-              <div class="form-group ">
-                <label for="exampleFormControlTextarea1"><b>Feedback of the Research Topic:</b></label>
-                <textarea
-                  class="form-control"
-                  id="exampleFormControlTextarea1"
-                  value={topicFeedback}
-                  rows="6"
-                  onChange={(e)=>setTopicFeedback(e.target.value)}
-                  required
-                ></textarea>
-                <br></br>
-              </div >
+              <div className="textCont ms-2 mb-3 mt-3">
+                <div class="form-group ">
+                  <label for="exampleFormControlTextarea1">
+                    <b>Feedback of the Research Topic:</b>
+                  </label>
+                  <textarea
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    value={topicFeedback}
+                    rows="6"
+                    onChange={(e) => setTopicFeedback(e.target.value)}
+                    required
+                  ></textarea>
+                  <br></br>
+                </div>
               </div>
-              <div style={{paddingLeft:"360px"}}>
-              <button
-                
+              <div style={{ paddingLeft: "360px" }}>
+                <button
                   className="btn btn-outline-warning"
                   variant="contained"
                   type="submit"
                 >
                   SEND <SendIcon>send</SendIcon>{" "}
                 </button>
-                </div>
-                </form>
-           
+              </div>
+            </form>
           </div>
         </div>
       </div>
