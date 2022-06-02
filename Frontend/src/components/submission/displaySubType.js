@@ -148,6 +148,7 @@ function DisplaysubType() {
                 * Enable / Disable {submisionType.subTypeName} Marks *
               </div>
               <div className="enaDesa">
+              {submisionType.marksStatus == "Disable" ? (
                 <a
                   type="submit"
                   className="upSub  ms-2"
@@ -155,6 +156,8 @@ function DisplaysubType() {
                 >
                   Enable
                 </a>
+                ) : null}
+                {submisionType.marksStatus == "Enable" ? (
                 <a
                   type="submit"
                   className="upSub  ms-2"
@@ -162,6 +165,7 @@ function DisplaysubType() {
                 >
                   Disable
                 </a>
+                 ) : null}
               </div>
             </div>
           </div>

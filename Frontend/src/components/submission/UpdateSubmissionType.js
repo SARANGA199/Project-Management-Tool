@@ -99,12 +99,7 @@ const UpdateSubmissionType= ()=>{
 		}
 	};
 
-  //   //handle specialization
-  // const handleChangeDropDown = (event) => {
-  //   //setSpecialization(event.target.value)
-
-  //   handleChange(data.subTypeName) = setData(event.target.value) ;
-  // };
+ 
 
 
     return(
@@ -129,21 +124,7 @@ const UpdateSubmissionType= ()=>{
                     <div className="row">
                 
             <div className={styles.submission_container} >
-                    {/* <Grid>
-                    <label>Submission Type Name : </label>
-                    <OutlinedInput
-                        type="text"
-                        name="subTypeName"
-                        label="Submission type Name"
-                        required
-                        id="name"
-                        placeholder="Type Name"
-                        onChange={handleChange}
-                        value={data.subTypeName}
-                        //onChange={(e) => setSubTypeName (e.target.value)}
-                        
-                     />
-                     </Grid> */}
+                    
                 <div>
                 <InputLabel style={{width:"400px"}} id="demo-simple-select-label">
                     <b>Submission type Name:</b>
