@@ -1,4 +1,5 @@
 import RequestSV from "../../models/requestSupervisorModel/requestSupervisorModel.js";
+import nodemailer from "nodemailer";
 
 
 export const getRequestSV =  async (req,res)=>{
@@ -42,7 +43,11 @@ export const getRequestsById = async (req,res)=>{
 export const updateRequest = async (req, res) => {
     const rId = req.params.id;
 
-    const {supervisorStatus} = req.body;
+    const {supervisorStatus,
+        groupID,
+        groupLeaderEmail,
+        researchTopicName,
+        researchSupervisor} = req.body;
 
     const updateReq = {
         rId,
@@ -52,12 +57,43 @@ export const updateRequest = async (req, res) => {
     const update = await RequestSV.findByIdAndUpdate(rId, updateReq)
         .then(() => {
             res.status(200).send({ status: "Request status is  Updated" });
+
+            //sending Mails
+            let transporter = nodemailer.createTransport({
+
+                service: 'gmail',
+                auth: {
+                    user: 'themoviehub3020@gmail.com' ,
+                    pass: 'moviehub3020'
+                }
+            });
+            //if(supervisorStatus == "Accepted"){}
+            let mailOptions = {
+                from: 'themoviehub3020@gmail.com',             //need to add new email
+                to: `${groupLeaderEmail}`,
+                subject: 'Request Accepted By Supervisor',
+                text: 'Request Accepted By Supervisor ',
+
+                html: `<br>  Group ID:${groupID} </br><br>  Topic Name:${researchTopicName} </br><br> Your Group Request is accepted by :${researchSupervisor} !! <br />`,
+
+            };
+
+            transporter.sendMail(mailOptions, (err, data) => {
+
+                if (err) {
+                    console.log('Error occurs',err);
+                }
+                console.log('Email sent!!!');
+            });
+
+
         })
         .catch((err) => {
             console.log(err);
             res
                 .status(500)
                 .send({ status: "Error with Updating status", error: err.message });
+
         });
 };
 
