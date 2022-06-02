@@ -1,106 +1,85 @@
-.docEval_page{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.topic-containerPre {
+body {
+    margin: 0px;
+  }
+  
+  .topic-containerPre {
     display: grid;
     height: 100vh;
     grid-template-columns: 20% auto;
-}
+  }
   
-.leftCom {
-    background-color: whitesmoke;
-}
-
-.formTitlePre {
-    margin-top: 30vh;
-    margin-left: -2vh;
+  .leftCom {
+    background-color: white;
+  }
+  
+  .tableControl {
+    padding: 3vh;
+    margin-top: 3vh;
+    line-height: 6vh;
+  }
+  
+  .textNew {
+    margin-top: 1vh;
+    margin-left: 3vh;
+    margin-bottom: 0ch;
+  }
+  
+  .title {
+    margin-top: 9vh;
+    font-weight: bold;
+    margin-left: 3vh;
+    margin-bottom: 3vh;
+  }
+  
+  .btn1 {
+    margin-left: 80%;
+    margin-top: 1vh;
+  }
+  
+  .formTitlePre {
+    margin-top: 1vh;
+    margin-left: 1vh;
     font-size: 5vh;
     font-weight: bold;
     padding: 4vh;
     border-radius: 5vh;
-}
-
-.docEval_page .col-left{
-    max-width: 100px;
-    min-width: 100px;
-    padding: 20 30px;
-    margin: auto;
-}
-.docEval_page .col-left h2{
-    text-align: center;
-    font-size: 1.7rem;
-    text-transform: uppercase;
-    color: #333;
-    margin: 10px 0;
-}
-.docEval_page .col-left label{
-    display: block;
-    margin-top: 5px;
-}
-.docEval_page .col-left input{
-    width: 100%;
-    height: 40px;
-    margin: 5px 0;
-    /* border: none; */
-    outline: solid;
-    background: rgb(245, 221, 193);
-    padding: 0 5px;
-}
-.docEval_page .col-left button{
-    background: #333;
-    color: white;
-    padding: 10px 25px;
-    text-transform: uppercase;
-    letter-spacing: 1.4px;
-    margin: 10px 0;
-}
-
-/* ----------- Col Right----------- */
-.docEval_page .col-right{
-    padding: 0 10px;
-    flex: 1;
-    min-width: 850px;
-    max-width: 850px;
-    margin-left: 250px;
-    margin-right: -10px;
-}
-.docEval_page .col-right h2{
-    font-size: 1.7rem;
-    text-transform: uppercase;
-    color: #333;
-    margin: 10px 0;
-}
-
-/* ------------ Table------------ */
-.customers{
-    border-collapse: collapse;
-    width: 100%;
-}
-.customers td,
-.customers th{
-    border: 1px solid #ddd;
-    padding: 8px;
-    min-width: 100px;
-}
-.customers tr:nth-child(even){
-    background: #f2f2f2;
-}
-.customers th{
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background: #555;
-    color: white;
-}
-
-div.groupdoccard {
-    width: 350px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-    padding: 40px;
-    background-color: rgb(235, 235, 235);
   }
+  
+  .input2 {
+    margin-top: 15vh;
+    margin-left: 5vh;
+    margin-bottom: 10vh;
+  }
+  
+  .map1 {
+    margin-left: 5vh;
+    background-color: whitesmoke;
+    padding: 5vh;
+  }
+  
+  .totalMark {
+    border-radius: 2vh;
+    padding: 2vh;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    width: 35vh;
+    margin-left: 2vh;
+    font-size: 4vh;
+    font-weight: bold;
+    box-shadow: 0 0 4px 0;
+  }
+  
+  .getMarkingBtn {
+    margin-left: 121vh;
+  }
+  
+  .evaluateHr {
+    margin-left: 2vh;
+    border: solid orange;
+  }
+  
+  .submitColor {
+    color: orange;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  

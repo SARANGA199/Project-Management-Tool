@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -11,143 +12,142 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import swal from "sweetalert";
 import { v4 as uuidv4 } from "uuid";
+import swal from "sweetalert";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import './docEvaluation.css';
+import getMarkingScheme from "../PresentationMarks/GetMarkingSchemes";
 import { useNavigate } from "react-router-dom";
+import "./docEvaluation.css";
 
-function DocEvaluation() {
+export default function EvaluatePresentation() {
+  let navigate = useNavigate();
+  const [criteria, setCriteria] = useState([
+    { id: uuidv4(), criteriaName: "", marksAllocation: "", marks: "" },
+  ]);
+  const [marksn, setMarks] = useState(0);
+  const [document, setDocument] = useState("");
+  const [leader, setLeader] = useState("");
+  const [projectId, setProjectId] = useState("");
+  const [specialization, setSpecialization] = useState("");
+  const [marks, setTotal] = useState("");
+  const [mid, setMid] = useState("");
 
-    let navigate = useNavigate();
-    const [criteria, setCriteria] = useState([
-      { id: uuidv4(), criteriaName: "", marksAllocation: "", marks: "" },
-    ]);
-    const [marksn, setMarks] = useState(0);
-    const [document, setDocument] = useState("");
-    const [projectId, setProjectId] = useState("");
-    const [specialization, setSpecialization] = useState("");
-    const [marks, setTotal] = useState("");
-    const [mid, setMid] = useState("");
+  useEffect(() => {
+    let type = localStorage.getItem("typeName");
+    setProjectId(localStorage.getItem("groupID"));
+    setLeader(localStorage.getItem("Leader"));
+    setDocument(localStorage.getItem("SubmitDoc"));
+    setMid(localStorage.getItem("mid"));
 
+    axios
+      .get(`http://localhost:8070/markings/presentations/${type}`)
+      .then((res) => {
+        console.log(res)
+        setCriteria(res.data.criteria);
+        setSpecialization(res.data.specialization);
+        setTotal(res.data.totalMarks);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }, []);
 
-    useEffect(() => {
-        let type = localStorage.getItem("typeName");
-        setProjectId(localStorage.getItem("groupID"));
-        setDocument(localStorage.getItem("SubmitDoc"));
-        setMid(localStorage.getItem("mid"));
-    
-        axios
-          .get(`http://localhost:8070/markings/presentations/${type}`)
-          .then((res) => {
-            setCriteria(res.data.criteria);
-            setSpecialization(res.data.specialization);
-            setTotal(res.data.totalMarks);
-          })
-          .catch((err) => {
-            alert(err);
-          });
-      }, []);
-    
-      const handleChangeInput = (id, event) => {
-        const newMarks = criteria.map((i, index) => {
-          if (id == index) {
-            i[event.target.name] = event.target.value;
-          }
-          return i;
-        });
-    
-        setCriteria(newMarks);
-      };
-    
-      var totalMarks = 0;
-    
-      const submitData = async (e) => {
-        e.preventDefault();
-        console.log(criteria);
-        totalMarks = criteria
-          .map((data) => Number(data.marks.replace("$", "")))
-          .reduce((prev, curr) => prev + curr, 0);
-        setMarks(totalMarks);
-    
-        let evaluateStatus = "Evaluated";
-    
-        const value = {
-          evaluateStatus,
-        };
-    
-        const update = await axios
-          .put(`http://localhost:8070/stdSubmitDoc/${mid}`, value)
-          .then(() => {})
-          .catch((err) => {
-            swal(err);
-          });
-    
-        const MarksDetails = {
-          projectId,
-          specialization,
-          totalMarks,
-          criteria,
-        };
-        await axios
-          .post("http://localhost:8070/presentationMarks/", MarksDetails)
-          .then(() => {
-            swal("Done!", "Marks added successfully!", "success");
-            navigate("/");
-          })
-          .catch((err) => {
-            alert(err);
-          });
-      };
-    
-      const getTotal = () => {
-        var sum = criteria
-          .map((data) => Number(data.marks.replace("$", "")))
-          .reduce((prev, curr) => prev + curr, 0);
-        setMarks(sum);
-      };
+  const handleChangeInput = (id, event) => {
+    const newMarks = criteria.map((i, index) => {
+      if (id == index) {
+        i[event.target.name] = event.target.value;
+      }
+      return i;
+    });
 
-    return (
-        <>
-        <div className="topic-containerPre">
+    setCriteria(newMarks);
+  };
+
+  var totalMarks = 0;
+
+  const submitData = async (e) => {
+    e.preventDefault();
+    totalMarks = criteria
+      .map((data) => Number(data.marks.replace("$", "")))
+      .reduce((prev, curr) => prev + curr, 0);
+    setMarks(totalMarks);
+
+    let evaluateStatus = "Evaluated";
+
+    const value = {
+      evaluateStatus,
+    };
+    const update = await axios
+      .put(`http://localhost:8070/stdSubmitDoc/stdSubmitDoc/${mid}`, value)
+      .then(() => {})
+      .catch((err) => {
+        swal(err);
+      });
+
+    const MarksDetails = {
+      projectId,
+      specialization,
+      totalMarks,
+      criteria,
+    };
+    await axios
+      .post("http://localhost:8070/presentationMarks/", MarksDetails)
+      .then(() => {
+        swal("Done!", "Marks added successfully!", "success");
+        navigate("/");
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  const getTotal = () => {
+    var sum = criteria
+      .map((data) => Number(data.marks.replace("$", "")))
+      .reduce((prev, curr) => prev + curr, 0);
+    setMarks(sum);
+  };
+  return (
+    <div>
+      <div className="topic-containerPre">
         <div className="leftCom">
           <label className="formTitlePre">
             {" "}
             EVALUATE
             <br /> DOCUMENTS
           </label>
-          </div>
-        <div className="docEval_page">
-            <div className="col-left">
-            <div className='groupdoccard'>
-                <h2>Document Details</h2><br/>
-
-                <div className="form-group">
-                    <label htmlFor="Gid">Group ID</label>
-                    <input type="text" name="Gid" id="Gid"
-                    placeholder="ID of the group" disabled/>
-                </div><br/>
-
-                <div className="form-group">
-                    <label htmlFor="Gmem">Group Leader</label>
-                    <input type="text" name="leader" id="leader" disabled/>
-                </div><br/>
-
-                <div className="form-group">
-                    <label htmlFor="Tname">Type Name</label>
-                    <input type="text" name="Tname" id="Tname"
-                    placeholder="Name of the Topic" disabled/>
-                </div>
-                <br/>
-                <div className="ms-3 mt-4">
+          <hr className="evaluateHr" />
+          <div className="input2">
+            <TextField
+              className="ms-3 mb-3 mt-3"
+              name="Project ID"
+              label="Project ID"
+              required
+              value={projectId}
+              onChange={(e) => {
+                setProjectId(e.target.value);
+              }}
+              variant="outlined"
+            />
+            <TextField
+              className="ms-3 mb-3 mt-3"
+              name="typeName"
+              label="Group Leader"
+              required
+              value={leader}
+              onChange={(e) => {
+                setProjectId(e.target.value);
+              }}
+              variant="outlined"
+            />
+            <div className="ms-3 mt-4">
               <a href={document} className="btn btn-warning btn-lg">
-                Student Presentation <DownloadOutlinedIcon />
+                Download Document <DownloadOutlinedIcon />
               </a>
             </div>
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <div className="col-right">
-
-            <div className="map1">
+        <div className="map1">
           <div className="getMarkingBtn">
             <button
               className="btn btn-warning ms-3"
@@ -160,7 +160,7 @@ function DocEvaluation() {
             <table className="table" style={{ backgroundColor: "white" }}>
               <thead>
                 <tr>
-                  <th scope="col">Index</th>
+                  <th scope="col">No</th>
                   <th scope="col">Criteria</th>
                   <th scope="col">Marks Allocation</th>
                   <th scope="col">Marks</th>
@@ -220,7 +220,6 @@ function DocEvaluation() {
           </div>
           <div>
             <div className="totalMark">Total Marks : {marksn}</div>
-            <br/>
             <button
               className="btn btn-warning ms-3"
               variant="contained"
@@ -232,11 +231,7 @@ function DocEvaluation() {
             <br />
           </div>
         </div>
-            </div>
-        </div>
-        </div>
-        </>
-    )
+      </div>
+    </div>
+  );
 }
-
-export default DocEvaluation

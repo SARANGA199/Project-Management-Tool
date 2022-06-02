@@ -38,6 +38,7 @@ import UpdateReply from "./Components/Chats/UpdateReply";
 import UpdateChatForum from "./Components/Chats/UpdateChatForum";
 import DisplayAllForums from "./Components/Chats/DisplayAllForums";
 import DisplayPresentationMarks from "./Components/PresentationEvaluation/DisplayPresentationMarks";
+import DisplayDocumentMarks from "./Components/DocumentEvaluation/DisplayDocumentsMarks";
 
 import CreateGroup from "./Components/CreateGroup/CreateGroup";
 import GroupList from "./Components/DisplayGroupsList/DisplayGroupList";
@@ -58,6 +59,7 @@ import ActivationEmail from "./Components/UserManagement/ActivationEmail";
 import PendActivationEmail from "./Components/UserManagement/PendActivationEmail.js"
 import DocumentEvaluation from "./Components/DocumentEvaluation/DocumentEvaluation.js";
 import DisplaySubmitDocuments from "./Components/DocumentEvaluation/DisplaySubmitDocuments";
+import DisplayDocumentMarks from "./Components/DocumentEvaluation/DisplayDocumentsMarks";
 import NotFound from "./Components/utils/NotFound/NotFound.JS";
 
 export default class App extends Component {
@@ -121,6 +123,7 @@ export default class App extends Component {
           <Route path="/pending/activate/:activation_token" element={<PendActivationEmail/>} />
           <Route path="/evaluatedocument" element={<DocumentEvaluation/>} />
           <Route path="/submitdocs" element={<DisplaySubmitDocuments/>} />
+          <Route path="/documentmarks" element={<DisplayDocumentMarks/>} />
 
             <Route path="/evaluateTopic" element={<TopicEvaluate />} />
             <Route path="/AddPanelMember" element={<AddPanelMember />} />
