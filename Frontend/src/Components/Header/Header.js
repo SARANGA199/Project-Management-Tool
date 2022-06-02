@@ -10,8 +10,18 @@ import watchlist from './images/watchlist-icon.svg'
 import originals from './images/original-icon.svg'
 import profile from './images/movie-icon.svg'
 import series from './images/series-icon.svg'
+import { Link } from 'react-router-dom';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { IconContext } from 'react-icons';
+import { SidebarData } from './SidebarData';
+import './header.css';
 
 function Header() {
+
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSidebar = () => setSidebar(!sidebar);
 
     let navigate = useNavigate();
     const state = useContext(GlobalState)
@@ -28,12 +38,41 @@ function Header() {
     }
 
   return (
+    <>
     <Nav>
+    <NavMenu>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <div className='navbar'>
+          <Link to='#' className='menu-bars'>
+            <FaIcons.FaBars onClick={showSidebar} />
+          </Link>
+        </div>
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidebar}>
+            <li className='navbar-toggle'>
+              <Link to='#' className='menu-bars'>
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
+            {SidebarData.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </IconContext.Provider>&nbsp;
+
     <Logo>
        <img src={logo} alt='sliit'/>
     </Logo>
 
-    <NavMenu>
+
         <a href='/'>
            <img src={home} alt='home'/>
            <span>HOME</span>
@@ -74,6 +113,7 @@ function Header() {
       </div>
     </Avatar>:null}
 </Nav>
+</>
   )
 }
 
@@ -97,7 +137,7 @@ const Avatar = styled.div`
   height: 60px;
   overflow: hidden;
   position: relative;
-  right: -230px;
+  right: -190px;
   margin: 15px auto;
   border: 2px solid #ddd;
   border-radius: 50%;
@@ -187,7 +227,7 @@ const Logout = styled.a`
   padding: 8px 16px;
   position: absolute;
   top: 20px;
-  right: -620px;
+  right: -500px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   border: 1px solid #f9f9f9;
