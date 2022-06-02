@@ -19,12 +19,7 @@ export default function DisplayCoSupervisors(){
         localStorage.setItem("rid", _id);
         navigate("/updateCoSupervisorStatus");
     };
-    // const setDataCoVisor = (data) => {
-    //     let { _id } = data;
-    //
-    //     localStorage.setItem("rid", _id);
-    //     navigate("/requestCoSupervisor");
-    // };
+
     return(
         <div className="container">
             <br/>
@@ -34,13 +29,13 @@ export default function DisplayCoSupervisors(){
                         <tr>
                             <th scope="col">Request No </th>
                             <th scope="col">Research Supervisor </th>
-                            <th scope="col">Research Category </th>
-                            <th scope="col">Group ID </th>
+                            <th scope="col">Research Category</th>
+                            <th scope="col">Group ID</th>
                             <th scope="col">Group Leader Email</th>
-                            <th scope="col">Research Topic Name </th>
-                            <th scope="col">Comments   </th>
-                            <th scope="col">Co-Supervisor </th>
-                            <th scope="col">Request Status   </th>
+                            <th scope="col">Research Topic Name</th>
+                            <th scope="col">Comments</th>
+                            <th scope="col">Co-Supervisor</th>
+                            <th scope="col">Request Status</th>
                             <th scope="col">Action </th>
                         </tr>
 
@@ -58,7 +53,7 @@ export default function DisplayCoSupervisors(){
                                 <td>{data.coSupervisorStatus}</td>
                                 <td>
                                     <button
-                                        className="btn btn-primary"
+                                        className="btn btn-warning"
                                         disabled={
                                             data.coSupervisorStatus === "Accepted" ||
                                             data.coSupervisorStatus === "Rejected"
@@ -68,31 +63,12 @@ export default function DisplayCoSupervisors(){
                                         &nbsp;update
                                     </button>
                                 </td>
-
-                                <td>
-                                    <button
-                                        className="btn btn-info ms-3"
-                                        disabled={
-                                            data.coSupervisorStatus === "pending" ||
-                                            data.coSupervisorStatus === "Rejected"
-                                        }
-                                        // onClick={() => setDataCoVisor(data)}
-                                    >
-                                        &nbsp;Request Co-Supervisor
-                                        {/*//nothing */}
-                                    </button>
-                                </td>
                             </tr>
                         ))}
                         </tbody>
                     </table>
                 </div>
             </div>
-
-</div>
-
-
-
-)
-
+        </div>
+    )
 }

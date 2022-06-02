@@ -136,7 +136,6 @@ export default function RequestCoSupervisor() {
                                 <div className="col-sm-6">
                                     <div className="card">
                                         <div className="card-body">
-                                            <h5 className="card-title">form</h5>
                                             <div className="col-md-12">
                                                 <label>Research Co-Supervisor : </label>
                                                 <div className="form-group">
@@ -147,6 +146,17 @@ export default function RequestCoSupervisor() {
                                                     </select>
                                                 </div>
                                             </div>
+
+                                            {/*<label>Research Supervisor : </label>*/}
+                                            {/*<div className="form-group">*/}
+                                            {/*    <select className="form-select" aria-label="Default select example" value={researchSupervisor} onChange={e => setResearchSupervisor(e.target.value)}>*/}
+
+                                            {/*        {supervisor.map((data, index) => (*/}
+                                            {/*            <option key={index} value={data.name}>{data.name}</option>*/}
+                                            {/*        ))}*/}
+
+                                            {/*    </select>*/}
+                                            {/*</div>*/}
 
 
                                             <div className="row">
