@@ -82,20 +82,21 @@
 }
 .profile_page .col-left label{
     display: block;
+    font-family: Arial, Helvetica, sans-serif;
     margin-top: 5px;
 }
 .profile_page .col-left input{
     width: 100%;
     height: 40px;
     margin: 5px 0;
-    border: none;
+    border: 3px solid #313131;
     border-radius: 6px;
     outline: none;
     background: rgb(255, 194, 137);
     padding: 0 5px;
 }
 .profile_page .col-left button{
-    background: #333;
+    background: rgb(51, 51, 51);
     color: white;
     padding: 10px 25px;
     text-transform: uppercase;
@@ -119,17 +120,27 @@
 }
 .profile_page .col-right label{
     display: block;
+    font-family: Arial, Helvetica, sans-serif;
     margin-top: 5px;
 }
 .profile_page .col-right input{
     width: 100%;
     height: 40px;
     margin: 5px 0;
-    border: none;
+    border: 3px solid #313131;
     border-radius: 6px;
     outline: none;
     background: rgb(255, 194, 137);
     padding: 0 5px;
+}
+
+.profile_page .col-right button{
+    background: rgb(51, 51, 51);
+    color: white;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    margin: 10px 0;
 }
 
 div.profilecard {
@@ -137,8 +148,9 @@ div.profilecard {
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
+    border: 3px solid #313131;
     padding: 40px;
-    background-color: rgb(235, 235, 235);
+    background-color: whitesmoke
   }
 
 div.card1 {
@@ -172,15 +184,7 @@ div.card1 {
     background: #555;
     color: white;
 }
-.customers i{
-    cursor: pointer;
-}
-.customers .fa-check{
-    color: green;
-}
-.customers .fa-times{
-    color: red;
-}
+
 .customers .fa-edit{
     background: whitesmoke;
     padding: 7px;

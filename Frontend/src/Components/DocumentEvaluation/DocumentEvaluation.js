@@ -157,7 +157,7 @@ export default function EvaluatePresentation() {
             </button>
           </div>
           <div className="tableControl">
-            <table className="table" style={{ backgroundColor: "white" }}>
+            <table className="customers" style={{ backgroundColor: "white" }}>
               <thead>
                 <tr>
                   <th scope="col">No</th>
