@@ -111,7 +111,7 @@ export default class App extends Component {
             <Route path="/displaysub" element={<DisplaysubType />} />
             <Route path="/updateSub" element={<UpdateSubmissionType />} />
 
-            <Route path="/login" element={<Login/>} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/fpass" element={<ForgotPassword/>} />
           <Route path="/user/reset/:token" element={<ResetPassword/>} />
