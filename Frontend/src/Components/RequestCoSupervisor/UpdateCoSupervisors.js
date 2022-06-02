@@ -41,7 +41,7 @@ export default function UpdateCoSupervisorStatus() {
     }, []);
 
 
-    const setData = async (coSupervisorStatus) => {
+    const setCData = async (coSupervisorStatus) => {
         const newData = {
             coSupervisorStatus,
         };
@@ -164,7 +164,7 @@ export default function UpdateCoSupervisorStatus() {
                                                 <button
                                                     type="submit"
                                                     className="btn btn-success btn-lg"
-                                                    onClick={() => setData("Accepted")}
+                                                    onClick={() => setCData("Accepted")}
                                                 >
                                                     &nbsp;Accept
                                                 </button>
@@ -176,7 +176,7 @@ export default function UpdateCoSupervisorStatus() {
                                             <center>
                                                 <button
                                                     type="submit" className="btn btn-danger btn-lg"
-                                                    onClick={() => setData("Rejected")}
+                                                    onClick={() => setCData("Rejected")}
                                                 >
                                                     &nbsp;Reject
                                                 </button>
