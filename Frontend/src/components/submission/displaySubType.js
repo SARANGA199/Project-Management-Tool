@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "./submissionPage.css";
 import TemplateForm from "../template/templateForm/templateForm.jsx";
@@ -9,10 +9,15 @@ import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import PublishIcon from "@mui/icons-material/Publish";
+import AddIcon from "@mui/icons-material/Add";
+import { GlobalState } from "../../GlobalState";
 
 function DisplaysubType() {
   let navigate = useNavigate();
   const [submisionTypes, setSubmisionType] = useState([]);
+  const state = useContext(GlobalState);
+  const [isAdmin, setIsAdmin] = state.UserAPI.isAdmin;
+  const [crrUser, setCrrUser] = state.UserAPI.crrUser;
 
   useEffect(() => {
     const getAllSubmissionType = async () => {
@@ -131,7 +136,48 @@ function DisplaysubType() {
               Submit Document &nbsp; <PublishIcon />
             </button>
           </div>
-          <div className="EnableDisable">
+
+          {crrUser.role === "Panel_Member" ||
+          crrUser.role === "Admin" ||
+          crrUser.role === "Supervisor" ||
+          crrUser.role === "Co-Supervisor" ? (
+            <div className="EnableDisable">
+              <div className="enaDesa1">
+                {submisionType.marksStatus == "Enable" ? (
+                  <div>
+                    <button type="submit" className="btn btn-warning ">
+                      View {submisionType.subTypeName} Marks
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+              <div>
+                <div className="submitTop1">
+                  * Enable / Disable {submisionType.subTypeName} Marks *
+                </div>
+                <div className="enaDesa">
+                  <a
+                    type="submit"
+                    className="upSub  ms-2"
+                    onClick={() =>
+                      updateMarkStatus(submisionType._id, "Enable")
+                    }
+                  >
+                    Enable
+                  </a>
+                  <a
+                    type="submit"
+                    className="upSub  ms-2"
+                    onClick={() =>
+                      updateMarkStatus(submisionType._id, "Disable")
+                    }
+                  >
+                    Disable
+                  </a>
+                </div>
+              </div>
+            </div>
+          ) : (
             <div className="enaDesa1">
               {submisionType.marksStatus == "Enable" ? (
                 <div>
@@ -141,47 +187,31 @@ function DisplaysubType() {
                 </div>
               ) : null}
             </div>
-            <div>
-              <div className="submitTop1">
-                * Enable / Disable {submisionType.subTypeName} Marks *
-              </div>
-              <div className="enaDesa">
-                <a
-                  type="submit"
-                  className="upSub  ms-2"
-                  onClick={() => updateMarkStatus(submisionType._id, "Enable")}
-                >
-                  Enable
-                </a>
-                <a
-                  type="submit"
-                  className="upSub  ms-2"
-                  onClick={() => updateMarkStatus(submisionType._id, "Disable")}
-                >
-                  Disable
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="UpdateSub1">
-            <div>
-              <a
-                type="submit"
-                className="upSub"
-                onClick={() => setData(submisionType)}
-              >
-                UPDATE
-              </a>
+          )}
 
-              <a
-                type="submit"
-                className="deSub ms-2"
-                onClick={() => deleteSubType(submisionType._id)}
-              >
-                DELETE
-              </a>
+          {isAdmin ? (
+            <div className="UpdateSub1">
+              <div>
+                <a
+                  type="submit"
+                  className="upSub"
+                  onClick={() => setData(submisionType)}
+                >
+                  UPDATE
+                </a>
+
+                <a
+                  type="submit"
+                  className="deSub ms-2"
+                  onClick={() => deleteSubType(submisionType._id)}
+                >
+                  DELETE
+                </a>
+              </div>
             </div>
-          </div>
+          ) : (
+            " "
+          )}
         </div>
       </div>
     );
@@ -197,6 +227,18 @@ function DisplaysubType() {
           </div>
         </div>
         <div className="container">
+          <div>
+            {isAdmin ? (
+              <button
+                className="btn btn-warning TypeADD"
+                onClick={() => navigate("/AddSubType")}
+              >
+                Add Type &nbsp; <AddIcon />
+              </button>
+            ) : (
+              " "
+            )}
+          </div>
           <div className="submissionTopicT1">RESEARCH FIELD</div>
           <hr className="HrSubmission" />
           <div>

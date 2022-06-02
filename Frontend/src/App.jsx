@@ -1,4 +1,4 @@
-import React, { Component,useContext } from "react";
+import React, { Component, useContext } from "react";
 import AddMarking from "./Components/Marking/AddMarking";
 import DisplaySubmitPresentation from "./Components/PresentationEvaluation/DisplaySubmitPresentation";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,8 +13,6 @@ import TemplateForm from "./Components/template/templateForm/templateForm.jsx";
 import Displaytemplate from "./Components/template/displayTemplate/display.jsx";
 import AddSubmissiontype from "./Components/submission/addsubmissionType.js";
 import DisplaysubType from "./Components/submission/displaySubType.js";
-
-
 
 import Topics from "./Components/TopicAcceptance/Topics";
 import AcceptTopic from "./Components/TopicAcceptance/AcceptTopic";
@@ -43,9 +41,9 @@ import CreateGroup from "./Components/CreateGroup/CreateGroup";
 import GroupList from "./Components/DisplayGroupsList/DisplayGroupList";
 import TopicRegister from "./Components/TopicRegister/TopicRegister";
 import { RequestSupervisor } from "./Components/RequestSupervisor/RequestSupervisor";
-import DisplayRequests  from "./Components/DisplayRequests/DisplayRequests";
+import DisplayRequests from "./Components/DisplayRequests/DisplayRequests";
 import StdSubmitDoc from "./Components/StdSubmitDoc/StdSubmitDoc.jsx";
-import TopicSubmitDoc from "./Components/TopicSubmitDoc/TopicSubmitDoc.js"
+import TopicSubmitDoc from "./Components/TopicSubmitDoc/TopicSubmitDoc.js";
 import UpdateSupervisorStatus from "./Components/DisplayRequests/UpdateSupervisorStatus";
 import RequestCoSupervisor from "./Components/RequestCoSupervisor/RequestCoSupervisor";
 import DisplayCoSupervisors from "./Components/RequestCoSupervisor/DisplayCoSupervisors";
@@ -55,10 +53,11 @@ import UpdateSubmissionType from "./Components/submission/UpdateSubmissionType";
 import PendingUsers from "./Components/UserManagement/PendingUsers.js";
 import UpdateUser from "./Components/UserManagement/UpdateUser.js";
 import ActivationEmail from "./Components/UserManagement/ActivationEmail";
-import PendActivationEmail from "./Components/UserManagement/PendActivationEmail.js"
+import PendActivationEmail from "./Components/UserManagement/PendActivationEmail.js";
 import DocumentEvaluation from "./Components/DocumentEvaluation/DocumentEvaluation.js";
 import DisplaySubmitDocuments from "./Components/DocumentEvaluation/DisplaySubmitDocuments";
 import NotFound from "./Components/utils/NotFound/NotFound.JS";
+import Home from "./Components/Home/Home";
 
 export default class App extends Component {
   constructor(props) {
@@ -98,10 +97,22 @@ export default class App extends Component {
             <Route path="/stdSubmitDoc" element={<StdSubmitDoc />} />
             <Route path="/topicSubmitDoc" element={<TopicSubmitDoc />} />
             <Route path="/displayRequests" element={<DisplayRequests />} />
-            <Route path="/updateSupervisorStatus" element={<UpdateSupervisorStatus />} />
-          <Route path="/requestCoSupervisor" element={<RequestCoSupervisor />} />
-          <Route path="/displayCoSupervisors" element={<DisplayCoSupervisors />} />
-          <Route path="/updateCoSupervisorStatus" element={<UpdateCoSupervisorStatus />} />
+            <Route
+              path="/updateSupervisorStatus"
+              element={<UpdateSupervisorStatus />}
+            />
+            <Route
+              path="/requestCoSupervisor"
+              element={<RequestCoSupervisor />}
+            />
+            <Route
+              path="/displayCoSupervisors"
+              element={<DisplayCoSupervisors />}
+            />
+            <Route
+              path="/updateCoSupervisorStatus"
+              element={<UpdateCoSupervisorStatus />}
+            />
 
             <Route path="/addTemplate" element={<TemplateForm />} />
             <Route path="/display" element={<Displaytemplate />} />
@@ -109,22 +120,28 @@ export default class App extends Component {
             <Route path="/displaysub" element={<DisplaysubType />} />
             <Route path="/updateSub" element={<UpdateSubmissionType />} />
 
-            <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/fpass" element={<ForgotPassword/>} />
-          <Route path="/user/reset/:token" element={<ResetPassword/>} />
-          <Route path="/profile" element={<Profile/>} />
-          <Route path="/allusers" element={<AllUsers/>} />
-          <Route path="/PendingUsers" element={<PendingUsers/>} />
-          <Route path="/updateuser/:id" element={<UpdateUser/>} />
-          <Route path="/user/activate/:activation_token" element={<ActivationEmail/>} />
-          <Route path="/pending/activate/:activation_token" element={<PendActivationEmail/>} />
-          <Route path="/evaluatedocument" element={<DocumentEvaluation/>} />
-          <Route path="/submitdocs" element={<DisplaySubmitDocuments/>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/fpass" element={<ForgotPassword />} />
+            <Route path="/user/reset/:token" element={<ResetPassword />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/allusers" element={<AllUsers />} />
+            <Route path="/PendingUsers" element={<PendingUsers />} />
+            <Route path="/updateuser/:id" element={<UpdateUser />} />
+            <Route
+              path="/user/activate/:activation_token"
+              element={<ActivationEmail />}
+            />
+            <Route
+              path="/pending/activate/:activation_token"
+              element={<PendActivationEmail />}
+            />
+            <Route path="/evaluatedocument" element={<DocumentEvaluation />} />
+            <Route path="/submitdocs" element={<DisplaySubmitDocuments />} />
 
             <Route path="/evaluateTopic" element={<TopicEvaluate />} />
             <Route path="/AddPanelMember" element={<AddPanelMember />} />
-            <Route path="/" element={<CreateChat />} />
+            <Route path="/createChat" element={<CreateChat />} />
             <Route path="/displayChat" element={<DisplayChats />} />
             <Route path="/reply" element={<ChatReply />} />
             <Route path="/oneForum" element={<DisplayOneForum />} />
@@ -132,7 +149,9 @@ export default class App extends Component {
             <Route path="/editChatForum" element={<UpdateChatForum />} />
             <Route path="/allForums" element={<DisplayAllForums />} />
             <Route path="/addPanelMember" element={<AddPanelMember />} />
-            <Route path="/addMember" element={< AddMember />} />
+            <Route path="/addMember" element={<AddMember />} />
+
+            <Route path="/" element={<Home />} />
           </Routes>
         </BrowserRouter>
       </DataProvider>
