@@ -4,7 +4,6 @@ import axios from "axios";
 function GroupList(){
 
     const[members,setMembers] = useState([]);
-    const[GroupID,setGroupID] = useState([]);
 
     useEffect(()=>{
         getMembers();
@@ -15,76 +14,60 @@ function GroupList(){
         const response = await axios.get("http://localhost:8070/members");
         setMembers(response.data)
     }
-    // const saveGroupID = async ()=>{
-    //     // const response = await axios.post("http://localhost:8070/saveGID");
-    //     //
-    //     // setGroupIDStatus(response.data)
-    //
-    //     setGroupIDStatus(e.target.value);
-
 
 
     return(
         <div>
             <div className="container">
                 <br/>
-                <h1><center>Group Details</center></h1>
+                        <h1><center>Group Details</center></h1>
+                        <br/>
+                        <table className="table table-bordered table table-dark " >
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Group ID</th>
+                                <th>Leader's ID</th>
+                                <th>Leader Name</th>
+                                <th>Leader Email</th>
+                                <th>Member 2 ID</th>
+                                <th>Member 2 Name</th>
+                                <th>Member 2 Email</th>
+                                <th>Member 3 Name</th>
+                                <th>Member 3 ID</th>
+                                <th>Member 3 Email</th>
+                                <th>Member 4 Name</th>
+                                <th>Member 4 ID</th>
+                                <th>Member 4 Email</th>
+                            </tr>
+                            </thead>
+                            {members.map((data,index)=>(
+                                <tbody key={index}>
+                                    <tr>
+                                        <td>{index + 1}</td>
+                                        <td className="table-secondary">{data.GroupID}</td>
+                                        <td className="table-danger">{data.leaderName}</td>
+                                        <td className="table-danger">{data.leaderID}</td>
+                                        <td className="table-danger">{data.leaderEmail}</td>
+                                        <td className="table-warning">{data.Member2Name}</td>
+                                        <td className="table-warning">{data.Member2ID}</td>
+                                        <td className="table-warning">{data.Member2Email}</td>
+                                        <td className="table-success">{data.Member3Name}</td>
+                                        <td className="table-success">{data.Member3ID}</td>
+                                        <td className="table-success">{data.Member3Email}</td>
+                                        <td className="table-primary">{data.Member4Name}</td>
+                                        <td className="table-primary">{data.Member4ID}</td>
+                                        <td className="table-primary">{data.Member4Email}</td>
+                                    </tr>
+                                </tbody>
+
+                            ))}
+                        </table>
                 <br/>
-                <table className="table table-bordered " >
-                    <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Leader's ID</th>
-                        <th>Leader Name</th>
-                        <th>Leader Email</th>
-                        <th>Member 2 ID</th>
-                        <th>Member 2 Name</th>
-                        <th>Member 2 Email</th>
-                        <th>Member 3 Name</th>
-                        <th>Member 3 ID</th>
-                        <th>Member 3 Email</th>
-                        <th>Member 4 Name</th>
-                        <th>Member 4 ID</th>
-                        <th>Member 4 Email</th>
-                        <th>Group ID</th>
-                        <th>Assign Group ID</th>
-                    </tr>
-                    </thead>
-                    {members.map((data,index)=>(
-                        <tbody key={index}>
-                        <tr>
-                            <td>{index + 1}</td>
-                            <td className="table-danger">{data.leaderName}</td>
-                            <td className="table-danger">{data.leaderID}</td>
-                            <td className="table-danger">{data.leaderEmail}</td>
-                            <td className="table-warning">{data.Member2Name}</td>
-                            <td className="table-warning">{data.Member2ID}</td>
-                            <td className="table-warning">{data.Member2Email}</td>
-                            <td className="table-success">{data.Member3Name}</td>
-                            <td className="table-success">{data.Member3ID}</td>
-                            <td className="table-success">{data.Member3Email}</td>
-                            <td className="table-primary">{data.Member4Name}</td>
-                            <td className="table-primary">{data.Member4ID}</td>
-                            <td className="table-primary">{data.Member4Email}</td>
-                            <td className="table-info">{data.GroupID}</td>
-                            <td className="table-info">
-                                <div className="form-group">
-                                    <input type="text"  className="form-control"   value={GroupID} />
-                                </div>
-                            </td>
-
-                            <td>{""}
-                                <button type="button" className="btn btn-success">Assign</button>
-                            </td>
-
-                        </tr>
-                        </tbody>
-                    ))}
-                </table>
+                <br/>
             </div>
-
-
         </div>
+
     );
 }
 
