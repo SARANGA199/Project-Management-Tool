@@ -14,7 +14,7 @@ router.get('/requestSV',getRequestSV);
 router.post('/requestSV',saveRequestSV);
 router.get('/requestSV/:id',getRequestsById);
 router.put('/requestSV/:id',updateRequest);
-router.put('/requestSV/:id',updateCoSupervisorRequest);
+router.put('/requestCoSV/:id',updateCoSupervisorRequest);
 
 router.delete('/requestSV/:id',deleteRequest);
 

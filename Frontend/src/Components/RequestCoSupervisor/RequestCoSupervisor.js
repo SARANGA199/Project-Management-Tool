@@ -49,20 +49,18 @@ export default function RequestCoSupervisor() {
             setRID(rid);
         }, []);
 
-
+        
         const setData = async () => {
             const newValue = {
                 coSupervisorData,
             };
 
-console.log(coSupervisorData);
-console.log(requestID);
 
             const update = await axios
-                .put(`http://localhost:8070/requestSV/${requestID}`, newValue)
+                .put(`http://localhost:8070/requestCoSV/${requestID}`, newValue)
                 .then(() => {
                     swal("Request Send!");
-                    navigate("/displayCoSupervisors");
+                   navigate("/displayCoSupervisors");
                 })
                 .catch((err) => {
                     swal(`Something went wrong !!!`);
@@ -153,7 +151,7 @@ console.log(requestID);
                                             <div className="col-md-12">
                                                 <label>Research Co-Supervisor : </label>
                                                 <div className="form-group">
-                                                    <select className="form-select" aria-label="Default select example" value={coSupervisorData} onChange={e => setCoSupervisorData(e.target.value)}>
+                                                    <select className="form-select" aria-label="Default select example" value={coSupervisorData} onChange={(e) => setCoSupervisorData(e.target.value)}>
                                                     {coSupervisor.map((data, index) => (
                                                     <option key={index} value={data.name}>{data.name}</option>
                 
@@ -170,7 +168,7 @@ console.log(requestID);
                                                         <button
                                                             type="submit"
                                                             className="btn btn-success btn-lg"
-                                                            onClick={() => setData()}
+                                                            onClick={() => setData(coSupervisorData)}
                                                         >
                                                             &nbsp;Accept
                                                         </button>

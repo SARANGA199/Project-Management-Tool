@@ -101,14 +101,14 @@ export const updateRequest = async (req, res) => {
 export const updateCoSupervisorRequest = async (req, res) => {
     const rId = req.params.id;
 
-    const {coSupervisorStatus} = req.body;
+    const coSupervisor = req.body.coSupervisorData;
 
-    const updateReq = {
-        rId,
-        coSupervisorStatus
-    };
+    // const updateReq = {
+    //     rId,
+    //     coSupervisor
+    // };
 
-    const update = await RequestSV.findByIdAndUpdate(rId, updateReq)
+    const update = await RequestSV.findByIdAndUpdate(rId, {coSupervisor:coSupervisor})
         .then(() => {
             res.status(200).send({ status: "Request status is  Updated" });
         })
