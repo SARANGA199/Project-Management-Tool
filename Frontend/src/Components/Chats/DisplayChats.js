@@ -96,12 +96,17 @@ export default function DisplayChats() {
           >
             Add New Forum &nbsp; <AddIcon />
           </button>
-          <button
-            className="btn btn-warning TypeADD"
-            onClick={() => navigate("/allForums")}
-          >
-            ALL Chat Forums
-          </button>
+          {crrUser.role === "Student" ? (
+            ""
+          ) : (
+            <button
+              className="btn btn-warning TypeADD"
+              onClick={() => navigate("/allForums")}
+            >
+              ALL Chat Forums
+            </button>
+          )}
+
           <div className="topicNam">GROUP - {groupId}</div>
           <hr className="topicHr" />
 
