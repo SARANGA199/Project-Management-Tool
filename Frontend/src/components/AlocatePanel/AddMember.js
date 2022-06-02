@@ -23,7 +23,7 @@ import "../TopicAcceptance/topicAccept.css";
 export default function AddMember() {
   let navigate = useNavigate();
   const [ members,  setMembers] = useState([]);
-   const [topicCategory, setToCategory] = useState();
+   const [topicName, setTopicName] = useState();
   const [groupID, setGroupId] = useState();
   //const [topicFeedback, setTopicFeedback] = useState();
   const [tid, setTid] = useState();
@@ -36,6 +36,8 @@ export default function AddMember() {
     let id = localStorage.getItem("tid");
     let groupID = localStorage.getItem("groupid");
     let researchArea = localStorage.getItem("category");
+    let topicName = localStorage.getItem("topic");
+    setTopicName(topicName);
     //console.log(tCategory);
 
     axios
@@ -81,7 +83,7 @@ export default function AddMember() {
 
   const setData = async (data) => {
 
-    let {_id,researchArea,name,regNumber} = data
+    let {_id,researchArea,name,regNumber,email} = data
 
     
 
@@ -90,7 +92,9 @@ export default function AddMember() {
         researchArea,
          _id,
         name,
-        regNumber
+        regNumber,
+        email,
+        topicName
     };
 
     const update =  axios

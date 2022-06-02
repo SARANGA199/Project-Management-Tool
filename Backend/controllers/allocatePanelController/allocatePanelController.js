@@ -22,7 +22,7 @@ export const addMember = async (req, res) => {
   //const tId = req.params.id;
     //console.log("awa")
   const { groupID,
-    _id,name,regNumber } = req.body;
+    _id,name,regNumber,email,topicName } = req.body;
 
   // const updatepanel = {
   //   groupID,
@@ -51,7 +51,7 @@ export const addMember = async (req, res) => {
 
         to: `${email}`,
 
-        subject: "Research Project Topic Feedback",
+        subject: "Panel Member allocate Notification",
 
         // text: nameOnCard + ' Your Payment Done!!' +<br></br>+
 
@@ -61,7 +61,7 @@ export const addMember = async (req, res) => {
 
         text: "Hey there, it is our first message sent with Nodemailer ",
 
-        html: `<br>  Group ID:${groupID} </br><br>  Topic Name:${topicName} </br> <br>  Feedback:${topicFeedback} </br><br> Your Group Topic is Accept!! <br />`,
+        html: `<br>  Group ID:${groupID} </br><br>  Topic Name:${topicName} </br> <br> ${name},Your are add to this group as a panel member!! <br />`,
       };
 
       transporter.sendMail(mailOptions, (err, data) => {

@@ -45,11 +45,12 @@ export default function AddPanelMember() {
 
 
   const setMember = async (data) => {
-    let { _id,groupID,topicCategory } = data;
+    let { _id,groupID,topicCategory,topicName } = data;
 
     localStorage.setItem("tid", _id);
     localStorage.setItem("groupid", groupID);
     localStorage.setItem("category", topicCategory);
+    localStorage.setItem("topic", topicName);
     navigate("/addMember");
   };  
 
