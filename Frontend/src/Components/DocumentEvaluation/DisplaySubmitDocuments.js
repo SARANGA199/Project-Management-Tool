@@ -43,7 +43,7 @@ export default function DisplaySubmitDocuments() {
           </div>
         </div>
         <div className="container">
-          <div className="topicNam">PRESENTATIONS</div>
+          <div className="topicNam">DOCUMENTATION</div>
           <hr className="topicHr" />
           <table className="table frame">
             <thead>

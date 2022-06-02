@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {isLength, isMatch} from '../utils/validation/Validation.js'
+import TextField from "@mui/material/TextField";
 import './Styles/profile.css';
 import { GlobalState } from '../../GlobalState';
 
@@ -159,11 +160,6 @@ function Profile() {
                 <div className='profilecard'>
                     <h2>Update Password</h2>
                     <br/>
-                    <div className="form-group">
-                        <label htmlFor="expass">Existing Password</label>
-                        <input type="password" name="expass" id="expass" 
-                        placeholder="your existing password"  />
-                    </div>
 
                     <div className="form-group">
                         <label htmlFor="password">New Password</label>
