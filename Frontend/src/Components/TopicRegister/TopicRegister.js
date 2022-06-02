@@ -63,11 +63,13 @@ const TopicRegister = ()=>{
                             <div className="col-md-6">
                                 <label>Research Category : </label>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={topicCategory}
-                                           onChange={e => setTopicCategory(e.target.value)}/>
+                                    <select className="form-select" aria-label="Default select example" value={topicCategory} onChange={e => setTopicCategory(e.target.value)}>
+                                        <option selected>Select Category</option>
+                                        <option  value={"IOT"}>IOT</option>
+                                        <option  value={"SE"}>SE</option>
+                                    </select>
                                 </div>
                             </div>
-
                         </div>
 
                         <br/>
@@ -85,7 +87,7 @@ const TopicRegister = ()=>{
                             <div className="col-md-6">
                                 <label>Group Leader Email : </label>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" value={groupLeaderEmail}
+                                    <input type="email" className="form-control" value={groupLeaderEmail}
                                            onChange={e => setGroupLeaderEmail(e.target.value)}/>
                                 </div>
                             </div>
