@@ -7,13 +7,14 @@ import submi from "../../submi.png";
 
 export default function StdSubmitDoc() {
 
-
+    let SubTypeName = localStorage.getItem("SubmissionTypeName");
     const [data, setData] = useState({
         groupID: "",
+        
         groupLeaderName: "",
         groupLeaderEmail: "",
         submissionType: "",
-        typeName: "",
+        typeName: `${SubTypeName}`,
         submissionComments: "",
         SubmitDoc: "",
     });
@@ -33,8 +34,8 @@ export default function StdSubmitDoc() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const url = process.env.REACT_APP_API_URL + "/addDoc"
-            const {data: res} = await axios.post(url, data).then(() => {
+            //const url = process.env.REACT_APP_API_URL + "/addDoc"
+            const {data: res} = await axios.post(`http://localhost:8070/stdSubmitDoc/stdSubmitDoc`, data).then(() => {
                 swal("Document added successful")
 
 
@@ -53,7 +54,7 @@ export default function StdSubmitDoc() {
                 <div className="card-body">
                     <br/>
                     <center>
-                        <h1>Submit  Documents</h1>
+                        <h1>Submit  {SubTypeName}</h1>
                         <hr/>
                     </center>
 

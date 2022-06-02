@@ -96,6 +96,20 @@ function DisplaysubType() {
     navigate("/updateSub");
   };
 
+  const setSubmissionData =  (data) => {
+
+    let {
+      _id,
+      subTypeName,
+    } = data;
+
+    localStorage.setItem("Subid", _id);
+    localStorage.setItem("SubmissionTypeName", subTypeName);
+
+    navigate("/stdSubmitDoc");
+
+  };
+
   const SubmisionType = ({ submisionType }) => {
     return (
       <div>
@@ -129,7 +143,11 @@ function DisplaysubType() {
             Submit Your {submisionType.subTypeName} Here ...
           </div>
           <div className="submitBTSub">
-            <button type="submit" className="btn btn-warning mt-2">
+            <button 
+            type="submit"
+             className="btn btn-warning mt-2"
+             onClick={()=>setSubmissionData(submisionType)}
+             >
               Submit Document &nbsp; <PublishIcon />
             </button>
           </div>
