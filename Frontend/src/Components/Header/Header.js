@@ -72,7 +72,7 @@ function Header() {
       <div>
         <img src={crrUser.image} alt=""/>
       </div>
-    </Avatar>:''}
+    </Avatar>:null}
 </Nav>
   )
 }
@@ -102,6 +102,10 @@ const Avatar = styled.div`
   border: 2px solid #ddd;
   border-radius: 50%;
   cursor: pointer;
+  img {
+    display: block;
+    width: 100%;
+  }
 `;
 
 const Logo = styled.a`

@@ -6,13 +6,14 @@ function UserAPI(token) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [crrUser, setCrrUser] = useState([]);
 
-  useEffect(() => {
-    if (token) {
-      const getUser = async () => {
-        try {
-          const res = await axios.get("http://localhost:8070/user/info", {
-            headers: { Authorization: token },
-          });
+    useEffect(() =>{
+        if(token){
+            const getUser = async () =>{
+                try {
+                    console.log(token)
+                    const res = await axios.get('http://localhost:8070/user/info', {
+                        headers: {Authorization: token}
+                    })
 
           setCrrUser(res.data);
           setIsLogged(true);

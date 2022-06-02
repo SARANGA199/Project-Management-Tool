@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useContext} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {isLength, isMatch} from '../utils/validation/Validation.js'
@@ -24,14 +24,6 @@ function Profile() {
     const {name, password, cf_password} = data
 
 
-    // useEffect(() => {
-    //     if(isAdmin){
-    //         fetchAllUsers(token).then(res =>{
-    //             dispatch(dispatchGetAllUsers(res))
-    //         })
-    //     }
-    // },[token, isAdmin, dispatch, callback])
-
     const handleChange = e => {
         const {name, value} = e.target
         setData({...data, [name]:value, err:'', success: ''})
@@ -55,7 +47,7 @@ function Profile() {
             formData.append('file', file)
 
             setLoading(true)
-            const res = await axios.post('http://localhost:8000/api/upload_image', formData, {
+            const res = await axios.post('http://localhost:8070/api/upload_image', formData, {
                 headers: {'content-type': 'multipart/form-data', Authorization: token}
             })
             setLoading(false)
@@ -69,7 +61,7 @@ function Profile() {
 
     const updateInfo = () => {
         try {
-            const up = axios.patch('http://localhost:8000/user/update', {
+            const up = axios.patch('http://localhost:8070/user/update', {
                 name: name ? name : crrUser.name,
                 image: image ? image : crrUser.image
             },{
@@ -90,7 +82,7 @@ function Profile() {
             return swal("ERROR!", "Password did not match.", "error");
 
         try {
-            axios.post('http://localhost:8000/user/reset', {password},{
+            axios.post('http://localhost:8070/user/reset', {password},{
                 headers: {Authorization: token}
             })
 
@@ -103,12 +95,19 @@ function Profile() {
     return (
         <>
         <div>
-            {loading && <h3>Loading.....</h3>}
+            {loading && <h3>Uploading Image.....</h3>}
+        </div>
+        <div className="profContainer">
+        <div className="profLeft">
+          <div className="profTop">
+            MY <br />
+            PROFILE
+          </div>
         </div>
         <div className="profile_page">
             <div className="col-left">
                 <div className='card'>
-                <h2>User Profile</h2>
+                <h2>{crrUser.name}</h2>
 
                 <div className="avatar">
                     <img src={image ? image : crrUser.image} alt=""/>
@@ -159,7 +158,7 @@ function Profile() {
                 <div className="col-right">
                 <div className='card'>
                     <h2>Update Password</h2>
-                
+                    <br/>
                     <div className="form-group">
                         <label htmlFor="expass">Existing Password</label>
                         <input type="password" name="expass" id="expass" 
@@ -176,11 +175,12 @@ function Profile() {
                         <label htmlFor="cf_password">Confirm Password</label>
                         <input type="password" name="cf_password" id="cf_password" onChange={handleChange}
                         placeholder="repeat your new password"   />
-                    </div>
+                    </div><br/>
                     <button onClick={updatePassword}>Update Password</button>
                 </div>
                 </div>
             </div>
+        </div>
         </div>
         </>
     )

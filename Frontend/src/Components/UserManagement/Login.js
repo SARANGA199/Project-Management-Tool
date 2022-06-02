@@ -12,24 +12,22 @@ function Login() {
     console.log(user);
   };
 
-  const loginSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await axios.post("http://localhost:8070/user/login", {
-        ...user,
-      });
+    const loginSubmit = async e =>{
+      e.preventDefault()
+      try{
+        const {data} = await axios.post('http://localhost:8070/user/login', {...user})
 
-      localStorage.setItem("firstLogin", true);
-
-      localStorage.setItem("User", JSON.stringify(data.result));
-      localStorage.setItem("refreshtoken", data.accesstoken);
-      // Cookies.set("refreshtoken",data.accesstoken,{expires:1})
-      swal("Done!", "You successfully logged in!", "success");
-      window.location.href = "/";
-    } catch (err) {
-      swal("ERROR!", err.response.data.msg, "error");
-    }
-  };
+        localStorage.setItem('firstLogin', true)
+        
+        localStorage.setItem('User', JSON.stringify(data.result))
+        localStorage.setItem("refreshtoken",data.accesstoken)
+        // Cookies.set("refreshtoken",data.accesstoken,{expires:1})
+        swal("Logged In!", "You successfully logged in!", "success");
+        window.location.href = "/"
+      } catch (err){
+        swal("ERROR!", err.response.data.msg, "error");
+      }
+    };
 
   return (
     <div className="container-fluid ps-md-0">

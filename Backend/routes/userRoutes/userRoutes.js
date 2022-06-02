@@ -5,6 +5,10 @@ import auth from "../../middleware/auth.js";
 
 router.post('/register',userController.register);
 
+router.post('/activation', userController.activateEmail);
+
+router.post('/accept',userController.accept);
+
 router.post('/login',userController.login);
 
 router.get('/logout',userController.logout);
@@ -21,10 +25,13 @@ router.get('/all_infor', auth, userController.getUsersAllInfor);
 
 router.patch('/update', auth, userController.updateUser);
 
+router.put('/updateUsr/:id', userController.updateAUser);
+
 router.delete('/delete/:id', userController.deleteUser);
 
 router.get('/info/:researchArea', userController.getPanelMembers);
 
 router.get('/infoSupervisor/:researchArea', userController.getSupervisorMembers);
+router.get('/all_users', userController.getAllInfo);
 
 export default router;

@@ -20,7 +20,7 @@ function ForgotPassword() {
 
     const forgotPassword = async () => {
         try {
-            const res = await axios.post('http://localhost:8000/user/forgot', {email})
+            const res = await axios.post('http://localhost:8070/user/forgot', {email})
 
             swal("successfully sent!", "Please check your emails!", "success");
         } catch (err) {

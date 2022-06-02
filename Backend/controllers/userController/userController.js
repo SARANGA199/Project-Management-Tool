@@ -29,27 +29,55 @@ const userController = {
                 name, email, regNumber, specialization, researchArea, role, password: passwordHash
             })
 
-            // Save to mongodb
-            await newUser.save()
+            const activation_token = createActivationToken(newUser)
 
-            res.json({msg: "Successfully Registered...!"})
+            const url = `${CLIENT_URL}/user/activate/${activation_token}`
+            sendMail(email, url, "Verify your email address")
 
-            // Then create jsonwebtoken to authentication
-            // const accesstoken = createAccessToken({id: newUser._id})
-            // const refreshtoken = createRefreshToken({id: newUser._id})
-                        
-            // res.cookie('refreshtoken', refreshtoken, {
-            // httpOnly: true,
-            // path: '/user/refresh_token',
-            // maxAge: 7*24*60*60*1000 // 7d
-            // })
-            
-            // res.json({accesstoken})
+
+            res.json({msg: "Register Success! Please activate your email to start."})
 
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
 
+    },
+    activateEmail: async (req, res) => {
+        try {
+            const {activation_token} = req.body
+            const user = jwt.verify(activation_token, process.env.ACTIVATION_TOKEN_SECRET)
+            const {name, email, regNumber, specialization, researchArea, password, role} = user
+            const check = await Users.findOne({email})
+            if(check) return res.status(400).json({msg:"This email already exists."})
+
+            const newUser = new Users({
+                name, email, regNumber, specialization, researchArea, password, role
+            })
+
+            await newUser.save()
+
+            res.json({msg: "Account has been activated!"})
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    accept: async (req, res) =>{
+        try {
+            const {name, email, regNumber, specialization, researchArea, password, role} = req.body;
+
+            const newUser = new Users({
+                name, email, regNumber, specialization, researchArea, role, password
+            })
+
+            await newUser.save()
+
+            res.json({msg: "Successfully Registered...!"})
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+        
     },
     login: async (req, res) =>{
         try {
@@ -154,6 +182,23 @@ const userController = {
             return res.status(500).json({msg: err.message})
         }
     },
+    getAllInfo: async (req, res) => {
+        try {
+            Users.find().exec((err,users) =>{
+                if(err){
+                  return res.status(400).json({
+                    error:err
+                  });
+                }
+                return res.status(200).json({
+                  success:true,
+                  existingUsers:users
+                });
+              });
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
     updateUser: async (req, res) => {
         try {
             const {name, image} = req.body
@@ -163,6 +208,27 @@ const userController = {
 
             res.json({msg: "Successfully Updated !"})
         } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    updateAUser: async (req,res) => {
+        try{
+            Users.findByIdAndUpdate(
+                req.params.id,
+                {
+                  $set:req.body
+                },
+                (err,users)=>{
+                  if(err){
+                    return res.status(400).json({error:err});
+                  }
+            
+                  return res.status(200).json({
+                    success:"updated successfully"
+                  });
+                }
+              );
+        }catch{
             return res.status(500).json({msg: err.message})
         }
     },
@@ -201,6 +267,10 @@ const userController = {
         }
     },
 
+}
+
+const createActivationToken = (user) => {
+    return jwt.sign(user.toJSON(), process.env.ACTIVATION_TOKEN_SECRET, {expiresIn: '5m'})
 }
 
 const createAccessToken = (user) =>{
