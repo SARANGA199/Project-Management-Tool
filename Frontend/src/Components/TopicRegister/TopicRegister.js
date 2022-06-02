@@ -42,7 +42,6 @@ const TopicRegister = ()=>{
     }
 
 
-
     return(
         <div className="container">
             <br/>
@@ -95,7 +94,6 @@ const TopicRegister = ()=>{
                             <div className="col-md-6">
                                 <label>Group ID : </label>
                                 <div className="form-group">
-                                    {/*<select className="form-select" aria-label="Default select example" value={groupID} onChange={handleChange}>*/}
                                         <select className="form-select" aria-label="Default select example" value={groupID} onChange={e => setGroupID(e.target.value)}>
                                         {groupDetails.map((data, index) => (
                                             <option key={index} value={data.GroupID}>
