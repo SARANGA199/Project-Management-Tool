@@ -1,4 +1,5 @@
 import PanelScheme from "../../models/allocatePanel/allocatePanel.js";
+import nodemailer from "nodemailer";
 
 export const addPanelMember = async (req, res) => {
   try {
@@ -22,7 +23,7 @@ export const addMember = async (req, res) => {
   //const tId = req.params.id;
     //console.log("awa")
   const { groupID,
-    _id,name,regNumber,email,topicName } = req.body;
+    _id,name,regNumber,email,topicName,leaderMail } = req.body;
 
   // const updatepanel = {
   //   groupID,
@@ -61,7 +62,7 @@ export const addMember = async (req, res) => {
 
         text: "Hey there, it is our first message sent with Nodemailer ",
 
-        html: `<br>  Group ID:${groupID} </br><br>  Topic Name:${topicName} </br> <br> ${name},Your are add to this group as a panel member!! <br />`,
+        html: `<br>  ${name},Your are add to this group as a panel member!!</br><br> Group ID:${groupID} </br><br> Leader Mail:${leaderMail}  </br><br> Topic Name:${topicName} </br> <br>Thank You!! <br />`,
       };
 
       transporter.sendMail(mailOptions, (err, data) => {
