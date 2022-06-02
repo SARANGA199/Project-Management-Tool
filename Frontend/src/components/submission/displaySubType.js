@@ -101,6 +101,34 @@ function DisplaysubType() {
     navigate("/updateSub");
   };
 
+  const setSubmissionData =  (data) => {
+
+    let {
+      _id,
+      subTypeName,
+    } = data;
+
+    localStorage.setItem("Subid", _id);
+    localStorage.setItem("SubmissionTypeName", subTypeName);
+
+    navigate("/stdSubmitDoc");
+
+  };
+
+  const setViewMarkData =  (data) => {
+
+    let {
+      _id,
+      subTypeName,
+    } = data;
+
+  
+    localStorage.setItem("STypeName", subTypeName);
+
+    navigate("/presentationMarks");
+
+  };
+
   const SubmisionType = ({ submisionType }) => {
     return (
       <div>
@@ -109,9 +137,10 @@ function DisplaysubType() {
           <div className="submissionDes">
             {submisionType.subTypeDiscription}
           </div>
+          {submisionType.template != "" ? (
           <div className="subContainerSub">
             <div>
-              {submisionType.template != "" ? (
+             
                 <>
                   <div>
                     <a href={submisionType.template}>
@@ -124,15 +153,20 @@ function DisplaysubType() {
                     </a>
                   </div>
                 </>
-              ) : null}
+              
             </div>
             <div className="tempDesc">{submisionType.templateDiscription}</div>
           </div>
+          ) : null}
           <div className="submitTop1">
             Submit Your {submisionType.subTypeName} Here ...
           </div>
           <div className="submitBTSub">
-            <button type="submit" className="btn btn-warning mt-2">
+            <button 
+            type="submit"
+             className="btn btn-warning mt-2"
+             onClick={()=>setSubmissionData(submisionType)}
+             >
               Submit Document &nbsp; <PublishIcon />
             </button>
           </div>
@@ -156,6 +190,7 @@ function DisplaysubType() {
                   * Enable / Disable {submisionType.subTypeName} Marks *
                 </div>
                 <div className="enaDesa">
+                {submisionType.marksStatus == "Disable" ? (
                   <a
                     type="submit"
                     className="upSub  ms-2"
@@ -165,6 +200,8 @@ function DisplaysubType() {
                   >
                     Enable
                   </a>
+                  ) : null}
+                  {submisionType.marksStatus == "Enable" ? (
                   <a
                     type="submit"
                     className="upSub  ms-2"
@@ -174,6 +211,7 @@ function DisplaysubType() {
                   >
                     Disable
                   </a>
+                   ) : null}
                 </div>
               </div>
             </div>
@@ -181,7 +219,11 @@ function DisplaysubType() {
             <div className="enaDesa1">
               {submisionType.marksStatus == "Enable" ? (
                 <div>
-                  <button type="submit" className="btn btn-warning ">
+                  <button 
+                  type="submit"
+                   className="btn btn-warning "
+                   onClick={()=>setViewMarkData(submisionType)}
+                   >
                     View {submisionType.subTypeName} Marks
                   </button>
                 </div>

@@ -12,7 +12,8 @@ export default function RequestCoSupervisor() {
         const[groupLeaderEmail,setGroupLeaderEmail]=useState("");
         const[researchTopicName,setResearchTopicName]=useState("");
         const[comments,setComments]=useState("");
-        const[coSupervisor,setCoSupervisor] = useState("");
+        const[coSupervisor,setCoSupervisor] = useState([]);
+        const[coSupervisorData,setCoSupervisorData] = useState("");
         const [requestID, setRID] = useState("");
 
 
@@ -30,6 +31,16 @@ export default function RequestCoSupervisor() {
                     setResearchTopicName(res.data.researchTopicName);
                     setComments(res.data.comments);
                     console.log(res.data);
+
+                    axios
+                        .get(`http://localhost:8070/user/infoCosupervisor/${res.data.researchCategory}`)
+                        .then((res) => {
+                            setCoSupervisor(res.data);
+                            console.log(res.data)
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
                 })
                 .catch((err) => {
                     alert(err);
@@ -38,18 +49,18 @@ export default function RequestCoSupervisor() {
             setRID(rid);
         }, []);
 
-
-        const setData = async (coSupervisor) => {
+        
+        const setData = async () => {
             const newValue = {
-                coSupervisor,
+                coSupervisorData,
             };
 
 
             const update = await axios
-                .put(`http://localhost:8070/requestSV/${requestID}`, newValue)
+                .put(`http://localhost:8070/requestCoSV/${requestID}`, newValue)
                 .then(() => {
                     swal("Request Send!");
-                    navigate("/displayCoSupervisors");
+                   navigate("/displayCoSupervisors");
                 })
                 .catch((err) => {
                     swal(`Something went wrong !!!`);
@@ -140,10 +151,12 @@ export default function RequestCoSupervisor() {
                                             <div className="col-md-12">
                                                 <label>Research Co-Supervisor : </label>
                                                 <div className="form-group">
-                                                    <select className="form-select" aria-label="Default select example" value={coSupervisor} onChange={e => setCoSupervisor(e.target.value)}>
-                                                        <option selected>Select Co-Supervisor</option>
-                                                        <option value="Wade">Wade</option>
-                                                        <option value="Smith">Smith</option>
+                                                    <select className="form-select" aria-label="Default select example" value={coSupervisorData} onChange={(e) => setCoSupervisorData(e.target.value)}>
+                                                    {coSupervisor.map((data, index) => (
+                                                    <option key={index} value={data.name}>{data.name}</option>
+                
+
+                                                    ))}
                                                     </select>
                                                 </div>
                                             </div>
@@ -155,7 +168,7 @@ export default function RequestCoSupervisor() {
                                                         <button
                                                             type="submit"
                                                             className="btn btn-success btn-lg"
-                                                            onClick={() => setData({coSupervisor})}
+                                                            onClick={() => setData(coSupervisorData)}
                                                         >
                                                             &nbsp;Accept
                                                         </button>

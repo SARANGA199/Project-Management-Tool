@@ -1,14 +1,18 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import axios from "axios";
 import swal from "sweetalert";
 
 
 export default function StdSubmitDoc (){
 
+    
+    
+
 const[groupID,setGroupID]= useState("");
 const[groupLeaderName,setGroupLeaderName]= useState("");
 const[groupLeaderEmail,setGroupLeaderEmail]= useState("");
 const[submissionComments,setSubmissionComments]= useState("");
+const[subTypeName,setSubTypeName]= useState("");
 
     async function saveDoc(e){
         e.preventDefault();
@@ -24,15 +28,21 @@ const[submissionComments,setSubmissionComments]= useState("");
             }}).catch((err)=>{
             alert(err);
         });
-    }
+    };
 
+    useEffect (()=>{
+        let SubTypeName = localStorage.getItem("SubmissionTypeName");
+        setSubTypeName(SubTypeName)
+
+    });
+console.log(subTypeName)
     return(
         <div className="container">
             <br/>
             <div className="card">
                 <div className="card-body">
                     <h1>
-                        <center>Submit Document</center>
+                        <center>Submit {subTypeName}</center>
                     </h1>
                 </div>
             </div>

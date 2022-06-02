@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import {addTemplate,displayTemplate} from '../controllers/templateController/templateController.js'
+import {addTemplate,displayTemplate} from '../../controllers/templateController/templateController.js'
 
 
 

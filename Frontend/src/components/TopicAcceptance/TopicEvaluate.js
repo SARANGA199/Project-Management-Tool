@@ -161,33 +161,34 @@ export default function TopicEvaluate() {
                 />
               </div>
             </Box>
-            <form onSubmit={setData}>
-              <div className="textCont ms-2 mb-3 mt-3">
-                <div class="form-group ">
-                  <label for="exampleFormControlTextarea1">
-                    <b>Feedback of the Research Topic:</b>
-                  </label>
-                  <textarea
-                    class="form-control"
-                    id="exampleFormControlTextarea1"
-                    value={topicFeedback}
-                    rows="6"
-                    onChange={(e) => setTopicFeedback(e.target.value)}
-                    required
-                  ></textarea>
-                  <br></br>
-                </div>
+            
+            <div className="textCont ms-2 mb-3 mt-3">
+              <div class="form-group ">
+                <label for="exampleFormControlTextarea1"><b>Feedback of the Research Topic:</b></label>
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  value={topicFeedback}
+                  rows="6"
+                  onChange={(e)=>setTopicFeedback(e.target.value)}
+                  required
+                ></textarea>
+                <br></br>
+              </div >
               </div>
-              <div style={{ paddingLeft: "360px" }}>
-                <button
+              <div style={{paddingLeft:"360px"}}>
+              <button
+                
+                  onClick={()=>setData()}
                   className="btn btn-outline-warning"
                   variant="contained"
                   type="submit"
                 >
                   SEND <SendIcon>send</SendIcon>{" "}
                 </button>
-              </div>
-            </form>
+                </div>
+                
+           
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState,useEffect } from "react";
+import { useContext,useState,useEffect } from "react";
+import { GlobalState } from "../../GlobalState";
 import { useHistory} from 'react-router-dom';
 import { OutlinedInput,Container } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -29,6 +30,10 @@ import upload from "../../upload.png";
 
 const AddSubmissiontype= ()=>{
 
+  const state = useContext(GlobalState);
+  const [crrUser, setCrrUser] = state.UserAPI.crrUser;
+  const admin = crrUser.name;
+
     let [showResults, setShowResults] = useState(false)
     let navigate = useNavigate();
 
@@ -39,7 +44,7 @@ const AddSubmissiontype= ()=>{
     // const [submission,setSubmission] = useState("test1")
 
     const [data, setData] = useState({
-            adminName:"test",
+            adminName:`${admin}`,
             subTypeName:"",
             subTypeDiscription:"",
             template:"",
