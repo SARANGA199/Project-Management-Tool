@@ -160,11 +160,6 @@ function Profile() {
                 <div className='profilecard'>
                     <h2>Update Password</h2>
                     <br/>
-                    <div className="form-group">
-                        <label htmlFor="expass">Existing Password</label>
-                        <input type="password" name="expass" id="expass" 
-                        placeholder="your existing password"  />
-                    </div>
 
                     <div className="form-group">
                         <label htmlFor="password">New Password</label>
