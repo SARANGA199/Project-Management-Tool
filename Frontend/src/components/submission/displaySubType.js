@@ -110,6 +110,20 @@ function DisplaysubType() {
 
   };
 
+  const setViewMarkData =  (data) => {
+
+    let {
+      _id,
+      subTypeName,
+    } = data;
+
+  
+    localStorage.setItem("STypeName", subTypeName);
+
+    navigate("/presentationMarks");
+
+  };
+
   const SubmisionType = ({ submisionType }) => {
     return (
       <div>
@@ -155,7 +169,11 @@ function DisplaysubType() {
             <div className="enaDesa1">
               {submisionType.marksStatus == "Enable" ? (
                 <div>
-                  <button type="submit" className="btn btn-warning ">
+                  <button 
+                  type="submit"
+                   className="btn btn-warning "
+                   onClick={()=>setViewMarkData(submisionType)}
+                   >
                     View {submisionType.subTypeName} Marks
                   </button>
                 </div>

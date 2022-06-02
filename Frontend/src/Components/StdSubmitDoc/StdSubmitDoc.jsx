@@ -35,14 +35,15 @@ export default function StdSubmitDoc() {
         e.preventDefault()
         try {
             //const url = process.env.REACT_APP_API_URL + "/addDoc"
-            const {data: res} = await axios.post(`http://localhost:8070/stdSubmitDoc/stdSubmitDoc`, data).then(() => {
+            const {data: res} = axios.post(`http://localhost:8070/stdSubmitDoc/addDoc`, data).then(() => {
+                console.log(data)
                 swal("Document added successful")
 
 
             })
 
         } catch (error) {
-            await swal(`Something went wrong !!!`);
+            swal(`Something went wrong !!!`);
         }
     };
 
