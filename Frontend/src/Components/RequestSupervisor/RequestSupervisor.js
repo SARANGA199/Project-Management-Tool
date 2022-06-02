@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import axios from "axios";
 import swal from "sweetalert";
 // import {useNavigate} from "react-router-dom";
@@ -11,7 +11,23 @@ export const RequestSupervisor = ()=>{
     const[groupLeaderEmail,setGroupLeaderEmail]=useState("");
     const[researchTopicName,setResearchTopicName]=useState("");
     const[comments,setComments]=useState("");
+    const [supervisor, setSupervisor] = useState([]);
+    
 
+    
+
+      const setSupervisorData = async () => {
+
+        //setResearchCategory(data)
+        axios
+          .get(`http://localhost:8070/user/infoSupervisor/${researchCategory}`)
+          .then((res) => {
+            setSupervisor(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
 
 
     async function saveRequest(e){
@@ -35,7 +51,7 @@ export const RequestSupervisor = ()=>{
     const handleCategory = (event)=>{
         setResearchCategory(event.target.value);
     }
-
+    setSupervisorData();
     return(
 
         <div className="container">
@@ -67,9 +83,19 @@ export const RequestSupervisor = ()=>{
                                             <label>Research Category : </label>
                                             <div className="form-group">
                                                 <select className="form-select" aria-label="Default select example" value={researchCategory} onChange={e => setResearchCategory(e.target.value)}>
-                                                    <option selected>Select Category</option>
-                                                    <option value="IOT">IOT</option>
-                                                    <option value="DS">DS</option>
+                                                
+                                                    <option  value={"IOT"}>IOT</option>
+                                                    <option  value={"SE"}>SE</option>
+                                
+                                                </select>
+                                            </div>
+                                            <label>Supervisor : </label>
+                                            <div className="form-group">
+                                                <select className="form-select" aria-label="Default select example" value={researchSupervisor} onChange={e => setResearchSupervisor(e.target.value)}>
+                                                {supervisor.map((data, index) => (
+                                                    <option key={index} value={data.name}>{data.name}</option>
+                
+                                                    ))}
                                                 </select>
                                             </div>
 

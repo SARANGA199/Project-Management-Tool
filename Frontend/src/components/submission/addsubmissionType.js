@@ -94,19 +94,21 @@ const AddSubmissiontype= ()=>{
 
     return(
     
-        <div className="container" align="center">
-
-
-        <div className="row">
-            <div className="col-12">
-                <div className="mb-3 mt-3">
-                  <center> <h2>CREATE SUBMISSION TYPE</h2></center> 
-                </div>
-            </div>
+  <div>
+      <div className="topicContainer">
+        <div className="leftTopic">
+          <div className="topicTop">
+            SLIIT <br />
+            RESEARCH
+          </div>
         </div>
 
+      <div className="container">
+      <div style={{marginLeft:"20px"}} className="topicName">CREATE  SUBMISSION  TYPE</div>
+          <hr className="topicHr" />
+
  
-  <form className={styles.form} onSubmit={handleSubmit}  >  
+       <form className={styles.form} onSubmit={handleSubmit}  >  
 
                 <div className="row"> 
                 
@@ -114,21 +116,6 @@ const AddSubmissiontype= ()=>{
                     <div className="row">
                 
             <div className={styles.submission_container} >
-                    {/* <Grid>
-                    <label>Submission Type Name : </label>
-                    <OutlinedInput
-                        type="text"
-                        name="subTypeName"
-                        label="Submission type Name"
-                        required
-                        id="name"
-                        placeholder="Type Name"
-                        onChange={handleChange}
-                        value={data.subTypeName}
-                        //onChange={(e) => setSubTypeName (e.target.value)}
-                        
-                     />
-                     </Grid> */}
                 <div>
                 <InputLabel style={{width:"400px"}} id="demo-simple-select-label">
                     <b>Submission type Name:</b>
@@ -209,7 +196,7 @@ const AddSubmissiontype= ()=>{
                     <b>Submission Template Name :</b>
                     </InputLabel>
                     <OutlinedInput
-                        style={{height:"30px",width:"280px"}}
+                        style={{width:"280px"}}
                         type="text"
                         name="templateTitle"
                         label="Submission type Name"
@@ -267,13 +254,14 @@ const AddSubmissiontype= ()=>{
                   </div>
                   <center>
                  <div style={{paddingTop: '20px'}}  className="col-xl-12">
-                      <Button  type="submit" className="btn btn-primary mt-5 "  >CREATE</Button>
+                      <button  type="submit" className="btn btn-warning ms-3"  >CREATE</button>
                 </div>
                 </center>
             </form>  
+           </div>
            
-          </div>  
-            
+</div>  
+      </div>      
             
 
         );
