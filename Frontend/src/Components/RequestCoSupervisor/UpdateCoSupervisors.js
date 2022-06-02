@@ -48,7 +48,7 @@ export default function UpdateCoSupervisorStatus() {
 
 
         const update = await axios
-            .put(`http://localhost:8070/requestSV/${requestID}`, newData)
+            .put(`http://localhost:8070/request/${requestID}`, newData)
             .then(() => {
                 swal(`Co-Supervisor is ${coSupervisorStatus}ed`);
                 navigate("/displayCoSupervisors");
@@ -73,7 +73,7 @@ export default function UpdateCoSupervisorStatus() {
             <div className="card">
                 <div className="card-body">
 
-                    <form>
+
 
                         <div className="row">
                             <div className="col-sm-6">
@@ -190,7 +190,7 @@ export default function UpdateCoSupervisorStatus() {
                                 </div>
                             </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>
