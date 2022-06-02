@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { GlobalState } from "../../GlobalState";
 import "../TopicAcceptance/topicAccept.css";
+import AddIcon from "@mui/icons-material/Add";
 
 export default function DisplayChats() {
   const navigate = useNavigate();
@@ -89,6 +90,23 @@ export default function DisplayChats() {
           </div>
         </div>
         <div className="container">
+          <button
+            className="btn btn-warning TypeADD"
+            onClick={() => navigate("/createChat")}
+          >
+            Add New Forum &nbsp; <AddIcon />
+          </button>
+          {crrUser.role === "Student" ? (
+            ""
+          ) : (
+            <button
+              className="btn btn-warning TypeADD"
+              onClick={() => navigate("/allForums")}
+            >
+              ALL Chat Forums
+            </button>
+          )}
+
           <div className="topicNam">GROUP - {groupId}</div>
           <hr className="topicHr" />
 

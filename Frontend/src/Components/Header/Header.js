@@ -1,136 +1,148 @@
-import React,{ useState, useContext} from 'react'
-import { GlobalState } from '../../GlobalState';
+import React, { useState, useContext } from "react";
+import { GlobalState } from "../../GlobalState";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
-import logo from './images/SLIIT.png'
-import home from './images/home-icon.svg'
-import search from './images/search-icon.svg'
-import watchlist from './images/watchlist-icon.svg'
-import originals from './images/original-icon.svg'
-import profile from './images/movie-icon.svg'
-import series from './images/series-icon.svg'
-import { Link } from 'react-router-dom';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import { IconContext } from 'react-icons';
-import { SidebarData } from './SidebarData';
-import './header.css';
+import axios from "axios";
+import logo from "./images/SLIIT.png";
+import home from "./images/home-icon.svg";
+import search from "./images/search-icon.svg";
+import watchlist from "./images/watchlist-icon.svg";
+import originals from "./images/original-icon.svg";
+import profile from "./images/movie-icon.svg";
+import series from "./images/series-icon.svg";
+import { Link } from "react-router-dom";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import { IconContext } from "react-icons";
+import { SidebarData } from "./SidebarData";
+import "./header.css";
 
 function Header() {
+  let navigate = useNavigate();
+  const state = useContext(GlobalState);
+  const [isLogged, setIsLogged] = state.UserAPI.isLogged;
+  const [isAdmin, setIsAdmin] = state.UserAPI.isAdmin;
+  const [crrUser, setCrrUser] = state.UserAPI.crrUser;
 
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
 
-    let navigate = useNavigate();
-    const state = useContext(GlobalState)
-    const [isLogged,setIsLogged ] = state.UserAPI.isLogged
-    const [isAdmin,setIsAdmin ] = state.UserAPI.isAdmin
-    const [crrUser, setCrrUser] = state.UserAPI.crrUser
-
-    const logoutUser = async () =>{
-      localStorage.clear()
-      setIsAdmin(false)
-      setIsLogged(false)
-      navigate("/");
-      window.location.reload(false)
-    }
+  const logoutUser = async () => {
+    localStorage.clear();
+    setIsAdmin(false);
+    setIsLogged(false);
+    navigate("/");
+    window.location.reload(false);
+  };
 
   return (
     <>
-    <Nav>
-    <NavMenu>
-      <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
-          <Link to='#' className='menu-bars'>
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-        </div>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
-              <Link to='#' className='menu-bars'>
-                <AiIcons.AiOutlineClose />
+      <Nav>
+        <NavMenu>
+          <IconContext.Provider value={{ color: "#fff" }}>
+            <div className="navbar">
+              <Link to="#" className="menu-bars">
+                <FaIcons.FaBars onClick={showSidebar} />
               </Link>
-            </li>
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
+            </div>
+            <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+              <ul className="nav-menu-items" onClick={showSidebar}>
+                <li className="navbar-toggle">
+                  <Link to="#" className="menu-bars">
+                    <AiIcons.AiOutlineClose />
                   </Link>
                 </li>
-              );
-            })}
-          </ul>
-        </nav>
-      </IconContext.Provider>&nbsp;
-
-    <Logo>
-       <img src={logo} alt='sliit'/>
-    </Logo>
-
-
-        <a href='/'>
-           <img src={home} alt='home'/>
-           <span>HOME</span>
-        </a>
-        <a href='/'>
-           <img src={search} alt='search'/>
-           <span>SEARCH</span>
-        </a>
-        <a href='/'>
-           <img src={watchlist} alt='watchlist'/>
-           <span>WATCHLIST</span>
-        </a>
-        <a href='/'>
-           <img src={originals} alt='original'/>
-           <span>ORIGINALS</span>
-        </a>
-        <a href='/profile'>
-           <img src={profile} alt='move'/>
-           <span>Profile</span>
-        </a>
-        
-        <a href='/'>
-           <img src={series} alt='series'/>
-           <span>SERIES</span>
-        </a>
-
-        <div>
-          {isLogged?
-          <Logout onClick={logoutUser}>Logout</Logout>:
-          <Logout><a href='/login'>Login</a></Logout>}
-        </div>
-
-    </NavMenu>
-    {isLogged?
-    <Avatar>
-      <div>
-        <img src={crrUser.image} alt=""/>
-      </div>
-    </Avatar>:null}
-</Nav>
-</>
-  )
+                {SidebarData.map((item, index) => {
+                  return (
+                    <li key={index} className={item.cName}>
+                      <Link to={item.path}>
+                        {item.icon}
+                        <span>{item.title}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </IconContext.Provider>
+          &nbsp;
+          <Logo>
+            <img src={logo} alt="sliit" />
+          </Logo>
+          <a href="/">
+            <img src={home} alt="home" />
+            <span>HOME</span>
+          </a>
+          <a href="/displaysub">
+            <img src={search} alt="search" />
+            <span>RESEARCH</span>
+          </a>
+          <a href="/">
+            <img src={watchlist} alt="watchlist" />
+            <span>WATCHLIST</span>
+          </a>
+          <a href="/">
+            <img src={originals} alt="original" />
+            <span>ORIGINALS</span>
+          </a>
+          <a href="/profile">
+            <img src={profile} alt="move" />
+            <span>Profile</span>
+          </a>
+          {crrUser.role === "Student" ? (
+            <a href="/displayChat">
+              <img src={series} alt="series" />
+              <span>CHATS</span>
+            </a>
+          ) : crrUser.role === "Supervisor" ||
+            crrUser.role === "Co-Supervisor" ? (
+            <a href="/allForums">
+              <img src={series} alt="series" />
+              <span>CHATS</span>
+            </a>
+          ) : (
+            <a href="/">
+              <img src={series} alt="series" />
+              <span>CHATS</span>
+            </a>
+          )}
+          <div>
+            {isLogged ? (
+              <Logout onClick={logoutUser}>Logout</Logout>
+            ) : (
+              <Logout>
+                <a href="/login">Login</a>
+              </Logout>
+            )}
+          </div>
+        </NavMenu>
+        {isLogged ? (
+          <Avatar>
+            <div>
+              <img src={crrUser.image} alt="" />
+            </div>
+          </Avatar>
+        ) : null}
+      </Nav>
+    </>
+  );
 }
 
 const Nav = styled.nav`
- position : sticky ;
- top:0;
- left :0;
- right:0;
- height :70px;
- background-color:#ffad33;
- display:flex;
- justify-content:space-between;
- align-items:center;
- padding:0 36px;
- letter-spacing:16px;
- z-index:3;
-`
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: #ffad33;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 36px;
+  letter-spacing: 16px;
+  z-index: 3;
+`;
 
 const Avatar = styled.div`
   width: 60px;
@@ -231,7 +243,7 @@ const Logout = styled.a`
   text-transform: uppercase;
   letter-spacing: 1.5px;
   border: 1px solid #f9f9f9;
-  cursor:pointer;
+  cursor: pointer;
   border-radius: 4px;
   transition: all 0.2s ease 0s;
   &:hover {
@@ -242,9 +254,8 @@ const Logout = styled.a`
 `;
 
 const UserImg = styled.img`
- height:100%;
+  height: 100%;
 `;
-
 
 const DropDown = styled.div`
   position: absolute;
@@ -261,4 +272,4 @@ const DropDown = styled.div`
   opacity: 0;
 `;
 
-export default Header
+export default Header;
