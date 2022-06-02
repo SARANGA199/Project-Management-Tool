@@ -25,12 +25,11 @@ import ForgotPassword from "./Components/UserManagement/ForgotPassword";
 import ResetPassword from "./Components/UserManagement/ResetPassword";
 import Profile from "./Components/UserManagement/Profile";
 import AllUsers from "./Components/UserManagement/AllUsers";
-import DocEvaluation from "./Components/UserManagement/DocEvaluation";
 import PendingUsers from "./Components/UserManagement/PendingUsers.js";
 import UpdateUser from "./Components/UserManagement/UpdateUser.js";
-import DocumentEvaluation from "./Components/DocumentEvaluation/DocumentEvaluation.js";
 import ActivationEmail from "./Components/UserManagement/ActivationEmail";
 import PendActivationEmail from "./Components/UserManagement/PendActivationEmail.js"
+import DocumentEvaluation from "./Components/DocumentEvaluation/DocumentEvaluation.js";
 import NotFound from "./Components/utils/NotFound/NotFound.JS";
 
 export default class App extends Component {
@@ -69,11 +68,10 @@ export default class App extends Component {
           <Route path="/profile" element={<Profile/>} />
           <Route path="/allusers" element={<AllUsers/>} />
           <Route path="/PendingUsers" element={<PendingUsers/>} />
-          <Route path="/doceval" element={<DocEvaluation/>} />
           <Route path="/updateuser/:id" element={<UpdateUser/>} />
-          <Route path="/documenteval" element={<DocumentEvaluation/>} />
           <Route path="/user/activate/:activation_token" element={<ActivationEmail/>} />
           <Route path="/pending/activate/:activation_token" element={<PendActivationEmail/>} />
+          <Route path="/evaluatedocument" element={<DocumentEvaluation/>} />
 
         </Routes>
       </BrowserRouter>

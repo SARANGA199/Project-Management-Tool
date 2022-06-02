@@ -18,15 +18,7 @@ import upload from './routes/userRoutes/upload.js'
 import studentRouter from "./routes/studentRoute/studentRouter.js";
 import topicRegisterRouter from "./routes/topicRegisterRoute/topicRegisterRouter.js";
 import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupervisorRouter.js";
-
-// import cookieParser from "cookie-parser";
-// import userRouter from "./routes/userRoutes/userRoutes.js";
-// import presentationMarksRoutes from "./routes/presentationMarksRoutes/presentationMarksRoutes.js";
-
-// import upload from "./routes/userRoutes/upload.js";
-// import studentRouter from "./routes/studentRoute/studentRouter.js";
-// import topicRegisterRouter from "./routes/topicRegisterRoute/topicRegisterRouter.js";
-// import requestSupervisorRouter from "./routes/requestSupervisorRoute/requestSupervisorRouter.js";
+import documentMarksRoutes from "./routes/documentMarksRoutes/documentMarksRoutes.js"
 
 const app = new express();
 
@@ -46,6 +38,7 @@ app.use("/submission", submissionRouter);
 app.use('/user', userRouter);
 app.use('/pending', pendingUserRouter);
 app.use('/api', upload);
+app.use('/documentMarks', documentMarksRoutes);
 
 //marking controller
 app.use('/markings', markingRoutes);
@@ -54,10 +47,6 @@ app.use(studentRouter);
 app.use(topicRegisterRouter);
 app.use(requestSupervisorRouter);
 
-
-// app.use(studentRouter);
-// app.use(topicRegisterRouter);
-// app.use(requestSupervisorRouter);
 
 const PORT = process.env.PORT || 8000;
 
