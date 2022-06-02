@@ -3,6 +3,26 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.topic-containerPre {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 20% auto;
+}
+  
+.leftCom {
+    background-color: whitesmoke;
+}
+
+.formTitlePre {
+    margin-top: 30vh;
+    margin-left: -2vh;
+    font-size: 5vh;
+    font-weight: bold;
+    padding: 4vh;
+    border-radius: 5vh;
+}
+
 .docEval_page .col-left{
     max-width: 400px;
     min-width: 300px;

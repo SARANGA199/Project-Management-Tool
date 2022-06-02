@@ -4,10 +4,14 @@ import './docEvaluation.css';
 function DocEvaluation() {
     return (
         <>
-        <br/>
-        <center>
-        <h1>Document Evaluation</h1>
-        </center>
+        <div className="topic-containerPre">
+        <div className="leftCom">
+          <label className="formTitlePre">
+            {" "}
+            EVALUATE
+            <br /> DOCUMENTS
+          </label>
+          </div>
         <div className="docEval_page">
             <div className="col-left">
             <div className='card'>
@@ -81,6 +85,7 @@ function DocEvaluation() {
                     </table>
                 </div>
             </div>
+        </div>
         </div>
         </>
     )
