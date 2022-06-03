@@ -126,7 +126,7 @@ function Profile() {
                 </div>
                 
                 <div className="form-group">
-                    <label htmlFor="role">Email</label>
+                    <label htmlFor="role">Role</label>
                     <input type="text" name="role" id="role" defaultValue={role}
                     placeholder="Your role" onChange={e=>{setRole(e.target.value);}}/>
                 </div>
