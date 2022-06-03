@@ -98,7 +98,7 @@ function Header() {
           )}
           <a href="/profile">
             <img src={originals} alt="move" />
-            <span>Profile</span>
+            <span>PROFILE</span>
           </a>
           {crrUser.role === "Student" ? (
             <a href="/displayChat">

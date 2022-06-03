@@ -66,7 +66,7 @@ export default function AddPanelMember() {
           </div>
         </div>
         <div className="container">
-          <div className="topicName">ADD  PANEL  MEMBERS</div>
+          <div className="topicNamPanel">ADD PANEL MEMBERS</div>
           <hr className="topicHr" />
           <table className="table frame">
             <thead>
