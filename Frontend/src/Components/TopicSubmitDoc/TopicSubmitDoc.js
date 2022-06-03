@@ -38,6 +38,8 @@ export default function TopicSubmitDoc() {
                 swal("Document added successful")
                 navigate("/topics");
 
+                
+
             })
 
         } catch (error) {

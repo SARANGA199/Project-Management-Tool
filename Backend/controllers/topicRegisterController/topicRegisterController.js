@@ -145,3 +145,27 @@ export const getOneTopic = async (req, res) => {
       console.log(err);
     });
 };
+
+export const updateTopicDocumentStatus = async (req, res) => {
+  const GId = req.params.gid;
+
+  const topicDocument = req.body.topicStatus;
+
+  const updateTopic = {
+    GId,
+    topicDocument,
+  };
+
+  const update = await Topics.findOneAndUpdate({groupID:GId}, updateTopic)
+    .then(() => {
+      res.status(200).send({ status: "Topic Status is  Updated" });
+
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        status: "Error with Updating Topic Status",
+        error: err.message,
+      });
+    });
+};
