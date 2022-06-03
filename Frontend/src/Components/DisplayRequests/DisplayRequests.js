@@ -62,7 +62,7 @@ function DisplayRequests(){
                                     <td>{data.supervisorStatus}</td>
                                     <td>
                                         <button
-                                            className="btn btn-primary"
+                                            className="btn btn-warning"
                                             disabled={
                                                 data.supervisorStatus === "Accepted" ||
                                                 data.supervisorStatus === "Rejected"
@@ -75,7 +75,7 @@ function DisplayRequests(){
 
                                     <td>
                                         <button
-                                            className="btn btn-info ms-3"
+                                            className="btn btn-warning ms-3"
                                             disabled={
                                                 data.supervisorStatus === "pending" ||
                                                 data.supervisorStatus === "Rejected"
@@ -92,6 +92,7 @@ function DisplayRequests(){
                     </div>
                 </div>
             </div>
+            <br/>
         </div>
 
     )
