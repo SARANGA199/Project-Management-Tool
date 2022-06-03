@@ -2,6 +2,7 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import * as Boostrap from "react-icons/bs";
 
 export const SidebarData = [
   {
@@ -11,9 +12,9 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Reports",
-    path: "/reports",
-    icon: <IoIcons.IoIosPaper />,
+    title: "Request Supervisor",
+    path: "/displayRequests",
+    icon: <Boostrap.BsQuestionDiamondFill />,
     cName: "nav-text",
   },
   {
