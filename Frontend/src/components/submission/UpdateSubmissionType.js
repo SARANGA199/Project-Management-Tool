@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import { useHistory} from 'react-router-dom';
 import { GlobalState } from "../../GlobalState";
 import { OutlinedInput,Container } from "@material-ui/core";
@@ -46,7 +46,7 @@ const UpdateSubmissionType= ()=>{
      let sId = localStorage.getItem("Sid");
      let SubTypeName = localStorage.getItem("SubTypeName");
      let SubTypeDiscription = localStorage.getItem("SubTypeDiscription");
-     let Template = localStorage.getItem("Template");
+     const Template = localStorage.getItem("Template");
      let TemplateTitle = localStorage.getItem("TemplateTitle");
      let TemplateDiscription = localStorage.getItem("TemplateDiscription");
 
@@ -54,7 +54,7 @@ const UpdateSubmissionType= ()=>{
             adminName:`${admin}`,
             subTypeName:SubTypeName,
             subTypeDiscription:SubTypeDiscription,
-            template:Template,
+            template:`${Template}`,
             templateTitle: TemplateTitle,
 		        templateDiscription: TemplateDiscription,
 	});
@@ -91,8 +91,8 @@ const UpdateSubmissionType= ()=>{
 			//const url = process.env.REACT_APP_API_URL + "/addtemplate"
            
 
-            axios.put(`http://localhost:8070/submission/updateAlldata/${sId}`, data).then(()=>{
-				         // console.log(data)
+      const { data : res } = axios.put(`http://localhost:8070/submission/updateAlldata/${sId}`, data).then(()=>{
+				          console.log(data)
                 alert("Update sucsesfull")
                 navigate("/displaysub");
 			  //history.push('/display');
@@ -198,7 +198,7 @@ const UpdateSubmissionType= ()=>{
                 <Player >
             <StyledLink  role="button"  data-bs-toggle="collapse" onClick={()=>setShowResults(true)} to="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >
            <img src={upload} alt="" />&nbsp;
-           <span><b>Upload Template Now</b></span>
+           <span><b>Update Upload Template Now</b></span>
            </StyledLink>
            
          </Player>
@@ -211,8 +211,9 @@ const UpdateSubmissionType= ()=>{
                     <InputLabel id="demo-simple-select-label">
                     <b>Submission Template Name :</b>
                     </InputLabel>
+                    <br></br>
                     <OutlinedInput
-                        style={{height:"30px",width:"280px"}}
+                        style={{width:"280px"}}
                         type="text"
                         name="templateTitle"
                         label="Submission type Name"
@@ -225,12 +226,13 @@ const UpdateSubmissionType= ()=>{
                         
                      />
                      </Grid>
-
+                     <br></br>
 
                      <Grid style={{marginRight:"100px"}} className={styles.song_info}>
                 <InputLabel id="demo-simple-select-label">
                     <b>Template Discription:</b>
                     </InputLabel>
+                    <br></br>
                 <OutlinedInput
                     style={{width:"400px"}}
                     fullWidth
