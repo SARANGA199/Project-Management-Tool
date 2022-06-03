@@ -67,9 +67,7 @@ function Header() {
             </nav>
           </IconContext.Provider>
           &nbsp;
-          <Logo>
-            <img src={logo} alt="sliit" />
-          </Logo>
+          <Logo></Logo>
           <a href="/">
             <img src={home} alt="home" />
             <span>HOME</span>

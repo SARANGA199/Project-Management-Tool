@@ -61,103 +61,97 @@ import DisplayDocumentMarks from "./Components/DocumentEvaluation/DisplayDocumen
 import NotFound from "./Components/utils/NotFound/NotFound.JS";
 import Home from "./Components/Home/Home";
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default function App() {
+  return (
+    <DataProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route
+            exact
+            path="/submitPre"
+            element={<DisplaySubmitPresentation />}
+          />
+          <Route path="/add" element={<AddMarking />} />
+          <Route
+            path="/evaluatePresentation"
+            element={<EvaluatePresentation />}
+          />
+          <Route
+            path="/presentationMarks"
+            element={<DisplayPresentationMarks />}
+          />
 
-  render() {
-    return (
-      <DataProvider>
-        <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route
-              exact
-              path="/submitPre"
-              element={<DisplaySubmitPresentation />}
-            />
-            <Route path="/add" element={<AddMarking />} />
-            <Route
-              path="/evaluatePresentation"
-              element={<EvaluatePresentation />}
-            />
-            <Route
-              path="/presentationMarks"
-              element={<DisplayPresentationMarks />}
-            />
+          <Route path="/topics" element={<Topics />} />
+          <Route path="/acceptTopic" element={<AcceptTopic />} />
+          <Route path="/viewMarking" element={<ViewMarkingSchemes />} />
+          <Route path="/updateMarking" element={<UpdateMarking />} />
 
-            <Route path="/topics" element={<Topics />} />
-            <Route path="/acceptTopic" element={<AcceptTopic />} />
-            <Route path="/viewMarking" element={<ViewMarkingSchemes />} />
-            <Route path="/updateMarking" element={<UpdateMarking />} />
+          <Route path="/createGroup" element={<CreateGroup />} />
+          <Route path="/groupList" element={<GroupList />} />
+          <Route path="/topicRegister" element={<TopicRegister />} />
+          <Route path="/requestSupervisor" element={<RequestSupervisor />} />
+          <Route path="/stdSubmitDoc" element={<StdSubmitDoc />} />
+          <Route path="/topicSubmitDoc" element={<TopicSubmitDoc />} />
+          <Route path="/displayRequests" element={<DisplayRequests />} />
+          <Route
+            path="/updateSupervisorStatus"
+            element={<UpdateSupervisorStatus />}
+          />
+          <Route
+            path="/requestCoSupervisor"
+            element={<RequestCoSupervisor />}
+          />
+          <Route
+            path="/displayCoSupervisors"
+            element={<DisplayCoSupervisors />}
+          />
+          <Route
+            path="/updateCoSupervisorStatus"
+            element={<UpdateCoSupervisorStatus />}
+          />
 
-            <Route path="/createGroup" element={<CreateGroup />} />
-            <Route path="/groupList" element={<GroupList />} />
-            <Route path="/topicRegister" element={<TopicRegister />} />
-            <Route path="/requestSupervisor" element={<RequestSupervisor />} />
-            <Route path="/stdSubmitDoc" element={<StdSubmitDoc />} />
-            <Route path="/topicSubmitDoc" element={<TopicSubmitDoc />} />
-            <Route path="/displayRequests" element={<DisplayRequests />} />
-            <Route
-              path="/updateSupervisorStatus"
-              element={<UpdateSupervisorStatus />}
-            />
-            <Route
-              path="/requestCoSupervisor"
-              element={<RequestCoSupervisor />}
-            />
-            <Route
-              path="/displayCoSupervisors"
-              element={<DisplayCoSupervisors />}
-            />
-            <Route
-              path="/updateCoSupervisorStatus"
-              element={<UpdateCoSupervisorStatus />}
-            />
+          <Route path="/addTemplate" element={<TemplateForm />} />
+          <Route path="/display" element={<Displaytemplate />} />
+          <Route path="/AddSubType" element={<AddSubmissiontype />} />
+          <Route path="/displaysub" element={<DisplaysubType />} />
+          <Route path="/updateSub" element={<UpdateSubmissionType />} />
 
-            <Route path="/addTemplate" element={<TemplateForm />} />
-            <Route path="/display" element={<Displaytemplate />} />
-            <Route path="/AddSubType" element={<AddSubmissiontype />} />
-            <Route path="/displaysub" element={<DisplaysubType />} />
-            <Route path="/updateSub" element={<UpdateSubmissionType />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/fpass" element={<ForgotPassword />} />
+          <Route path="/user/reset/:token" element={<ResetPassword />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/allusers" element={<AllUsers />} />
+          <Route path="/PendingUsers" element={<PendingUsers />} />
+          <Route path="/updateuser/:id" element={<UpdateUser />} />
+          <Route
+            path="/user/activate/:activation_token"
+            element={<ActivationEmail />}
+          />
+          <Route
+            path="/pending/activate/:activation_token"
+            element={<PendActivationEmail />}
+          />
+          <Route path="/evaluatedocument" element={<DocumentEvaluation />} />
+          <Route path="/submitdocs" element={<DisplaySubmitDocuments />} />
+          <Route path="/documentmarks" element={<DisplayDocumentMarks />} />
 
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/fpass" element={<ForgotPassword />} />
-            <Route path="/user/reset/:token" element={<ResetPassword />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/allusers" element={<AllUsers />} />
-            <Route path="/PendingUsers" element={<PendingUsers />} />
-            <Route path="/updateuser/:id" element={<UpdateUser />} />
-            <Route
-              path="/user/activate/:activation_token"
-              element={<ActivationEmail />}
-            />
-            <Route
-              path="/pending/activate/:activation_token"
-              element={<PendActivationEmail />}
-            />
-            <Route path="/evaluatedocument" element={<DocumentEvaluation />} />
-            <Route path="/submitdocs" element={<DisplaySubmitDocuments />} />
-            <Route path="/documentmarks" element={<DisplayDocumentMarks />} />
+          <Route path="/evaluateTopic" element={<TopicEvaluate />} />
+          <Route path="/AddPanelMember" element={<AddPanelMember />} />
+          <Route path="/createChat" element={<CreateChat />} />
+          <Route path="/displayChat" element={<DisplayChats />} />
+          <Route path="/reply" element={<ChatReply />} />
+          <Route path="/oneForum" element={<DisplayOneForum />} />
+          <Route path="/editReply" element={<UpdateReply />} />
+          <Route path="/editChatForum" element={<UpdateChatForum />} />
+          <Route path="/allForums" element={<DisplayAllForums />} />
+          <Route path="/addPanelMember" element={<AddPanelMember />} />
+          <Route path="/addMember" element={<AddMember />} />
 
-            <Route path="/evaluateTopic" element={<TopicEvaluate />} />
-            <Route path="/AddPanelMember" element={<AddPanelMember />} />
-            <Route path="/createChat" element={<CreateChat />} />
-            <Route path="/displayChat" element={<DisplayChats />} />
-            <Route path="/reply" element={<ChatReply />} />
-            <Route path="/oneForum" element={<DisplayOneForum />} />
-            <Route path="/editReply" element={<UpdateReply />} />
-            <Route path="/editChatForum" element={<UpdateChatForum />} />
-            <Route path="/allForums" element={<DisplayAllForums />} />
-            <Route path="/addPanelMember" element={<AddPanelMember />} />
-            <Route path="/addMember" element={<AddMember />} />
-
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </BrowserRouter>
-      </DataProvider>
-    );
-  }
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </DataProvider>
+  );
 }
