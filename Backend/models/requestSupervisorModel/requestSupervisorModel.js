@@ -21,7 +21,7 @@ const RequestSupervisors = mongoose.Schema({
     },
     supervisorStatus:{
         type:String,
-        default:'pending'
+        default:'Pending'
     },
     coSupervisor:{
         type:String,
@@ -29,7 +29,7 @@ const RequestSupervisors = mongoose.Schema({
     },
     coSupervisorStatus:{
         type:String,
-        default:'pending'
+        default:'Pending'
     },
 })
 

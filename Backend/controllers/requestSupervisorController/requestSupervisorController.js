@@ -1,5 +1,5 @@
 import RequestSV from "../../models/requestSupervisorModel/requestSupervisorModel.js";
-// import nodemailer from "nodemailer";
+import nodemailer from "nodemailer";
 
 export const getRequestSV = async (req, res) => {
   try {

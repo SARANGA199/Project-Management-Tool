@@ -48,7 +48,6 @@ export default function UpdateSupervisorStatus() {
         const update = await axios
             .put(`http://localhost:8070/requestSV/${requestID}`, newValue)
             .then(() => {
-                alert("sudssdsdsdscd")
                 swal(`Supervisor is ${supervisorStatus}ed`);
                 navigate("/displayRequests");
             })
@@ -72,7 +71,7 @@ export default function UpdateSupervisorStatus() {
             <div className="card">
                 <div className="card-body">
 
-                    <form>
+
 
                         <div className="row">
                             <div className="col-sm-6">
@@ -128,7 +127,6 @@ export default function UpdateSupervisorStatus() {
                             <div className="col-sm-6">
                                 <div className="card">
                                     <div className="card-body">
-                                        <h5 className="card-title">form</h5>
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <label> Research Supervisor :</label>
@@ -140,7 +138,7 @@ export default function UpdateSupervisorStatus() {
                                             <div className="col-md-6">
                                                 <label>Request Status :</label>
                                                 <div className="form-group">
-                                                    <input type="text"  className="form-control" value={supervisorStatus} />
+                                                    <input type="text"  className="form-control" value={supervisorStatus} disabled={true}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -181,58 +179,11 @@ export default function UpdateSupervisorStatus() {
                                 </div>
                             </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>
 
     )
 }
-
-
-
-
-// async function handleSubmit(e) {
-//     e.preventDefault();
-//
-//     const dataNew = {
-//         researchSupervisor,
-//         researchCategory,
-//         groupID,
-//         groupLeaderEmail,
-//         researchTopicName,
-//         comments,
-//         supervisorStatus,
-//     };
-//
-//     await axios
-//         .put(`http://localhost:8070/requestSV/${requestID}`, dataNew)
-//         .then(() => {
-//             e.target.reset();
-//         })
-//         .catch((err) => {
-//             alert(err);
-//         });
-// }
-
-// async function saveRequest(e){
-//     e.preventDefault();
-//     const data = {
-//         researchSupervisor,
-//         researchCategory,
-//         groupID,
-//         groupLeaderEmail,
-//         researchTopicName,
-//         comments
-//     }
-//     const promise = await axios.get(`http://localhost:8070/requestSV/${rid}`,data).then((res)=>{
-//         if(res.status = 201) {
-//             alert("Post Added successfully");
-//         }}).catch((err)=>{
-//         alert(err);
-//     });
-// }
-// const handleCategory = (event)=>{
-//     setResearchCategory(event.target.value);
-// }
 

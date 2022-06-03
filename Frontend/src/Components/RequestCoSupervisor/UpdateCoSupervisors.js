@@ -55,167 +55,142 @@ export default function UpdateCoSupervisorStatus() {
   };
 
   return (
-    <div className="container">
-      <br />
-      <div className="card">
-        <div className="card-body">
-          <h1>
-            <center>Update Request </center>
-          </h1>
-        </div>
-      </div>
-
-      <div className="card">
-        <div className="card-body">
-          <div className="row">
-            <div className="col-sm-6">
-              <div className="card">
+   
+        <div className="container">
+            <br/>
+            <div className="card">
                 <div className="card-body">
-                  <div className="col-md-12">
-                    <div className="row">
-                      <div className="col-md-6">
-                        <label> Group ID :</label>
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            value={groupID}
-                            disabled={true}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-md-6">
-                        <label> Group Leader Email :</label>
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            value={groupLeaderEmail}
-                            disabled={true}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="row">
-                      <div className="col-md-6">
-                        <label> Research Category :</label>
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            value={researchCategory}
-                            disabled={true}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-md-6">
-                        <label>Research Topic Name : </label>
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            value={researchTopicName}
-                            disabled={true}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="row">
-                      <div className="col-md-12">
-                        <label> Research Supervisor :</label>
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            value={researchSupervisor}
-                            disabled={true}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-12">
-                        <label>Comments : </label>
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            value={comments}
-                            disabled={true}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    <h1>
+                        <center>Update Request </center>
+                    </h1>
                 </div>
-              </div>
             </div>
 
-            <div className="col-sm-6">
-              <div className="card">
+            <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">form</h5>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <label> Research Co-Supervisor :</label>
-                      <div className="form-group">
-                        <input
-                          type="text"
-                          className="form-control"
-                          value={coSupervisor}
-                          disabled={true}
-                        />
-                      </div>
-                    </div>
 
-                    <div className="col-md-6">
-                      <label>Request Status :</label>
-                      <div className="form-group">
-                        <input
-                          type="text"
-                          className="form-control"
-                          value={coSupervisorStatus}
-                        />
-                      </div>
-                    </div>
-                  </div>
+
+
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="col-md-12">
+
+                                            <div className="row">
+                                                <div className="col-md-6">
+                                                    <label> Group ID :</label>
+                                                    <div className="form-group">
+                                                        <input type="text" className="form-control" value={groupID}  disabled={true}/>
+                                                    </div>
+                                                </div>
+
+                                                <div className="col-md-6">
+                                                    <label> Group Leader Email :</label>
+                                                    <div className="form-group">
+                                                        <input type="text" className="form-control" value={groupLeaderEmail}  disabled={true}/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="row">
+                                                <div className="col-md-6">
+                                                    <label> Research Category :</label>
+                                                    <div className="form-group">
+                                                        <input type="text"  className="form-control" value={researchCategory}  disabled={true}/>
+                                                    </div>
+                                                </div>
+
+                                                <div className="col-md-6">
+                                                    <label>Research Topic Name : </label>
+                                                    <div className="form-group">
+                                                        <input type="text" className="form-control" value={researchTopicName} disabled={true}/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="row">
+                                            <div className="col-md-12">
+                                                <label> Research Supervisor :</label>
+                                                <div className="form-group">
+                                                    <input type="text"  className="form-control" value={researchSupervisor}  disabled={true}/>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-md-12">
+                                                    <label>Comments : </label>
+                                                    <div className="form-group">
+                                                        <input type="text" className="form-control" value={comments} disabled={true}/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-sm-6">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">form</h5>
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <label> Research Co-Supervisor :</label>
+                                                <div className="form-group">
+                                                    <input type="text"  className="form-control" value={coSupervisor}  disabled={true}/>
+                                                </div>
+                                            </div>
+
+                                            <div className="col-md-6">
+                                                <label>Request Status :</label>
+                                                <div className="form-group">
+                                                    <input type="text"  className="form-control" value={coSupervisorStatus} />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <center>
+                                                <button
+                                                    type="submit"
+                                                    className="btn btn-success btn-lg"
+                                                    onClick={() => setCData("Accepted")}
+                                                >
+                                                    &nbsp;Accept
+                                                </button>
+                                            </center>
+                                        </div>
+
+
+                                        <div className="col-md-6">
+                                            <center>
+                                                <button
+                                                    type="submit" className="btn btn-danger btn-lg"
+                                                    onClick={() => setCData("Rejected")}
+                                                >
+                                                    &nbsp;Reject
+                                                </button>
+                                            </center>
+                                        </div>
+
+
+                                    </div>
+                                    <br/>
+
+                                </div>
+                            </div>
+                        </div>
+
                 </div>
-
-                <div className="row">
-                  <div className="col-md-6">
-                    <center>
-                      <button
-                        type="submit"
-                        className="btn btn-success btn-lg"
-                        onClick={() => setCData("Accepted")}
-                      >
-                        &nbsp;Accept
-                      </button>
-                    </center>
-                  </div>
-
-                  <div className="col-md-6">
-                    <center>
-                      <button
-                        type="submit"
-                        className="btn btn-danger btn-lg"
-                        onClick={() => setCData("Rejected")}
-                      >
-                        &nbsp;Reject
-                      </button>
-                    </center>
-                  </div>
-                </div>
-                <br />
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
-}
+      
+  )}
+
+     

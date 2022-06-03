@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 
 
 export default function RequestCoSupervisor() {
-        let navigate = useNavigate();
+        // let navigate = useNavigate();
         const[researchSupervisor,setResearchSupervisor] = useState("");
         const[researchCategory,setResearchCategory]=useState("");
         const[groupID,setGroupID]=useState("");
@@ -55,7 +55,6 @@ export default function RequestCoSupervisor() {
                 coSupervisorData,
             };
 
-
             const update = await axios
                 .put(`http://localhost:8070/requestCoSV/${requestID}`, newValue)
                 .then(() => {
@@ -66,7 +65,7 @@ export default function RequestCoSupervisor() {
                     swal(`Something went wrong !!!`);
                 });
         };
-
+    setCoSupervisorData();
         return(
 
             <div className="container">
@@ -82,7 +81,7 @@ export default function RequestCoSupervisor() {
                 <div className="card">
                     <div className="card-body">
 
-                        <form>
+
 
                             <div className="row">
                                 <div className="col-sm-6">
@@ -147,9 +146,9 @@ export default function RequestCoSupervisor() {
                                 <div className="col-sm-6">
                                     <div className="card">
                                         <div className="card-body">
-                                            <h5 className="card-title">form</h5>
                                             <div className="col-md-12">
-                                                <label>Research Co-Supervisor : </label>
+                                       
+                                                <label>Research Supervisor : </label>
                                                 <div className="form-group">
                                                     <select className="form-select" aria-label="Default select example" value={coSupervisorData} onChange={(e) => setCoSupervisorData(e.target.value)}>
                                                     {coSupervisor.map((data, index) => (
@@ -170,7 +169,7 @@ export default function RequestCoSupervisor() {
                                                             className="btn btn-success btn-lg"
                                                             onClick={() => setData(coSupervisorData)}
                                                         >
-                                                            &nbsp;Accept
+                                                            &nbsp;SEND
                                                         </button>
                                                     </center>
                                                 </div>
@@ -180,7 +179,7 @@ export default function RequestCoSupervisor() {
                                     </div>
                                 </div>
                             </div>
-                        </form>
+
                     </div>
                 </div>
             </div>

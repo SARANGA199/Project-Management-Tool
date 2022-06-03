@@ -23,9 +23,6 @@ export default function StdSubmitDoc() {
         setData({...data, [input.name]: input.value});
     };
 
-    // const handleSubmissionTypeChange = ({currentTarget: input}) => {
-    //     setData({...data, [input.name]: input.value});
-    // };
 
     const handleInputState = (name, value) => {
         setData((prev) => ({...prev, [name]: value}));
