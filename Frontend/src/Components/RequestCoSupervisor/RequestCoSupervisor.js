@@ -211,6 +211,5 @@ export default function RequestCoSupervisor() {
           </div>
         </div>
       </div>
-    </div>
   );
 }

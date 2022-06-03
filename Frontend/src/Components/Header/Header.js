@@ -76,9 +76,9 @@ function Header() {
             <img src={search} alt="search" />
             <span>RESEARCH</span>
           </a>
-          <a href="/">
+          <a href="/topics">
             <img src={watchlist} alt="watchlist" />
-            <span>WATCHLIST</span>
+            <span>TOPICS</span>
           </a>
           {crrUser.role === "Panel_Member" ? (
             <a href="/submitPre">
@@ -159,7 +159,7 @@ const Avatar = styled.div`
   height: 60px;
   overflow: hidden;
   position: relative;
-  right: -190px;
+  right: -250px;
   margin: 15px auto;
   border: 2px solid #ddd;
   border-radius: 50%;
