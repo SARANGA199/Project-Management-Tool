@@ -60,6 +60,7 @@ import DisplaySubmitDocuments from "./Components/DocumentEvaluation/DisplaySubmi
 import DisplayDocumentMarks from "./Components/DocumentEvaluation/DisplayDocumentsMarks";
 import NotFound from "./Components/utils/NotFound/NotFound.JS";
 import Home from "./Components/Home/Home";
+import AdminDashboard from "./Components/DashBoard/AdminDashboard";
 
 export default function App() {
   return (
@@ -150,6 +151,7 @@ export default function App() {
           <Route path="/addMember" element={<AddMember />} />
 
           <Route path="/" element={<Home />} />
+          <Route path="/adminDashboard" element={<AdminDashboard />} />
         </Routes>
       </BrowserRouter>
     </DataProvider>
