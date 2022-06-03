@@ -158,11 +158,6 @@ export default function Topics() {
               ))}
             </tbody>
           </table>
-
-          <a href="/displayChat" className="btn btn-warning ms-3">
-            {" "}
-            Chats
-          </a>
         </div>
       </div>
     </div>
