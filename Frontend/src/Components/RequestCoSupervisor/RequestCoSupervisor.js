@@ -4,7 +4,6 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 
 export default function RequestCoSupervisor() {
-
   let navigate = useNavigate();
   const [researchSupervisor, setResearchSupervisor] = useState("");
   const [researchCategory, setResearchCategory] = useState("");
@@ -163,47 +162,44 @@ export default function RequestCoSupervisor() {
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
-        </div>
+          </div>
 
-
-            <div className="col-sm-6">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">form</h5>
-                  <div className="col-md-12">
-                    <label>Research Co-Supervisor : </label>
-                    <div className="form-group">
-                      <select
-                        className="form-select"
-                        aria-label="Default select example"
-                        value={coSupervisorData}
-                        onChange={(e) => setCoSupervisorData(e.target.value)}
-                      >
-                        {coSupervisor.map((data, index) => (
-                          <option key={index} value={data.name}>
-                            {data.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+          <div className="col-sm-6">
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">form</h5>
+                <div className="col-md-12">
+                  <label>Research Co-Supervisor : </label>
+                  <div className="form-group">
+                    <select
+                      className="form-select"
+                      aria-label="Default select example"
+                      value={coSupervisorData}
+                      onChange={(e) => setCoSupervisorData(e.target.value)}
+                    >
+                      {coSupervisor.map((data, index) => (
+                        <option key={index} value={data.name}>
+                          {data.name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
+                </div>
 
-                  <div className="row">
-                    <div className="col-md-6">
-                      <center>
-                        <button
-                          type="submit"
-                          className="btn btn-success btn-lg"
-                          onClick={() => setData(coSupervisorData)}
-                        >
-                          &nbsp;Accept
-                        </button>
-                      </center>
-                    </div>
+                <div className="row">
+                  <div className="col-md-6">
+                    <center>
+                      <button
+                        type="submit"
+                        className="btn btn-success btn-lg"
+                        onClick={() => setData(coSupervisorData)}
+                      >
+                        &nbsp;Accept
+                      </button>
+                    </center>
                   </div>
                 </div>
               </div>
