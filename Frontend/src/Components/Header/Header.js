@@ -159,7 +159,7 @@ const Avatar = styled.div`
   height: 60px;
   overflow: hidden;
   position: relative;
-  right: -190px;
+  right: -250px;
   margin: 15px auto;
   border: 2px solid #ddd;
   border-radius: 50%;
