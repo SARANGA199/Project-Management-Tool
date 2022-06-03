@@ -10,6 +10,7 @@ import watchlist from "./images/watchlist-icon.svg";
 import originals from "./images/original-icon.svg";
 import profile from "./images/movie-icon.svg";
 import series from "./images/series-icon.svg";
+import logo from "./images/logo.png";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
@@ -67,11 +68,10 @@ function Header() {
             </nav>
           </IconContext.Provider>
           &nbsp;
-          <Logo></Logo>
-          <a href="/">
+          {/* <a href="/">
             <img src={home} alt="home" />
             <span>HOME</span>
-          </a>
+          </a> */}
           <a href="/displaysub">
             <img src={search} alt="search" />
             <span>RESEARCH</span>
@@ -80,12 +80,24 @@ function Header() {
             <img src={watchlist} alt="watchlist" />
             <span>WATCHLIST</span>
           </a>
-          <a href="/">
-            <img src={originals} alt="original" />
-            <span>ORIGINALS</span>
-          </a>
+          {crrUser.role === "Panel_Member" ? (
+            <a href="/submitPre">
+              <img src={profile} alt="presentations" />
+              <span>Presentations</span>
+            </a>
+          ) : (
+            " "
+          )}
+          {crrUser.role === "Supervisor" || crrUser.role === "Co-Supervisor" ? (
+            <a href="/submitdocs">
+              <img src={originals} alt="original" />
+              <span>Documents</span>
+            </a>
+          ) : (
+            " "
+          )}
           <a href="/profile">
-            <img src={profile} alt="move" />
+            <img src={originals} alt="move" />
             <span>Profile</span>
           </a>
           {crrUser.role === "Student" ? (
@@ -160,9 +172,9 @@ const Avatar = styled.div`
 
 const Logo = styled.a`
   padding: 0;
-  width: 80px;
+  width: 100px;
   margin-top: 4px;
-  max-height: 70px;
+  max-height: 100px;
   font-size: 0;
   display: inline-block;
   img {
@@ -237,7 +249,7 @@ const Logout = styled.a`
   padding: 8px 16px;
   position: absolute;
   top: 20px;
-  right: -500px;
+  right: -85vh;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   border: 1px solid #f9f9f9;

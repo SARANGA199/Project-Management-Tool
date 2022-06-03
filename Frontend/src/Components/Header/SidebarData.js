@@ -6,6 +6,12 @@ import * as Boostrap from "react-icons/bs";
 
 export const SidebarData = [
   {
+    title: "Home",
+    path: "/",
+    icon: <AiIcons.AiFillHome />,
+    cName: "nav-text",
+  },
+  {
     title: "Marking Schemes",
     path: "/viewMarking",
     icon: <AiIcons.AiOutlineRead />,
@@ -23,12 +29,7 @@ export const SidebarData = [
     icon: <Boostrap.BsPeopleFill />,
     cName: "nav-text",
   },
-  {
-    title: "Team",
-    path: "/team",
-    icon: <IoIcons.IoMdPeople />,
-    cName: "nav-text",
-  },
+
   {
     title: "Messages",
     path: "/messages",
