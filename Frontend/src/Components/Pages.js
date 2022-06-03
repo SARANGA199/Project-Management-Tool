@@ -60,8 +60,7 @@ import DocumentEvaluation from "./DocumentEvaluation/DocumentEvaluation.js";
 import DisplaySubmitDocuments from "./DocumentEvaluation/DisplaySubmitDocuments";
 import DisplayDocumentMarks from "./DocumentEvaluation/DisplayDocumentsMarks";
 import NotFound from "./utils/NotFound/NotFound.JS";
-import Home from "./Components/Home/Home";
-import AdminDashboard from "./Components/DashBoard/AdminDashboard";
+import Home from "./Home/Home";
 
 function Pages() {
 
@@ -117,7 +116,7 @@ function Pages() {
 
             <Route path="/evaluateTopic" element={isLogged ? <TopicEvaluate /> : <NotFound/>} />
             <Route path="/AddPanelMember" element={isLogged ? <AddPanelMember /> : <NotFound/>} />
-            <Route path="/" element={isLogged ? <CreateChat /> : <NotFound/>} />
+            <Route path="/createChat" element={isLogged ? <CreateChat /> : <NotFound/>} />
             <Route path="/displayChat" element={ isLogged ? <DisplayChats /> : <NotFound/>} />
             <Route path="/reply" element={isLogged ? <ChatReply /> : <NotFound/>} />
             <Route path="/oneForum" element={isLogged ? <DisplayOneForum /> : <NotFound/>} />
@@ -126,6 +125,7 @@ function Pages() {
             <Route path="/allForums" element={isLogged ? <DisplayAllForums /> : <NotFound/>} />
             <Route path="/addPanelMember" element={isLogged ? <AddPanelMember /> : <NotFound/>} />
             <Route path="/addMember" element={isLogged ? < AddMember /> : <NotFound/>} />
+            <Route path="/" element={< Home />} />
           </Routes>
   );
 }
