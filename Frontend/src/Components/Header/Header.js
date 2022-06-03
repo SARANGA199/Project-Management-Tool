@@ -76,9 +76,9 @@ function Header() {
             <img src={search} alt="search" />
             <span>RESEARCH</span>
           </a>
-          <a href="/">
+          <a href="/topics">
             <img src={watchlist} alt="watchlist" />
-            <span>WATCHLIST</span>
+            <span>TOPICS</span>
           </a>
           {crrUser.role === "Panel_Member" ? (
             <a href="/submitPre">

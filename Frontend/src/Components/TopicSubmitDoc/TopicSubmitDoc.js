@@ -3,17 +3,20 @@ import axios from "axios";
 import FileInput from "../template/FileInput/fileInput.jsx"
 import submi from "../../submi.png";
 import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 // import './topic.css';
 
 
 
 export default function TopicSubmitDoc() {
 
-
+    const Gid = localStorage.getItem("Tgroupid");
+    const Lemail = localStorage.getItem("TleaderMail");
+    //const [statudata, setStatus] = useState("");
     const [data, setData] = useState({
-        groupID: "",
+        groupID: `${Gid}`,
         groupLeaderName: "",
-        groupLeaderEmail: "",
+        groupLeaderEmail: `${Lemail}`,
         submissionType: "",
         topicSubmitDoc: "",
     });
@@ -30,15 +33,53 @@ export default function TopicSubmitDoc() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const url = process.env.REACT_APP_API_URLT1 + "/addTopicDoc"
-            const {data: res} = await axios.post(url, data).then(() => {
-                swal("Document added successful");
-
+            //const url = process.env.REACT_APP_API_URLT1 + "/addTopicDoc"
+            const {data: res} =  axios.post(`http://localhost:8070/topicSubmitDoc/addTopicDoc`, data).then(() => {
+                console.log(data);
+                setStatus("Submitted");
+                swal("Document added successful")
+                navigate("/topics");
             })
 
         } catch (error) {
             await swal(`Something went wrong !!!`);
         }
+
+        // try {
+
+           
+            // const update = await axios
+            // .put(`http://localhost:8070/topicDocument/${Gid}`, statudata)
+            // .then(() => {
+            //   //swal(`Topic is ${statudata}ed`);
+            // }) .catch((err) => {
+            //     swal(`Something went to wrong !!!`);
+      
+            //   });
+
+            
+        // } catch (error) {
+        //     await swal(`Something went wrong !!!`);
+        // }
+
+    };
+
+    const setStatus = async (statudata) => {
+
+        const stdata = {
+            statudata,
+            Lemail,
+        }
+        
+            const update = await axios
+            .put(`http://localhost:8070/topicDocument/${Gid}`, stdata)
+            .then(() => {
+              //swal(`Topic is ${statudata}ed`);
+            }) .catch((err) => {
+                swal(`Something went to wrong !!!`);
+      
+              });
+
     };
 
     return (
@@ -114,7 +155,10 @@ export default function TopicSubmitDoc() {
                                                 <br/>
                                                 <div>
                                                     <center>
-                                                        <button type="submit" className="btn btn-warning">Submit Document</button>
+                                                        <button type="submit" 
+                                                        className="btn btn-warning"
+                                                        onClick={() => setStatus("Submitted")}
+                                                        >Submit Document</button>
                                                     </center>
                                                 </div>
                                             </form>

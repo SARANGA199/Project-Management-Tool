@@ -28,6 +28,9 @@ const topics = mongoose.Schema({
     },topicFeedback:{
         type:String,
         default:'pending'
+    },topicDocument:{
+        type:String,
+        default:'pending'
     }
 })
 

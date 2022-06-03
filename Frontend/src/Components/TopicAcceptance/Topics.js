@@ -4,13 +4,17 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import "./topicAccept.css";
 import { GlobalState } from "../../GlobalState";
+import AddIcon from "@mui/icons-material/Add";
+
 
 export default function Topics() {
   let navigate = useNavigate();
+  
   const state = useContext(GlobalState);
   const [request, setRequest] = useState([]);
   const [disable, setDisable] = useState(false);
   const [crrUser, setCrrUser] = state.UserAPI.crrUser;
+  const [isAdmin, setIsAdmin] = state.UserAPI.isAdmin;
 
   useEffect(() => {
     axios
@@ -52,6 +56,17 @@ export default function Topics() {
     navigate("/evaluateTopic");
   };
 
+  const setDocument = async (data) => {
+    let { groupID,groupLeaderEmail
+    } = data;
+
+  
+    localStorage.setItem("Tgroupid", groupID);
+    localStorage.setItem("TleaderMail", groupLeaderEmail);
+    navigate("/topicSubmitDoc");
+
+  };
+
   return (
     <div>
       <div className="topicContainer">
@@ -62,6 +77,17 @@ export default function Topics() {
           </div>
         </div>
         <div className="container">
+        <div>
+            {crrUser.role==="Student" ? (
+              <button
+                className="btn btn-warning TypeADD"
+                onClick={() => navigate("/topicRegister")}
+              >
+                Register Topic &nbsp; <AddIcon />
+              </button>
+            ) : null}
+          </div>
+        
           <div className="topicNam">TOPICS</div>
           <hr className="topicHr" />
           <table className="table frame">
@@ -72,7 +98,7 @@ export default function Topics() {
                 <th scope="col">topicCategory</th>
                 <th scope="col">groupID</th>
                 <th scope="col">topicStatus</th>
-                <th scope="col">Action</th>
+                <th scope="col"><center>Action</center></th>
               </tr>
             </thead>
             <tbody>
@@ -107,6 +133,7 @@ export default function Topics() {
                         data.topicStatus === "pending" ||
                         data.topicStatus === "Rejected"
                       }
+                      onClick={() => setDocument(data)}
                       className="btn btn-warning ms-3"
                     >
                       &nbsp;Document Upload
@@ -117,7 +144,8 @@ export default function Topics() {
                         class="btn btn-info"
                         disabled={
                           data.topicStatus === "pending" ||
-                          data.topicStatus === "Rejected"
+                          data.topicStatus === "Rejected"||
+                          data.topicDocument === "pending"
                         }
                         onClick={() => setEvaluate(data)}
                       >
@@ -131,11 +159,6 @@ export default function Topics() {
               ))}
             </tbody>
           </table>
-
-          <a href="/displayChat" className="btn btn-warning ms-3">
-            {" "}
-            Chats
-          </a>
         </div>
       </div>
     </div>
