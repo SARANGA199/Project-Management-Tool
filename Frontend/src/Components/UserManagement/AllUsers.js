@@ -108,7 +108,7 @@ const filterData = (prof,searchkey) =>{
             </div>
 
                  <div className="addform1">
-                     <h1 className="tabl-heading mb-4">All Users </h1></div>
+                     <h1 className="tabl-heading mb-4">REGISTERED USERS </h1></div>
 
 
              

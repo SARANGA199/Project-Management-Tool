@@ -60,7 +60,7 @@ const handleDelete = (id) => {
         <div className = "container " style={{width:"100%"}}>
 
                  <div className="addform1"><br/>
-                     <h1 className="tabl-heading mb-4">Pending for Approval </h1></div>
+                     <h1 className="tabl-heading mb-4">PENDING FOR APPROVAL </h1></div>
                      
 <table className="customers">
   
