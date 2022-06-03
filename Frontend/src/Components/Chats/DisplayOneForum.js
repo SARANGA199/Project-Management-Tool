@@ -91,6 +91,10 @@ export default function DisplayOneForum() {
     navigate("/reply");
   };
 
+  const ReplyToChatNEW = () => {
+    navigate("/reply");
+  };
+
   return (
     <div>
       <div className="topicContainer">
@@ -113,7 +117,7 @@ export default function DisplayOneForum() {
             </h6>{" "}
             <br />
             <h6 className="ms-3">{message}</h6>
-            <a className="btChat" onClick={() => ReplyToChat(rep)}>
+            <a className="btChat" onClick={() => ReplyToChatNEW()}>
               Reply
             </a>
           </div>
