@@ -51,7 +51,7 @@ app.use('/documentMarks', documentMarksRoutes);
 app.use("/markings", markingRoutes);
 app.use("/presentationMarks", presentationMarksRoutes);
 app.use(studentRouter);
-app.use("/topic",topicRegisterRouter);
+app.use(topicRegisterRouter);
 app.use(requestSupervisorRouter);
 
 app.use("/topicSubmitDoc",topicSubmitDocRouter);

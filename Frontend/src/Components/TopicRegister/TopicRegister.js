@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
+import { async } from "@firebase/util";
 
 
 const TopicRegister = ()=>{
@@ -34,7 +35,7 @@ const TopicRegister = ()=>{
             groupLeaderEmail,
             topicDescription
         }
-        await axios.post("http://localhost:8070/topic/topics",data).then((res)=>{
+        const promise = await axios.post("http://localhost:8070/topicRegister",data).then((res)=>{
             if(res.status = 201) {
                 swal("Done!", "Request Send to the Supervisor!", "success");
                 navigate("/topics");
