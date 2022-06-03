@@ -77,7 +77,7 @@ function Pages() {
             <Route path="/evaluatePresentation" element={isPanelMember ? <EvaluatePresentation /> : <NotFound/>}/>
             <Route path="/presentationMarks" element={isLogged ?<DisplayPresentationMarks /> : <NotFound/>}/>
             <Route path="/topics" element={isLogged ?<Topics /> : <NotFound/>} />
-            <Route path="/acceptTopic" element={isLogged ?<AcceptTopic /> : <NotFound/>} />
+            <Route path="/acceptTopic" element={isSupervisor||isCoSupervisor? <AcceptTopic /> : <NotFound/>} />
             <Route path="/viewMarking" element={isLogged ?<ViewMarkingSchemes /> : <NotFound/>} />
             <Route path="/updateMarking" element={isLogged ?<UpdateMarking /> : <NotFound/>} />
 
@@ -95,7 +95,7 @@ function Pages() {
 
             <Route path="/addTemplate" element={isLogged ? <TemplateForm /> : <NotFound/>} />
             <Route path="/display" element={ isLogged ? <Displaytemplate /> : <NotFound/>} />
-            <Route path="/AddSubType" element={ isLogged ? <AddSubmissiontype /> : <NotFound/>} />
+            <Route path="/AddSubType" element={ isAdmin ? <AddSubmissiontype /> : <NotFound/>} />
             <Route path="/displaysub" element={ isLogged ? <DisplaysubType /> : <NotFound/>} />
             <Route path="/updateSub" element={ isLogged ? <UpdateSubmissionType /> : <NotFound/>} />
 
