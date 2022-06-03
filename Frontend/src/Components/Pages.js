@@ -74,7 +74,7 @@ function Pages() {
           <Routes>
             <Route exact path="/submitPre" element={isLogged ? <DisplaySubmitPresentation /> : <NotFound/>}/>
             <Route path="/add" element={isAdmin ? <AddMarking /> : <NotFound/>} />
-            <Route path="/evaluatePresentation" element={isPanelMember ? <EvaluatePresentation /> : <NotFound/>}/>
+            <Route path="/evaluatePresentation" element={isAdmin||isPanelMember ? <EvaluatePresentation /> : <NotFound/>}/>
             <Route path="/presentationMarks" element={isLogged ?<DisplayPresentationMarks /> : <NotFound/>}/>
             <Route path="/topics" element={isLogged ?<Topics /> : <NotFound/>} />
             <Route path="/acceptTopic" element={isSupervisor||isCoSupervisor? <AcceptTopic /> : <NotFound/>} />
@@ -109,7 +109,7 @@ function Pages() {
             <Route path="/updateuser/:id" element={isLogged ? <UpdateUser/> : <NotFound/>} />
             <Route path="/user/activate/:activation_token" element={<ActivationEmail/>} />
             <Route path="/pending/activate/:activation_token" element={<PendActivationEmail/>} />
-            <Route path="/evaluatedocument" element={isSupervisor||isCoSupervisor? <DocumentEvaluation/> : <NotFound/>} />
+            <Route path="/evaluatedocument" element={isAdmin||isSupervisor||isCoSupervisor? <DocumentEvaluation/> : <NotFound/>} />
             <Route path="/submitdocs" element={isLogged ? <DisplaySubmitDocuments/> : <NotFound/>} />
             <Route path="/documentmarks" element={isLogged ? <DisplayDocumentMarks/> : <NotFound/>} />
 

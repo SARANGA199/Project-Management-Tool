@@ -99,19 +99,23 @@ function Header() {
            <span>SERIES</span>
         </a>
 
-        <div>
+
+
+    </NavMenu>
+    <NavMenu>
+    <div>
           {isLogged?
           <Logout onClick={logoutUser}>Logout</Logout>:
           <Logout><a href='/login'>Login</a></Logout>}
         </div>
 
-    </NavMenu>
     {isLogged?
     <Avatar>
       <div>
         <img src={crrUser.image} alt=""/>
       </div>
     </Avatar>:null}
+    </NavMenu>
 </Nav>
 </>
   )
@@ -137,7 +141,7 @@ const Avatar = styled.div`
   height: 60px;
   overflow: hidden;
   position: relative;
-  right: -190px;
+  right: -250px;
   margin: 15px auto;
   border: 2px solid #ddd;
   border-radius: 50%;
@@ -227,7 +231,7 @@ const Logout = styled.a`
   padding: 8px 16px;
   position: absolute;
   top: 20px;
-  right: -500px;
+  right:-150px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   border: 1px solid #f9f9f9;
