@@ -4,6 +4,9 @@ import axios from "axios";
 function UserAPI(token) {
   const [isLogged, setIsLogged] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isSupervisor, setIsSupervisor] = useState(false);
+  const [isPanelMember, setIsPanelMember] = useState(false);
+  const [isCoSupervisor, setisCoSupervisor] = useState(false);
   const [crrUser, setCrrUser] = useState([]);
 
     useEffect(() =>{
@@ -18,6 +21,9 @@ function UserAPI(token) {
           setCrrUser(res.data);
           setIsLogged(true);
           res.data.role == "Admin" ? setIsAdmin(true) : setIsAdmin(false);
+          res.data.role == "Supervisor" ? setIsSupervisor(true) : setIsSupervisor(false);
+          res.data.role == "Panel_Member" ? setIsPanelMember(true) : setIsPanelMember(false);
+          res.data.role == "Co-Supervisor" ? setisCoSupervisor(true) : setisCoSupervisor(false);
           console.log(res);
         } catch (err) {
           alert(err.response.data.msg);
@@ -31,6 +37,9 @@ function UserAPI(token) {
   return {
     isLogged: [isLogged, setIsLogged],
     isAdmin: [isAdmin, setIsAdmin],
+    isSupervisor: [isSupervisor, setIsSupervisor],
+    isPanelMember: [isPanelMember, setIsPanelMember],
+    isCoSupervisor: [isCoSupervisor, setisCoSupervisor],
     crrUser: [crrUser, setCrrUser],
   };
 }

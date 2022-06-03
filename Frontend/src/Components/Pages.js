@@ -66,12 +66,15 @@ function Pages() {
   const state = useContext(GlobalState)
   const [isLogged ] = state.UserAPI.isLogged
   const [isAdmin,setIsAdmin ] = state.UserAPI.isAdmin
+  const [isSupervisor, setIsSupervisor] = state.UserAPI.isSupervisor
+  const [isPanelMember, setIsPanelMember] = state.UserAPI.isPanelMember
+  const [isCoSupervisor, setisCoSupervisor] = state.UserAPI.isCoSupervisor
 
   return (
           <Routes>
             <Route exact path="/submitPre" element={isLogged ? <DisplaySubmitPresentation /> : <NotFound/>}/>
-            <Route path="/add" element={isLogged ? <AddMarking /> : <NotFound/>} />
-            <Route path="/evaluatePresentation" element={isLogged ?<EvaluatePresentation /> : <NotFound/>}/>
+            <Route path="/add" element={isAdmin ? <AddMarking /> : <NotFound/>} />
+            <Route path="/evaluatePresentation" element={isPanelMember ? <EvaluatePresentation /> : <NotFound/>}/>
             <Route path="/presentationMarks" element={isLogged ?<DisplayPresentationMarks /> : <NotFound/>}/>
             <Route path="/topics" element={isLogged ?<Topics /> : <NotFound/>} />
             <Route path="/acceptTopic" element={isLogged ?<AcceptTopic /> : <NotFound/>} />
@@ -101,14 +104,14 @@ function Pages() {
             <Route path="/fpass" element={<ForgotPassword/>} />
             <Route path="/user/reset/:token" element={<ResetPassword/>} />
             <Route path="/profile" element={isLogged ? <Profile/> : <NotFound/>} />
-            <Route path="/allusers" element={isAdmin ? <AllUsers/> : <NotFound/>} />
+            <Route path="/allusers" element={isLogged ? <AllUsers/> : <NotFound/>} />
             <Route path="/PendingUsers" element={isAdmin ? <PendingUsers/> : <NotFound/>} />
-            <Route path="/updateuser/:id" element={<UpdateUser/>} />
+            <Route path="/updateuser/:id" element={isLogged ? <UpdateUser/> : <NotFound/>} />
             <Route path="/user/activate/:activation_token" element={<ActivationEmail/>} />
             <Route path="/pending/activate/:activation_token" element={<PendActivationEmail/>} />
-            <Route path="/evaluatedocument" element={<DocumentEvaluation/>} />
+            <Route path="/evaluatedocument" element={isSupervisor||isCoSupervisor? <DocumentEvaluation/> : <NotFound/>} />
             <Route path="/submitdocs" element={isLogged ? <DisplaySubmitDocuments/> : <NotFound/>} />
-            <Route path="/documentmarks" element={<DisplayDocumentMarks/>} />
+            <Route path="/documentmarks" element={isLogged ? <DisplayDocumentMarks/> : <NotFound/>} />
 
             <Route path="/evaluateTopic" element={isLogged ? <TopicEvaluate /> : <NotFound/>} />
             <Route path="/AddPanelMember" element={isLogged ? <AddPanelMember /> : <NotFound/>} />
