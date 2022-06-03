@@ -27,7 +27,14 @@ body {
   margin-top: 5vh;
   margin-left: 5vh;
 }
-
+.topicNamPanel {
+  font-weight: bold;
+  font-size: 8vh;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-top: 5vh;
+  margin-left: 5vh;
+}
 .topicHr {
   color: rgb(255, 166, 1);
   border-top: 1vh solid;
