@@ -58,6 +58,7 @@ const CreateGroup = () => {
         <div className="card-body">
           <h1>
             <center>Create Groups</center>
+            Checked
           </h1>
         </div>
       </div>
