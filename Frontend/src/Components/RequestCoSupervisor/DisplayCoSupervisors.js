@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { GlobalState } from "../../GlobalState";
 
 export default function DisplayCoSupervisors() {
   let navigate = useNavigate();
   const [RequestCoSupervisors, setRequestCoSupervisors] = useState([]);
+  const state = useContext(GlobalState);
+  const [isLogged, setIsLogged] = state.UserAPI.isLogged;
+  const [isAdmin, setIsAdmin] = state.UserAPI.isAdmin;
+  const [crrUser, setCrrUser] = state.UserAPI.crrUser;
   useEffect(() => {
     getRequestSV();
   }, []);
@@ -19,17 +24,16 @@ export default function DisplayCoSupervisors() {
     localStorage.setItem("RID", _id);
     navigate("/updateCoSupervisorStatus");
   };
-  // const setDataCoVisor = (data) => {
-  //     let { _id } = data;
-  //
-  //     localStorage.setItem("rid", _id);
-  //     navigate("/requestCoSupervisor");
-  // };
+
   return (
     <div className="container">
       <br />
       <div className="card">
         <div className="card-body">
+          <center>
+            <h2>Co-Supervisors Requests</h2>
+          </center>
+          <br />
           <table className="table table-bordered table-striped table-responsive-stack">
             <tr>
               <th scope="col">Request No </th>
@@ -57,30 +61,20 @@ export default function DisplayCoSupervisors() {
                   <td>{data.coSupervisor}</td>
                   <td>{data.coSupervisorStatus}</td>
                   <td>
-                    <button
-                      className="btn btn-primary"
-                      disabled={
-                        data.coSupervisorStatus === "Accepted" ||
-                        data.coSupervisorStatus === "Rejected"
-                      }
-                      onClick={() => setCData(data)}
-                    >
-                      &nbsp;update
-                    </button>
-                  </td>
-
-                  <td>
-                    <button
-                      className="btn btn-info ms-3"
-                      disabled={
-                        data.coSupervisorStatus === "pending" ||
-                        data.coSupervisorStatus === "Rejected"
-                      }
-                      // onClick={() => setDataCoVisor(data)}
-                    >
-                      &nbsp;Request Co-Supervisor
-                      {/*//nothing */}
-                    </button>
+                    {crrUser.role === "Co-Supervisor" ? (
+                      <button
+                        className="btn btn-warning"
+                        disabled={
+                          data.coSupervisorStatus === "Accepted" ||
+                          data.coSupervisorStatus === "Rejected"
+                        }
+                        onClick={() => setCData(data)}
+                      >
+                        &nbsp;update
+                      </button>
+                    ) : (
+                      ""
+                    )}
                   </td>
                 </tr>
               ))}
