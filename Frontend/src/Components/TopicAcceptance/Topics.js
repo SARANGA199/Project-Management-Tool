@@ -144,7 +144,8 @@ export default function Topics() {
                         class="btn btn-info"
                         disabled={
                           data.topicStatus === "pending" ||
-                          data.topicStatus === "Rejected"
+                          data.topicStatus === "Rejected"||
+                          data.topicDocument === "pending"
                         }
                         onClick={() => setEvaluate(data)}
                       >
