@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState,useEffect } from "react";
 import { useHistory} from 'react-router-dom';
+import { GlobalState } from "../../GlobalState";
 import { OutlinedInput,Container } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
@@ -29,6 +30,10 @@ import upload from "../../upload.png";
 
 const UpdateSubmissionType= ()=>{
 
+  const state = useContext(GlobalState);
+  const [crrUser, setCrrUser] = state.UserAPI.crrUser;
+  const admin = crrUser.name;
+
     let [showResults, setShowResults] = useState(false)
     let navigate = useNavigate();
 
@@ -46,7 +51,7 @@ const UpdateSubmissionType= ()=>{
      let TemplateDiscription = localStorage.getItem("TemplateDiscription");
 
     const [data, setData] = useState({
-            adminName:"test",
+            adminName:`${admin}`,
             subTypeName:SubTypeName,
             subTypeDiscription:SubTypeDiscription,
             template:Template,
@@ -86,7 +91,7 @@ const UpdateSubmissionType= ()=>{
 			//const url = process.env.REACT_APP_API_URL + "/addtemplate"
            
 
-           await axios.put(`http://localhost:8070/submission/updateAlldata/${sId}`, data).then(()=>{
+            axios.put(`http://localhost:8070/submission/updateAlldata/${sId}`, data).then(()=>{
 				         // console.log(data)
                 alert("Update sucsesfull")
                 navigate("/displaysub");
@@ -265,7 +270,7 @@ const UpdateSubmissionType= ()=>{
                   </div>
                   <center>
                  <div style={{paddingTop: '20px'}}  className="col-xl-12">
-                      <Button  type="submit" className="btn btn-primary mt-5 "  >   UPDATE</Button>
+                      <button  type="submit" className="btn btn-warning ms-3 "  >   UPDATE</button>
                 </div>
                 </center>
             </form>  
