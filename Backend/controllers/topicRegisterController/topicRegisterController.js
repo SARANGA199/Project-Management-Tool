@@ -35,35 +35,35 @@ export const updateTopicStatus = async (req, res) => {
       res.status(200).send({ status: "Topic Status is  Updated" });
 
       //mail send
-      //       let transporter = nodemailer.createTransport({
-      //         service: "gmail",
+            let transporter = nodemailer.createTransport({
+              service: "gmail",
 
-      //         auth: {
-      //           user: "themoviehub3020@gmail.com",
+              auth: {
+                user: "themoviehub3020@gmail.com",
 
-      //           pass: "moviehub3020",
-      //         },
-      //       });
+                pass: "moviehub3020",
+              },
+            });
 
-      //       let mailOptions = {
-      //         from: "themoviehub3020@gmail.com", //need to add new email
+            let mailOptions = {
+              from: "themoviehub3020@gmail.com", //need to add new email
 
-      //         to: `${groupLeaderEmail}`,
+              to: `${groupLeaderEmail}`,
 
-      //         subject: "Research Project Topic Status",
+              subject: "Research Project Topic Status",
 
-      //         text: "Dear Student,",
+              text: "Dear Student,",
 
-      //         html: `<br>  Group ID:${groupID} </br><br> Your team's  Topic Name:<b>${topicName} </b>is ${topicStatus}.<br> Please refer research management to get more details `,
-      //       };
+              html: `<br>  Group ID:${groupID} </br><br> Your team's  Topic Name:<b>${topicName} </b>is ${topicStatus}.<br> Please refer research management to get more details `,
+            };
 
-      //       transporter.sendMail(mailOptions, (err, data) => {
-      //         if (err) {
-      //           console.log("Error occurs", err);
-      //         }
+            transporter.sendMail(mailOptions, (err, data) => {
+              if (err) {
+                console.log("Error occurs", err);
+              }
 
-      //         console.log("Email sent!!!");
-      //       });
+              console.log("Email sent!!!");
+            });
     })
     .catch((err) => {
       console.log(err);

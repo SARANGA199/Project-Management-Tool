@@ -32,7 +32,7 @@ const TopicRegister = ()=>{
             groupLeaderEmail,
             topicDescription
         }
-        const promise = await axios.post("http://localhost:8070/topics",data).then((res)=>{
+        const promise = await axios.post("http://localhost:8070/topicRegister",data).then((res)=>{
             if(res.status = 201) {
                 swal("Done!", "Request Send to the Supervisor!", "success");
             }}).catch((err)=>{
