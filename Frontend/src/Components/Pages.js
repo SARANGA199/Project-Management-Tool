@@ -60,6 +60,8 @@ import DocumentEvaluation from "./DocumentEvaluation/DocumentEvaluation.js";
 import DisplaySubmitDocuments from "./DocumentEvaluation/DisplaySubmitDocuments";
 import DisplayDocumentMarks from "./DocumentEvaluation/DisplayDocumentsMarks";
 import NotFound from "./utils/NotFound/NotFound.JS";
+import Home from "./Components/Home/Home";
+import AdminDashboard from "./Components/DashBoard/AdminDashboard";
 
 function Pages() {
 
