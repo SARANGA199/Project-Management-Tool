@@ -9,11 +9,12 @@ import swal from "sweetalert";
 
 export default function TopicSubmitDoc() {
 
-
+    let Gid = localStorage.getItem("Tgroupid");
+    let Lemail = localStorage.getItem("TleaderMail");
     const [data, setData] = useState({
-        groupID: "",
+        groupID: `${Gid}`,
         groupLeaderName: "",
-        groupLeaderEmail: "",
+        groupLeaderEmail: `${Lemail}`,
         submissionType: "",
         topicSubmitDoc: "",
     });
@@ -31,7 +32,7 @@ export default function TopicSubmitDoc() {
         e.preventDefault()
         try {
             const url = process.env.REACT_APP_API_URLT1 + "/addTopicDoc"
-            const {data: res} = await axios.post(url, data).then(() => {
+            const {data: res} =  axios.post(url, data).then(() => {
                 swal("Document added successful");
 
             })

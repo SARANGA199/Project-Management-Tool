@@ -52,6 +52,17 @@ export default function Topics() {
     navigate("/evaluateTopic");
   };
 
+  const setDocument = async (data) => {
+    let { groupID,groupLeaderEmail
+    } = data;
+
+  
+    localStorage.setItem("Tgroupid", groupID);
+    localStorage.setItem("TleaderMail", groupLeaderEmail);
+    navigate("/topicSubmitDoc");
+
+  };
+
   return (
     <div>
       <div className="topicContainer">
@@ -72,7 +83,7 @@ export default function Topics() {
                 <th scope="col">topicCategory</th>
                 <th scope="col">groupID</th>
                 <th scope="col">topicStatus</th>
-                <th scope="col">Action</th>
+                <th scope="col"><center>Action</center></th>
               </tr>
             </thead>
             <tbody>
@@ -107,6 +118,7 @@ export default function Topics() {
                         data.topicStatus === "pending" ||
                         data.topicStatus === "Rejected"
                       }
+                      onClick={() => setDocument(data)}
                       className="btn btn-warning ms-3"
                     >
                       &nbsp;Document Upload

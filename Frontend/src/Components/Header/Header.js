@@ -78,9 +78,9 @@ function Header() {
             <img src={search} alt="search" />
             <span>RESEARCH</span>
           </a>
-          <a href="/">
+          <a href="/topics">
             <img src={watchlist} alt="watchlist" />
-            <span>WATCHLIST</span>
+            <span>TOPICS</span>
           </a>
           <a href="/">
             <img src={originals} alt="original" />
