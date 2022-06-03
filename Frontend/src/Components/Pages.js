@@ -223,7 +223,10 @@ function Pages() {
         path="/AddPanelMember"
         element={isLogged ? <AddPanelMember /> : <NotFound />}
       />
-      <Route path="/" element={isLogged ? <CreateChat /> : <NotFound />} />
+      <Route
+        path="/createChat"
+        element={isLogged ? <CreateChat /> : <NotFound />}
+      />
       <Route
         path="/displayChat"
         element={isLogged ? <DisplayChats /> : <NotFound />}
@@ -253,6 +256,7 @@ function Pages() {
         path="/addMember"
         element={isLogged ? <AddMember /> : <NotFound />}
       />
+      <Route path="/" element={<Home />} />
     </Routes>
   );
 }
