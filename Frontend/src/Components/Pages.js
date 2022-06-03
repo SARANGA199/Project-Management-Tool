@@ -73,14 +73,23 @@ function Pages() {
 
   return (
           <Routes>
-            <Route exact path="/submitPre" element={isLogged ? <DisplaySubmitPresentation /> : <NotFound/>}/>
+            <Route path="/" element={< Home />} />
+
+            <Route exact path="/submitPre" element={isPanelMember ? <DisplaySubmitPresentation /> : <NotFound/>}/>
             <Route path="/add" element={isAdmin ? <AddMarking /> : <NotFound/>} />
-            <Route path="/evaluatePresentation" element={isAdmin||isPanelMember ? <EvaluatePresentation /> : <NotFound/>}/>
+            <Route path="/evaluatePresentation" element={isPanelMember ? <EvaluatePresentation /> : <NotFound/>}/>
             <Route path="/presentationMarks" element={isLogged ?<DisplayPresentationMarks /> : <NotFound/>}/>
             <Route path="/topics" element={isLogged ?<Topics /> : <NotFound/>} />
             <Route path="/acceptTopic" element={isSupervisor||isCoSupervisor? <AcceptTopic /> : <NotFound/>} />
             <Route path="/viewMarking" element={isLogged ?<ViewMarkingSchemes /> : <NotFound/>} />
-            <Route path="/updateMarking" element={isLogged ?<UpdateMarking /> : <NotFound/>} />
+            <Route path="/updateMarking" element={isAdmin ?<UpdateMarking /> : <NotFound/>} />
+            <Route path="/createChat" element={isLogged ? <CreateChat /> : <NotFound/>} />
+            <Route path="/displayChat" element={ isLogged ? <DisplayChats /> : <NotFound/>} />
+            <Route path="/reply" element={isLogged ? <ChatReply /> : <NotFound/>} />
+            <Route path="/oneForum" element={isLogged ? <DisplayOneForum /> : <NotFound/>} />
+            <Route path="/editReply" element={isLogged ? <UpdateReply /> : <NotFound/>} />
+            <Route path="/editChatForum" element={isLogged ? <UpdateChatForum /> : <NotFound/>} />
+            <Route path="/allForums" element={isSupervisor||isCoSupervisor ? <DisplayAllForums /> : <NotFound/>} />
 
             <Route path="/createGroup" element={isLogged ? <CreateGroup /> : <NotFound/>} />
             <Route path="/groupList" element={isLogged ? <GroupList /> : <NotFound/>} />
@@ -89,16 +98,19 @@ function Pages() {
             <Route path="/stdSubmitDoc" element={isLogged ?<StdSubmitDoc /> : <NotFound/>} />
             <Route path="/topicSubmitDoc" element={isLogged ?<TopicSubmitDoc /> : <NotFound/>} />
             <Route path="/displayRequests" element={isLogged ?<DisplayRequests /> : <NotFound/>} />
-            <Route path="/updateSupervisorStatus" element={isLogged ?<UpdateSupervisorStatus /> : <NotFound/>} />
+            <Route path="/updateSupervisorStatus" element={isSupervisor ?<UpdateSupervisorStatus /> : <NotFound/>} />
             <Route path="/requestCoSupervisor" element={isLogged ?<RequestCoSupervisor /> : <NotFound/>} />
             <Route path="/displayCoSupervisors" element={isLogged ?<DisplayCoSupervisors /> : <NotFound/>} />
-            <Route path="/updateCoSupervisorStatus" element={isLogged ?<UpdateCoSupervisorStatus /> : <NotFound/>} />
+            <Route path="/updateCoSupervisorStatus" element={isCoSupervisor ?<UpdateCoSupervisorStatus /> : <NotFound/>} />
 
             <Route path="/addTemplate" element={isLogged ? <TemplateForm /> : <NotFound/>} />
             <Route path="/display" element={ isLogged ? <Displaytemplate /> : <NotFound/>} />
             <Route path="/AddSubType" element={ isAdmin ? <AddSubmissiontype /> : <NotFound/>} />
             <Route path="/displaysub" element={ isLogged ? <DisplaysubType /> : <NotFound/>} />
             <Route path="/updateSub" element={ isLogged ? <UpdateSubmissionType /> : <NotFound/>} />
+            <Route path="/evaluateTopic" element={isLogged ? <TopicEvaluate /> : <NotFound/>} />
+            <Route path="/AddPanelMember" element={isLogged ? <AddPanelMember /> : <NotFound/>} />
+            <Route path="/addMember" element={isLogged ? < AddMember /> : <NotFound/>} />
 
             <Route path="/login" element={isLogged ? <NotFound/> : <Login/>} />
             <Route path="/register" element={isLogged ? <NotFound/> : <Register/>} />
@@ -110,22 +122,9 @@ function Pages() {
             <Route path="/updateuser/:id" element={isLogged ? <UpdateUser/> : <NotFound/>} />
             <Route path="/user/activate/:activation_token" element={<ActivationEmail/>} />
             <Route path="/pending/activate/:activation_token" element={<PendActivationEmail/>} />
-            <Route path="/evaluatedocument" element={isAdmin||isSupervisor||isCoSupervisor? <DocumentEvaluation/> : <NotFound/>} />
-            <Route path="/submitdocs" element={isLogged ? <DisplaySubmitDocuments/> : <NotFound/>} />
+            <Route path="/evaluatedocument" element={isSupervisor||isCoSupervisor? <DocumentEvaluation/> : <NotFound/>} />
+            <Route path="/submitdocs" element={isSupervisor||isCoSupervisor ? <DisplaySubmitDocuments/> : <NotFound/>} />
             <Route path="/documentmarks" element={isLogged ? <DisplayDocumentMarks/> : <NotFound/>} />
-
-            <Route path="/evaluateTopic" element={isLogged ? <TopicEvaluate /> : <NotFound/>} />
-            <Route path="/AddPanelMember" element={isLogged ? <AddPanelMember /> : <NotFound/>} />
-            <Route path="/createChat" element={isLogged ? <CreateChat /> : <NotFound/>} />
-            <Route path="/displayChat" element={ isLogged ? <DisplayChats /> : <NotFound/>} />
-            <Route path="/reply" element={isLogged ? <ChatReply /> : <NotFound/>} />
-            <Route path="/oneForum" element={isLogged ? <DisplayOneForum /> : <NotFound/>} />
-            <Route path="/editReply" element={isLogged ? <UpdateReply /> : <NotFound/>} />
-            <Route path="/editChatForum" element={isLogged ? <UpdateChatForum /> : <NotFound/>} />
-            <Route path="/allForums" element={isLogged ? <DisplayAllForums /> : <NotFound/>} />
-            <Route path="/addPanelMember" element={isLogged ? <AddPanelMember /> : <NotFound/>} />
-            <Route path="/addMember" element={isLogged ? < AddMember /> : <NotFound/>} />
-            <Route path="/" element={< Home />} />
           </Routes>
   );
 }

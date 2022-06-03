@@ -3,10 +3,10 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import img1 from "../../../public/images/bm.jpg";
-import img2 from "../../../public/images/sli2.jpg";
-import img3 from "../../../public/images/sli3.jpg";
-import img4 from "../../../public/images/sli4.jpg";
+import img1 from "../../../public/images/slide1.jpg";
+import img2 from "../../../public/images/slide2.jpg";
+import img3 from "../../../public/images/slide3.jpg";
+import img4 from "../../../public/images/slide4.jpg";
 
 const ImgSlider = (props) => {
   let settings = {
@@ -92,7 +92,7 @@ const Wrap = styled.div`
     padding: 4px;
     img {
       width: 100%;
-      height: 70vh;
+      height: 60vh;
     }
     &:hover {
       padding: 0;

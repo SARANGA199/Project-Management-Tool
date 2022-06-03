@@ -76,7 +76,7 @@ export default function EvaluatePresentation() {
     };
 
     const update = await axios
-      .put(`http://localhost:8070/stdSubmitDoc/${mid}`, value)
+      .put(`http://localhost:8070/stdSubmitDoc/stdSubmitDoc/${mid}`, value)
       .then(() => {})
       .catch((err) => {
         swal(err);
