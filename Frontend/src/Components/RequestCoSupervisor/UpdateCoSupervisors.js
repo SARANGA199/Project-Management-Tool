@@ -40,7 +40,7 @@ export default function UpdateCoSupervisorStatus() {
 
   const setCData = async (coSupervisorStatus) => {
     const newData = {
-      coSupervisorStatus,
+      coSupervisorStatus,groupID,researchTopicName,coSupervisor,groupLeaderEmail
     };
 
     const update = await axios

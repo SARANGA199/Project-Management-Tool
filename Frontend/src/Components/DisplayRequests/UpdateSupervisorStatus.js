@@ -41,7 +41,7 @@ export default function UpdateSupervisorStatus() {
 
     const setData = async (supervisorStatus) => {
         const newValue = {
-            supervisorStatus,
+            supervisorStatus,groupID,researchTopicName,researchSupervisor,groupLeaderEmail
         };
 
 
