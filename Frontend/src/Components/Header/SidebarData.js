@@ -12,15 +12,15 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Request Supervisor",
+    title: "Request Supervisor ",
     path: "/displayRequests",
     icon: <Boostrap.BsQuestionDiamondFill />,
     cName: "nav-text",
   },
   {
-    title: "Products",
-    path: "/products",
-    icon: <FaIcons.FaCartPlus />,
+    title: "Group Registration",
+    path: "/groupList",
+    icon: <Boostrap.BsPeopleFill />,
     cName: "nav-text",
   },
   {
