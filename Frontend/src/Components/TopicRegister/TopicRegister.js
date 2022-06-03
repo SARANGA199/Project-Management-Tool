@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 
 const TopicRegister = ()=>{
+    let navigate = useNavigate();
     const[topicName,setTopicName] = useState("");
     const[topicCategory,setTopicCategory] = useState("");
     const[groupID,setGroupID] = useState("");
@@ -32,9 +34,10 @@ const TopicRegister = ()=>{
             groupLeaderEmail,
             topicDescription
         }
-        const promise = await axios.post("http://localhost:8070/topics",data).then((res)=>{
+        await axios.post("http://localhost:8070/topic/topics",data).then((res)=>{
             if(res.status = 201) {
                 swal("Done!", "Request Send to the Supervisor!", "success");
+                navigate("/topics");
             }}).catch((err)=>{
             alert(err);
         });
