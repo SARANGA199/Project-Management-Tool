@@ -32,7 +32,7 @@ const TopicRegister = ()=>{
             groupLeaderEmail,
             topicDescription
         }
-        const promise = await axios.post("http://localhost:8070/topics",data).then((res)=>{
+        const promise = await axios.post("http://localhost:8070/topicRegister",data).then((res)=>{
             if(res.status = 201) {
                 swal("Done!", "Request Send to the Supervisor!", "success");
             }}).catch((err)=>{
@@ -80,8 +80,12 @@ const TopicRegister = ()=>{
                                 <div className="form-group">
                                     <select className="form-select" aria-label="Default select example" value={topicCategory} onChange={e => setTopicCategory(e.target.value)}>
                                         <option selected>Select Category</option>
-                                        <option  value={"IOT"}>IOT</option>
-                                        <option  value={"SE"}>SE</option>
+                                        <option  value={"Machine Learning"}>Machine Learning</option>
+                                        <option  value={"Computer Architecture"}>Computer Architecture</option>
+                                        <option  value={"Artificial Intelligence"}>Artificial Intelligence</option>
+                                        <option  value={"Robotics"}>Robotics</option>
+                                        <option  value={"System and Networking"}>System and Networking</option>
+                                        <option  value={"Data Science"}>Data Science</option>
                                     </select>
                                 </div>
                             </div>

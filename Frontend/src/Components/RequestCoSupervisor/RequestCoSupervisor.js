@@ -4,6 +4,7 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 
 export default function RequestCoSupervisor() {
+
   let navigate = useNavigate();
   const [researchSupervisor, setResearchSupervisor] = useState("");
   const [researchCategory, setResearchCategory] = useState("");
@@ -162,9 +163,12 @@ export default function RequestCoSupervisor() {
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
+        </div>
+
 
             <div className="col-sm-6">
               <div className="card">

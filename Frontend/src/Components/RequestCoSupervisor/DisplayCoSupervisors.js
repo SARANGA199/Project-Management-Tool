@@ -33,7 +33,9 @@ export default function DisplayCoSupervisors() {
           <center>
             <h2>Co-Supervisors Requests</h2>
           </center>
+
           <br />
+
           <table className="table table-bordered table-striped table-responsive-stack">
             <tr>
               <th scope="col">Request No </th>
@@ -61,6 +63,7 @@ export default function DisplayCoSupervisors() {
                   <td>{data.coSupervisor}</td>
                   <td>{data.coSupervisorStatus}</td>
                   <td>
+
                     {crrUser.role === "Co-Supervisor" ? (
                       <button
                         className="btn btn-warning"
@@ -76,6 +79,7 @@ export default function DisplayCoSupervisors() {
                       ""
                     )}
                   </td>
+
                 </tr>
               ))}
             </tbody>

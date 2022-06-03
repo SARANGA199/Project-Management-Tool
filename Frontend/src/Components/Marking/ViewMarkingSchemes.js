@@ -89,7 +89,7 @@ export default function ViewMarkingSchemes() {
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">specialization</th>
-                <th scope="col">projectName</th>
+                <th scope="col">SchemaName</th>
                 <th scope="col">totalMarks</th>
                 <th scope="col">Action</th>
               </tr>
