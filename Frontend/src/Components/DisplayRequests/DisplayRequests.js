@@ -3,6 +3,8 @@ import axios from "axios";
 import updateSupervisorStatus from "./UpdateSupervisorStatus";
 import { useNavigate } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
+import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 function DisplayRequests() {
   let navigate = useNavigate();
@@ -38,6 +40,12 @@ function DisplayRequests() {
   return (
     <div>
       <div className="container">
+        <button
+          className="btn btn-warning btn-lg mt-3 mb-3 ms-5"
+          onClick={() => navigate("/requestSupervisor")}
+        >
+          Request Supervisor &nbsp; <AddCircleIcon />
+        </button>
         <br />
         <div className="card">
           <div className="card-body">
@@ -98,6 +106,12 @@ function DisplayRequests() {
                 ))}
               </tbody>
             </table>
+            <button
+              className="btn btn-warning btn-lg mt-3 mb-3"
+              onClick={() => navigate("/displayCoSupervisors")}
+            >
+              Co-Supervisor Requests &nbsp; <QuestionAnswerIcon />
+            </button>
           </div>
         </div>
       </div>
