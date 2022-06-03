@@ -1,185 +1,275 @@
-import React, {useState, useContext} from 'react'
-import axios from 'axios'
-import {Link} from 'react-router-dom'
-import {isLength, isMatch} from '../utils/validation/Validation.js'
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { isLength, isMatch } from "../utils/validation/Validation.js";
 import TextField from "@mui/material/TextField";
-import './Styles/profile.css';
-import { GlobalState } from '../../GlobalState';
+import "./Styles/profile.css";
+import { GlobalState } from "../../GlobalState";
+import AddIcon from "@mui/icons-material/Add";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import { useNavigate } from "react-router-dom";
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 const initialState = {
-    name: '',
-    password: '',
-    cf_password: '',
-}
+  name: "",
+  password: "",
+  cf_password: "",
+};
 
 function Profile() {
+  let navigate = useNavigate();
+  const state = useContext(GlobalState);
+  const [isLogged, setIsLogged] = state.UserAPI.isLogged;
+  const [isAdmin, setIsAdmin] = state.UserAPI.isAdmin;
+  const [crrUser, setCrrUser] = state.UserAPI.crrUser;
+  const [token] = state.token;
+  const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState(false);
+  const [data, setData] = useState(initialState);
+  const { name, password, cf_password } = data;
 
-    const state = useContext(GlobalState)
-    const [isLogged,setIsLogged ] = state.UserAPI.isLogged
-    const [isAdmin,setIsAdmin ] = state.UserAPI.isAdmin
-    const [crrUser, setCrrUser] = state.UserAPI.crrUser
-    const [token] = state.token
-    const [loading, setLoading] = useState(false)
-    const [image, setImage] = useState(false)
-    const [data, setData] = useState(initialState)
-    const {name, password, cf_password} = data
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value, err: "", success: "" });
+  };
 
+  const changeAvatar = async (e) => {
+    e.preventDefault();
+    try {
+      const file = e.target.files[0];
 
-    const handleChange = e => {
-        const {name, value} = e.target
-        setData({...data, [name]:value, err:'', success: ''})
-    }
+      if (!file) return swal("ERROR!", "No files were uploaded!", "error");
 
-    const changeAvatar = async(e) => {
-        e.preventDefault()
-        try {
-            const file = e.target.files[0]
+      if (file.size > 1024 * 1024)
+        return swal("ERROR!", "Size too large.", "error");
 
-            if(!file) return swal("ERROR!", "No files were uploaded!", "error");
+      if (file.type !== "image/jpeg" && file.type !== "image/png")
+        return swal("ERROR!", "File format is incorrect.", "error");
 
-            if(file.size > 1024 * 1024)
-                return swal("ERROR!", "Size too large.", "error");
+      let formData = new FormData();
+      formData.append("file", file);
 
-            if(file.type !== 'image/jpeg' && file.type !== 'image/png')
-                return swal("ERROR!", "File format is incorrect.", "error");
-
-
-            let formData =  new FormData()
-            formData.append('file', file)
-
-            setLoading(true)
-            const res = await axios.post('http://localhost:8070/api/upload_image', formData, {
-                headers: {'content-type': 'multipart/form-data', Authorization: token}
-            })
-            setLoading(false)
-            swal("Done!", "Image upload successfull!", "success");
-            setImage(res.data.url)
-            
-        } catch (err) {
-            return swal("ERROR!", err.response.res.msg, "error");
+      setLoading(true);
+      const res = await axios.post(
+        "http://localhost:8070/api/upload_image",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: token,
+          },
         }
+      );
+      setLoading(false);
+      swal("Done!", "Image upload successfull!", "success");
+      setImage(res.data.url);
+    } catch (err) {
+      return swal("ERROR!", err.response.res.msg, "error");
     }
+  };
 
-    const updateInfo = () => {
-        try {
-            const up = axios.patch('http://localhost:8070/user/update', {
-                name: name ? name : crrUser.name,
-                image: image ? image : crrUser.image
-            },{
-                headers: {Authorization: token}
-            })
-
-            swal("Done!", "Updated Success!", "success");
-        } catch (err) {
-            return swal("ERROR!", "Updated Failed!", "error");
+  const updateInfo = () => {
+    try {
+      const up = axios.patch(
+        "http://localhost:8070/user/update",
+        {
+          name: name ? name : crrUser.name,
+          image: image ? image : crrUser.image,
+        },
+        {
+          headers: { Authorization: token },
         }
+      );
+
+      swal("Done!", "Updated Success!", "success");
+    } catch (err) {
+      return swal("ERROR!", "Updated Failed!", "error");
     }
+  };
 
-    const updatePassword = () => {
-        if(isLength(password))
-            return swal("Warning!", "Password must be at least 6 characters.", "warning");
+  const updatePassword = () => {
+    if (isLength(password))
+      return swal(
+        "Warning!",
+        "Password must be at least 6 characters.",
+        "warning"
+      );
 
-        if(!isMatch(password, cf_password))
-            return swal("ERROR!", "Password did not match.", "error");
+    if (!isMatch(password, cf_password))
+      return swal("ERROR!", "Password did not match.", "error");
 
-        try {
-            axios.post('http://localhost:8070/user/reset', {password},{
-                headers: {Authorization: token}
-            })
-
-            swal("Done!", "Password updated successfully!", "success");
-        } catch (err) {
-            return swal("ERROR!", "Updated Failed!", "error");
+    try {
+      axios.post(
+        "http://localhost:8070/user/reset",
+        { password },
+        {
+          headers: { Authorization: token },
         }
-    }
+      );
 
-    return (
-        <>
-        <div>
-            {loading && <h3>Uploading Image.....</h3>}
-        </div>
-        <div className="profContainer">
+      swal("Done!", "Password updated successfully!", "success");
+    } catch (err) {
+      return swal("ERROR!", "Updated Failed!", "error");
+    }
+  };
+
+  return (
+    <>
+      <div>{loading && <h3>Uploading Image.....</h3>}</div>
+      <div className="profContainer">
         <div className="profLeft">
           <div className="profTop">
             MY <br />
             PROFILE
+            {isAdmin ? (
+              <div>
+                <button
+                  className="btn btn-warning btn-lg"
+                  onClick={() => navigate("/allusers")}
+                >
+                  Manage Users &nbsp; <ManageAccountsIcon />
+                </button>
+                <button
+                  className="btn btn-warning btn-lg"
+                  onClick={() => navigate("/PendingUsers")}
+                >
+                  Pending Users &nbsp; <PendingActionsIcon />
+                </button>
+                <button
+                  className="btn btn-warning btn-lg"
+                  onClick={() => navigate("/AddPanelMember")}
+                >
+                  Add Panel Members &nbsp; <AddCircleIcon />
+                </button>
+              </div>
+            ) : (
+              " "
+            )}
           </div>
         </div>
         <div className="profile_page">
-            <div className="col-left">
-                <div className='profilecard'>
-                <h2>{crrUser.name}</h2>
+          <div className="col-left">
+            <div className="profilecard">
+              <h2>{crrUser.name}</h2>
 
-                <div className="avatar">
-                    <img src={image ? image : crrUser.image} alt=""/>
-                    <span>
-                        <i className="fas fa-camera"></i>
-                        <p>Change</p>
-                        <input type="file" name="file" id="file_up" onChange={changeAvatar} />
-                    </span>
-                </div>
+              <div className="avatar">
+                <img src={image ? image : crrUser.image} alt="" />
+                <span>
+                  <i className="fas fa-camera"></i>
+                  <p>Change</p>
+                  <input
+                    type="file"
+                    name="file"
+                    id="file_up"
+                    onChange={changeAvatar}
+                  />
+                </span>
+              </div>
 
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  defaultValue={crrUser.name}
+                  placeholder="Your name"
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="regNumber">Registration Number</label>
+                <input
+                  type="text"
+                  name="regNumber"
+                  id="regNumber"
+                  defaultValue={crrUser.regNumber}
+                  placeholder="Registration number"
+                  onChange={handleChange}
+                  disabled
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Your email address"
+                  disabled
+                  defaultValue={crrUser.email}
+                />
+              </div>
+
+              {crrUser.role === "Student" ? (
                 <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" name="name" id="name" defaultValue={crrUser.name}
-                    placeholder="Your name" onChange={handleChange} />
+                  <label htmlFor="spec">Specialization</label>
+                  <input
+                    type="text"
+                    name="spec"
+                    id="spec"
+                    defaultValue={crrUser.specialization}
+                    disabled
+                    placeholder="Specialization"
+                  />
                 </div>
-
+              ) : (
                 <div className="form-group">
-                    <label htmlFor="regNumber">Registration Number</label>
-                    <input type="text" name="regNumber" id="regNumber" defaultValue={crrUser.regNumber}
-                    placeholder="Registration number" onChange={handleChange} disabled/>
+                  <label htmlFor="rarea">Interested Research Area</label>
+                  <input
+                    type="text"
+                    name="rarea"
+                    id="rarea"
+                    defaultValue={crrUser.researchArea}
+                    disabled
+                    placeholder="Interested research area"
+                  />
                 </div>
+              )}
 
-                <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" 
-                    placeholder="Your email address" disabled defaultValue={crrUser.email}/>
-                </div>
-
-                {crrUser.role ==='Student'?                
-                <div className="form-group">
-                    <label htmlFor="spec">Specialization</label>
-                    <input type="text" name="spec" id="spec" defaultValue={crrUser.specialization} disabled
-                    placeholder="Specialization" />
-                </div>
-                :
-                <div className="form-group">
-                    <label htmlFor="rarea">Interested Research Area</label>
-                    <input type="text" name="rarea" id="rarea" defaultValue={crrUser.researchArea} disabled
-                    placeholder="Interested research area" />
-                </div>
-                }
-
-                <button onClick={updateInfo}>Update</button>
-                </div>
+              <button onClick={updateInfo}>Update</button>
             </div>
+          </div>
 
-            <div className="profile_page">
-                <div className="col-right">
-                <div className='profilecard'>
-                    <h2>Update Password</h2>
-                    <br/>
+          <div className="profile_page">
+            <div className="col-right">
+              <div className="profilecard">
+                <h2>Update Password</h2>
+                <br />
 
-                    <div className="form-group">
-                        <label htmlFor="password">New Password</label>
-                        <input type="password" name="password" id="password" onChange={handleChange}
-                        placeholder="new password" />
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="cf_password">Confirm Password</label>
-                        <input type="password" name="cf_password" id="cf_password" onChange={handleChange}
-                        placeholder="repeat your new password"   />
-                    </div><br/>
-                    <button onClick={updatePassword}>Update Password</button>
+                <div className="form-group">
+                  <label htmlFor="password">New Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    onChange={handleChange}
+                    placeholder="new password"
+                  />
                 </div>
+
+                <div className="form-group">
+                  <label htmlFor="cf_password">Confirm Password</label>
+                  <input
+                    type="password"
+                    name="cf_password"
+                    id="cf_password"
+                    onChange={handleChange}
+                    placeholder="repeat your new password"
+                  />
                 </div>
+                <br />
+                <button onClick={updatePassword}>Update Password</button>
+              </div>
             </div>
+          </div>
         </div>
-        </div>
-        </>
-    )
+      </div>
+    </>
+  );
 }
 
-export default Profile
+export default Profile;

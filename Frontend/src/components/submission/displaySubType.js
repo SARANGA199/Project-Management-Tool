@@ -78,7 +78,7 @@ function DisplaysubType() {
         swal(`Something went to wrong !!!`);
       });
   };
-
+  //set data
   const setData = async (data) => {
     let {
       _id,

@@ -1,13 +1,20 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import swal from "sweetalert";
 import { getMarkingScheme } from "../../../../Backend/controllers/markingControllers/markingController";
 import getMarkingScheme from "../PresentationMarks/GetMarkingSchemes";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import "../TopicAcceptance/topicAccept.css";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { GlobalState } from "../../GlobalState";
+import { useNavigate } from "react-router-dom";
 
 export default function ViewMarkingSchemes() {
+  let navigate = useNavigate();
   const [request, setRequest] = useState([]);
+  const state = useContext(GlobalState);
+  const [isAdmin, setIsAdmin] = state.UserAPI.isAdmin;
+  const [crrUser, setCrrUser] = state.UserAPI.crrUser;
 
   useEffect(() => {
     axios
@@ -61,6 +68,18 @@ export default function ViewMarkingSchemes() {
             SLIIT <br />
             RESEARCH
           </div>
+          {isAdmin ? (
+            <div>
+              <button
+                className="btn btn-warning btn-lg ms-5 mt-3"
+                onClick={() => navigate("/add")}
+              >
+                Add Marking &nbsp; <AddCircleIcon />
+              </button>
+            </div>
+          ) : (
+            " "
+          )}
         </div>
         <div className="container">
           <div className="topicNam">MARKING SCHEMES</div>
@@ -86,20 +105,27 @@ export default function ViewMarkingSchemes() {
                     <b>{data.totalMarks}</b>
                   </td>
                   <td>
-                    <a
-                      href="/updateMarking"
-                      className="btn btn-warning"
-                      onClick={() => setData(data)}
-                    >
-                      &nbsp;update
-                    </a>
+                    {isAdmin ? (
+                      <>
+                        <a
+                          href="/updateMarking"
+                          className="btn btn-warning"
+                          onClick={() => setData(data)}
+                        >
+                          &nbsp;update
+                        </a>
 
-                    <a
-                      className="btn btn-danger ms-3"
-                      onClick={() => deleteMarking(data._id)}
-                    >
-                      &nbsp;Delete
-                    </a>
+                        <a
+                          className="btn btn-danger ms-3"
+                          onClick={() => deleteMarking(data._id)}
+                        >
+                          &nbsp;Delete
+                        </a>
+                      </>
+                    ) : (
+                      " "
+                    )}
+
                     <button
                       className="btn btn-success ms-3"
                       onClick={() =>

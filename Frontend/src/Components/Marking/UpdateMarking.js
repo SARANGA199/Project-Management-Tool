@@ -17,10 +17,12 @@ import Container from "@mui/material/Container";
 import FormControl from "@mui/material/FormControl";
 import swal from "sweetalert";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import { useNavigate } from "react-router-dom";
 //css
 import "./marking.css";
 
 export default function UpdateMarking() {
+  let navigate = useNavigate();
   const [request, setRequest] = useState();
   const [criteria, setCriteria] = useState([
     { id: "", criteriaName: "", marksAllocation: "" },
@@ -93,7 +95,8 @@ export default function UpdateMarking() {
       .put(`http://localhost:8070/markings/${markID}`, dataNew)
       .then(() => {
         swal("Done!", "Marking scheme Update successfully!", "success");
-        e.target.reset();
+
+        navigate("/viewMarking");
       })
       .catch((err) => {
         alert(err);
