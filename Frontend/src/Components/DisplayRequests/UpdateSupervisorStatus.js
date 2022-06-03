@@ -48,7 +48,6 @@ export default function UpdateSupervisorStatus() {
         const update = await axios
             .put(`http://localhost:8070/requestSV/${requestID}`, newValue)
             .then(() => {
-                alert("sudssdsdsdscd")
                 swal(`Supervisor is ${supervisorStatus}ed`);
                 navigate("/displayRequests");
             })
@@ -72,7 +71,7 @@ export default function UpdateSupervisorStatus() {
             <div className="card">
                 <div className="card-body">
 
-                    <form>
+
 
                         <div className="row">
                             <div className="col-sm-6">
@@ -180,7 +179,7 @@ export default function UpdateSupervisorStatus() {
                                 </div>
                             </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>

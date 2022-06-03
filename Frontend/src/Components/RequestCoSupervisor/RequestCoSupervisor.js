@@ -5,14 +5,15 @@ import {useNavigate} from "react-router-dom";
 
 
 export default function RequestCoSupervisor() {
-        let navigate = useNavigate();
+        // let navigate = useNavigate();
         const[researchSupervisor,setResearchSupervisor] = useState("");
         const[researchCategory,setResearchCategory]=useState("");
         const[groupID,setGroupID]=useState("");
         const[groupLeaderEmail,setGroupLeaderEmail]=useState("");
         const[researchTopicName,setResearchTopicName]=useState("");
         const[comments,setComments]=useState("");
-        const[coSupervisor,setCoSupervisor] = useState("");
+        const[coSupervisor,setCoSupervisor] = useState([]);
+        const[resCosupervisors,setResCosupervisors] = useState("");
         const [requestID, setRID] = useState("");
 
 
@@ -38,24 +39,34 @@ export default function RequestCoSupervisor() {
             setRID(rid);
         }, []);
 
+    const setCoSupervisorData = async () => {
 
-        const setData = async (coSupervisor) => {
-            const newValue = {
-                coSupervisor,
-            };
+        axios
+            .get(`http://localhost:8070/user/infoCoSupervisor/${researchCategory}`)
+            .then((res) => {
+                setCoSupervisor(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
+        const setData = async (resCosupervisors) => {
+            // const newValue = {
+            //     resCosupervisors,
+            // };
 
             const update = await axios
-                .put(`http://localhost:8070/requestSV/${requestID}`, newValue)
+                .put(`http://localhost:8070/requestCoSupervisor/${requestID}`, resCosupervisors)
                 .then(() => {
                     swal("Request Send!");
-                    navigate("/displayCoSupervisors");
+                    // navigate("/displayCoSupervisors");
                 })
                 .catch((err) => {
                     swal(`Something went wrong !!!`);
                 });
         };
-
+    setCoSupervisorData();
         return(
 
             <div className="container">
@@ -71,7 +82,7 @@ export default function RequestCoSupervisor() {
                 <div className="card">
                     <div className="card-body">
 
-                        <form>
+
 
                             <div className="row">
                                 <div className="col-sm-6">
@@ -137,26 +148,27 @@ export default function RequestCoSupervisor() {
                                     <div className="card">
                                         <div className="card-body">
                                             <div className="col-md-12">
-                                                <label>Research Co-Supervisor : </label>
+                                                {/*<label>Research Co-Supervisor : </label>*/}
+                                                {/*<div className="form-group">*/}
+                                                {/*    <select className="form-select" aria-label="Default select example" value={coSupervisor} onChange={e => setCoSupervisor(e.target.value)}>*/}
+                                                {/*        <option selected>Select Co-Supervisor</option>*/}
+                                                {/*        <option value="Wade">Wade</option>*/}
+                                                {/*        <option value="Smith">Smith</option>*/}
+                                                {/*    </select>*/}
+                                                {/*</div>*/}
+
+
+                                                <label>Research Supervisor : </label>
                                                 <div className="form-group">
-                                                    <select className="form-select" aria-label="Default select example" value={coSupervisor} onChange={e => setCoSupervisor(e.target.value)}>
-                                                        <option selected>Select Co-Supervisor</option>
-                                                        <option value="Wade">Wade</option>
-                                                        <option value="Smith">Smith</option>
+                                                    <select className="form-select" aria-label="Default select example" value={resCosupervisors} onChange={e => setResCosupervisors(e.target.value)}>
+
+                                                        {coSupervisor.map((data, index) => (
+                                                            <option key={index} value={data.name}>{data.name}</option>
+                                                        ))}
+
                                                     </select>
                                                 </div>
                                             </div>
-
-                                            {/*<label>Research Supervisor : </label>*/}
-                                            {/*<div className="form-group">*/}
-                                            {/*    <select className="form-select" aria-label="Default select example" value={researchSupervisor} onChange={e => setResearchSupervisor(e.target.value)}>*/}
-
-                                            {/*        {supervisor.map((data, index) => (*/}
-                                            {/*            <option key={index} value={data.name}>{data.name}</option>*/}
-                                            {/*        ))}*/}
-
-                                            {/*    </select>*/}
-                                            {/*</div>*/}
 
 
                                             <div className="row">
@@ -165,9 +177,9 @@ export default function RequestCoSupervisor() {
                                                         <button
                                                             type="submit"
                                                             className="btn btn-success btn-lg"
-                                                            onClick={() => setData({coSupervisor})}
+                                                            onClick={() => setData({resCosupervisors})}
                                                         >
-                                                            &nbsp;Accept
+                                                            &nbsp;SEND
                                                         </button>
                                                     </center>
                                                 </div>
@@ -177,7 +189,7 @@ export default function RequestCoSupervisor() {
                                     </div>
                                 </div>
                             </div>
-                        </form>
+
                     </div>
                 </div>
             </div>
