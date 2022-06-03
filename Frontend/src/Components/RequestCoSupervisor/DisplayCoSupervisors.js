@@ -25,6 +25,10 @@ export default function DisplayCoSupervisors() {
       <br />
       <div className="card">
         <div className="card-body">
+          <center>
+            <h2>Co-Supervisors Requests</h2>
+          </center>
+          <br/>
           <table className="table table-bordered table-striped table-responsive-stack">
             <tr>
               <th scope="col">Request No </th>

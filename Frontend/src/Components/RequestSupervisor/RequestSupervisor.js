@@ -93,8 +93,12 @@ export const RequestSupervisor = ()=>{
                                             <div className="form-group">
                                                 <select className="form-select" aria-label="Default select example" value={researchCategory} onChange={e => setResearchCategory(e.target.value)}>
                                                     <option selected>Select Category</option>
-                                                    <option  value={"IOT"}>IOT</option>
-                                                    <option  value={"SE"}>SE</option>
+                                                    <option  value={"Machine Learning"}>Machine Learning</option>
+                                                    <option  value={"Computer Architecture"}>Computer Architecture</option>
+                                                    <option  value={"Artificial Intelligence"}>Artificial Intelligence</option>
+                                                    <option  value={"Robotics"}>Robotics</option>
+                                                    <option  value={"System and Networking"}>System and Networking</option>
+                                                    <option  value={"Data Science"}>Data Science</option>
                                                 </select>
                                             </div>
                                            <br/>
